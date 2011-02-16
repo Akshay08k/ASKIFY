@@ -37,6 +37,17 @@ section {
   margin-right: auto;
 }
 
+.pfp {
+  border-radius: 50%;
+  max-width: 150px;
+  margin-bottom: 15px;
+  border: 5px solid #3498db;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
 #profile p {
   text-align: center;
   margin: 0;

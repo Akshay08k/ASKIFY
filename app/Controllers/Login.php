@@ -13,13 +13,13 @@ class Login extends Controller
     }
     public function auth()
 {
-    $model = new UserModel();
+    $model = new UserModel();   
     $email = $this->request->getPost('email');
     $password = $this->request->getPost('password');
     $user = $model->where('email', $email)->first();
     if ($user && password_verify($password, $user['password'])) {
         session()->set('user_id', $user['id']);
-        return redirect()->to(base_url('homepage'));
+        return redirect()->to(base_url('/homepage'));
     } else {
         return redirect()->to(base_url('user/login'));
     }

@@ -9,7 +9,7 @@ public function before(RequestInterface $request, $arguments = null)
 // if user not logged in
 if(! session()->get('logged_in')){
 // then redirct to login page
-return redirect()->to('/login'); 
+return redirect()->to('user/login'); 
 }
 }
 //--------------------------------------------------------------------

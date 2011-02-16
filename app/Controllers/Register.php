@@ -16,7 +16,6 @@ class Register extends Controller
     {
         // Load the validation library
         $validation = \Config\Services::validation();
-
         // Define validation rules here
         $validation->setRules([
             'name' => 'required|min_length[3]|max_length[255]',
@@ -32,7 +31,7 @@ class Register extends Controller
         $model = new UserModel();
 
         $data = [
-            'name' => $this->request->getPost('name'),
+            'username' => $this->request->getPost('name'),
             'email' => $this->request->getPost('email'),
             'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT)
         ];

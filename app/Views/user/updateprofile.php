@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,6 +29,7 @@
         }
 
         form {
+            margin-top: 40px;
             background-color: #fff;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -41,7 +43,8 @@
             color: #333;
         }
 
-        input, textarea {
+        input,
+        textarea {
             width: 100%;
             padding: 10px;
             margin-bottom: 12px;
@@ -50,6 +53,7 @@
             border-radius: 5px;
             color: #555;
             outline: none;
+            resize: none;
         }
 
         select {
@@ -89,9 +93,9 @@
         button:hover {
             background-color: #2980b9;
         }
-
     </style>
 </head>
+
 <body>
 
     <header>
@@ -99,10 +103,10 @@
     </header>
 
     <main>
-
-        <form>
+        <form method="post" action="<?= site_url('updateprofile'); ?>" enctype="multipart/form-data">
             <label for="profilephoto">Profile Photo:</label>
-            <input type="file" name="profilephoto" id="profilephoto" accept="image/*" placeholder="Choose Profile Photo">
+            <input type="file" name="profilephoto" id="profilephoto" accept="image/*"
+                placeholder="Choose Profile Photo">
 
             <label for="name">Name:</label>
             <input type="text" id="name" name="name">
@@ -116,7 +120,7 @@
                 <label for="female">Female</label>
 
                 <input type="radio" id="nonbinary" name="gender" value="non-binary">
-                <label for="nonbinary">Non-binary</label>
+                <label for="nonbinary">Other</label>
             </div>
 
             <label for="bio">Bio:</label>
@@ -127,6 +131,14 @@
 
             <label for="categories">Categories:</label>
             <input type="text" id="categories" name="categories" placeholder="Enter your categories">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username">
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob">
+
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" placeholder="Enter your location">
 
             <button type="submit">Update Details</button>
         </form>
@@ -134,4 +146,5 @@
     </main>
 
 </body>
+
 </html>

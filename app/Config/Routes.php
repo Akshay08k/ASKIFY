@@ -30,32 +30,35 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('/home','HomepageController::index');
-$routes->get('/categories', 'Categories::index'); 
+$routes->get('/categories', 'Categories::index');
 $routes->get('/register', 'Register::index');
 $routes->post('/register/save', 'Register::save');
 $routes->get('/login', 'Login::index');
 $routes->post('/login/auth', 'Login::auth');
 $routes->get('logout', 'Login::logout');
-$routes->get('/dashboard', 'Dashboard::index', ['filter' => 'auth']);
+
+// $routes->get('/dashboard', 'Dashboard::index', ['filter' => 'auth']);
+//categories manangement by ADMIN
 $routes->get('categories', 'Categories::index');
 $routes->get('categories/create', 'Categories::create');
 $routes->post('categories/store', 'Categories::store');
 $routes->get('categories/edit/(:num)', 'Categories::edit/$1');
 $routes->post('categories/update/(:num)', 'Categories::update/$1');
-$routes->get('categories/delete/(:num)', 'Categories::delete/$1');    
-$routes->post('/save-question', 'HomeController::saveQuestion');
-$routes->post('/save-post', 'HomeController::savePost');;                                                                                                       
-$routes->get('/content-policy','ContentController::contentpolicy');
-$routes->get('/privacy','ContentController::privacy');
-$routes->get('/profile','ProfileController::index');
-$routes->get('/updateprofile','ProfileController::updateprofile');
-$routes->get('/updatecategory','ProfileController::choosecategory');
-$routes->get('/terms','ContentController::terms');
-$routes->get('/homepage','HomepageController::index');  
+$routes->get('categories/delete/(:num)', 'Categories::delete/$1');
+// loading contentpolicy
+$routes->get('/content-policy', 'ContentController::contentpolicy');
+//loading privacy
+$routes->get('/privacy', 'ContentController::privacy');
+//profile routes
+$routes->get('/profile', 'ProfileController::index');
+$routes->get('updateprofile', 'ProfileController::updateprofile');
+$routes->get('/updatecategory', 'ProfileController::choosecategory');
+//loading terms
+$routes->get('/terms', 'ContentController::terms');
+//loading homepage
+$routes->get('/homepage', 'HomepageController::index');
+//json page for getting question
 $routes->get('/homepage/getQuestions', 'HomepageController::getQuestions');
-$routes->get('/profile/(:num)', 'ProfileController::index/$1');
-
 /*
  * --------------------------------------------------------------------
  * Additional Routing
