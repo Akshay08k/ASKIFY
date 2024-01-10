@@ -6,11 +6,11 @@
     <title>Update Details</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #1f1f1f;
-            color: #fff;
+            background-color: #f0f0f0;
+            color: #333;
         }
 
         header {
@@ -28,24 +28,53 @@
         }
 
         form {
-            background-color: #2c3e50;
+            background-color: #fff;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
-            width: 300px;
+            width: 500px;
         }
 
         label {
             display: block;
             margin-bottom: 8px;
-            color: #fff;
+            color: #333;
         }
 
         input, textarea {
             width: 100%;
-            padding: 8px;
+            padding: 10px;
             margin-bottom: 12px;
             box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            color: #555;
+            outline: none;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            color: #555;
+            outline: none;
+        }
+
+        input[type="file"] {
+            margin-bottom: 12px;
+        }
+
+        div.radio-group {
+            display: flex;
+            margin-bottom: 12px;
+        }
+
+        div.radio-group label {
+            margin-right: 15px;
+            margin-bottom: -10px;
         }
 
         button {
@@ -60,6 +89,7 @@
         button:hover {
             background-color: #2980b9;
         }
+
     </style>
 </head>
 <body>
@@ -71,11 +101,26 @@
     <main>
 
         <form>
-            <label for="gender">Gender:</label>
-            <input type="text" id="gender" name="gender" placeholder="Enter your gender">
+            <label for="profilephoto">Profile Photo:</label>
+            <input type="file" name="profilephoto" id="profilephoto" accept="image/*" placeholder="Choose Profile Photo">
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+
+            <label>Gender:</label>
+            <div class="radio-group">
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Male</label>
+
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label>
+
+                <input type="radio" id="nonbinary" name="gender" value="non-binary">
+                <label for="nonbinary">Non-binary</label>
+            </div>
 
             <label for="bio">Bio:</label>
-            <textarea id="bio" name="bio" placeholder="Enter your bio"></textarea>
+            <textarea id="bio" name="bio"></textarea>
 
             <label for="role">Role:</label>
             <input type="text" id="role" name="role" placeholder="Enter your role">
@@ -90,4 +135,3 @@
 
 </body>
 </html>
-    

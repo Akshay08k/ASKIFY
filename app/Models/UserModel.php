@@ -1,10 +1,12 @@
 <?php
+
 namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UserModel extends Model
+class UpdateDetailsModel extends Model
 {
-    protected $table = 'user2';
-    protected $allowedFields = ['name', 'email', 'password', 'created_at'];
+    protected $table = 'users';
+
+    protected $allowedFields = ['name', 'gender', 'bio', 'role', 'categories']; 
 }

@@ -53,7 +53,7 @@ class Categories extends BaseController
             'name' => $this->request->getVar('name'),
             'description' => $this->request->getVar('description'),
         ];
-    
+        
         $image = $this->request->getFile('image');
         if ($image->isValid() && !$image->hasMoved()) {
             // Get the category name and use it as the image name

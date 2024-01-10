@@ -20,7 +20,7 @@
         <section id="profile">
             <img src="/images/nycto.jpg" alt="Profile Photo">
             <p class="username">Akshay_komale</p>
-            <p><strong></strong>Akshay</p>
+            <p>Akshay</p>
         </section>
 
         <section id="details">

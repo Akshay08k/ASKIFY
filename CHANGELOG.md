@@ -1,6 +1,3 @@
-
-
-
 # Changelog
 
 ## [v4.3.0](https://github.com/codeigniter4/CodeIgniter4/tree/v4.3.0) (2023-01-10)

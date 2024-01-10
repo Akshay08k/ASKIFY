@@ -1,28 +1,25 @@
-
 function createQuestionBox(data) {
-  const { userId, title, description } = data;
-  const defaultProfileUrl = "images/nycto.jpg"; // Set your default path
+  const { username, title, description ,profile_photo} = data;
+
 
   const questionBox = document.createElement("div");
   questionBox.classList.add("post-box");
 
-  // User Profile Section
   const profileSection = document.createElement("div");
   profileSection.classList.add("profile-section");
 
   const profilePicture = document.createElement("div");
   profilePicture.classList.add("profile-picture");
   const img = document.createElement("img");
-  img.src = defaultProfileUrl; // Use default profile URL if not available
+  img.src = data.profile_photo; 
   img.alt = "User Profile Picture";
   profilePicture.appendChild(img);
 
   const profileName = document.createElement("p");
-  profileName.textContent = `User ID: ${userId}`; // Use User ID as profile name
+  profileName.textContent = username;
 
   profileSection.appendChild(profilePicture);
   profileSection.appendChild(profileName);
-
 
   // Title Section
   const titleSection = document.createElement("div");
@@ -70,6 +67,7 @@ function createQuestionBox(data) {
 document.addEventListener("DOMContentLoaded", function () {
   const questionContainer = document.querySelector(".content");
 
+  // Fetch questions from the server
   fetch("/homepage/getQuestions") // Adjust the URL based on your routes
     .then((response) => response.json())
     .then((questions) => {
