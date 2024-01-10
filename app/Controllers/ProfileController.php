@@ -14,18 +14,26 @@ class ProfileController extends BaseController
     }
     public function updateprofile()
     {
-        return view("user/updateprofile");
-        $Model = new UserModel();
+        
+        if (!session()->has('user_id')) {
+            return redirect()->to('/login'); 
+        }
+        return view('user/updateprofile');
+        $model = new UserModel();
+    
+        $userId = session()->get('user_id');
+    
         $data = [
-            'name' => $this->request->getVar('name'),
-            'gender' => $this->request->getVar('gender'),
-            'bio' => $this->request->getVar('bio'),
-            'role' => $this->request->getVar('role'),
-            'categories' => $this->request->getVar('categories'),
-            'profilephoto' => $this->request->getVar('profilephoto')
-            ];
-            $Model->save($data);
-            return redirect()->to('user/profile');
+            'name' => $this->request->getPost('name'),
+            'gender' => $this->request->getPost('gender'),
+            'bio' => $this->request->getPost('bio'),
+            'role' => $this->request->getPost('role'),
+            'categories' => $this->request->getPost('categories'),
+        ];
+    
+   
+        $model->save($userId, $data); 
+        return redirect()->to('/login'); 
     }
     public function choosecategory()
     {
