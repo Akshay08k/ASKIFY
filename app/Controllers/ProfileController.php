@@ -10,36 +10,39 @@ class ProfileController extends BaseController
 {
     public function index()
     {
-        return view("user/profile");
+
+    
+
+$userModel = new UserModel();
+$data['users'] = $userModel->findAll();
+
+return view('user/profile', $data);
     }
-    public function updateprofile()
-    {
+    // public function updateprofile()
+    // {
         
-        if (!session()->has('user_id')) {
-            return redirect()->to('/login'); 
-        }
-        return view('user/updateprofile');
-        $model = new UserModel();
+    //     if (!session()->has('user_id')) {
+    //         return redirect()->to('/login'); 
+    //     }
+    //     return view('user/updateprofile');
+    //     $model = new UserModel();
     
-        $userId = session()->get('user_id');
+    //     $userId = session()->get('user_id');
     
-        $data = [
-            'name' => $this->request->getPost('name'),
-            'gender' => $this->request->getPost('gender'),
-            'bio' => $this->request->getPost('bio'),
-            'role' => $this->request->getPost('role'),
-            'categories' => $this->request->getPost('categories'),
-        ];
-    
-   
-        $model->save($userId, $data); 
-        return redirect()->to('/login'); 
-    }
+    //     $data = [
+    //         'name' => $this->request->getPost('name'),
+    //         'gender' => $this->request->getPost('gender'),
+    //         'bio' => $this->request->getPost('bio'),
+    //         'role' => $this->request->getPost('role'),
+    //         'categories' => $this->request->getPost('categories'),
+    //     ];
+    //     $model->save($userId, $data); 
+    //     return redirect()->to('/login'); 
+    // }
     public function choosecategory()
     {
         $model = new CategoryModel();
         $data['categories'] = $model->getCategories();
-
         echo view('user/choosecategory', $data);
     }
 }

@@ -54,9 +54,7 @@ $routes->get('/updatecategory','ProfileController::choosecategory');
 $routes->get('/terms','ContentController::terms');
 $routes->get('/homepage','HomepageController::index');  
 $routes->get('/homepage/getQuestions', 'HomepageController::getQuestions');
-
-$routes->get('profile', 'ProfileController::index');
-
+$routes->get('/profile/(:num)', 'ProfileController::index/$1');
 
 /*
  * --------------------------------------------------------------------

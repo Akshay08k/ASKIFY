@@ -22,23 +22,11 @@
                     <?= $category['name']; ?>
                 </div>
             <?php endforeach; ?>
+            <button id="confirm-button" onclick="confirmSelection()">Confirm</button>   
         </div>
-        <button id="confirm-button" onclick="confirmSelection()">Confirm</button>
     </div>
     <script>
-         var container = document.getElementById('container');
-        var categories = <?= json_encode($categories) ?>;
-
-        categories.forEach(function (category) {
-            var categoryItem = document.createElement('div');
-            categoryItem.classList.add('category-item');
-            categoryItem.innerHTML = `<img src="${category.image}" alt="${category.name}"> ${category.name}`;
-            categoryItem.onclick = function () {
-                toggleCategory(this);
-            };
-
-            container.appendChild(categoryItem);
-        });
+        
 
         function toggleCategory(element) {
             element.classList.toggle('selected');

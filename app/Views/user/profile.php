@@ -18,27 +18,24 @@
     <main>
 
         <section id="profile">
-            <img src="/images/nycto.jpg" alt="Profile Photo">
-            <p class="username">Akshay_komale</p>
-            <p>Akshay</p>
+            <?php foreach($users as $user): ?>
+            <img src="images/nycto.jpg" alt="Profile Photo">
+            <p class="username"><?= $user['username'] ?></p>
+            <p><strong><?= $user['name'] ?></strong></p>
+            <p><?= $user['email'] ?></p>
+            <p>IP: <?= $user['signup_ip']; ?></p>
         </section>
 
         <section id="details">
-            <h2>Details</h2>
-            <ul>
-                <li><strong>Gender:</strong> Male</li>
-                <li><strong>Bio:</strong> A passionate individual...</li>
-                <li><strong>Role:</strong> Developer</li>
-                <li><strong>Categories:</strong> Web Development, Design, Technology</li>
-            </ul>
+           
         </section>
-
         <section id="stats">
             <h2>Stats</h2>
             <ul>
-                <li><strong>Followers:</strong> 100</li>
-                <li><strong>Following:</strong> 50</li>
-                <li><strong>Likes:</strong> 500</li>
+                <li><strong>Followers:</strong> </li>
+                <li><strong>Following:</strong></li>
+                <li><strong>Likes:</strong></li>
+                <li></li>
             </ul>
         </section>
 
@@ -49,8 +46,7 @@
                 <li>Posted a status update on 2024-01-08</li>
             </ul>
         </section>
-
-
+<?php endforeach; ?>
 
     </main>
     <section id="links">
@@ -58,7 +54,6 @@
         <a href="https://instagram.com" target="_blank">Instagram</a>
         <a href="https://linkedin.com" target="_blank">LinkedIn</a>
         <a href="https://github.com" target="_blank">GitHub</a>
-
     </section>
 
 </body>
