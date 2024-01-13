@@ -67,3 +67,53 @@ FROM `liked_answer`', [], false)
  7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
  9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-01-12 08:23:01 --> "" is not a valid rule.
+in SYSTEMPATH\Validation\Validation.php on line 320.
+ 1 SYSTEMPATH\Validation\Validation.php(320): CodeIgniter\Validation\Exceptions\ValidationException::forRuleNotFound('ROOTPATH\\public')
+ 2 SYSTEMPATH\Validation\Validation.php(170): CodeIgniter\Validation\Validation->processRules('0', '0', null, [...], [...])
+ 3 APPPATH\Controllers\ProfileController.php(88): CodeIgniter\Validation\Validation->run()
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->updateprofile()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-01-12 08:47:25 --> Undefined variable $userId
+in APPPATH\Controllers\ProfileController.php on line 118.
+ 1 APPPATH\Controllers\ProfileController.php(118): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $userId', 'APPPATH\\Controllers\\ProfileController.php', 118)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->updateprofile()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-01-12 08:47:26 --> Undefined variable $userId
+in APPPATH\Controllers\ProfileController.php on line 118.
+ 1 APPPATH\Controllers\ProfileController.php(118): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $userId', 'APPPATH\\Controllers\\ProfileController.php', 118)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->updateprofile()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-01-12 08:47:27 --> Undefined variable $userId
+in APPPATH\Controllers\ProfileController.php on line 118.
+ 1 APPPATH\Controllers\ProfileController.php(118): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $userId', 'APPPATH\\Controllers\\ProfileController.php', 118)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->updateprofile()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-01-12 08:47:28 --> Undefined variable $userId
+in APPPATH\Controllers\ProfileController.php on line 118.
+ 1 APPPATH\Controllers\ProfileController.php(118): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $userId', 'APPPATH\\Controllers\\ProfileController.php', 118)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->updateprofile()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-01-12 08:47:29 --> Undefined variable $userId
+in APPPATH\Controllers\ProfileController.php on line 118.
+ 1 APPPATH\Controllers\ProfileController.php(118): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $userId', 'APPPATH\\Controllers\\ProfileController.php', 118)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->updateprofile()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')

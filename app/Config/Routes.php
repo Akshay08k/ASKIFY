@@ -51,8 +51,8 @@ $routes->get('/content-policy', 'ContentController::contentpolicy');
 $routes->get('/privacy', 'ContentController::privacy');
 //profile routes
 $routes->get('/profile', 'ProfileController::index');
-$routes->get('updateprofile', 'ProfileController::updateprofile');
 $routes->get('/updatecategory', 'ProfileController::choosecategory');
+$routes->post('/updateprofile', 'ProfileController::updateprofile');
 //loading terms
 $routes->get('/terms', 'ContentController::terms');
 //loading homepage

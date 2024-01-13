@@ -5,95 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Details</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-            color: #333;
-        }
+    <link rel="stylesheet" href="<?= base_url('/css/updateprofile.css') ?>">
 
-        header {
-            background-color: #3498db;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-        }
-
-        main {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 80vh;
-        }
-
-        form {
-            margin-top: 40px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            width: 500px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: #333;
-        }
-
-        input,
-        textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 12px;
-            box-sizing: border-box;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            color: #555;
-            outline: none;
-            resize: none;
-        }
-
-        select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 12px;
-            box-sizing: border-box;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            color: #555;
-            outline: none;
-        }
-
-        input[type="file"] {
-            margin-bottom: 12px;
-        }
-
-        div.radio-group {
-            display: flex;
-            margin-bottom: 12px;
-        }
-
-        div.radio-group label {
-            margin-right: 15px;
-            margin-bottom: -10px;
-        }
-
-        button {
-            background-color: #3498db;
-            color: #fff;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #2980b9;
-        }
-    </style>
 </head>
 
 <body>
@@ -103,46 +16,46 @@
     </header>
 
     <main>
-        <form method="post" action="<?= site_url('updateprofile'); ?>" enctype="multipart/form-data">
-            <label for="profilephoto">Profile Photo:</label>
-            <input type="file" name="profilephoto" id="profilephoto" accept="image/*"
-                placeholder="Choose Profile Photo">
+        <?php if (isset($validation)): ?>
+            <?= \Config\Services::validation()->listErrors() ?>
+        <?php endif; ?>
+        
+        <form method="post" action="<?= base_url('/updateprofile') ?>" enctype="multipart/form-data">
+            <label for="username">Username:</label>
+            <input type="text" name="username" value="<?= $userData['username'] ?>" required>
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" value="<?= $userData['email'] ?>" required>
 
             <label for="name">Name:</label>
-            <input type="text" id="name" name="name">
-
-            <label>Gender:</label>
-            <div class="radio-group">
-                <input type="radio" id="male" name="gender" value="male">
-                <label for="male">Male</label>
-
-                <input type="radio" id="female" name="gender" value="female">
-                <label for="female">Female</label>
-
-                <input type="radio" id="nonbinary" name="gender" value="non-binary">
-                <label for="nonbinary">Other</label>
-            </div>
-
-            <label for="bio">Bio:</label>
-            <textarea id="bio" name="bio"></textarea>
-
-            <label for="role">Role:</label>
-            <input type="text" id="role" name="role" placeholder="Enter your role">
+            <input type="text" name="name" value="<?= $userData['name'] ?>" required>
 
             <label for="categories">Categories:</label>
-            <input type="text" id="categories" name="categories" placeholder="Enter your categories">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" placeholder="Enter your username">
+            <input type="text" name="categories" value="<?= $userData['categories'] ?>">
 
-            <label for="dob">Date of Birth:</label>
-            <input type="date" id="dob" name="dob">
+            <label for="birthdate">Birthdate (yyyy-mm-dd):</label>
+            <input type="text" name="birthdate" pattern="\d{4}-\d{2}-\d{2}" value="<?= $userData['birthdate'] ?>"
+                required>
+            <small>Format: yyyy-mm-dd</small>
 
             <label for="location">Location:</label>
-            <input type="text" id="location" name="location" placeholder="Enter your location">
+            <input type="text" name="location" value="<?= $userData['location'] ?>">
 
-            <button type="submit">Update Details</button>
+            <label for="about">About:</label>
+            <textarea name="about"><?= $userData['about'] ?></textarea>
+
+            <label for="gender">Gender:</label>
+            <select name="gender">
+                <option value="male" <?= ($userData['gender'] == 'male') ? 'selected' : '' ?>>Male</option>
+                <option value="female" <?= ($userData['gender'] == 'female') ? 'selected' : '' ?>>Female</option>
+                <option value="other" <?= ($userData['gender'] == 'other') ? 'selected' : '' ?>>Other</option>
+            </select>
+
+            <label for="profile_photo">Profile Photo:</label>
+            <input type="file" name="profile_photo" accept="image/*">
+
+            <button type="submit">Update</button>
         </form>
-
     </main>
 
 </body>

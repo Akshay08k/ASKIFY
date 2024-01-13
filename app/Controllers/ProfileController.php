@@ -58,15 +58,18 @@ class ProfileController extends BaseController
         $data['recentActivity'] = $activityLogModel->getRecentActivityForUser($userId, 5);
 
         return view('user/profile', $data);
+
     }
 
     public function choosecategory()
     {
+
         $model = new CategoryModel();
         $data['categories'] = $model->getCategories();
 
         echo view('user/choosecategory', $data);
     }
+    //function for logout
     public function logout()
     {
         session()->destroy();
@@ -74,7 +77,75 @@ class ProfileController extends BaseController
     }
     public function updateprofile()
     {
-        return view('user/updateprofile');
+        // Retrieve the user ID from the session
+        $userId = session()->get('user_id');
+
+        if (!$userId) {
+            // Handle case where user is not logged in
+            return redirect()->to('/login')->with('error', 'You are not logged in.');
+        }
+
+        // Fetch existing user data from the database
+        $userModel = new UserModel();
+        $userData = $userModel->find($userId);
+
+        if (empty($userData)) {
+            // Handle case where user is not found
+            return redirect()->to('/user/404page')->with('error', 'User not found.');
+        }
+
+        // Check if the form is submitted
+        if ($this->request->getMethod() === 'post') {
+            // Validation rules
+            $validationRules = [
+                'username' => 'required|min_length[3]|max_length[50]',
+                'email' => 'required|valid_email',
+                'name' => 'required|min_length[3]|max_length[50]',
+                'categories' => 'permit_empty|max_length[255]',
+                'birthdate' => 'required|valid_date[Y-m-d]',
+                'location' => 'permit_empty|max_length[255]',
+                'about' => 'permit_empty',
+                'gender' => 'required|in_list[male,female,other]',
+                'profile_photo' => 'uploaded[profile_photo]|max_size[profile_photo,10240]', // 10 MB limit
+            ];
+
+            // Apply validation rules
+            if ($this->validate($validationRules)) {
+                // Validation passed, update user data in the database
+                $data = [
+                    'username' => $this->request->getPost('username'),
+                    'email' => $this->request->getPost('email'),
+                    'name' => $this->request->getPost('name'),
+                    'categories' => $this->request->getPost('categories'),
+                    'birthdate' => $this->request->getPost('birthdate'),
+                    'location' => $this->request->getPost('location'),
+                    'about' => $this->request->getPost('about'),
+                    'gender' => $this->request->getPost('gender'),
+                ];
+
+                // Handle profile photo upload
+                $profilePhoto = $this->request->getFile('profile_photo');
+
+                if ($profilePhoto->isValid() && !$profilePhoto->hasMoved()) {
+                    // Use the user's username as the profile photo filename
+                    $newName = $userData['username'] . '.' . $profilePhoto->getExtension();
+                    $profilePhoto->move(ROOTPATH . 'public/images/userprofilephoto', $newName);
+                    $data['profile_photo'] = $newName;
+                }
+
+                // Update user data in the database
+                $userModel->update($userId, $data);
+
+                // Redirect to the user's profile page on success
+                return redirect()->to("/profile")->with('success', 'Profile updated successfully.');
+            } else {
+                // Validation failed, pass validation errors to the view
+                return view('user/updateprofile', ['validation' => $this->validator, 'userData' => $userData]);
+            }
+        }
+
+        // Pass user data to the view for editing
+        return view('user/updateprofile', ['userData' => $userData]);
     }
 
 }
