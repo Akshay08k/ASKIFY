@@ -11,6 +11,11 @@ body {
     margin: 0;
     padding: 0;
     background-color: #ecf0f1;
+    overflow: scroll;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 nav {

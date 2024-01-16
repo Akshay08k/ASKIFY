@@ -19,8 +19,8 @@
         <?php if (isset($validation)): ?>
             <?= \Config\Services::validation()->listErrors() ?>
         <?php endif; ?>
-        
-        <form method="post" action="<?= base_url('/updateprofile') ?>" enctype="multipart/form-data">
+        <form method="post" action="<?= base_url('/updateprofile/save') ?>" enctype="multipart/form-data">
+            <?= csrf_field() ?>
             <label for="username">Username:</label>
             <input type="text" name="username" value="<?= $userData['username'] ?>" required>
 

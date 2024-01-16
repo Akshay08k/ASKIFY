@@ -75,7 +75,31 @@ class ProfileController extends BaseController
         session()->destroy();
         return view('user/login');
     }
-    public function updateprofile()
+
+    public function editProfile()
+    {
+        // Retrieve the user ID from the session
+        $userId = session()->get('user_id');
+
+        if (!$userId) {
+            // Handle case where user is not logged in
+            return redirect()->to('/login')->with('error', 'You are not logged in.');
+        }
+
+        // Fetch existing user data from the database
+        $userModel = new UserModel();
+        $userData = $userModel->find($userId);
+
+        if (empty($userData)) {
+            // Handle case where user is not found
+            return redirect()->to('/user/404page')->with('error', 'User not found.');
+        }
+
+        // Pass user data to the view for editing
+        return view('user/updateprofile', ['userData' => $userData]);
+    }
+
+    public function updateProfile()
     {
         // Retrieve the user ID from the session
         $userId = session()->get('user_id');
@@ -144,6 +168,7 @@ class ProfileController extends BaseController
             }
         }
 
+        // This part will be executed when loading the view
         // Pass user data to the view for editing
         return view('user/updateprofile', ['userData' => $userData]);
     }

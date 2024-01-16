@@ -52,7 +52,9 @@ $routes->get('/privacy', 'ContentController::privacy');
 //profile routes
 $routes->get('/profile', 'ProfileController::index');
 $routes->get('/updatecategory', 'ProfileController::choosecategory');
-$routes->post('/updateprofile', 'ProfileController::updateprofile');
+// $routes->post('/updateprofile', 'ProfileController::updateprofile');
+$routes->get('/updateprofile', 'ProfileController::editProfile');
+$routes->post('/updateprofile/save', 'ProfileController::updateProfile');
 //loading terms
 $routes->get('/terms', 'ContentController::terms');
 //loading homepage
