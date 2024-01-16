@@ -19,7 +19,28 @@
 
         <section id="profile">
             <?php foreach ($users as $user): ?>
-                <img src="images/nycto.jpg" alt="Profile Photo">
+                <?php
+                $username = $user['username'];
+
+
+                $allowedExtensions = ['jpg', 'jpeg', 'png'];
+
+                //ALLOWED EXTENSION
+                $profilePhotoPath = null;
+                foreach ($allowedExtensions as $extension) {
+                    $potentialPath = FCPATH . 'images/userprofilephoto/' . $username . '.' . $extension;
+                    if (file_exists($potentialPath)) {
+                        $profilePhotoPath = base_url('/images/userprofilephoto/' . $username . '.' . $extension);
+                        break;
+                    }
+                }
+
+                // LOAD DEFAULT PROFILE PHOTO
+                if (!$profilePhotoPath) {
+                    $profilePhotoPath = base_url('/images/default_profile.jpg');
+                }
+                ?>
+                <img src="<?= $profilePhotoPath ?>" alt="Profile Photo">
                 <p class="username">
                     <?= $user['username'] ?>
                 </p>
