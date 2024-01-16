@@ -8,7 +8,7 @@
     <style>
         body {
             font-family: "Roboto Slab", serif;
-            background: url(<?= base_url('/images/back.jpg')?>);
+            background: url(<?= base_url('/images/back.jpg') ?>);
             background-size: cover;
             display: flex;
             justify-content: center;
@@ -79,9 +79,9 @@
 
 <body>
 
-<div class="box">
+    <div class="box">
         <h2>Register</h2>
-        
+
         <form action="register/save" method="post" class="register-form">
             <!-- Register form fields -->
             <input type="text" name="name" placeholder="Username">

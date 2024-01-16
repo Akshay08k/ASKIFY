@@ -27,17 +27,17 @@ class Register extends Controller
         if (!$validation->withRequest($this->request)->run()) {
             return view('user/register', ['validation' => $validation]);
         }
-
+        $signupIp = $this->request->getIPAddress();
         $model = new UserModel();
 
         $data = [
             'username' => $this->request->getPost('name'),
             'email' => $this->request->getPost('email'),
-            'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT)
+            'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+            'signup_ip' => $signupIp
         ];
 
         $model->insert($data);
-
-        return view('user/login');
+        return redirect()->to(base_url('/login'));
     }
 }
