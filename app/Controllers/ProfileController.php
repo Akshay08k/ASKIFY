@@ -69,58 +69,41 @@ class ProfileController extends BaseController
 
         echo view('user/choosecategory', $data);
     }
-    //function for logout
-    public function logout()
-    {
-        session()->destroy();
-        return view('user/login');
-    }
 
     public function editProfile()
     {
-        // Retrieve the user ID from the session
         $userId = session()->get('user_id');
 
         if (!$userId) {
-            // Handle case where user is not logged in
             return redirect()->to('/login')->with('error', 'You are not logged in.');
         }
 
-        // Fetch existing user data from the database
         $userModel = new UserModel();
         $userData = $userModel->find($userId);
 
         if (empty($userData)) {
-            // Handle case where user is not found
             return redirect()->to('/user/404page')->with('error', 'User not found.');
         }
 
-        // Pass user data to the view for editing
         return view('user/updateprofile', ['userData' => $userData]);
     }
 
     public function updateProfile()
     {
-        // Retrieve the user ID from the session
         $userId = session()->get('user_id');
 
         if (!$userId) {
-            // Handle case where user is not logged in
             return redirect()->to('/login')->with('error', 'You are not logged in.');
         }
 
-        // Fetch existing user data from the database
         $userModel = new UserModel();
         $userData = $userModel->find($userId);
 
         if (empty($userData)) {
-            // Handle case where user is not found
             return redirect()->to('/user/404page')->with('error', 'User not found.');
         }
 
-        // Check if the form is submitted
         if ($this->request->getMethod() === 'post') {
-            // Validation rules
             $validationRules = [
                 'username' => 'required|min_length[3]|max_length[50]',
                 'email' => 'required|valid_email',
@@ -130,12 +113,10 @@ class ProfileController extends BaseController
                 'location' => 'permit_empty|max_length[255]',
                 'about' => 'permit_empty',
                 'gender' => 'required|in_list[male,female,other]',
-                'profile_photo' => 'uploaded[profile_photo]|max_size[profile_photo,10240]', // 10 MB limit
+                'profile_photo' => 'uploaded[profile_photo]|max_size[profile_photo,10240]',
             ];
 
-            // Apply validation rules
             if ($this->validate($validationRules)) {
-                // Validation passed, update user data in the database
                 $data = [
                     'username' => $this->request->getPost('username'),
                     'email' => $this->request->getPost('email'),
@@ -147,29 +128,20 @@ class ProfileController extends BaseController
                     'gender' => $this->request->getPost('gender'),
                 ];
 
-                // Handle profile photo upload
                 $profilePhoto = $this->request->getFile('profile_photo');
 
                 if ($profilePhoto->isValid() && !$profilePhoto->hasMoved()) {
-                    // Use the user's username as the profile photo filename
                     $newName = $userData['username'] . '.' . $profilePhoto->getExtension();
                     $profilePhoto->move(ROOTPATH . 'public/images/userprofilephoto', $newName);
                     $data['profile_photo'] = $newName;
                 }
-
-                // Update user data in the database
                 $userModel->update($userId, $data);
-
-                // Redirect to the user's profile page on success
                 return redirect()->to("/profile")->with('success', 'Profile updated successfully.');
             } else {
-                // Validation failed, pass validation errors to the view
                 return view('user/updateprofile', ['validation' => $this->validator, 'userData' => $userData]);
             }
         }
 
-        // This part will be executed when loading the view
-        // Pass user data to the view for editing
         return view('user/updateprofile', ['userData' => $userData]);
     }
 
