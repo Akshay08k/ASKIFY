@@ -60,6 +60,13 @@ $routes->get('/terms', 'ContentController::terms');
 $routes->get('/homepage', 'HomepageController::index');
 //json page for getting question
 $routes->get('/homepage/getQuestions', 'HomepageController::getQuestions');
+//Messages Routes
+$routes->get('messages', 'MessageController::index');
+$routes->get('messages/create', 'MessageController::create');
+$routes->post('messages/store', 'MessageController::store');
+$routes->get('messages/edit/(:num)', 'MessageController::edit/$1');
+$routes->post('messages/update/(:num)', 'MessageController::update/$1');
+$routes->get('messages/delete/(:num)', 'MessageController::destroy/$1');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

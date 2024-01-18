@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?php base_url('css/messages.css') ?> ">
+    <link rel="stylesheet" href="<?= base_url('css/messages.css') ?> ">
     <title>Chat App</title>
 </head>
 
@@ -13,8 +13,6 @@
         <div class="sidebar">
             <nav class="navbar">
                 <ul>
-                    <li class="active">You</li>
-                    <li>Kelly</li>
                     <li>Emily</li>
                     <li>Nomini</li>
                     <li>Celmen</li>
@@ -23,11 +21,6 @@
                     <li>Akshay</li>
                     <li>TAsin</li>
                     <li>Jaynsh</li>
-                    <li>nikul</li>
-                    <li>sejal</li>
-                    <li>parth</li>
-                    <li>kinjal</li>
-                </ul>
             </nav>
         </div>
         <div class="main">
@@ -42,7 +35,7 @@
             </div>
         </div>
     </div>
-    <script src="<?php base_url('js/message.js') ?>"></script>
+    <script src="<?= base_url('js/message.js') ?>"></script>
 </body>
 
 </html>

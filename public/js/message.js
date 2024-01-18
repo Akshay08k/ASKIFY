@@ -1,17 +1,18 @@
 // Sample data for demonstration purposes
-const userChats = Object.fromEntries(
-  Array.from({ length: 20 }, (_, index) => {
-    const userName = `User ${index + 1}`;
-    const numberOfMessages = Math.floor(Math.random() * 5) + 1;
-    const messages = Array.from(
-      { length: numberOfMessages },
-      (_, msgIndex) => `Message ${msgIndex + 1} from ${userName}`
-    );
-    return [userName, messages];
-  })
-);
-
-console.log(userChats);
+const userChats = {
+  Emily: [
+    "Hey there!",
+    "How are you?",
+    "This is a sent message from You.",
+    "Feel free to chat!",
+  ],
+  Nomini: [
+    "Hi!",
+    "I'm doing well, thank you.",
+    "This is a received message from Nomini.",
+    "Sure, let's chat!",
+  ],
+};
 
 function loadChat(user) {
   var chatMessages = document.getElementById("chatMessages");

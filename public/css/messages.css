@@ -18,6 +18,31 @@ body {
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
+.sent-message {
+    align-self: flex-end;
+    background-color: #4caf50;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    max-width: 70%;
+}
+
+.received-message {
+    align-self: flex-start;
+    background-color: #2196F3;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    max-width: 70%;
+}
+
+.message-time {
+    font-size: 0.8em;
+    color: #777;
+}
+
 .navbar {
     list-style-type: none;
     padding: 0;
@@ -50,7 +75,6 @@ body {
 
 .chat-messages {
     max-height: 400px;
-    overflow-y: auto;
     border: 1px solid #ddd;
     padding: 10px;
     background-color: #fff;
@@ -59,6 +83,7 @@ body {
 }
 
 .message {
+    width: 100px;
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
@@ -67,6 +92,9 @@ body {
 
 .chat-input {
     display: flex;
+    position: absolute;
+    bottom: 30%;
+    width: 80%;
     margin-top: 20px;
 }
 
@@ -87,24 +115,11 @@ button {
     margin-left: 10px;
 }
 
-.sent-message {
-    align-self: flex-start;
-    background-color: #4caf50;
-    color: #fff;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 10px;
-    max-width: 70%;
-}
 
-.received-message {
-    align-self: flex-end;
-    background-color: #2196F3;
-    color: #fff;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 10px;
-    max-width: 70%;
+/* Add a new style for time */
+.message-time {
+    font-size: 0.8em;
+    color: #777;
 }
 
 button:hover {
