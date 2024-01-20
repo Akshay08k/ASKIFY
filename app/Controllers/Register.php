@@ -32,7 +32,7 @@ class Register extends Controller
 
         $data = [
             'username' => $this->request->getPost('name'),
-            'email' => $this->request->getPost('em`a`il'),
+            'email' => $this->request->getPost('email'),
             'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
             'signup_ip' => $signupIp
         ];

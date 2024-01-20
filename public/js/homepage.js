@@ -1,6 +1,5 @@
 function createQuestionBox(data) {
-  const { username, title, description ,profile_photo} = data;
-
+  const { username, title, description, profile_photo } = data;
 
   const questionBox = document.createElement("div");
   questionBox.classList.add("post-box");
@@ -11,7 +10,18 @@ function createQuestionBox(data) {
   const profilePicture = document.createElement("div");
   profilePicture.classList.add("profile-picture");
   const img = document.createElement("img");
-  img.src = data.profile_photo; 
+  let printit = `data:image/png;base64,${profile_photo}`;
+  console.log(printit);
+  // Check if profile_photo is available, then set the image source
+  if (profile_photo) {
+    // Convert BLOB data to base64 encoding and set it as the image source
+
+    img.src = `data:image/png;base64,${profile_photo}`;
+  } else {
+    // Set a default image source if profile_photo is not available
+    img.src = "path/to/default/profile/photo.jpg";
+  }
+
   img.alt = "User Profile Picture";
   profilePicture.appendChild(img);
 

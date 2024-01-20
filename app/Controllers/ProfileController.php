@@ -115,7 +115,7 @@ class ProfileController extends BaseController
                 'gender' => 'required|in_list[male,female,other]',
                 'profile_photo' => 'uploaded[profile_photo]|max_size[profile_photo,10240]',
             ];
-
+            //$this->request->do_upload()  is method to upload the file
             if ($this->validate($validationRules)) {
                 $data = [
                     'username' => $this->request->getPost('username'),
@@ -133,9 +133,16 @@ class ProfileController extends BaseController
                 if ($profilePhoto->isValid() && !$profilePhoto->hasMoved()) {
                     $newName = $userData['username'] . '.' . $profilePhoto->getExtension();
                     $profilePhoto->move(ROOTPATH . 'public/images/userprofilephoto', $newName);
-                    $data['profile_photo'] = $newName;
+
+                    // Update the 'profile_photo' column to store the image content as blob
+                    $data['profile_photo'] = file_get_contents(ROOTPATH . 'public/images/userprofilephoto/' . $newName);
                 }
+
                 $userModel->update($userId, $data);
+
+                // Remove the uploaded image file after updating the database
+                unlink(ROOTPATH . 'public/images/userprofilephoto/' . $newName);
+
                 return redirect()->to("/profile")->with('success', 'Profile updated successfully.');
             } else {
                 return view('user/updateprofile', ['validation' => $this->validator, 'userData' => $userData]);
@@ -144,5 +151,6 @@ class ProfileController extends BaseController
 
         return view('user/updateprofile', ['userData' => $userData]);
     }
+
 
 }

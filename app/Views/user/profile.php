@@ -22,25 +22,15 @@
                 <?php
                 $username = $user['username'];
 
+           
+                $profilePhoto = $user['profile_photo'];
 
-                $allowedExtensions = ['jpg', 'jpeg', 'png'];
+                
+                $profilePhotoBase64 = 'data:image/png;base64,' . base64_encode($profilePhoto);
 
-                //ALLOWED EXTENSION
-                $profilePhotoPath = null;
-                foreach ($allowedExtensions as $extension) {
-                    $potentialPath = FCPATH . 'images/userprofilephoto/' . $username . '.' . $extension;
-                    if (file_exists($potentialPath)) {
-                        $profilePhotoPath = base_url('/images/userprofilephoto/' . $username . '.' . $extension);
-                        break;
-                    }
-                }
-
-                // LOAD DEFAULT PROFILE PHOTO
-                if (!$profilePhotoPath) {
-                    $profilePhotoPath = base_url('/images/default_profile.jpg');
-                }
+                
                 ?>
-                <img src="<?= $profilePhotoPath ?>" alt="Profile Photo">
+                <img src="<?= $profilePhotoBase64 ?>" alt="Profile Photo">
                 <p class="username">
                     <?= $user['username'] ?>
                 </p>
@@ -55,6 +45,7 @@
                 </p>
             </section>
 
+
             <section id="details">
                 <h2>Details</h2>
                 <ul>
@@ -64,7 +55,6 @@
                     <li><strong>Bio:</strong>
                         <?= $user['about'] ?>
                     </li>
-                    <!-- <li><strong>Role:</strong> Developer</li> -->
                     <li><strong>Categories:</strong>
                         <?= $user['categories'] ?>
                     </li>
