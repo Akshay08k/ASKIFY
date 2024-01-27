@@ -1,15 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
-
 :root {
     --navbar-color: #34495e;
-    --font-family: 'Work Sans', sans-serif;
+    --font-family: "Poppins", sans-serif;
     --categories-bg: #2c3e50;
+}
+
+* {
+    margin: 0;
+    padding: 0;
 }
 
 body {
     font-family: var(--font-family);
-    margin: 0;
-    padding: 0;
+
     background-color: #ecf0f1;
     overflow: scroll;
 }
@@ -247,14 +249,7 @@ h1 {
     color: #888888;
 }
 
-a {
-    font-size: 12px;
-    font-weight: bold;
-    margin-top: 10px;
-    display: inline-block;
-    text-decoration: none;
-    color: #008A68;
-}
+
 
 svg {
     cursor: pointer;
@@ -520,4 +515,63 @@ svg {
     display: inline;
     height: 50px;
     width: 50px;
+}
+
+footer {
+    margin-top: 10 px;
+}
+
+.foot-panel1 {
+    background-color: #374758;
+    color: white;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+.foot-panel2 {
+    background-color: #222f3d;
+    color: white;
+    height: 210px;
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.ul {
+    margin-top: 20px;
+}
+
+.ul a {
+    display: block;
+    text-decoration: none;
+    color: #dddddd;
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+
+.foot-panel4 {
+    background-color: #0f1111;
+    color: white;
+    height: 80px;
+    font-size: 0.7rem;
+    text-align: center;
+}
+
+.pages {
+    padding-top: 25px;
+    font-size: 15px;
+}
+
+.copy {
+    margin-top: 5px;
+    font-size: 15px;
+}
+
+.pages a {
+    color: white;
+    text-decoration: none;
+    margin-right: 10px;
 }

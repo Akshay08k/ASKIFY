@@ -11,21 +11,21 @@
     <footer>
         <div class="foot-panel1">Back To Top</div>
         <div class="foot-panel2">
-            <ul>
+            <div class="ul">
                 <p>Get to know Us</p>
                 <a href="">Blog</a>
                 <a href="">About Askify</a>
-            </ul>
+            </div>
 
 
-            <ul>
+            <div class="ul">
                 <p>Let Us Help you</p>
 
                 <a>Use Of Askify </a>
                 <a>Your Account</a>
                 <a>Help</a>
                 <a>Feedback</a>
-            </ul>
+            </div>
         </div>
         <div class="foot-panel4">
             <div class="pages">
@@ -36,6 +36,7 @@
             <div class="copy">©2023, Askify, Inc. or its affiliates</div>
         </div>
     </footer>
+
 </body>
 
 </html>

@@ -173,7 +173,7 @@ class App extends BaseConfig
      *
      * @deprecated use Config\Session::$expiration instead.
      */
-    public int $sessionExpiration = 7200;
+    public int $sessionExpiration = 0;
 
     /**
      * --------------------------------------------------------------------------

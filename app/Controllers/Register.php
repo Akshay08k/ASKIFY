@@ -14,9 +14,8 @@ class Register extends Controller
 
     public function save()
     {
-        // Load the validation library
+
         $validation = \Config\Services::validation();
-        // Define validation rules here
         $validation->setRules([
             'name' => 'required|min_length[3]|max_length[255]',
             'email' => 'required|valid_email|is_unique[users.email]',
@@ -27,6 +26,7 @@ class Register extends Controller
         if (!$validation->withRequest($this->request)->run()) {
             return view('user/register', ['validation' => $validation]);
         }
+
         $signupIp = $this->request->getIPAddress();
         $model = new UserModel();
 
@@ -38,6 +38,9 @@ class Register extends Controller
         ];
 
         $model->insert($data);
-        return redirect()->to(base_url('/login'));
+
+        // Redirect to the login page with success message
+        $successMessage = 'Registration successful! Please login with your credentials.';
+        return redirect()->to(base_url('/login'))->with('successMessage', $successMessage);
     }
 }

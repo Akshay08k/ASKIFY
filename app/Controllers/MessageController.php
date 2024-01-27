@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\MessageModel;
 use CodeIgniter\Controller;
+use App\Models\CategoryModel;
 
 class MessageController extends BaseController
 {
@@ -11,6 +12,8 @@ class MessageController extends BaseController
     {
         $messageModel = new MessageModel();
         $data['messages'] = $messageModel->findAll();
+        $categoryModel = new CategoryModel();
+        $data['categories'] = $categoryModel->findAll();
 
         return view('user/messages/index', $data);
     }

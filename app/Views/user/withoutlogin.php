@@ -4,9 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="<?= base_url('css/homepage.css')?>">
+  <link rel="stylesheet" href="<?= base_url('css/homepage.css') ?>">
+  <link rel="stylesheet" href="<?= base_url('/css/homepage.css') ?>">
   <link rel="shortcut icon"
     href="https://static.vecteezy.com/system/resources/previews/000/568/825/original/question-answer-icon-vector.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Work+Sans:wght@300&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -23,51 +27,50 @@
 
     </div>
     <ul>
-      <li><a href="#home">Login</a></li>
-      <li><a href="#about">Register</a></li>
+      <li><a href="/login">Login</a></li>
+      <li><a href="/register">Register</a></li>
     </ul>
   </nav>
   <div class="categories">
-    <div class="category-item">Lifestyle</div>
-    <div class="category-item">Sports</div>
-    <div class="category-item">E Sports</div>
-    <div class="category-item">Bollywood</div>
-    <div class="category-item">Tech & Science</div>
-    <div class="category-item">Coding</div>
+    <?php
+    $desiredCategoryIds = [18, 19, 20, 21, 22];
+    ?>
+    <?php foreach ($categories as $category): ?>
+      <?php if (in_array($category['id'], $desiredCategoryIds)): ?>
+        <div class="category-item">
+          <?= $category['name']; ?>
+        </div>
 
-    <!-- Dropdown for additional categories -->
+      <?php endif; ?>
+    <?php endforeach; ?>
+
+
     <div class="dropdown">
       <div>More Categories</div>
+
+
       <div class="dropdown-content">
-        <div>Category</div>
-        <div>Category</div>
-        <div>Category</div>
-        <div>Category</div>
-        <div>Category</div>
-        <div>Category</div>
-        <div>Category</div>
-        <div>Category</div>
-        <div>Category</div>
+        <?php foreach ($categories as $category): ?>
+          <div>
+            <?= $category['name']; ?>
+          </div>
+        <?php endforeach; ?>
       </div>
     </div>
   </div>
   <section class="content">
     <div class="post-box">
-      <!-- User Profile Section -->
       <div class="profile-section">
         <div class="profile-picture">
           <img src="nycto.jpg" alt="User Profile Picture">
         </div>
         <p>User Profile</p>
-        <!-- Add user profile information here -->
       </div>
 
-      <!-- Title Section -->
       <div class="title-section">
         <h3>Title of the Question</h3>
       </div>
 
-      <!-- Question Description Section -->
       <div class="description-section">
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus ipsa adipisci officia accusantium
           nam minima eligendi, dolores itaque asperiores. In ullam nesciunt reprehenderit commodi suscipit,
@@ -75,7 +78,6 @@
 
       </div>
 
-      <!-- Like and Answer Buttons -->
       <div class="post-actions">
         <div class="svg-container">
           <input type="checkbox" id="checkbox" />
@@ -135,7 +137,7 @@
       </div>
     </div>
   </section>
-  <script src="<?= base_url('js/homepage.js')?>"></script>
+  <script src="<?= base_url('js/homepage.js') ?>"></script>
 </body>
 
 </html>

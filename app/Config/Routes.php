@@ -35,7 +35,7 @@ $routes->get('/register', 'Register::index');
 $routes->post('/register/save', 'Register::save');
 $routes->get('/login', 'Login::index');
 $routes->post('/login/auth', 'Login::auth');
-$routes->get('logout', 'Login::logout');
+$routes->get('/logout', 'Home::logout');
 
 // $routes->get('/dashboard', 'Dashboard::index', ['filter' => 'auth']);
 //categories manangement by ADMIN
@@ -67,6 +67,8 @@ $routes->post('messages/store', 'MessageController::store');
 $routes->get('messages/edit/(:num)', 'MessageController::edit/$1');
 $routes->post('messages/update/(:num)', 'MessageController::update/$1');
 $routes->get('messages/delete/(:num)', 'MessageController::destroy/$1');
+//notification routes
+$routes->get('/notification', 'NotificationController::index');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

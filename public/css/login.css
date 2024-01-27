@@ -37,6 +37,16 @@
       align-items: center;
   }
 
+  .error {
+      color: red;
+      font-weight: 900;
+  }
+
+  .success {
+      color: green;
+      font-weight: 500;
+  }
+
   .login-form input {
       margin-bottom: 10px;
       padding: 10px;

@@ -6,7 +6,6 @@ use App\Controllers\BaseController;
 use App\Models\CategoryModel;
 use App\Models\UserModel;
 use App\Models\FollowerModel;
-use App\Models\LikeAnswerModel;
 use App\Models\QuestionModel;
 use App\Models\ActivityLogModel;
 use App\Models\AnswerModel;
@@ -23,6 +22,10 @@ class ProfileController extends BaseController
 
             return redirect()->to('login');
         }
+        $categoryModel = new CategoryModel();
+        $data['categories'] = $categoryModel->findAll();
+        $QuestionModel = new QuestionModel();
+        $data['question'] = $QuestionModel->findAll();
 
         $userModel = new UserModel();
         $data['userId'] = $userId;
@@ -72,6 +75,8 @@ class ProfileController extends BaseController
 
     public function editProfile()
     {
+        $categoryModel = new CategoryModel();
+        $userData['categories'] = $categoryModel->findAll();
         $userId = session()->get('user_id');
 
         if (!$userId) {
@@ -85,11 +90,13 @@ class ProfileController extends BaseController
             return redirect()->to('/user/404page')->with('error', 'User not found.');
         }
 
+
         return view('user/updateprofile', ['userData' => $userData]);
     }
 
     public function updateProfile()
     {
+
         $userId = session()->get('user_id');
 
         if (!$userId) {
@@ -113,7 +120,7 @@ class ProfileController extends BaseController
                 'location' => 'permit_empty|max_length[255]',
                 'about' => 'permit_empty',
                 'gender' => 'required|in_list[male,female,other]',
-                'profile_photo' => 'uploaded[profile_photo]|max_size[profile_photo,10240]',
+                'profile_photo' => 'max_size[profile_photo,10240]',
             ];
             //$this->request->do_upload()  is method to upload the file
             if ($this->validate($validationRules)) {
@@ -141,7 +148,8 @@ class ProfileController extends BaseController
                 $userModel->update($userId, $data);
 
                 // Remove the uploaded image file after updating the database
-                unlink(ROOTPATH . 'public/images/userprofilephoto/' . $newName);
+                // this is used to remove file from userprofilephoto 
+                // unlink(ROOTPATH . 'public/images/userprofilephoto/' . $newName);
 
                 return redirect()->to("/profile")->with('success', 'Profile updated successfully.');
             } else {
@@ -151,6 +159,5 @@ class ProfileController extends BaseController
 
         return view('user/updateprofile', ['userData' => $userData]);
     }
-
 
 }
