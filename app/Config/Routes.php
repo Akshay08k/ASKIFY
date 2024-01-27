@@ -69,6 +69,8 @@ $routes->post('messages/update/(:num)', 'MessageController::update/$1');
 $routes->get('messages/delete/(:num)', 'MessageController::destroy/$1');
 //notification routes
 $routes->get('/notification', 'NotificationController::index');
+//answer routes
+$routes->get('/answers', 'AnswerController::index');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
