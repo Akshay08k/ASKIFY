@@ -1,0 +1,36 @@
+CRITICAL - 2024-01-31 12:17:38 --> Undefined variable $categories
+in APPPATH\Views\user\answerpage.php on line 36.
+ 1 APPPATH\Views\user\answerpage.php(36): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $categories', 'APPPATH\\Views\\user\\answerpage.php', 36)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\user\\answerpage.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/answerpage', [], true)
+ 5 APPPATH\Controllers\AnswerController.php(16): view('user/answerpage')
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\AnswerController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AnswerController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-01-31 12:17:38 --> Undefined variable $categories
+in APPPATH\Views\user\answerpage.php on line 36.
+ 1 APPPATH\Views\user\answerpage.php(36): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $categories', 'APPPATH\\Views\\user\\answerpage.php', 36)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\user\\answerpage.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/answerpage', [], true)
+ 5 APPPATH\Controllers\AnswerController.php(16): view('user/answerpage')
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\AnswerController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AnswerController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-01-31 12:17:38 --> Undefined variable $categories
+in APPPATH\Views\user\answerpage.php on line 36.
+ 1 APPPATH\Views\user\answerpage.php(36): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $categories', 'APPPATH\\Views\\user\\answerpage.php', 36)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\user\\answerpage.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/answerpage', [], true)
+ 5 APPPATH\Controllers\AnswerController.php(16): view('user/answerpage')
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\AnswerController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AnswerController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')

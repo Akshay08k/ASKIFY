@@ -198,14 +198,103 @@ li a:active {
     width: 100%;
 }
 
+.heart-like-button {
+    position: absolute;
+    width: 35px;
+    height: 28px;
+    bottom: 3px;
+    left: 20px;
+}
+
+.heart-count {
+    position: absolute;
+    top: 150px;
+    left: 58px;
+    font-size: 14px;
+}
+
+.heart-like-button:before {
+    position: absolute;
+    top: 0;
+    left: 17.5px;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+    width: 17.5px;
+    height: 27.5px;
+    border-radius: 8.75px 8.75px 0 0;
+    background-color: rgb(171, 165, 165);
+    content: "";
+    cursor: pointer;
+    transition: background .4s;
+}
+
+.heart-like-button:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+    width: 17.5px;
+    /* Slightly decreased width */
+    height: 27.5px;
+    /* Slightly decreased height */
+    border-radius: 8.75px 8.75px 0 0;
+    background-color: rgb(171, 165, 165);
+    content: "";
+    cursor: pointer;
+    transition: background .4s;
+}
+
+
+@media screen and (max-width: 480px) {
+    #container {
+        height: auto;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+
+    }
+}
+
+.heart-like-button.liked::before,
+.heart-like-button.liked::after {
+    background-color: #B01E28;
+}
+
+.heart-like-button.liked {
+    animation: liked .4s ease;
+}
+
+@keyframes liked {
+    0% {
+        transform: scale(.8);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
 .ans-btn {
     height: 30px;
-    width: 80px;
     bottom: 3px;
+    left: 10%;
     cursor: pointer;
     position: absolute;
     border: hidden;
+    background-color: transparent;
     border-radius: 5px;
+}
+
+.ans-img {
+    height: 30px;
+    width: 30px;
 }
 
 button:hover {
@@ -241,274 +330,6 @@ a {
     text-decoration: none;
     color: #008A68;
 }
-
-svg {
-    cursor: pointer;
-    overflow: visible;
-    height: 45px;
-    width: 54px;
-    display: inline;
-
-    #heart {
-        transform-origin: center;
-        animation: animateHeartOut .3s linear forwards;
-    }
-
-    #main-circ {
-        transform-origin: 29.5px 29.5px;
-    }
-}
-
-#checkbox {
-    display: none;
-}
-
-#checkbox:checked+label svg {
-    #heart {
-        transform: scale(.2);
-        fill: #E2264D;
-        animation: animateHeart .3s linear forwards .25s;
-    }
-
-    #main-circ {
-        transition: all 2s;
-        animation: animateCircle .3s linear forwards;
-        opacity: 1;
-    }
-
-    #grp1 {
-        opacity: 1;
-        transition: .1s all .3s;
-
-        #oval1 {
-            transform: scale(0) translate(0, -30px);
-            transform-origin: 0 0 0;
-            transition: .5s transform .3s;
-        }
-
-        #oval2 {
-            transform: scale(0) translate(10px, -50px);
-            transform-origin: 0 0 0;
-            transition: 1.5s transform .3s;
-        }
-    }
-
-    #grp2 {
-        opacity: 1;
-        transition: .1s all .3s;
-
-        #oval1 {
-            transform: scale(0) translate(30px, -15px);
-            transform-origin: 0 0 0;
-            transition: .5s transform .3s;
-        }
-
-        #oval2 {
-            transform: scale(0) translate(60px, -15px);
-            transform-origin: 0 0 0;
-            transition: 1.5s transform .3s;
-        }
-    }
-
-    #grp3 {
-        opacity: 1;
-        transition: .1s all .3s;
-
-        #oval1 {
-            transform: scale(0) translate(30px, 0px);
-            transform-origin: 0 0 0;
-            transition: .5s transform .3s;
-        }
-
-        #oval2 {
-            transform: scale(0) translate(60px, 10px);
-            transform-origin: 0 0 0;
-            transition: 1.5s transform .3s;
-        }
-    }
-
-    #grp4 {
-        opacity: 1;
-        transition: .1s all .3s;
-
-        #oval1 {
-            transform: scale(0) translate(30px, 15px);
-            transform-origin: 0 0 0;
-            transition: .5s transform .3s;
-        }
-
-        #oval2 {
-            transform: scale(0) translate(40px, 50px);
-            transform-origin: 0 0 0;
-            transition: 1.5s transform .3s;
-        }
-    }
-
-    #grp5 {
-        opacity: 1;
-        transition: .1s all .3s;
-
-        #oval1 {
-            transform: scale(0) translate(-10px, 20px);
-            transform-origin: 0 0 0;
-            transition: .5s transform .3s;
-        }
-
-        #oval2 {
-            transform: scale(0) translate(-60px, 30px);
-            transform-origin: 0 0 0;
-            transition: 1.5s transform .3s;
-        }
-    }
-
-    #grp6 {
-        opacity: 1;
-        transition: .1s all .3s;
-
-        #oval1 {
-            transform: scale(0) translate(-30px, 0px);
-            transform-origin: 0 0 0;
-            transition: .5s transform .3s;
-        }
-
-        #oval2 {
-            transform: scale(0) translate(-60px, -5px);
-            transform-origin: 0 0 0;
-            transition: 1.5s transform .3s;
-        }
-    }
-
-    #grp7 {
-        opacity: 1;
-        transition: .1s all .3s;
-
-        #oval1 {
-            transform: scale(0) translate(-30px, -15px);
-            transform-origin: 0 0 0;
-            transition: .5s transform .3s;
-        }
-
-        #oval2 {
-            transform: scale(0) translate(-55px, -30px);
-            transform-origin: 0 0 0;
-            transition: 1.5s transform .3s;
-        }
-    }
-
-    #grp2 {
-        opacity: 1;
-        transition: .1s opacity .3s;
-    }
-
-    #grp3 {
-        opacity: 1;
-        transition: .1s opacity .3s;
-    }
-
-    #grp4 {
-        opacity: 1;
-        transition: .1s opacity .3s;
-    }
-
-    #grp5 {
-        opacity: 1;
-        transition: .1s opacity .3s;
-    }
-
-    #grp6 {
-        opacity: 1;
-        transition: .1s opacity .3s;
-    }
-
-    #grp7 {
-        opacity: 1;
-        transition: .1s opacity .3s;
-    }
-}
-
-@keyframes animateCircle {
-    40% {
-        transform: scale(10);
-        opacity: 1;
-        fill: #DD4688;
-    }
-
-    55% {
-        transform: scale(11);
-        opacity: 1;
-        fill: #D46ABF;
-    }
-
-    65% {
-        transform: scale(12);
-        opacity: 1;
-        fill: #CC8EF5;
-    }
-
-    75% {
-        transform: scale(13);
-        opacity: 1;
-        fill: transparent;
-        stroke: #CC8EF5;
-        stroke-width: .5;
-    }
-
-    85% {
-        transform: scale(17);
-        opacity: 1;
-        fill: transparent;
-        stroke: #CC8EF5;
-        stroke-width: .2;
-    }
-
-    95% {
-        transform: scale(18);
-        opacity: 1;
-        fill: transparent;
-        stroke: #CC8EF5;
-        stroke-width: .1;
-    }
-
-    100% {
-        transform: scale(19);
-        opacity: 1;
-        fill: transparent;
-        stroke: #CC8EF5;
-        stroke-width: 0;
-    }
-}
-
-@keyframes animateHeart {
-    0% {
-        transform: scale(.2);
-    }
-
-    40% {
-        transform: scale(1.2);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
-
-@keyframes animateHeartOut {
-    0% {
-        transform: scale(1.4);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
-
-.svg-container {
-    display: inline;
-    height: 50px;
-    width: 50px;
-}
-
-/* answer new CSS file */
 
 .user-input {
     display: flex;

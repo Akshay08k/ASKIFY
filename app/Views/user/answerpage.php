@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Answer Page</title>
     <link rel="stylesheet" href="<?= base_url('css/answerpage.css') ?>">
+
 </head>
 
 <body>
@@ -29,43 +30,48 @@
     </nav>
 
     <div class="categories">
-        <div class="category-item">Lifestyle</div>
-        <div class="category-item">Sports</div>
-        <div class="category-item">E Sports</div>
-        <div class="category-item">Bollywood</div>
-        <div class="category-item">Tech & Science</div>
-        <div class="category-item">Coding</div>
-    </div>
+        <?php
+        $desiredCategoryIds = [18, 19, 20, 21, 22];
+        ?>
+        <?php foreach ($categories as $category): ?>
+            <?php if (in_array($category['id'], $desiredCategoryIds)): ?>
+                <div class="category-item">
+                    <?= $category['name']; ?>
+                </div>
 
-    <div class="dropdown">
-        <div class="dropdown-content">
-            <div>Category</div>
-            <div>Category</div>
-            <div>Category</div>
-            <div>Category</div>
-            <div>Category</div>
-            <div>Category</div>
-            <div>Category</div>
-            <div>Category</div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+
+
+        <div class="dropdown">
+            <div>More Categories</div>
+
+
+            <div class="dropdown-content">
+                <?php foreach ($categories as $category): ?>
+                    <div>
+                        <?= $category['name']; ?>
+                    </div>
+                <?php endforeach; ?>
+            </div>
         </div>
     </div>
+
     <main>
-        <section class="content">
-            <div class="post-box" id="questionDetailsContainer">
-                <!-- Question details will be dynamically loaded here -->
-            </div>
+        <div class="content">
 
-            <div class="answer-container">
-                <!-- Answers will be dynamically loaded here -->
-            </div>
-        </section>
+        </div>
 
-        <div class="answer-section">
+
+        <div class="answer-textbox">
             <textarea id="answerInput" placeholder="Type your answer here..."></textarea>
             <button class="button">Submit Answer</button>
         </div>
+
     </main>
-    </main>
+    <div class="answer-container">
+
+    </div>
 
 
 
@@ -78,11 +84,9 @@
                 fetch("/homepage/getQuestions")
                     .then((response) => response.json())
                     .then((questions) => {
-
                         const selectedQuestion = questions.find(question => question.id === questionId);
 
                         if (selectedQuestion) {
-                            // Create and display the question box dynamically
                             const questionBox = createQuestionBox(selectedQuestion);
                             const questionContainer = document.querySelector(".content");
                             questionContainer.appendChild(questionBox);
@@ -97,27 +101,28 @@
         });
 
         function createQuestionBox(data) {
-            const { username, title, description, profile_photo } = data;
+            const { username, title, description, profile_photo, likes } = data;
 
             const questionBox = document.createElement("div");
             questionBox.classList.add("post-box");
 
+            // Profile Section
             const profileSection = document.createElement("div");
             profileSection.classList.add("profile-section");
 
+            // Profile Picture
             const profilePicture = document.createElement("div");
             profilePicture.classList.add("profile-picture");
             const img = document.createElement("img");
             if (profile_photo) {
-
                 img.src = `data:image/png;base64,${profile_photo}`;
             } else {
                 img.src = "path/to/default/profile/photo.jpg";
             }
-
-            img.alt = "User Profile Picture";
+            img.alt = "User";
             profilePicture.appendChild(img);
 
+            // Profile Name
             const profileName = document.createElement("p");
             profileName.textContent = username;
 
@@ -131,30 +136,70 @@
             titleElement.textContent = title;
             titleSection.appendChild(titleElement);
 
-            // Question Description Section
+            // Description Section
             const descriptionSection = document.createElement("div");
             descriptionSection.classList.add("description-section");
             const descriptionElement = document.createElement("p");
             descriptionElement.textContent = description;
             descriptionSection.appendChild(descriptionElement);
 
-            const postActions = document.createElement("div");
-            postActions.classList.add("post-actions");
 
+            const likeSection = document.createElement("div");
+            likeSection.classList.add("like-section");
+            const likeButton = document.createElement("div");
+            likeButton.classList.add("heart-like-button");
+            likeButton.addEventListener("click", function () {
+                // Toggle the 'liked' class for styling
+                likeButton.classList.toggle("liked");
+
+                // Update like count within the current question box
+                const likeCount = questionBox.querySelector(".heart-count");
+                const currentLikes = parseInt(likeCount.textContent);
+
+                // Determine the new like count based on the 'liked' class
+                const newLikes = likeButton.classList.contains("liked")
+                    ? currentLikes + 1
+                    : currentLikes - 1;
+
+                // Update the displayed like count
+                likeCount.textContent = newLikes;
+
+                // Send a request to the server to update the like count in the database
+                fetch(
+                    `/homepage/updateLikeCount/${id}/${likeButton.classList.contains("liked") ? "true" : "false"
+                    }`,
+                    { method: "POST" }
+                )
+                    .then((response) => response.json())
+                    .then((updatedLikes) => {
+                        // You can handle the response if needed
+                        // console.log("Updated likes in the database:", updatedLikes);
+                    })
+                    .catch((error) => console.error("Error updating like count:", error));
+            });
+            const likeCount = document.createElement("span");
+            likeCount.classList.add("heart-count");
+            likeCount.textContent = likes;
+            likeSection.appendChild(likeButton);
+            likeSection.appendChild(likeCount);
+
+            // Post Actions Section
+
+
+            // Share Button
             const shareButton = document.createElement("div");
             shareButton.classList.add("share-button");
             const shareBtn = document.createElement("img");
             shareBtn.src = "https://cdn2.iconfinder.com/data/icons/line-drawn-social-media/31/share-1024.png";
             shareBtn.height = 30;
             shareBtn.width = 30;
-
             shareButton.appendChild(shareBtn);
 
             // Append all sections to the question box
             questionBox.appendChild(profileSection);
             questionBox.appendChild(titleSection);
             questionBox.appendChild(descriptionSection);
-            questionBox.appendChild(postActions);
+            questionBox.appendChild(likeSection);
             questionBox.appendChild(shareButton);
 
             return questionBox;

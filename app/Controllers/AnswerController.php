@@ -5,12 +5,15 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\AnswerModel;
 use App\Models\UserModel;
+use App\Models\CategoryModel;
 
 class AnswerController extends BaseController
 {
     public function index()
     {
-        return view('user/answerpage');
+        $categoryModel = new CategoryModel();
+        $data['categories'] = $categoryModel->findAll();
+        return view('user/answerpage', $data);
     }
     public function getAnswers()
     {
@@ -35,6 +38,26 @@ class AnswerController extends BaseController
         }
 
         return $this->response->setJSON($answers);
+    }
+    public function store()
+    {
+        $model = new AnswerModel();
+
+        $validationRules = [
+            'answer' => 'required'
+        ];
+
+        if ($this->validate($validationRules)) {
+            $data = [
+                'answer' => $this->request->getPost('answer')
+            ];
+
+            $model->insert($data);
+        } else {
+            return redirect()->to(current_url())->withInput();
+        }
+
+        return redirect()->to(current_url());
     }
 
 }
