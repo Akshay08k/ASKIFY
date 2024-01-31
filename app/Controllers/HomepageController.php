@@ -15,7 +15,7 @@ class HomepageController extends BaseController
         $categoryModel = new CategoryModel();
         $data['categories'] = $categoryModel->findAll();
         $QuestionModel = new QuestionModel();
-        $data['question'] = $QuestionModel->findAll();
+        $data['questions'] = $QuestionModel->findAll();
         return view('user/homepage', $data);
     }
 
@@ -41,5 +41,19 @@ class HomepageController extends BaseController
         return $this->response->setJSON($questions);
     }
 
-}
+    public function updateLikeCount($questionId, $liked)
+    {
+        $QuestionModel = new QuestionModel();
 
+        // Validate and sanitize inputs if necessary
+
+        // Update the like count in the database
+        $updatedLikes = $liked === 'true'
+            ? $QuestionModel->incrementLikes($questionId)
+            : $QuestionModel->decrementLikes($questionId);
+
+        // You can return the updated like count if needed
+        return $this->response->setJSON(['likes' => $updatedLikes]);
+    }
+
+}

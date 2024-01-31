@@ -60,6 +60,7 @@ $routes->get('/terms', 'ContentController::terms');
 $routes->get('/homepage', 'HomepageController::index');
 //json page for getting question
 $routes->get('/homepage/getQuestions', 'HomepageController::getQuestions');
+$routes->post('/homepage/updateLikeCount/(:num)/(:alpha)', 'HomepageController::updateLikeCount/$1/$2');
 //Messages Routes
 $routes->get('messages', 'MessageController::index');
 $routes->get('messages/create', 'MessageController::create');
@@ -71,6 +72,7 @@ $routes->get('messages/delete/(:num)', 'MessageController::destroy/$1');
 $routes->get('/notification', 'NotificationController::index');
 //answer routes
 $routes->get('/answers', 'AnswerController::index');
+$routes->get('/answers/getanswers', 'AnswerController::getAnswers');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

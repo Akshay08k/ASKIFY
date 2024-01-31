@@ -1,5 +1,5 @@
 function createQuestionBox(data) {
-  const { username, title, description, profile_photo } = data;
+  const { username, title, description, profile_photo, likes, id } = data;
 
   const questionBox = document.createElement("div");
   questionBox.classList.add("post-box");
@@ -10,19 +10,51 @@ function createQuestionBox(data) {
   const profilePicture = document.createElement("div");
   profilePicture.classList.add("profile-picture");
   const img = document.createElement("img");
-  let printit = `data:image/png;base64,${profile_photo}`;
-  console.log(printit);
-  // Check if profile_photo is available, then set the image source
+
+  const likeSection = document.createElement("div");
+  likeSection.classList.add("like-section");
+  const likeButton = document.createElement("div");
+  likeButton.classList.add("heart-like-button");
+  likeButton.addEventListener("click", function () {
+    // Toggle the 'liked' class for styling
+    likeButton.classList.toggle("liked");
+
+    // Update like count within the current question box
+    const likeCount = questionBox.querySelector(".heart-count");
+    const currentLikes = parseInt(likeCount.textContent);
+
+    // Determine the new like count based on the 'liked' class
+    const newLikes = likeButton.classList.contains("liked")
+      ? currentLikes + 1
+      : currentLikes - 1;
+
+    // Update the displayed like count
+    likeCount.textContent = newLikes;
+
+    // Send a request to the server to update the like count in the database
+    fetch(
+      `/homepage/updateLikeCount/${id}/${
+        likeButton.classList.contains("liked") ? "true" : "false"
+      }`,
+      { method: "POST" }
+    )
+      .then((response) => response.json())
+      .then((updatedLikes) => {
+        // You can handle the response if needed
+        console.log("Updated likes in the database:", updatedLikes);
+      })
+      .catch((error) => console.error("Error updating like count:", error));
+  });
+  const likeCount = document.createElement("span");
+  likeCount.classList.add("heart-count");
+  likeCount.textContent = likes;
+  likeSection.appendChild(likeButton);
+  likeSection.appendChild(likeCount);
+
   if (profile_photo) {
-    // Convert BLOB data to base64 encoding and set it as the image source
-
     img.src = `data:image/png;base64,${profile_photo}`;
-  } else {
-    // Set a default image source if profile_photo is not available
-    img.src = "path/to/default/profile/photo.jpg";
   }
-
-  img.alt = "User Profile Picture";
+  img.alt = "User";
   profilePicture.appendChild(img);
 
   const profileName = document.createElement("p");
@@ -47,10 +79,17 @@ function createQuestionBox(data) {
 
   const postActions = document.createElement("div");
   postActions.classList.add("post-actions");
-
   const answerButton = document.createElement("button");
-  answerButton.textContent = "Answer ";
-  answerButton.classList = "ans-btn";
+  // Assuming 'public' is the base directory for your assets
+  const imageUrl = "images/answer.png";
+  answerButton.innerHTML = `<img src="${imageUrl}" class="ans-img">`;
+
+  answerButton.classList.add("ans-btn");
+
+  answerButton.addEventListener("click", function () {
+    // Redirect to the answers page with the question ID as a query parameter
+    window.location.href = `/answers?id=${id}`;
+  });
 
   postActions.appendChild(answerButton);
 
@@ -67,9 +106,12 @@ function createQuestionBox(data) {
   // Append all sections to the question box
   questionBox.appendChild(profileSection);
   questionBox.appendChild(titleSection);
+  questionBox.appendChild(likeSection);
+  questionBox.appendChild(postActions);
   questionBox.appendChild(descriptionSection);
   questionBox.appendChild(postActions);
   questionBox.appendChild(shareButton);
+  questionBox.appendChild(likeCount);
 
   return questionBox;
 }
@@ -78,10 +120,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const questionContainer = document.querySelector(".content");
 
   // Fetch questions from the server
-  fetch("/homepage/getQuestions") // Adjust the URL based on your routes
+  fetch("/homepage/getQuestions")
     .then((response) => response.json())
     .then((questions) => {
-      // Loop through each question data and create question boxes dynamically
       questions.forEach((questionData) => {
         const questionBox = createQuestionBox(questionData);
         questionContainer.appendChild(questionBox);

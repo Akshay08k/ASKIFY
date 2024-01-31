@@ -206,9 +206,6 @@
 
             <label for="postContent">Content:</label>
             <textarea id="postContent" name="postContent" rows="4" required></textarea>
-
-            <!-- Note: Upload file input is not included for "Create Post" -->
-
             <button type="submit">Create Post</button>
         </form>
         <button id="postclsbtn">Close</button>
