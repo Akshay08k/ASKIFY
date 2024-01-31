@@ -23,6 +23,11 @@ class QuestionModel extends Model
         'deleted_at'
     ];
 
+    public function getLikes($questionId)
+    {
+        return $this->where('id', $questionId)->get()->getRow('likes');
+    }
+
     public function incrementLikes($questionId)
     {
         $this->set('likes', 'likes + 1', false)

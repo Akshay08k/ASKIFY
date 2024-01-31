@@ -41,7 +41,7 @@ function createQuestionBox(data) {
       .then((response) => response.json())
       .then((updatedLikes) => {
         // You can handle the response if needed
-        console.log("Updated likes in the database:", updatedLikes);
+        // console.log("Updated likes in the database:", updatedLikes);
       })
       .catch((error) => console.error("Error updating like count:", error));
   });

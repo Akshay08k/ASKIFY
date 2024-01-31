@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\CategoryModel;
 use App\Models\QuestionModel;
 use App\Models\UserModel;
+use App\Models\QuestionLikeModel;
 
 use App\Controllers\BaseController;
 
@@ -41,19 +42,31 @@ class HomepageController extends BaseController
         return $this->response->setJSON($questions);
     }
 
+
     public function updateLikeCount($questionId, $liked)
     {
         $QuestionModel = new QuestionModel();
+        $QuestionLikeModel = new QuestionLikeModel();
 
         // Validate and sanitize inputs if necessary
+        $userId = session()->get('user_id');
 
-        // Update the like count in the database
-        $updatedLikes = $liked === 'true'
-            ? $QuestionModel->incrementLikes($questionId)
-            : $QuestionModel->decrementLikes($questionId);
+        // Check if the user already liked the question
+        $userLiked = $QuestionLikeModel->userLikedQuestion($userId, $questionId);
+
+        // Update the like count for the question
+        if ($liked === 'true' && !$userLiked) {
+            $QuestionLikeModel->addLike($userId, $questionId);
+            $updatedLikes = $QuestionModel->incrementLikes($questionId);
+        } elseif ($liked === 'false' && $userLiked) {
+            $QuestionLikeModel->removeLike($userId, $questionId);
+            $updatedLikes = $QuestionModel->decrementLikes($questionId);
+        } else {
+            // No change in likes, return the current count
+            $updatedLikes = $QuestionModel->getLikes($questionId);
+        }
 
         // You can return the updated like count if needed
         return $this->response->setJSON(['likes' => $updatedLikes]);
     }
-
 }
