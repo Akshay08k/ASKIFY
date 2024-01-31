@@ -1,13 +1,68 @@
-// answers.js
-
 function createAnswerBox(data) {
-  const { username, answer, profile_photo } = data;
+  const { username, answer, profile_photo, likes, id } = data;
 
   const answerBox = document.createElement("div");
   answerBox.classList.add("answer-box");
 
   const profileSection = document.createElement("div");
   profileSection.classList.add("profile-section");
+
+  const likeSection = document.createElement("div");
+  likeSection.classList.add("like-section");
+  const likeButton = document.createElement("div");
+  likeButton.classList.add("heart-like-button");
+
+  // Fetch user's like status for the answer
+  fetch(`/answers/checkUserLikeStatus/${id}`)
+    .then((response) => response.json())
+    .then((userLiked) => {
+      if (userLiked) {
+        likeButton.classList.add("liked");
+        likeButton.style.color = "red";
+      }
+    })
+    .catch((error) =>
+      console.error("Error checking user's like status:", error)
+    );
+
+  likeButton.addEventListener("click", function () {
+    // Toggle the 'liked' class for styling
+    likeButton.classList.toggle("liked");
+
+    // Update like count within the current answer box
+    const likeCount = answerBox.querySelector(".heart-count");
+    let currentLikes = parseInt(likeCount.textContent);
+
+    // Determine the new like count based on the 'liked' class
+    const newLikes = likeButton.classList.contains("liked")
+      ? currentLikes + 1
+      : Math.max(0, currentLikes - 1);
+
+    // Update the displayed like count
+    likeCount.textContent = newLikes;
+
+    // Send a request to the server to update the like count in the database
+    fetch(
+      `/answers/updateAnswerLikeCount/${id}/${
+        likeButton.classList.contains("liked") ? "true" : "false"
+      }`,
+      {
+        method: "POST",
+      }
+    )
+      .then((response) => response.json())
+      .then((updatedLikes) => {
+        // Log the updated likes count
+        console.log("Updated likes in the database:", updatedLikes);
+      })
+      .catch((error) => console.error("Error updating like count:", error));
+  });
+
+  const likeCount = document.createElement("span");
+  likeCount.classList.add("heart-count");
+  likeCount.textContent = likes;
+  likeSection.appendChild(likeButton);
+  likeSection.appendChild(likeCount);
 
   const profilePicture = document.createElement("div");
   profilePicture.classList.add("profile-picture");
@@ -36,6 +91,7 @@ function createAnswerBox(data) {
   answerSection.appendChild(answerElement);
 
   answerBox.appendChild(profileSection);
+  answerBox.appendChild(likeSection);
   answerBox.appendChild(answerSection);
 
   return answerBox;

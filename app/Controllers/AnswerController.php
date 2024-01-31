@@ -4,11 +4,16 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\AnswerModel;
+use App\Models\AnswerLikeModel;
 use App\Models\UserModel;
 use App\Models\CategoryModel;
 
 class AnswerController extends BaseController
 {
+    public function __construct()
+    {
+        $this->AnswerLikeModel = new AnswerLikeModel(); // Instantiate the model
+    }
     public function index()
     {
         $categoryModel = new CategoryModel();
@@ -39,25 +44,43 @@ class AnswerController extends BaseController
 
         return $this->response->setJSON($answers);
     }
-    public function store()
+    public function updateAnswerLikeCount($answerId, $liked)
     {
-        $model = new AnswerModel();
+        $AnswerModel = new AnswerModel();
+        $AnswerLikeModel = new AnswerLikeModel();
 
-        $validationRules = [
-            'answer' => 'required'
-        ];
+        // Validate and sanitize inputs if necessary
+        $userId = session()->get('user_id');
 
-        if ($this->validate($validationRules)) {
-            $data = [
-                'answer' => $this->request->getPost('answer')
-            ];
+        // Check if the user already liked the answer
+        $userLiked = $AnswerLikeModel->userLikedAnswer($userId, $answerId);
 
-            $model->insert($data);
+        // Update the like count for the answer
+        if ($liked === 'true' && !$userLiked) {
+            $AnswerLikeModel->addLike($userId, $answerId);
+            $updatedLikes = $AnswerModel->incrementLikes($answerId);
+        } elseif ($liked === 'false' && $userLiked) {
+            $AnswerLikeModel->removeLike($userId, $answerId);
+            $updatedLikes = $AnswerModel->decrementLikes($answerId);
         } else {
-            return redirect()->to(current_url())->withInput();
+            // No change in likes, return the current count
+            $updatedLikes = $AnswerModel->getLikes($answerId);
         }
 
-        return redirect()->to(current_url());
+        // You can return the updated like count if needed
+        return $this->response->setJSON(['likes' => $updatedLikes]);
+    }
+
+    // In your AnswersController.php or another relevant controller
+    public function checkUserLikeStatus($answerId)
+    {
+        $AnswerLikeModel = new AnswerLikeModel();
+        $userId = session()->get('user_id'); // Assuming you are using session for user authentication
+
+        // Your logic to check if the user has liked the answer with $answerId
+        $userLiked = $AnswerLikeModel->userLikedAnswer($userId, $answerId);
+
+        return $this->response->setJSON(['userLiked' => $userLiked]);
     }
 
 }

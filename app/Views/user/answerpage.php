@@ -101,7 +101,7 @@
         });
 
         function createQuestionBox(data) {
-            const { username, title, description, profile_photo, likes } = data;
+            const { username, title, description, profile_photo, likes, id } = data;
 
             const questionBox = document.createElement("div");
             questionBox.classList.add("post-box");
