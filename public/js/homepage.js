@@ -1,5 +1,5 @@
 function createQuestionBox(data) {
-  const { username, title, description, profile_photo, likes, id } = data;
+  const { name, title, description, profile_photo, likes, id } = data;
 
   const questionBox = document.createElement("div");
   questionBox.classList.add("post-box");
@@ -42,6 +42,7 @@ function createQuestionBox(data) {
       .then((updatedLikes) => {
         // You can handle the response if needed
         // console.log("Updated likes in the database:", updatedLikes);
+        //printing the status of like did or not in database
       })
       .catch((error) => console.error("Error updating like count:", error));
   });
@@ -58,7 +59,7 @@ function createQuestionBox(data) {
   profilePicture.appendChild(img);
 
   const profileName = document.createElement("p");
-  profileName.textContent = username;
+  profileName.textContent = name;
 
   profileSection.appendChild(profilePicture);
   profileSection.appendChild(profileName);
@@ -81,7 +82,7 @@ function createQuestionBox(data) {
   postActions.classList.add("post-actions");
   const answerButton = document.createElement("button");
   // Assuming 'public' is the base directory for your assets
-  const imageUrl = "images/answer.png";
+  const imageUrl = "/images/answer.png";
   answerButton.innerHTML = `<img src="${imageUrl}" class="ans-img">`;
 
   answerButton.classList.add("ans-btn");

@@ -26,7 +26,7 @@ class HomepageController extends BaseController
         $QuestionModel = new QuestionModel();
 
         $questions = $QuestionModel
-            ->select('users.username, question.id, question.title, question.description, question.user_id, question.likes, question.views, question.followers, question.created_at')
+            ->select('users.name, question.id, question.title, question.description, question.user_id, question.likes, question.views, question.followers, question.created_at')
             ->join('users', 'question.user_id = users.id')
             ->findAll();
 
@@ -69,5 +69,61 @@ class HomepageController extends BaseController
         // You can return the updated like count if needed
         return $this->response->setJSON(['likes' => $updatedLikes]);
     }
-   
+    public function SubmitPost()
+    {
+        $validationRules = [
+            'postTitle' => 'required',
+            'postDescription' => 'required',
+            'postPhoto' => 'uploaded[postPhoto]|max_size[postPhoto,1024]|is_image[postPhoto]',
+        ];
+
+        if (!$this->validate($validationRules)) {
+            return redirect()->to('/submit_question')->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        // Form submission logic here
+        $title = $this->request->getPost('postTitle');
+        $description = $this->request->getPost('postDescription');
+        $photo = $this->request->getFile('postPhoto');
+        $blobImage = file_get_contents($photo->getRealPath());
+        $userId = session()->get('user_id');
+
+        // Insert data into the database using the model
+        $questionModel = new QuestionModel();
+        $data = [
+            'title' => $title,
+            'description' => $description,
+            'media' => $blobImage,
+            'user_id' => $userId
+        ];
+        $questionModel->insert($data);
+
+        // Redirect or display success message
+        return redirect()->to('/homepage')->with('success', 'Question submitted successfully');
+    }
+    public function SubmitQuestion()
+    {
+        $validationRules = [
+            'QuestionTitle' => 'required',
+            'QuestionDescription' => 'required',
+        ];
+        if (!$this->validate($validationRules)) {
+            return redirect()->to('/submit_question')->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        $title = $this->request->getPost('QuestionTitle');
+        $description = $this->request->getPost('QuestionDescription');
+
+        $userId = session()->get('user_id');
+
+        $questionModel = new QuestionModel();
+        $data = [
+            'title' => $title,
+            'description' => $description,
+            'user_id' => $userId
+        ];
+        $questionModel->insert($data);
+
+        return redirect()->to('/homepage')->with('success', 'Question submitted successfully');
+    }
 }

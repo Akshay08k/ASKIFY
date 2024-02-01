@@ -152,144 +152,156 @@ li a:active {
   display: block;
 }
 
-main {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5px;
+.photocard {
+  margin: 20px;
   padding: 20px;
-}
-
-section {
-  background-color: #2c3e50;
-  border-radius: 10px;
-  padding: 20px;
-  margin: 0;
-}
-
-#profile img {
-  border-radius: 50%;
-  max-width: 150px;
-  margin-bottom: 15px;
-  border: 5px solid #3498db;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.pfp {
-  border-radius: 50%;
-  max-width: 150px;
-  margin-bottom: 15px;
-  border: 5px solid #3498db;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-
-}
-
-#profile p {
+  background-color: red;
+  color: white;
+  width: 400px;
   text-align: center;
-  margin: 0;
+  height: 400px;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+.photo>img {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
 }
 
-#links {
+.profile {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+.detailscard {
+  background-color: blue;
+  color: white;
+  margin: 20px;
+  padding: 20px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  justify-content: space-evenly;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 40px;
+}
+
+.btns {
+  width: 150px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: blueviolet;
+}
+
+
+.counts {
+  margin: 20px;
+  display: flex;
+  text-align: center;
+  background-color: green;
+  color: white;
+  width: 900px;
+  height: 100px;
+  justify-content: space-evenly;
+}
+
+.recent-categories {
+  display: flex;
+  height: 400px;
+  justify-content: space-around;
+}
+
+.categoriescard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: red;
+  width: 425px;
+  padding: 10px;
+  gap: 5px;
+  overflow: hidden;
+}
+
+
+.category-box {
+  display: flex;
+  height: 60px;
+  outline: 1px solid white;
+  color: white;
+  width: 140px;
+  border-radius: 10px;
+  align-items: center;
+}
+
+.category-box img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.category-box .name {
+  flex-grow: 1;
+  font-size: 18px;
+}
+
+.recent-activity {
+  width: 460px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.activity-box {
+  border: 1px solid black;
+  height: 90%;
+  width: 90%;
+}
+
+.username {
+  margin: 4px;
+  opacity: 0.2;
+}
+
+.name {
+  font-weight: 500;
+}
+
+.bio {
+  opacity: .7;
+  margin: 10px;
+}
+
+.links {
   margin: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
-
-}
-
-#links>a {
-  margin-right: 30px;
-}
-
-li {
-  margin: 8px 0;
-}
-
-a {
-  text-decoration: none;
-  color: #3498db;
-  transition: color 0.3s ease;
-}
-
-a:hover {
-  color: #2980b9;
-}
-
-.recent-activity {
+  color: black;
   border: 1px solid black;
+  height: 70px;
   border-radius: 10px;
-  padding: 10px;
-  background-color: rgba(0, 0, 0, 0.351);
 }
 
-.username {
-  color: rgba(255, 255, 255, 0.303);
-}
-
-footer {
-  margin-top: 10 px;
-}
-
-.foot-panel1 {
-  background-color: #374758;
-  color: white;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-}
-
-.foot-panel2 {
-  background-color: #222f3d;
-  color: white;
-  height: 210px;
-  display: flex;
-  justify-content: space-evenly;
-
-}
-
-.ul {
-  margin-top: 20px;
-}
-
-.ul a {
-  display: block;
+.links>a {
+  margin-right: 30px;
   text-decoration: none;
-  color: #dddddd;
-  font-size: 1.1rem;
-  margin-top: 10px;
 }
 
-.foot-panel4 {
-  background-color: #0f1111;
+.detailscard,
+.photocard,
+.counts,
+.categoriescard,
+.activity-box {
+  border-radius: 10px;
+  background-color: #1A1423;
+  border: 1px solid black;
   color: white;
-  height: 80px;
-  font-size: 0.7rem;
-  text-align: center;
-}
-
-.pages {
-  padding-top: 25px;
-  font-size: 15px;
-}
-
-.copy {
-  margin-top: 5px;
-  font-size: 15px;
-}
-
-.pages a {
-  color: white;
-  text-decoration: none;
-  margin-right: 10px;
 }

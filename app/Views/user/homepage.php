@@ -66,12 +66,12 @@
 
         #askQuestionBtn,
         #createPostBtn {
-            flex: 1;
+            width: 50%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: none;
             background-color: #3498db;
             color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
             cursor: pointer;
         }
 
@@ -80,6 +80,15 @@
             background-color: #2980b9;
         }
 
+        #askQuestionBtn {
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+
+        #createPostBtn {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
 
         .popup input,
         .popup textarea {
@@ -114,10 +123,10 @@
         }
 
         .askingbtnbar {
-            background-color: white;
             padding: 10px;
             border-radius: 5px;
-            width: 875px;
+            width: 900px;
+
             display: flex;
             justify-content: space-evenly;
             align-items: center;
@@ -175,23 +184,23 @@
 
     <div class="content">
         <div class="askingbtnbar">
-            <button id="askQuestionBtn">Ask a Question</button>
-            <button id="createPostBtn">Create Post</button>
+            <button id="askQuestionBtn">Create Post</button>
+            <button id="createPostBtn">Ask Question</button>
         </div>
 
     </div>
     <!-- Popup form for asking a question -->
     <div id="askQuestionPopup" class="popup">
         <h2>Ask a Question</h2>
-        <form action="/submit_question" method="post" enctype="multipart/form-data">
-            <label for="questionTitle">Title:</label>
-            <input type="text" id="questionTitle" name="questionTitle" required>
+        <form action="/submit_post" method="post" enctype="multipart/form-data">
+            <label for="posttitle">Title:</label>
+            <input type="text" id="posttitle" name="postTitle" required>
 
-            <label for="questionDescription">Description:</label>
-            <textarea id="questionDescription" name="questionDescription" rows="4" required></textarea>
+            <label for="postdesc">Description:</label>
+            <textarea id="postdesc" name="postDescription" rows="4" required></textarea>
 
-            <label for="questionPhoto">Upload Photo:</label>
-            <input type="file" id="questionPhoto" name="questionPhoto">
+            <label for="postphoto">Upload Photo:</label>
+            <input type="file" id="postphoto" name="postPhoto">
 
             <button type="submit">Submit Question</button>
         </form>
@@ -200,12 +209,12 @@
 
     <div id="createPostPopup" class="popup">
         <h2>Create Post</h2>
-        <form action="/submit_post" method="post">
-            <label for="postTitle">Title:</label>
-            <input type="text" id="postTitle" name="postTitle" required>
+        <form action="/submit_question" method="post">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="QuestionTitle" required>
 
-            <label for="postContent">Content:</label>
-            <textarea id="postContent" name="postContent" rows="4" required></textarea>
+            <label for="desc">Content:</label>
+            <textarea id="desc" name="QuestionDescription" required></textarea>
             <button type="submit">Create Post</button>
         </form>
         <button id="postclsbtn">Close</button>

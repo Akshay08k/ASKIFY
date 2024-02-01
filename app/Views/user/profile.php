@@ -1,16 +1,14 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
-
     <link rel="stylesheet" href="<?= base_url('css/profile.css') ?>">
 </head>
 
 <body>
-
     <header>
         <nav>
             <div class="logo">
@@ -57,125 +55,144 @@
         </div>
 
     </header>
-
-    <main>
-
-        <section id="profile">
-            <?php foreach ($users as $user): ?>
-                <?php
-                $username = $user['username'];
-
-
-                $profilePhoto = $user['profile_photo'];
+    <section class="profile">
+        <div class="leftside">
+            <div class="photocard">
+                <div class="photo">
+                    <?php foreach ($users as $user): ?>
+                        <?php
+                        $username = $user['username'];
 
 
-                $profilePhotoBase64 = 'data:image/png;base64,' . base64_encode($profilePhoto);
+                        $profilePhoto = $user['profile_photo'];
 
 
-                ?>
-                <img src="<?= $profilePhotoBase64 ?>" alt="Profile Photo">
-                <p class="username">
-                    <?= $user['username'] ?>
-                </p>
-                <p><strong>
+                        $profilePhotoBase64 = 'data:image/png;base64,' . base64_encode($profilePhoto);
+
+
+                        ?>
+                        <img src="<?= $profilePhotoBase64 ?>" alt="Profile Picture">
+                    </div>
+                    <div class="username">
+                        <?= $user['username'] ?>
+                    </div>
+                    <div class="name">
                         <?= $user['name'] ?>
-                    </strong></p>
-                <p>
-                    <?= $user['email'] ?>
-                </p>
-                <p>IP:
-                    <?= $user['signup_ip'] ?>
-                </p>
-            </section>
-
-
-            <section id="details">
-                <h2>Details</h2>
-                <div class="ul">
-                    <li><strong>Gender:</strong>
-                        <?= $user['gender'] ?>
-                    </li>
-                    <li><strong>Bio:</strong>
+                    </div>
+                    <div class="bio">
                         <?= $user['about'] ?>
-                    </li>
-                    <li><strong>Categories:</strong>
-                        <?= $user['categories'] ?>
-                    </li>
+                    </div>
+                    <div class="buttons">
+                        <button class="btns">Follow</button>
+                        <button class="btns">Message</button>
+                    </div>
                 </div>
-            </section>
-
-            <section id="stats">
-                <h2>Stats</h2>
-                <div>
-                    <li>Total Followers:
-                        <?= $totalFollowers ?>
-                    </li>
-                    <li>Total Following:
-                        <?= $totalFollowing ?>
-                    </li>
-                    <li>Total Liked Questions:
-                        <?= $totalLikes ?>
-                    </li>
-                    <?php
-                    $totalAllAnswersLikes = array_sum($totalAnswerLikes);
-                    ?>
-                    <li>Total Liked Answers:
-                        <?= $totalAllAnswersLikes ?>
-                    </li>
-                    </ul>
-            </section>
-
-            <section id="recent-activity">
-                <h2>Recent Activity</h2>
-                <div class="recent-activity">
-                    <?php foreach ($recentActivity as $activity): ?>
-                        <li>
-                            <?= $activity['activity_type']; ?> on
-                            <?= $activity['timestamp']; ?>
-                        </li>
-                    <?php endforeach; ?>
+                <div class="detailscard">
+                    <div class="gender">Gender:
+                        <?= $user['gender'] ?>
+                    </div>
+                    <div class="location">Location:
+                        <?= $user['location'] ?>
+                    </div>
+                    <div class="contact">Contact:
+                        <?= $user['email'] ?>
+                    </div>
                 </div>
-            </section>
-
-        <?php endforeach; ?>
-
-    </main>
-    <section id="links">
-        <a href="https://discord.com" target="_blank">Discord</a>
-        <a href="https://instagram.com" target="_blank">Instagram</a>
-        <a href="https://linkedin.com" target="_blank">LinkedIn</a>
-        <a href="https://github.com" target="_blank">GitHub</a>
-
-    </section>
-    <footer>
-        <div class="foot-panel1">Back To Top</div>
-        <div class="foot-panel2">
-            <div class="ul">
-                <p>Get to know Us</p>
-                <a href="">Blog</a>
-                <a href="">About Askify</a>
             </div>
-
-
-            <div class="ul">
-                <p>Let Us Help you</p>
-
-                <a>Use Of Askify </a>
-                <a>Your Account</a>
-                <a>Help</a>
-                <a>Feedback</a>
+            <div class="rightside">
+                <div class="counts">
+                    <div class="follower">
+                        <h3>Follower</h3>
+                        <p>
+                            <?= $totalFollowers ?>
+                        </p>
+                    </div>
+                    <div class="following">
+                        <h3>Following</h3>
+                        <p>
+                            <?= $totalFollowing ?>
+                        </p>
+                    </div>
+                    <div class="likes">
+                        <h3>Likes</h3>
+                        <?php
+                        $totalAllAnswersLikes = array_sum($totalAnswerLikes);
+                        ?>
+                        <p>
+                            <?= $totalAllAnswersLikes ?>
+                        </p>
+                    </div>
+                </div>
+                <div class="recent-categories">
+                    <div class="categoriescard">
+                        <div class="category-box">
+                            <img src="https://th.bing.com/th/id/R.e6ce8460228ea953a87b55536d59396c?rik=oKNP0dHxJW%2bGgg&riu=http%3a%2f%2fclipart-library.com%2fnew_gallery%2f224-2241024_science-icon-science-logo-png-black.png&ehk=wdSHfdRQx7H3qEYq%2f3ygBaAlwG45J87OFUSlYn3YzJc%3d&risl=&pid=ImgRaw&r=0"
+                                alt="Category Image">
+                            <div class="name">Category Name</div>
+                        </div>
+                        <div class="category-box">
+                            <img src="https://th.bing.com/th/id/R.e6ce8460228ea953a87b55536d59396c?rik=oKNP0dHxJW%2bGgg&riu=http%3a%2f%2fclipart-library.com%2fnew_gallery%2f224-2241024_science-icon-science-logo-png-black.png&ehk=wdSHfdRQx7H3qEYq%2f3ygBaAlwG45J87OFUSlYn3YzJc%3d&risl=&pid=ImgRaw&r=0"
+                                alt="Category Image">
+                            <div class="name">Category Name</div>
+                        </div>
+                        <div class="category-box">
+                            <img src="https://th.bing.com/th/id/R.e6ce8460228ea953a87b55536d59396c?rik=oKNP0dHxJW%2bGgg&riu=http%3a%2f%2fclipart-library.com%2fnew_gallery%2f224-2241024_science-icon-science-logo-png-black.png&ehk=wdSHfdRQx7H3qEYq%2f3ygBaAlwG45J87OFUSlYn3YzJc%3d&risl=&pid=ImgRaw&r=0"
+                                alt="Category Image">
+                            <div class="name">Category Name</div>
+                        </div>
+                        <div class="category-box">
+                            <img src="https://th.bing.com/th/id/R.e6ce8460228ea953a87b55536d59396c?rik=oKNP0dHxJW%2bGgg&riu=http%3a%2f%2fclipart-library.com%2fnew_gallery%2f224-2241024_science-icon-science-logo-png-black.png&ehk=wdSHfdRQx7H3qEYq%2f3ygBaAlwG45J87OFUSlYn3YzJc%3d&risl=&pid=ImgRaw&r=0"
+                                alt="Category Image">
+                            <div class="name">Category Name</div>
+                        </div>
+                        <div class="category-box">
+                            <img src="https://th.bing.com/th/id/R.e6ce8460228ea953a87b55536d59396c?rik=oKNP0dHxJW%2bGgg&riu=http%3a%2f%2fclipart-library.com%2fnew_gallery%2f224-2241024_science-icon-science-logo-png-black.png&ehk=wdSHfdRQx7H3qEYq%2f3ygBaAlwG45J87OFUSlYn3YzJc%3d&risl=&pid=ImgRaw&r=0"
+                                alt="Category Image">
+                            <div class="name">Category Name</div>
+                        </div>
+                        <div class="category-box">
+                            <img src="https://th.bing.com/th/id/R.e6ce8460228ea953a87b55536d59396c?rik=oKNP0dHxJW%2bGgg&riu=http%3a%2f%2fclipart-library.com%2fnew_gallery%2f224-2241024_science-icon-science-logo-png-black.png&ehk=wdSHfdRQx7H3qEYq%2f3ygBaAlwG45J87OFUSlYn3YzJc%3d&risl=&pid=ImgRaw&r=0"
+                                alt="Category Image">
+                            <div class="name">Category Name</div>
+                        </div>
+                        <div class="category-box">
+                            <img src="https://th.bing.com/th/id/R.e6ce8460228ea953a87b55536d59396c?rik=oKNP0dHxJW%2bGgg&riu=http%3a%2f%2fclipart-library.com%2fnew_gallery%2f224-2241024_science-icon-science-logo-png-black.png&ehk=wdSHfdRQx7H3qEYq%2f3ygBaAlwG45J87OFUSlYn3YzJc%3d&risl=&pid=ImgRaw&r=0"
+                                alt="Category Image">
+                            <div class="name">Category Name</div>
+                        </div>
+                        <div class="category-box">
+                            <img src="https://th.bing.com/th/id/R.e6ce8460228ea953a87b55536d59396c?rik=oKNP0dHxJW%2bGgg&riu=http%3a%2f%2fclipart-library.com%2fnew_gallery%2f224-2241024_science-icon-science-logo-png-black.png&ehk=wdSHfdRQx7H3qEYq%2f3ygBaAlwG45J87OFUSlYn3YzJc%3d&risl=&pid=ImgRaw&r=0"
+                                alt="Category Image">
+                            <div class="name">Category Name</div>
+                        </div>
+                    </div>
+                    <div class="recent-activity">
+                        <div class="activity-box">
+                            <h3 align="center">
+                                Recent activity
+                            </h3>
+                            <?php foreach ($recentActivity as $activity): ?>
+                                <li>
+                                    <?= $activity['activity_type']; ?> on
+                                    <?= $activity['timestamp']; ?>
+                                </li>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="links">
+                    <a href="
+                        <?= $user['discordlink'] ?>" target="_blank">Discord</a>
+                    <a href="
+                        <?= $user['instagram'] ?> target=" _blank">Instagram</a>
+                    <a href="
+                        <?= $user['twitter'] ?>" target="_blank">Twitter</a>
+                    <a href="
+                        <?= $user['github'] ?>" target="_blank">GitHub</a>
+                </div>
             </div>
-        </div>
-        <div class="foot-panel4">
-            <div class="pages">
-                <a href="#">Condition Of Use</a>
-                <a href="#">Privacy And Notice</a>
-                <a href="#">Your Ads Privacy Choice</a>
-            </div>
-            <div class="copy">©2023, Askify, Inc. or its affiliates</div>
-        </div>
-    </footer>
-
-</body>
+        </section>
+    </body>
+<?php endforeach; ?>
 
 </html>

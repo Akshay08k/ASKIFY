@@ -61,7 +61,8 @@ $routes->get('/homepage', 'HomepageController::index');
 //json page for getting question
 $routes->get('/homepage/getQuestions', 'HomepageController::getQuestions');
 $routes->post('/homepage/updateLikeCount/(:num)/(:alpha)', 'HomepageController::updateLikeCount/$1/$2');
-
+$routes->post('/submit_post', 'HomepageController::SubmitPost');
+$routes->post('/submit_question', 'HomepageController::SubmitQuestion');
 //Messages Routes
 $routes->get('messages', 'MessageController::index');
 $routes->get('messages/create', 'MessageController::create');
