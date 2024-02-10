@@ -18,10 +18,7 @@ class QuestionLikeModel extends Model
         'created_at'
     ];
 
-    public function userLikedQuestion($userId, $questionId)
-    {
-        return $this->where(['user_id' => $userId, 'question_id' => $questionId])->countAllResults() > 0;
-    }
+
 
     public function addLike($userId, $questionId)
     {
@@ -36,5 +33,11 @@ class QuestionLikeModel extends Model
     public function removeLike($userId, $questionId)
     {
         $this->where(['user_id' => $userId, 'question_id' => $questionId])->delete();
+    }
+    public function userLikedQuestion($userId, $questionId)
+    {
+        $like = $this->where(['user_id' => $userId, 'question_id' => $questionId])->first();
+
+        return $like !== null;
     }
 }

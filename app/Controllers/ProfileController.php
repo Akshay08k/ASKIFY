@@ -60,7 +60,7 @@ class ProfileController extends BaseController
         $activityLogModel = new ActivityLogModel();
         $data['recentActivity'] = $activityLogModel->getRecentActivityForUser($userId, 5);
 
-        return view('user/profile', $data);
+        return view('user/selfprofile', $data);
 
     }
 

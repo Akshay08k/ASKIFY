@@ -19,33 +19,26 @@ class Categories extends BaseController
     }
 
     public function store()
-{
-    $model = new CategoryModel();
-    $data = [
-        'name' => $this->request->getVar('name'),
-        'description' => $this->request->getVar('description'),
-    ];
-
-    $image = $this->request->getFile('image');
-    if ($image->isValid() && !$image->hasMoved()) {
-        // Get the category name and use it as the image name
-        $categoryName = strtolower(url_title($data['name']));
-        $newName = $categoryName . '.' . $image->getClientExtension();
-
-        $image->move('./uploads', $newName);
-        $data['image'] = $newName;
-    }
-
-    $model->insert($data);
-    return redirect()->to('/categories');
-}
-
-    public function edit($id)
     {
         $model = new CategoryModel();
-        $data['category'] = $model->find($id);
-        return view('admin/categories/edit', $data);
+        $data = [
+            'name' => $this->request->getVar('name'),
+            'description' => $this->request->getVar('description'),
+        ];
+
+        $image = $this->request->getFile('image');
+        if ($image->isValid() && !$image->hasMoved()) {
+            // Get the contents of the image file
+            $imageData = file_get_contents($image->getPathname());
+
+            // Add image data to the data array
+            $data['image'] = base64_encode($imageData);
+        }
+
+        $model->insert($data);
+        return redirect()->to('/categories');
     }
+
     public function update($id)
     {
         $model = new CategoryModel();
@@ -53,20 +46,28 @@ class Categories extends BaseController
             'name' => $this->request->getVar('name'),
             'description' => $this->request->getVar('description'),
         ];
-        
+
         $image = $this->request->getFile('image');
         if ($image->isValid() && !$image->hasMoved()) {
-            // Get the category name and use it as the image name
-            $categoryName = strtolower(url_title($data['name']));
-            $newName = $categoryName . '.' . $image->getClientExtension();
-    
-            $image->move('./uploads', $newName);
-            $data['image'] = $newName;
+            // Get the contents of the image file
+            $imageData = file_get_contents($image->getPathname());
+
+            // Add image data to the data array
+            $data['image'] = base64_encode($imageData);
         }
-    
+
         $model->update($id, $data);
         return redirect()->to('/categories');
     }
+
+
+    public function edit($id)
+    {
+        $model = new CategoryModel();
+        $data['category'] = $model->find($id);
+        return view('admin/categories/edit', $data);
+    }
+
 
     public function delete($id)
     {
@@ -74,5 +75,11 @@ class Categories extends BaseController
         $model->delete($id);
         return redirect()->to('/categories');
     }
+    public function getcategories()
+    {
+        $model = new CategoryModel();
+        $categories = $model->findAll();
+
+        return $this->response->setJSON($categories);
+    }
 }
-    

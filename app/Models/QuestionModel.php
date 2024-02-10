@@ -17,6 +17,7 @@ class QuestionModel extends Model
         'user_id',
         'likes',
         'views',
+        'category_id',
         'followers',
         'created_at',
         'updated_at',
@@ -58,4 +59,5 @@ class QuestionModel extends Model
             ->getRow()
             ->likes;
     }
+
 }

@@ -30,29 +30,33 @@
             <?php
             $desiredCategoryIds = [18, 19, 20, 21, 22];
             ?>
+
             <?php foreach ($categories as $category): ?>
                 <?php if (in_array($category['id'], $desiredCategoryIds)): ?>
-                    <div class="category-item">
+                    <div class="category-item" onclick="logCategoryId(<?= $category['id']; ?>)">
                         <?= $category['name']; ?>
                     </div>
-
                 <?php endif; ?>
             <?php endforeach; ?>
-
 
             <div class="dropdown">
                 <div>More Categories</div>
 
-
                 <div class="dropdown-content">
                     <?php foreach ($categories as $category): ?>
-                        <div>
+                        <div onclick="logCategoryId(<?= $category['id']; ?>)">
                             <?= $category['name']; ?>
                         </div>
                     <?php endforeach; ?>
                 </div>
             </div>
         </div>
+        <script>
+            function logCategoryId(categoryId) {
+                console.log("Category ID clicked:", categoryId);
+            }
+        </script>
+
 
     </header>
     <section class="profile">
@@ -82,10 +86,12 @@
                     <div class="bio">
                         <?= $user['about'] ?>
                     </div>
+                    <button class="btns" onclick="window.location.href='/updateprofile'">Update</button>
                     <div class="buttons">
-                        <button class="btns">Follow</button>
-                        <button class="btns">Message</button>
+                        <button class="btns" onclick="window.location.href='/updatecategory'">Update Categories</button>
+                        <button class="btns" onclick="window.location.href='/logout'">Logout</button>
                     </div>
+
                 </div>
                 <div class="detailscard">
                     <div class="gender">Gender:
@@ -117,7 +123,9 @@
                         <h3>Likes</h3>
 
                         <p>
+
                             <?= $totalLikes ?>
+
                         </p>
                     </div>
                 </div>
@@ -126,42 +134,42 @@
                         <div class="category-box">
                             <img src="https://th.bing.com/th/id/R.e6ce8460228ea953a87b55536d59396c?rik=oKNP0dHxJW%2bGgg&riu=http%3a%2f%2fclipart-library.com%2fnew_gallery%2f224-2241024_science-icon-science-logo-png-black.png&ehk=wdSHfdRQx7H3qEYq%2f3ygBaAlwG45J87OFUSlYn3YzJc%3d&risl=&pid=ImgRaw&r=0"
                                 alt="Category Image">
-                            <div class="name">Category Name</div>
+                            <div class="cat-name">Category Name</div>
                         </div>
                         <div class="category-box">
                             <img src="https://th.bing.com/th/id/R.e6ce8460228ea953a87b55536d59396c?rik=oKNP0dHxJW%2bGgg&riu=http%3a%2f%2fclipart-library.com%2fnew_gallery%2f224-2241024_science-icon-science-logo-png-black.png&ehk=wdSHfdRQx7H3qEYq%2f3ygBaAlwG45J87OFUSlYn3YzJc%3d&risl=&pid=ImgRaw&r=0"
                                 alt="Category Image">
-                            <div class="name">Category Name</div>
+                            <div class="cat-name">Category Name</div>
                         </div>
                         <div class="category-box">
                             <img src="https://th.bing.com/th/id/R.e6ce8460228ea953a87b55536d59396c?rik=oKNP0dHxJW%2bGgg&riu=http%3a%2f%2fclipart-library.com%2fnew_gallery%2f224-2241024_science-icon-science-logo-png-black.png&ehk=wdSHfdRQx7H3qEYq%2f3ygBaAlwG45J87OFUSlYn3YzJc%3d&risl=&pid=ImgRaw&r=0"
                                 alt="Category Image">
-                            <div class="name">Category Name</div>
+                            <div class="cat-name">Category Name</div>
                         </div>
                         <div class="category-box">
                             <img src="https://th.bing.com/th/id/R.e6ce8460228ea953a87b55536d59396c?rik=oKNP0dHxJW%2bGgg&riu=http%3a%2f%2fclipart-library.com%2fnew_gallery%2f224-2241024_science-icon-science-logo-png-black.png&ehk=wdSHfdRQx7H3qEYq%2f3ygBaAlwG45J87OFUSlYn3YzJc%3d&risl=&pid=ImgRaw&r=0"
                                 alt="Category Image">
-                            <div class="name">Category Name</div>
+                            <div class="cat-name">Category Name</div>
                         </div>
                         <div class="category-box">
                             <img src="https://th.bing.com/th/id/R.e6ce8460228ea953a87b55536d59396c?rik=oKNP0dHxJW%2bGgg&riu=http%3a%2f%2fclipart-library.com%2fnew_gallery%2f224-2241024_science-icon-science-logo-png-black.png&ehk=wdSHfdRQx7H3qEYq%2f3ygBaAlwG45J87OFUSlYn3YzJc%3d&risl=&pid=ImgRaw&r=0"
                                 alt="Category Image">
-                            <div class="name">Category Name</div>
+                            <div class="cat-name">Category Name</div>
                         </div>
                         <div class="category-box">
                             <img src="https://th.bing.com/th/id/R.e6ce8460228ea953a87b55536d59396c?rik=oKNP0dHxJW%2bGgg&riu=http%3a%2f%2fclipart-library.com%2fnew_gallery%2f224-2241024_science-icon-science-logo-png-black.png&ehk=wdSHfdRQx7H3qEYq%2f3ygBaAlwG45J87OFUSlYn3YzJc%3d&risl=&pid=ImgRaw&r=0"
                                 alt="Category Image">
-                            <div class="name">Category Name</div>
+                            <div class="cat-name">Category Name</div>
                         </div>
                         <div class="category-box">
                             <img src="https://th.bing.com/th/id/R.e6ce8460228ea953a87b55536d59396c?rik=oKNP0dHxJW%2bGgg&riu=http%3a%2f%2fclipart-library.com%2fnew_gallery%2f224-2241024_science-icon-science-logo-png-black.png&ehk=wdSHfdRQx7H3qEYq%2f3ygBaAlwG45J87OFUSlYn3YzJc%3d&risl=&pid=ImgRaw&r=0"
                                 alt="Category Image">
-                            <div class="name">Category Name</div>
+                            <div class="cat-name">Category Name</div>
                         </div>
                         <div class="category-box">
                             <img src="https://th.bing.com/th/id/R.e6ce8460228ea953a87b55536d59396c?rik=oKNP0dHxJW%2bGgg&riu=http%3a%2f%2fclipart-library.com%2fnew_gallery%2f224-2241024_science-icon-science-logo-png-black.png&ehk=wdSHfdRQx7H3qEYq%2f3ygBaAlwG45J87OFUSlYn3YzJc%3d&risl=&pid=ImgRaw&r=0"
                                 alt="Category Image">
-                            <div class="name">Category Name</div>
+                            <div class="cat-name">Category Name</div>
                         </div>
                     </div>
                     <div class="recent-activity">
@@ -170,10 +178,10 @@
                                 Recent activity
                             </h3>
                             <?php foreach ($recentActivity as $activity): ?>
-                                <li>
+                                <div align="center">
                                     <?= $activity['activity_type']; ?> on
                                     <?= $activity['timestamp']; ?>
-                                </li>
+                                </div>
                             <?php endforeach; ?>
                         </div>
                     </div>
@@ -181,8 +189,8 @@
                 <div class="links">
                     <a href="
                         <?= $user['discordlink'] ?>" target="_blank">Discord</a>
-                    <a href="
-                        <?= $user['instagram'] ?> target=" _blank">Instagram</a>
+                    <a href="   
+                        <?= $user['instagram'] ?>" target=" _blank">Instagram</a>
                     <a href="
                         <?= $user['twitter'] ?>" target="_blank">Twitter</a>
                     <a href="

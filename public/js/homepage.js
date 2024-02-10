@@ -1,20 +1,75 @@
+function openPopup(popupId) {
+  var popups = document.querySelectorAll(".popup");
+  popups.forEach(function (popup) {
+    popup.style.display = "none";
+  });
+
+  // Open the specified popup
+  document.getElementById(popupId).style.display = "block";
+}
+
+document
+  .getElementById("askQuestionBtn")
+  .addEventListener("click", function () {
+    openPopup("askQuestionPopup");
+  });
+
+document.getElementById("createPostBtn").addEventListener("click", function () {
+  openPopup("createPostPopup");
+});
+
+document.getElementById("postclsbtn").addEventListener("click", function () {
+  document.getElementById("createPostPopup").style.display = "none";
+});
+document.getElementById("queclsbtn").addEventListener("click", function () {
+  document.getElementById("askQuestionPopup").style.display = "none";
+});
 function createQuestionBox(data) {
-  const { name, title, description, profile_photo, likes, id } = data;
+  const { name, title, description, profile_photo, likes, id, media } = data;
+
+  const profilePictureHTML = profile_photo
+    ? `<div class="profile-picture"><img src="data:image/png;base64,${profile_photo}" alt="Profile Pic"></div>`
+    : "";
+
+  const mediaHTML = media
+    ? `<div class="media-section"><img src="data:image/png;base64,${media}" style="width: 100px; height: 100px;"></div>`
+    : "";
+
+  const questionBoxHTML = `
+    <div class="post-box">
+      <div class="profile-section">
+        ${profilePictureHTML}
+        <p>${name}</p>
+      </div>
+      <div class="title-section">
+        <h3>${title}</h3>
+      </div>
+      <div class="description-section">
+        <p>${description}</p>
+        ${mediaHTML}
+      </div>
+      <div class="like-section">
+        <div class="heart-like-button" id="likebtn"></div>
+        <span class="heart-count">${likes}</span>
+      </div>
+        <button class="ans-btn" onclick="redirectToAnswers(${id})">
+          <img src="/images/answer.png" class="ans-img">
+        </button>
+      
+      
+      <div class="post-actions">
+        <div class="share-button">
+          <img src="https://cdn2.iconfinder.com/data/icons/line-drawn-social-media/31/share-1024.png" height="30" width="30">
+        </div>
+      </div>
+    </div>
+  `;
 
   const questionBox = document.createElement("div");
-  questionBox.classList.add("post-box");
+  questionBox.insertAdjacentHTML("beforeend", questionBoxHTML);
 
-  const profileSection = document.createElement("div");
-  profileSection.classList.add("profile-section");
-
-  const profilePicture = document.createElement("div");
-  profilePicture.classList.add("profile-picture");
-  const img = document.createElement("img");
-
-  const likeSection = document.createElement("div");
-  likeSection.classList.add("like-section");
-  const likeButton = document.createElement("div");
-  likeButton.classList.add("heart-like-button");
+  // Add event listener to the like button
+  const likeButton = questionBox.querySelector(".heart-like-button");
   likeButton.addEventListener("click", function () {
     // Toggle the 'liked' class for styling
     likeButton.classList.toggle("liked");
@@ -42,79 +97,16 @@ function createQuestionBox(data) {
       .then((updatedLikes) => {
         // You can handle the response if needed
         // console.log("Updated likes in the database:", updatedLikes);
-        //printing the status of like did or not in database
+        // printing the status of like did or not in the database
       })
       .catch((error) => console.error("Error updating like count:", error));
   });
-  const likeCount = document.createElement("span");
-  likeCount.classList.add("heart-count");
-  likeCount.textContent = likes;
-  likeSection.appendChild(likeButton);
-  likeSection.appendChild(likeCount);
-
-  if (profile_photo) {
-    img.src = `data:image/png;base64,${profile_photo}`;
-  }
-  img.alt = "User";
-  profilePicture.appendChild(img);
-
-  const profileName = document.createElement("p");
-  profileName.textContent = name;
-
-  profileSection.appendChild(profilePicture);
-  profileSection.appendChild(profileName);
-
-  // Title Section
-  const titleSection = document.createElement("div");
-  titleSection.classList.add("title-section");
-  const titleElement = document.createElement("h3");
-  titleElement.textContent = title;
-  titleSection.appendChild(titleElement);
-
-  // Question Description Section
-  const descriptionSection = document.createElement("div");
-  descriptionSection.classList.add("description-section");
-  const descriptionElement = document.createElement("p");
-  descriptionElement.textContent = description;
-  descriptionSection.appendChild(descriptionElement);
-
-  const postActions = document.createElement("div");
-  postActions.classList.add("post-actions");
-  const answerButton = document.createElement("button");
-  // Assuming 'public' is the base directory for your assets
-  const imageUrl = "/images/answer.png";
-  answerButton.innerHTML = `<img src="${imageUrl}" class="ans-img">`;
-
-  answerButton.classList.add("ans-btn");
-
-  answerButton.addEventListener("click", function () {
-    // Redirect to the answers page with the question ID as a query parameter
-    window.location.href = `/answers?id=${id}`;
-  });
-
-  postActions.appendChild(answerButton);
-
-  const shareButton = document.createElement("div");
-  shareButton.classList.add("share-button");
-  const shareBtn = document.createElement("img");
-  shareBtn.src =
-    "https://cdn2.iconfinder.com/data/icons/line-drawn-social-media/31/share-1024.png";
-  shareBtn.height = 30;
-  shareBtn.width = 30;
-
-  shareButton.appendChild(shareBtn);
-
-  // Append all sections to the question box
-  questionBox.appendChild(profileSection);
-  questionBox.appendChild(titleSection);
-  questionBox.appendChild(likeSection);
-  questionBox.appendChild(postActions);
-  questionBox.appendChild(descriptionSection);
-  questionBox.appendChild(postActions);
-  questionBox.appendChild(shareButton);
-  questionBox.appendChild(likeCount);
 
   return questionBox;
+}
+
+function redirectToAnswers(id) {
+  window.location.href = `/answers?id=${id}`;
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -127,7 +119,86 @@ document.addEventListener("DOMContentLoaded", function () {
       questions.forEach((questionData) => {
         const questionBox = createQuestionBox(questionData);
         questionContainer.appendChild(questionBox);
-      });
+      }, console.log("Enjoy Running"));
     })
     .catch((error) => console.error("Error fetching questions:", error));
 });
+
+// Function to log categoryId and dynamically add HTML
+function logCategoryId(categoryId) {
+  const questionContainer = document.querySelector(".content");
+
+  // Fetch all questions from the server
+  fetch("/homepage/getQuestions")
+    .then((response) => response.json())
+    .then((questions) => {
+      console.log("Fetched Questions:", questions);
+
+      // Filter questions based on the desired categoryId
+      const filteredQuestions = questions.filter(
+        (question) => question.category_id == categoryId
+      );
+
+      console.log("Filtered Questions:", filteredQuestions);
+
+      // Clear the existing questions in the container
+      questionContainer.innerHTML = "";
+
+      // Iterate through filtered questions and create question boxes
+      filteredQuestions.forEach((questionData) => {
+        const questionBox = createQuestionBox(questionData);
+        questionContainer.appendChild(questionBox);
+      });
+
+      // Fetch category information
+      fetch("/homepage/getcategories")
+        .then((response) => response.json())
+        .then((categories) => {
+          console.log("Fetched Categories:", categories);
+
+          // Find the category with the specified ID
+          const selectedCategory = categories.find(
+            (category) => category.id == categoryId
+          );
+
+          if (!selectedCategory) {
+            console.error("Category not found");
+            return;
+          }
+
+          // Create HTML elements for the dynamically added section
+          const dynamicSection = document.querySelector(".categorybox");
+
+          // Clear existing content in dynamic section
+          dynamicSection.innerHTML = "";
+
+          const mainCategoryBox = document.createElement("div");
+          mainCategoryBox.className = "main-categorybox";
+
+          const categoryBox = document.createElement("div");
+          categoryBox.className = "category-box";
+
+          const categoryImg = document.createElement("img");
+          const base64ImageData = selectedCategory.image; // Replace with your actual base64-encoded image data
+          categoryImg.src = "data:image/jpeg;base64," + base64ImageData;
+          categoryImg.alt = "Cat Image";
+          categoryImg.width = 100;
+
+          const categoryInfo = document.createElement("div");
+          categoryInfo.className = "category-info";
+
+          const categoryName = document.createElement("div");
+          categoryName.className = "category-name";
+          categoryName.textContent = selectedCategory.name;
+
+          // Append created elements to form the structure
+          categoryInfo.appendChild(categoryName);
+          categoryBox.appendChild(categoryImg);
+          categoryBox.appendChild(categoryInfo);
+          mainCategoryBox.appendChild(categoryBox);
+          dynamicSection.appendChild(mainCategoryBox);
+        })
+        .catch((error) => console.error("Error fetching categories:", error));
+    })
+    .catch((error) => console.error("Error fetching questions:", error));
+}

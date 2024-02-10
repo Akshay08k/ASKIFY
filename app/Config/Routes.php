@@ -63,6 +63,8 @@ $routes->get('/homepage/getQuestions', 'HomepageController::getQuestions');
 $routes->post('/homepage/updateLikeCount/(:num)/(:alpha)', 'HomepageController::updateLikeCount/$1/$2');
 $routes->post('/submit_post', 'HomepageController::SubmitPost');
 $routes->post('/submit_question', 'HomepageController::SubmitQuestion');
+$routes->get('/homepage/checkUserLikeStatus/(:num)', 'HomepageController::checkUserLikeStatus/$1');
+
 //Messages Routes
 $routes->get('messages', 'MessageController::index');
 $routes->get('messages/create', 'MessageController::create');
@@ -76,9 +78,13 @@ $routes->get('/notification', 'NotificationController::index');
 $routes->get('/answers', 'AnswerController::index');
 $routes->get('/answers/getanswers', 'AnswerController::getAnswers');
 $routes->post('answers/store', 'AnswerController::store');
+$routes->post('answers/up   dateAnswerLikeCount/(:num)/(:alpha)', 'AnswerController::updateAnswerLikeCount/$1/$2');
+$routes->get('/answers/checkUserLikeStatus/(:num)', 'AnswerController::checkUserLikeStatus/$1');
+//view by category
+$routes->get("/viewbycategory", 'HomepageController::CategoryByView');
+$routes->get("/homepage/getcategories", 'Categories::getcategories');
 
-$routes->post('answers/updateAnswerLikeCount/(:num)/(:alpha)', 'AnswerController::updateAnswerLikeCount/$1/$2');
-$routes->get('checkUserLikeStatus/(:num)', 'AnswersController::checkUserLikeStatus/$1');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

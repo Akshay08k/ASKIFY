@@ -11,19 +11,18 @@ function createAnswerBox(data) {
   likeSection.classList.add("like-section");
   const likeButton = document.createElement("div");
   likeButton.classList.add("heart-like-button");
-
-  // Fetch user's like status for the answer
-  fetch(`/answers/checkUserLikeStatus/${id}`)
-    .then((response) => response.json())
-    .then((userLiked) => {
-      if (userLiked) {
-        likeButton.classList.add("liked");
-        likeButton.style.color = "red";
-      }
-    })
-    .catch((error) =>
-      console.error("Error checking user's like status:", error)
-    );
+  setTimeout(() => {
+    fetch(`/answers/checkUserLikeStatus/${id}`)
+      .then((response) => response.json())
+      .then((userLiked) => {
+        if (userLiked) {
+          likeButton.classList.add("liked");
+        }
+      })
+      .catch((error) =>
+        console.error("Error checking user's like status:", error)
+      );
+  }, 1);
 
   likeButton.addEventListener("click", function () {
     // Toggle the 'liked' class for styling
@@ -74,7 +73,7 @@ function createAnswerBox(data) {
     img.src = "path/to/default/profile/photo.jpg";
   }
 
-  img.alt = "User Profile Picture";
+  img.alt = "User";
   profilePicture.appendChild(img);
 
   const profileName = document.createElement("p");
