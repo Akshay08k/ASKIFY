@@ -1,0 +1,244 @@
+CRITICAL - 2024-02-11 11:44:16 --> Undefined variable $username
+in APPPATH\Views\user\messages.php on line 63.
+ 1 APPPATH\Views\user\messages.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $username', 'APPPATH\\Views\\user\\messages.php', 63)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\user\\messages.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/messages', [], true)
+ 5 APPPATH\Controllers\MessageController.php(19): view('user/messages')
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\MessageController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MessageController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-02-11 11:44:17 --> Undefined variable $username
+in APPPATH\Views\user\messages.php on line 63.
+ 1 APPPATH\Views\user\messages.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $username', 'APPPATH\\Views\\user\\messages.php', 63)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\user\\messages.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/messages', [], true)
+ 5 APPPATH\Controllers\MessageController.php(19): view('user/messages')
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\MessageController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MessageController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-02-11 11:44:57 --> Undefined variable $username
+in APPPATH\Views\user\messages.php on line 63.
+ 1 APPPATH\Views\user\messages.php(63): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $username', 'APPPATH\\Views\\user\\messages.php', 63)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\user\\messages.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/messages', [], true)
+ 5 APPPATH\Controllers\MessageController.php(19): view('user/messages')
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\MessageController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MessageController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-02-11 11:57:59 --> mysqli_sql_exception: Illegal parameter data types int and row for operation '=' in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(240): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(618): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\ASKIFY\app\Controllers\MessageController.php(46): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\MessageController->getMessages('43')
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MessageController))
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2024-02-11 11:57:59 --> Illegal parameter data types int and row for operation '='
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `messages`
+WHERE `sender_id` = :sender_id:
+AND `receiver_id` = :receiver_id:
+ORDER BY `created_at` ASC', [...], false)
+ 2 SYSTEMPATH\Model.php(240): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(618): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\MessageController.php(46): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\MessageController->getMessages('43')
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MessageController))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-02-11 11:58:02 --> mysqli_sql_exception: Illegal parameter data types int and row for operation '=' in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(240): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(618): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\ASKIFY\app\Controllers\MessageController.php(46): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\MessageController->getMessages('47')
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MessageController))
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2024-02-11 11:58:02 --> Illegal parameter data types int and row for operation '='
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `messages`
+WHERE `sender_id` = :sender_id:
+AND `receiver_id` = :receiver_id:
+ORDER BY `created_at` ASC', [...], false)
+ 2 SYSTEMPATH\Model.php(240): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(618): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\MessageController.php(46): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\MessageController->getMessages('47')
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MessageController))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-02-11 11:58:02 --> mysqli_sql_exception: Illegal parameter data types int and row for operation '=' in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(240): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(618): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\ASKIFY\app\Controllers\MessageController.php(46): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\MessageController->getMessages('48')
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MessageController))
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2024-02-11 11:58:02 --> Illegal parameter data types int and row for operation '='
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `messages`
+WHERE `sender_id` = :sender_id:
+AND `receiver_id` = :receiver_id:
+ORDER BY `created_at` ASC', [...], false)
+ 2 SYSTEMPATH\Model.php(240): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(618): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\MessageController.php(46): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\MessageController->getMessages('48')
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MessageController))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-02-11 11:58:03 --> mysqli_sql_exception: Illegal parameter data types int and row for operation '=' in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(240): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(618): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\ASKIFY\app\Controllers\MessageController.php(46): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\MessageController->getMessages('44')
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MessageController))
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2024-02-11 11:58:03 --> Illegal parameter data types int and row for operation '='
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `messages`
+WHERE `sender_id` = :sender_id:
+AND `receiver_id` = :receiver_id:
+ORDER BY `created_at` ASC', [...], false)
+ 2 SYSTEMPATH\Model.php(240): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(618): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\MessageController.php(46): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\MessageController->getMessages('44')
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MessageController))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-02-11 11:58:03 --> mysqli_sql_exception: Illegal parameter data types int and row for operation '=' in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(240): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(618): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\ASKIFY\app\Controllers\MessageController.php(46): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\MessageController->getMessages('49')
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MessageController))
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2024-02-11 11:58:03 --> Illegal parameter data types int and row for operation '='
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `messages`
+WHERE `sender_id` = :sender_id:
+AND `receiver_id` = :receiver_id:
+ORDER BY `created_at` ASC', [...], false)
+ 2 SYSTEMPATH\Model.php(240): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(618): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\MessageController.php(46): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\MessageController->getMessages('49')
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MessageController))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-02-11 11:58:06 --> mysqli_sql_exception: Illegal parameter data types int and row for operation '=' in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(240): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(618): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\ASKIFY\app\Controllers\MessageController.php(46): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\MessageController->getMessages('63')
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MessageController))
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2024-02-11 11:58:06 --> Illegal parameter data types int and row for operation '='
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `messages`
+WHERE `sender_id` = :sender_id:
+AND `receiver_id` = :receiver_id:
+ORDER BY `created_at` ASC', [...], false)
+ 2 SYSTEMPATH\Model.php(240): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(618): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\MessageController.php(46): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\MessageController->getMessages('63')
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MessageController))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-02-11 12:43:10 --> mysqli_sql_exception: Column 'receiver_id' cannot be null in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `me...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `me...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `me...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(2294): CodeIgniter\Database\BaseConnection->query('INSERT INTO `me...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(329): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\ASKIFY\system\Model.php(728): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\ASKIFY\app\Controllers\MessageController.php(70): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\MessageController->sendMessage()
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MessageController))
+#10 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+CRITICAL - 2024-02-11 12:43:10 --> Column 'receiver_id' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2294): CodeIgniter\Database\BaseConnection->query('INSERT INTO `messages` (`sender_id`, `receiver_id`, `message`, `seen`, `created_at`, `received_at`) VALUES (:sender_id:, :receiver_id:, :message:, :seen:, :created_at:, :received_at:)', [...], false)
+ 2 SYSTEMPATH\Model.php(329): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(728): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\MessageController.php(70): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\MessageController->sendMessage()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MessageController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')

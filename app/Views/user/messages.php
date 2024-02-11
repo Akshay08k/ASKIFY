@@ -5,92 +5,179 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-    <link rel="stylesheet" href="styles.css">
     <title>Chat App</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        #userList {
+            list-style-type: none;
+            height: 100%;
+        }
+
+        #userList li {
+            cursor: pointer;
+            padding: 8px;
+            transition: background-color 0.3s;
+        }
+
+        #userList li:hover {
+            background-color: #2d3748;
+        }
+
+        #userList li.selected {
+            background-color: #4a5568;
+        }
+
+        #chat {
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid #cbd5e0;
+            border-radius: 8px;
+            padding: 10px;
+        }
+
+        .bubble {
+            padding: 8px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            word-wrap: break-word;
+            max-width: 70%;
+        }
+
+        .self-bubble {
+            background-color: #4a90e2;
+            color: #fff;
+            align-self: flex-end;
+        }
+
+        .other-bubble {
+            background-color: #e2e8f0;
+            color: #000;
+        }
+
+        #messageInput {
+            width: 50%;
+
+            padding: 8px;
+            position: absolute;
+            bottom: 20px;
+            border: 1px solid #a0aec0;
+            border-radius: 4px;
+            margin-right: 8px;
+        }
+
+        #sendButton {
+            background-color: #2b6cb0;
+            color: #fff;
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            position: absolute;
+            bottom: 20px;
+            right: 20%;
+        }
+    </style>
 </head>
 
 <body class="flex h-screen bg-gray-100">
     <div class="w-1/4 bg-gray-800 text-white p-6">
         <h1 class="text-2xl font-bold mb-4">User List</h1>
         <ul id="userList" class="overflow-y-auto">
-            <!-- User list will be dynamically populated here -->
         </ul>
     </div>
 
     <div class="flex-1 p-6 overflow-y-auto">
         <h1 class="text-2xl font-bold mb-4">Chat</h1>
         <div id="chat" class="flex flex-col space-y-4">
-            <!-- Chat messages will be dynamically populated here -->
         </div>
         <div class="mt-4">
-            <input type="text" id="messageInput" placeholder="Type your message..." class="w-full p-2 border rounded">
-            <button onclick="sendMessage()" class="mt-2 bg-blue-500 text-white p-2 rounded">Send</button>
+            <input type="text" id="messageInput" placeholder="Type your message..." class="w-full p-2 border rounded"
+                required>
+            <button onclick="sendMessage()" id="sendButton"
+                class="mt-2 bg-blue-500 text-white p-2 rounded">Send</button>
         </div>
     </div>
+
     <script>
-        const userList = document.getElementById('userList');
-        const chat = document.getElementById('chat');
-        const messageInput = document.getElementById('messageInput');
-        const currentUser = 'YourUsername';  // Set your username here
+        function loadUsers() {
+            $.ajax({
+                url: '<?= base_url('messages/getUsers') ?>',
+                method: 'GET',
+                success: function (response) {
+                    var userList = $('#userList');
+                    userList.empty();
+                    var users = JSON.parse(response);
 
-        // Dummy user data
-        const users = ['User1', 'User2', 'User3'];
-
-        // Populate user list
-        users.forEach(user => {
-            const li = document.createElement('li');
-            li.textContent = user;
-            li.classList.add('mb-2', 'cursor-pointer', 'hover:text-blue-500');
-            li.addEventListener('click', () => openChat(user));
-            userList.appendChild(li);
-        });
-
-        // Function to open chat with a user
-        function openChat(user) {
-            // Clear previous chat
-            chat.innerHTML = `<h2 class="text-xl font-bold mb-2">${user}</h2>`;
-
-            // Load some dummy messages
-            const dummyMessages = [
-                { sender: 'User1', message: 'Hello there!' },
-                { sender: currentUser, message: 'Hi! This is me.' },
-                { sender: 'User1', message: 'Nice to meet you!' },
-                { sender: currentUser, message: 'Likewise!' }
-            ];
-
-            dummyMessages.forEach(msg => {
-                const messageDiv = document.createElement('div');
-                messageDiv.textContent = msg.message;
-                messageDiv.classList.add('p-2', 'rounded', 'max-w-xs');
-
-                // Check if the message sender is the current user
-                if (msg.sender === currentUser) {
-                    messageDiv.classList.add('bg-blue-500', 'text-white', 'ml-auto');  // Align right for current user
-                } else {
-                    messageDiv.classList.add('bg-gray-300', 'text-black');  // Align left for other users
+                    users.forEach(function (user) {
+                        userList.append('<li data-userid="' + user.id + '">' + user.name + '</li>');
+                    });
                 }
-
-                chat.appendChild(messageDiv);
             });
         }
 
-        // Function to send a message
-        function sendMessage() {
-            const message = messageInput.value.trim();
+        function loadMessages(userId) {
+            $.ajax({
+                url: '<?= base_url('messages/getMessages/') ?>' + '/' + userId,
+                method: 'GET',
+                success: function (response) {
+                    var chat = $('#chat');
+                    chat.empty();
+                    var messages = JSON.parse(response);
 
-            if (message !== '') {
-                const messageDiv = document.createElement('div');
-                messageDiv.textContent = message;
-                messageDiv.classList.add('p-2', 'rounded', 'max-w-xs', 'bg-blue-500', 'text-white', 'ml-auto');  // Align right for current user
-                chat.appendChild(messageDiv);
+                    messages.forEach(function (message) {
+                        var bubbleClass = message.sender_id == '<?= session()->get('user_id') ?>' ? 'self-bubble' : 'other-bubble';
+                        var alignmentClass = message.sender_id == '<?= session()->get('user_id') ?>' ? 'text-right' : 'text-left';
 
-                // Clear input field
-                messageInput.value = '';
-            }
+                        var messageDiv = $('<div>').addClass('bubble p-2 rounded max-w-xs ' + bubbleClass + ' ' + alignmentClass).text(message.message);
+                        chat.append(messageDiv);
+
+                        // Scroll to the bottom of the chat after appending a message
+                        chat.scrollTop(chat[0].scrollHeight);
+                    });
+                }
+            });
         }
 
+        function sendMessage() {
+            var receiverId = $('#userList li.selected').data('userid');
+            var message = $('#messageInput').val();
+
+            $.ajax({
+                url: '<?= base_url('messages/sendMessage') ?>',
+                method: 'POST',
+                data: { receiver_id: receiverId, message: message },
+                success: function (response) {
+                    $('#messageInput').val('');
+                    loadMessages(receiverId);
+                }
+            });
+        }
+
+        $('#userList').on('click', 'li', function () {
+            var userId = $(this).data('userid');
+            $('#userList li').removeClass('selected');
+            $(this).addClass('selected');
+            loadMessages(userId);
+        });
+        loadUsers();
     </script>
+
+    <!-- Your existing HTML code -->
+
 </body>
 
 </html>

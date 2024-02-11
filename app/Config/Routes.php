@@ -66,12 +66,11 @@ $routes->post('/submit_question', 'HomepageController::SubmitQuestion');
 $routes->get('/homepage/checkUserLikeStatus/(:num)', 'HomepageController::checkUserLikeStatus/$1');
 
 //Messages Routes
-$routes->get('messages', 'MessageController::index');
-$routes->get('messages/create', 'MessageController::create');
-$routes->post('messages/store', 'MessageController::store');
-$routes->get('messages/edit/(:num)', 'MessageController::edit/$1');
-$routes->post('messages/update/(:num)', 'MessageController::update/$1');
-$routes->get('messages/delete/(:num)', 'MessageController::destroy/$1');
+$routes->get('/messages', 'MessageController::index');
+$routes->get('messages/getUsers', 'MessageController::getUsers');
+$routes->get('messages/getMessages/(:num)', 'MessageController::getMessages/$1');
+$routes->post('messages/sendMessage', 'MessageController::sendMessage');
+
 //notification routes
 $routes->get('/notification', 'NotificationController::index');
 //answer routes
