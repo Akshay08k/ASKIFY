@@ -68,7 +68,7 @@ $routes->get('/homepage/checkUserLikeStatus/(:num)', 'HomepageController::checkU
 //Messages Routes
 $routes->get('/messages', 'MessageController::index');
 $routes->get('messages/getUsers', 'MessageController::getUsers');
-$routes->get('messages/getMessages/(:num)', 'MessageController::getMessages/$1');
+$routes->get('  messages/getMessages/(:num)/(:num)', 'MessageController::getMessages/$1/$2');
 $routes->post('messages/sendMessage', 'MessageController::sendMessage');
 
 //notification routes

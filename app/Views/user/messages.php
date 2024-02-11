@@ -129,28 +129,46 @@
             });
         }
 
-        function loadMessages(userId) {
-            $.ajax({
-                url: '<?= base_url('messages/getMessages/') ?>' + '/' + userId,
-                method: 'GET',
-                success: function (response) {
-                    var chat = $('#chat');
-                    chat.empty();
-                    var messages = JSON.parse(response);
+        function loadMessages(userId, latestMessageId = 0) {
+            function poll() {
+                $.ajax({
+                    url: '<?= base_url('messages/getMessages/') ?>' + '/' + userId + '/' + latestMessageId,
+                    method: 'GET',
+                    success: function (response) {
+                        var chat = $('#chat');
+                        var messages = JSON.parse(response);
 
-                    messages.forEach(function (message) {
-                        var bubbleClass = message.sender_id == '<?= session()->get('user_id') ?>' ? 'self-bubble' : 'other-bubble';
-                        var alignmentClass = message.sender_id == '<?= session()->get('user_id') ?>' ? 'text-right' : 'text-left';
+                        messages.forEach(function (message) {
+                            // Check if the message already exists in the chat
+                            if ($('#chat').find('.message[data-messageid="' + message.id + '"]').length === 0) {
+                                var bubbleClass = message.sender_id == '<?= session()->get('user_id') ?>' ? 'self-bubble' : 'other-bubble';
+                                var alignmentClass = message.sender_id == '<?= session()->get('user_id') ?>' ? 'text-right' : 'text-left';
 
-                        var messageDiv = $('<div>').addClass('bubble p-2 rounded max-w-xs ' + bubbleClass + ' ' + alignmentClass).text(message.message);
-                        chat.append(messageDiv);
+                                var messageDiv = $('<div>').addClass('message bubble p-2 rounded max-w-xs ' + bubbleClass + ' ' + alignmentClass).text(message.message);
 
-                        // Scroll to the bottom of the chat after appending a message
-                        chat.scrollTop(chat[0].scrollHeight);
-                    });
-                }
-            });
+                                // Set a data attribute to store the message ID
+                                messageDiv.attr('data-messageid', message.id);
+
+                                chat.append(messageDiv);
+
+                                // Update the latest message ID
+                                latestMessageId = message.id;
+
+                                // Scroll to the bottom of the chat after appending a message
+                                chat.scrollTop(chat[0].scrollHeight);
+                            }
+                        });
+
+                        // Poll again after a short delay
+                        setTimeout(poll, 1000); // Adjust the delay as needed
+                    }
+                });
+            }
+
+            // Start the initial poll
+            poll();
         }
+
 
         function sendMessage() {
             var receiverId = $('#userList li.selected').data('userid');
