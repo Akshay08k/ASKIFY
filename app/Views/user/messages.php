@@ -112,6 +112,12 @@
         </div>
     </div>
     <script>
+        function clear() {
+
+        }
+        var selectedUserId = null; // Variable to store the selected user ID
+        var lastSentMessageId = null; // Variable to store the ID of the last sent message
+
         function loadUsers() {
             $.ajax({
                 url: '<?= base_url('messages/getUsers') ?>',
@@ -122,43 +128,49 @@
                     var users = JSON.parse(response);
 
                     users.forEach(function (user) {
-                        userList.append('<li data-userid="' + user.id + '">' + user.name + '</li>');
+                        userList.append('<li onclick="clear()" data-userid="' + user.id + '">' + user.name + '</li>');
                     });
                 }
             });
         }
+        function loadMessages(userId) {
+            var chat = $('#chat');
 
-        function loadMessages(userId, latestMessageId = 0) {
-            // Clear the chat content before loading new messages
-            $('#chat').empty();
+            // Get the ID of the last message in the chat
+            var latestMessageId = chat.children('.message:last').data('messageid') || 0;
+
+            var url = '<?= base_url('messages/getMessages/') ?>' + '/' + userId + '/' + latestMessageId;
 
             $.ajax({
-                url: '<?= base_url('messages/getMessages/') ?>' + '/' + userId + '/' + latestMessageId,
+                url: url,
                 method: 'GET',
                 success: function (response) {
-                    var chat = $('#chat');
                     var messages = JSON.parse(response);
 
                     messages.forEach(function (message) {
-                        var bubbleClass = message.sender_id == '<?= session()->get('user_id') ?>' ? 'self-bubble' : 'other-bubble';
-                        var alignmentClass = message.sender_id == '<?= session()->get('user_id') ?>' ? 'text-right' : 'text-left';
+                        // Skip the last sent message
+                        if (message.id != lastSentMessageId) {
+                            var bubbleClass = message.sender_id == '<?= session()->get('user_id') ?>' ? 'self-bubble' : 'other-bubble';
+                            var alignmentClass = message.sender_id == '<?= session()->get('user_id') ?>' ? 'text-right' : 'text-left';
 
-                        var messageDiv = $('<div>').addClass('message bubble p-2 rounded max-w-xs ' + bubbleClass + ' ' + alignmentClass).text(message.message);
+                            var messageDiv = $('<div>').addClass('message bubble p-2 rounded max-w-xs ' + bubbleClass + ' ' + alignmentClass).text(message.message);
 
-                        // Set a data attribute to store the message ID
-                        messageDiv.attr('data-messageid', message.id);
+                            // Set a data attribute to store the message ID
+                            messageDiv.attr('data-messageid', message.id);
 
-                        chat.append(messageDiv);
+                            chat.append(messageDiv);
 
-                        // Scroll to the bottom of the chat after appending a message
-                        chat.scrollTop(chat[0].scrollHeight);
+                            // Scroll to the bottom of the chat after appending a message
+                            chat.scrollTop(chat[0].scrollHeight);
+                        }
                     });
                 }
             });
         }
 
+
         function sendMessage() {
-            var receiverId = $('#userList li.selected').data('userid');
+            var receiverId = selectedUserId;
             var message = $('#messageInput').val();
 
             $.ajax({
@@ -167,17 +179,30 @@
                 data: { receiver_id: receiverId, message: message },
                 success: function (response) {
                     $('#messageInput').val('');
+
+                    // Update the last sent message ID
+                    lastSentMessageId = response.message_id;
+
                     loadMessages(receiverId);
                 }
             });
         }
 
+        // Periodically load messages
+        setInterval(function () {
+            if (selectedUserId !== null) {
+                loadMessages(selectedUserId);
+            }
+        }, 5000); // Adjust the interval (in milliseconds) as needed
+
         $('#userList').on('click', 'li', function () {
-            var userId = $(this).data('userid');
+            $('#chat').empty();
+            selectedUserId = $(this).data('userid');
             $('#userList li').removeClass('selected');
             $(this).addClass('selected');
-            loadMessages(userId);
+            loadMessages(selectedUserId);
         });
+
 
         loadUsers();
     </script>

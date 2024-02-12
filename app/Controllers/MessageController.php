@@ -35,7 +35,7 @@ class MessageController extends Controller
         echo json_encode($userList);
     }
 
-    public function getMessages($receiverId, $latestMessageId = 0)
+    public function getMessages($receiverId, $latestMessageId = 0, $lastSentMessageId = 0)
     {
         $senderId = session()->get('user_id');
 
@@ -43,11 +43,13 @@ class MessageController extends Controller
             ->whereIn('sender_id', [$senderId, $receiverId])
             ->whereIn('receiver_id', [$senderId, $receiverId])
             ->where('id >', $latestMessageId)
+            ->where('id !=', $lastSentMessageId) // Exclude the last sent message
             ->orderBy('created_at', 'ASC')
             ->findAll();
 
         echo json_encode($messages);
     }
+
 
 
 
