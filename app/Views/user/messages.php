@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-    <title>Chat App</title>
+    <title>Messages</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -95,7 +95,7 @@
 
 <body class="flex h-screen bg-gray-100">
     <div class="w-1/4 bg-gray-800 text-white p-6">
-        <h1 class="text-2xl font-bold mb-4">User List</h1>
+        <h1 class="text-2xl font-bold mb-4">Users</h1>
         <ul id="userList" class="overflow-y-auto">
         </ul>
     </div>
@@ -111,7 +111,6 @@
                 class="mt-2 bg-blue-500 text-white p-2 rounded">Send</button>
         </div>
     </div>
-
     <script>
         function loadUsers() {
             $.ajax({
@@ -130,45 +129,33 @@
         }
 
         function loadMessages(userId, latestMessageId = 0) {
-            function poll() {
-                $.ajax({
-                    url: '<?= base_url('messages/getMessages/') ?>' + '/' + userId + '/' + latestMessageId,
-                    method: 'GET',
-                    success: function (response) {
-                        var chat = $('#chat');
-                        var messages = JSON.parse(response);
+            // Clear the chat content before loading new messages
+            $('#chat').empty();
 
-                        messages.forEach(function (message) {
-                            // Check if the message already exists in the chat
-                            if ($('#chat').find('.message[data-messageid="' + message.id + '"]').length === 0) {
-                                var bubbleClass = message.sender_id == '<?= session()->get('user_id') ?>' ? 'self-bubble' : 'other-bubble';
-                                var alignmentClass = message.sender_id == '<?= session()->get('user_id') ?>' ? 'text-right' : 'text-left';
+            $.ajax({
+                url: '<?= base_url('messages/getMessages/') ?>' + '/' + userId + '/' + latestMessageId,
+                method: 'GET',
+                success: function (response) {
+                    var chat = $('#chat');
+                    var messages = JSON.parse(response);
 
-                                var messageDiv = $('<div>').addClass('message bubble p-2 rounded max-w-xs ' + bubbleClass + ' ' + alignmentClass).text(message.message);
+                    messages.forEach(function (message) {
+                        var bubbleClass = message.sender_id == '<?= session()->get('user_id') ?>' ? 'self-bubble' : 'other-bubble';
+                        var alignmentClass = message.sender_id == '<?= session()->get('user_id') ?>' ? 'text-right' : 'text-left';
 
-                                // Set a data attribute to store the message ID
-                                messageDiv.attr('data-messageid', message.id);
+                        var messageDiv = $('<div>').addClass('message bubble p-2 rounded max-w-xs ' + bubbleClass + ' ' + alignmentClass).text(message.message);
 
-                                chat.append(messageDiv);
+                        // Set a data attribute to store the message ID
+                        messageDiv.attr('data-messageid', message.id);
 
-                                // Update the latest message ID
-                                latestMessageId = message.id;
+                        chat.append(messageDiv);
 
-                                // Scroll to the bottom of the chat after appending a message
-                                chat.scrollTop(chat[0].scrollHeight);
-                            }
-                        });
-
-                        // Poll again after a short delay
-                        setTimeout(poll, 1000); // Adjust the delay as needed
-                    }
-                });
-            }
-
-            // Start the initial poll
-            poll();
+                        // Scroll to the bottom of the chat after appending a message
+                        chat.scrollTop(chat[0].scrollHeight);
+                    });
+                }
+            });
         }
-
 
         function sendMessage() {
             var receiverId = $('#userList li.selected').data('userid');
@@ -191,8 +178,11 @@
             $(this).addClass('selected');
             loadMessages(userId);
         });
+
         loadUsers();
     </script>
+
+
 
     <!-- Your existing HTML code -->
 

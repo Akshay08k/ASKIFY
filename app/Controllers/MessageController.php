@@ -40,17 +40,16 @@ class MessageController extends Controller
         $senderId = session()->get('user_id');
 
         $messages = $this->chatModel
-            ->where('sender_id', $senderId)
-            ->where('receiver_id', $receiverId)
-            ->orWhere('sender_id', $receiverId)
-            ->where('receiver_id', $senderId)
+            ->whereIn('sender_id', [$senderId, $receiverId])
+            ->whereIn('receiver_id', [$senderId, $receiverId])
             ->where('id >', $latestMessageId)
-            ->where('sender_id !=', $senderId) // Exclude messages sent by the current user
             ->orderBy('created_at', 'ASC')
             ->findAll();
 
         echo json_encode($messages);
     }
+
+
 
 
 
