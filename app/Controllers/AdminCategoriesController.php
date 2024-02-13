@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\CategoryModel;
 
-class Categories extends BaseController
+class AdminCategoriesController extends BaseController
 {
     public function index()
     {
@@ -31,12 +31,12 @@ class Categories extends BaseController
             // Get the contents of the image file
             $imageData = file_get_contents($image->getPathname());
 
-            // Add image data to the data array
+
             $data['image'] = base64_encode($imageData);
         }
 
         $model->insert($data);
-        return redirect()->to('/categories');
+        return redirect()->to('/admin/manage_categories');
     }
 
     public function update($id)
@@ -57,7 +57,7 @@ class Categories extends BaseController
         }
 
         $model->update($id, $data);
-        return redirect()->to('/categories');
+        return redirect()->to('/admin/manage_categories');
     }
 
 
@@ -73,13 +73,12 @@ class Categories extends BaseController
     {
         $model = new CategoryModel();
         $model->delete($id);
-        return redirect()->to('/categories');
+        return redirect()->to('/admin/manage_categories');
     }
     public function getcategories()
     {
         $model = new CategoryModel();
         $categories = $model->findAll();
-
         return $this->response->setJSON($categories);
     }
 }

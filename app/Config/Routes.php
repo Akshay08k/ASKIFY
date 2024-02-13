@@ -29,6 +29,12 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+
+/*
+------------------------------------------
+---------USER ROUTES---------------------
+------------------------------------------
+*/
 $routes->get('/', 'Home::index');
 $routes->get('/categories', 'Categories::index');
 $routes->get('/register', 'Register::index');
@@ -37,14 +43,6 @@ $routes->get('/login', 'Login::index');
 $routes->post('/login/auth', 'Login::auth');
 $routes->get('/logout', 'Home::logout');
 
-// $routes->get('/dashboard', 'Dashboard::index', ['filter' => 'auth']);
-//categories manangement by ADMIN
-$routes->get('categories', 'Categories::index');
-$routes->get('categories/create', 'Categories::create');
-$routes->post('categories/store', 'Categories::store');
-$routes->get('categories/edit/(:num)', 'Categories::edit/$1');
-$routes->post('categories/update/(:num)', 'Categories::update/$1');
-$routes->get('categories/delete/(:num)', 'Categories::delete/$1');
 // loading contentpolicy
 $routes->get('/content-policy', 'ContentController::contentpolicy');
 //loading privacy
@@ -79,10 +77,46 @@ $routes->get('/answers/getanswers', 'AnswerController::getAnswers');
 $routes->post('answers/store', 'AnswerController::store');
 $routes->post('answers/up   dateAnswerLikeCount/(:num)/(:alpha)', 'AnswerController::updateAnswerLikeCount/$1/$2');
 $routes->get('/answers/checkUserLikeStatus/(:num)', 'AnswerController::checkUserLikeStatus/$1');
-//view by category
-$routes->get("/viewbycategory", 'HomepageController::CategoryByView');
-$routes->get("/homepage/getcategories", 'Categories::getcategories');
 
+
+
+// $routes->get("/homepage/getcategories", 'AdminCategoriesController::getcategories');
+
+
+/*
+------------------------------------------
+---------ADMIN ROUTES---------------------
+------------------------------------------
+*/
+$routes->get('/admin/login', 'AdminController::index');
+$routes->post('/admin/login/auth', 'AdminController::auth');
+
+//feedback & report route
+$routes->get('/admin/feedbacks', 'AdminHandleIssueController::feedbacks');
+$routes->get('/admin/handle_issues', 'AdminHandleIssueController::Issues');
+
+//dashboard routes
+$routes->get('/admin/dashboard', 'AdminDashboardController::index');
+
+// manage user account 
+$routes->get('/admin/manage_users', 'AdminManageUserController::index');
+
+//Admin Profile
+$routes->get('/admin/manage_accounts', 'AdminController::AdminProfile');
+
+//update categories for admin
+$routes->get('admin/manage_categories', 'AdminCategoriesController::index');
+$routes->get('categories/create', 'AdminCategoriesController::create');
+$routes->post('admincategories/store', 'AdminCategoriesController::store');
+$routes->get('categories/edit/(:num)', 'AdminCategoriesController::edit/$1');
+$routes->post('categories/update/(:num)', 'AdminCategoriesController::update/$1');
+$routes->get('categories/delete/(:num)', 'AdminCategoriesController::delete/$1');
+
+//moderate content
+$routes->get('admin/moderate_content', 'AdminContentModController::index');
+
+//Handle Platform update
+$routes->get('admin/handle_updates', 'AdminDashboardController::platform_updates');
 
 /*
  * --------------------------------------------------------------------
