@@ -29,7 +29,7 @@ class MessageController extends Controller
 
         $userList = [];
         foreach ($users as $user) {
-            $userList[] = ['id' => $user['id'], 'username' => $user['username'], 'name' => $user['name']];
+            $userList[] = ['id' => $user['id'], 'username' => $user['username'], 'name' => $user['name'], 'gender' => $user['gender'], 'email' => $user['email']];
         }
 
         echo json_encode($userList);

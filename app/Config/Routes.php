@@ -80,7 +80,7 @@ $routes->get('/answers/checkUserLikeStatus/(:num)', 'AnswerController::checkUser
 
 
 
-// $routes->get("/homepage/getcategories", 'AdminCategoriesController::getcategories');
+$routes->get("/homepage/getcategories", 'AdminCategoriesController::getcategories');
 
 
 /*
@@ -100,6 +100,7 @@ $routes->get('/admin/dashboard', 'AdminDashboardController::index');
 
 // manage user account 
 $routes->get('/admin/manage_users', 'AdminManageUserController::index');
+$routes->post('/admin/deleteUser/(:num)', 'AdminManageUserController::deleteUser/$1');
 
 //Admin Profile
 $routes->get('/admin/manage_accounts', 'AdminController::AdminProfile');

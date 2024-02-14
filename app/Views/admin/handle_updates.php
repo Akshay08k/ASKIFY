@@ -24,7 +24,7 @@
                 <h4 class="admin-title">Admin</h4>
             </div>
             <ul class="sidebtns">
-            <li><a href="/admin/dashboard">Dashboard</a></li>
+                <li><a href="/admin/dashboard">Dashboard</a></li>
                 <li><a href="/admin/manage_users">User Management</a></li>
                 <li><a href="/admin/manage_categories">Manage Categories</a></li>
                 <li><a href="/admin/moderate_content">Content Moderation</a></li>
@@ -87,7 +87,7 @@
 
                     // Populate the list with platform updates
                     platformUpdates.forEach(update => {
-                        const listItem = document.createElement('li');
+                        const listItem = document.createElement('div');
                         listItem.textContent = update;
                         updateList.appendChild(listItem);
                     });

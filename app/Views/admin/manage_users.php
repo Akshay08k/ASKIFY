@@ -33,7 +33,7 @@
 <body class="bg-gray-100">
 
     <!-- Sidebar -->
-    <div class="flex h-screen bg-gray-200">
+    <div class="fixed h-screen bg-gray-200">
         <div id="sidebar">
             <div class="container">
                 <div class="avatar">
@@ -43,7 +43,7 @@
                 <h4 class="admin-title">Admin</h4>
             </div>
             <ul class="sidebtns">
-            <li><a href="/admin/dashboard">Dashboard</a></li>
+                <li><a href="/admin/dashboard">Dashboard</a></li>
                 <li><a href="/admin/manage_users">User Management</a></li>
                 <li><a href="/admin/manage_categories">Manage Categories</a></li>
                 <li><a href="/admin/moderate_content">Content Moderation</a></li>
@@ -53,53 +53,43 @@
                 <li><a href="/admin/manage_accounts">Account</a></li>
             </ul>
         </div>
+    </div>
 
-        <!-- Content -->
-        <div class="flex-1 p-4">
-            <h2 class="text-2xl font-bold mb-4">Manage User Accounts</h2>
-
-            <!-- Actual content related to managing user accounts -->
-            <div class="bg-white p-4 shadow-md rounded-md">
-                <div class="mb-4 flex items-center">
-                    <input type="text" id="searchInput" class="border rounded p-2 flex-1" placeholder="Search...">
-                    <select id="searchBy" class="ml-2 p-2 border rounded">
-                        <option value="name">Search by Name</option>
-                        <option value="id">Search by ID</option>
-                    </select>
-                </div>
-
-                <table class="w-full border text-center">
-                    <thead>
-                        <tr>
-                            <th class="p-2 border">ID</th>
-                            <th class="p-2 border">Name</th>
-                            <th class="p-2 border">Username</th>
-                            <th class="p-2 border">Email</th>
-                            <th class="p-2 border">Gender</th>
-                            <th class="p-2 border">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="userTable">
-                        <!-- User table will be dynamically populated here -->
-                    </tbody>
-                </table>
+    <!-- Content -->
+    <div class="ml-60 p-4">
+        <h2 class="text-2xl font-bold mb-4">Manage User Accounts</h2>
+        <div class="bg-white p-4 shadow-md rounded-md">
+            <div class="mb-4 flex items-center">
+                <input type="text" id="searchInput" class="border rounded p-2 flex-1" placeholder="Search...">
+                <select id="searchBy" class="ml-2 p-2 border rounded">
+                    <option value="username">Search by Username</option>
+                    <option value="id">Search by ID</option>
+                </select>
             </div>
-
-            <!-- Add more content as needed -->
-
+            <table class="w-full border text-center">
+                <thead>
+                    <tr>
+                        <th class="p-2 border">ID</th>
+                        <th class="p-2 border">Name</th>
+                        <th class="p-2 border">Username</th>
+                        <th class="p-2 border">Email</th>
+                        <th class="p-2 border">Gender</th>
+                        <th class="p-2 border">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="userTable">
+                    <!-- User table will be dynamically populated here -->
+                </tbody>
+            </table>
         </div>
+
+        <!-- Add more content as needed -->
+
     </div>
 
     <!-- Include JavaScript -->
+    <!-- Include JavaScript -->
     <script>
-        // Sample array of users (replace this with data from your backend)
-        const users = [
-            { id: 1, name: 'User 1', username: 'user1', email: 'user1@example.com', gender: 'Male' },
-            { id: 2, name: 'User 2', username: 'user2', email: 'user2@example.com', gender: 'Female' },
-            { id: 3, name: 'User 3', username: 'user3', email: 'user3@example.com', gender: 'Other' },
-            { id: 4, name: 'User 4', username: 'user4', email: 'user4@example.com', gender: 'Male' }
-        ];
-
         // Function to dynamically populate the user table
         function populateUserTable(filteredUsers) {
             const userTable = document.getElementById('userTable');
@@ -107,46 +97,96 @@
             // Clear existing content
             userTable.innerHTML = '';
 
-            // Use filteredUsers if available, otherwise use all users
-            const usersToDisplay = filteredUsers || users;
+            // Use filteredUsers if available, otherwise fetch users from the backend
+            const usersToDisplay = filteredUsers || fetchUsersFromBackend();
 
             // Populate the table with users
-            usersToDisplay.forEach(user => {
-                const row = userTable.insertRow();
-                const banBtn = document.createElement('button');
-                banBtn.className = 'banbtn';
+            usersToDisplay.then(users => {
+                users.forEach(user => {
+                    const row = userTable.insertRow();
+                    const banBtn = document.createElement('button');
+                    const deleteBtn = document.createElement('button');
+
+                    banBtn.className = 'banbtn';
+                    banBtn.textContent = 'Ban';
+
+                    deleteBtn.className = 'deletebtn';
+                    deleteBtn.textContent = 'Delete';
+
+                    row.innerHTML = `
+                    <td class="p-2 border">${user.id}</td>
+                    <td class="p-2 border">${user.name}</td>
+                    <td class="p-2 border">${user.username}</td>
+                    <td class="p-2 border">${user.email}</td>
+                    <td class="p-2 border">${user.gender}</td>
+                    <td class="p-2 border">
+                        ${banBtn.outerHTML}
+                        ${deleteBtn.outerHTML}
+                    </td>
+                `;
+                });
+            });
+
+            // Add event listener to the parent (userTable) for event delegation
+            userTable.addEventListener('click', (event) => {
+                const target = event.target;
+                if (target.classList.contains('banbtn')) {
+                    handleBanButtonClick(target);
+                } else if (target.classList.contains('deletebtn')) {
+                    handleDeleteButtonClick(target);
+                }
+            });
+        }
+
+        // Function to delete a user
+        async function deleteUser(userId) {
+            try {
+                const response = await fetch(`/admin/deleteUser/${userId}`, {
+                    method: 'POST',
+                });
+                if (response.ok) {
+                    // User deleted successfully, you may want to refresh the user table
+                    populateUserTable();
+                } else {
+                    console.error('Error deleting user');
+                }
+            } catch (error) {
+                console.error('Error deleting user:', error);
+            }
+        }
+
+        // Function to handle 'Ban' button click
+        function handleBanButtonClick(banBtn) {
+            if (banBtn.textContent === 'Unban' || banBtn.style.backgroundColor === 'green') {
                 banBtn.textContent = 'Ban';
-                banBtn.addEventListener('click', () => {
-                    banBtn.style.backgroundColor = 'green';
-                });
+                banBtn.style.backgroundColor = 'red';
+            } else {
+                banBtn.style.backgroundColor = 'green';
+                banBtn.textContent = 'Unban';
+            }
+        }
 
-                row.innerHTML = `
-                        <td class="p-2 border">${user.id}</td>
-                        <td class="p-2 border">${user.name}</td>
-                        <td class="p-2 border">${user.username}</td>
-                        <td class="p-2 border">${user.email}</td>
-                        <td class="p-2 border">${user.gender}</td>
-                        <td class="p-2 border">
-                            ${banBtn.outerHTML}
-                            <button class="deletebtn">Delete</button>
-                        </td>
-                    `;
-            });
+        // Function to handle 'Delete' button click
+        function handleDeleteButtonClick(deleteBtn) {
+            // Prompt for confirmation before deleting
+            const confirmDelete = confirm('Are you sure you want to delete this user?');
+            if (confirmDelete) {
+                // Call the delete user function
+                const userId = deleteBtn.closest('tr').querySelector('td:first-child').textContent;
+                deleteUser(userId);
+            }
+        }
 
-            // Add event listeners to all 'Ban' buttons after they are created
-            const banButtons = document.querySelectorAll('.banbtn');
-            banButtons.forEach(banBtn => {
-                banBtn.addEventListener('click', () => {
-
-                    if (banBtn.textContent == "Unban" || banBtn.backgroundColor == "green") {
-                        banBtn.textContent = "Ban"
-                        banBtn.style.backgroundColor = "red"
-                    } else {
-                        banBtn.style.backgroundColor = 'green';
-                        banBtn.textContent = "Unban"
-                    }
-                });
-            });
+        // Function to fetch users from the backend
+        async function fetchUsersFromBackend() {
+            try {
+                const response = await fetch('/messages/getUsers');
+                const users = await response.json();
+                return users;
+            } catch (error) {
+                console.error('Error fetching users:', error);
+                return [];
+            }
         }
 
         // Function to search and filter users
@@ -155,8 +195,8 @@
             const searchBy = document.getElementById('searchBy').value;
 
             const filteredUsers = users.filter(user => {
-                if (searchBy === 'name') {
-                    return user.name.toLowerCase().includes(searchInput);
+                if (searchBy === 'username') {
+                    return user.username.toLowerCase().includes(searchInput);
                 } else if (searchBy === 'id') {
                     return user.id.toString().includes(searchInput);
                 }
@@ -174,6 +214,7 @@
         });
 
     </script>
+
 
 </body>
 
