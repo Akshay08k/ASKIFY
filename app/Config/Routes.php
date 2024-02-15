@@ -71,6 +71,8 @@ $routes->post('messages/sendMessage', 'MessageController::sendMessage');
 
 //notification routes
 $routes->get('/notification', 'NotificationController::index');
+$routes->post('notification/markAsSeen/(:num)', 'NotificationController::markAsSeen/$1');
+
 //answer routes
 $routes->get('/answers', 'AnswerController::index');
 $routes->get('/answers/getanswers', 'AnswerController::getAnswers');
@@ -88,7 +90,7 @@ $routes->get("/homepage/getcategories", 'AdminCategoriesController::getcategorie
 ---------ADMIN ROUTES---------------------
 ------------------------------------------
 */
-$routes->get('/admin/login', 'AdminController::index');
+$routes->get('/admin', 'AdminController::index');
 $routes->post('/admin/login/auth', 'AdminController::auth');
 
 //feedback & report route
@@ -101,6 +103,7 @@ $routes->get('/admin/dashboard', 'AdminDashboardController::index');
 // manage user account 
 $routes->get('/admin/manage_users', 'AdminManageUserController::index');
 $routes->post('/admin/deleteUser/(:num)', 'AdminManageUserController::deleteUser/$1');
+$routes->post('/admin/banUser/(:num)', 'AdminManageUserController::banUser/$1');
 
 //Admin Profile
 $routes->get('/admin/manage_accounts', 'AdminController::AdminProfile');

@@ -86,10 +86,19 @@ li a:focus {
     border-radius: 20px;
 }
 
-.logo>a>img {
-    margin-left: 50px;
-    height: 60px;
-    width: 130px;
+.close-btn {
+    border: hidden;
+    background-color: transparent;
+    position: absolute;
+    right: 10px;
+    height: 30px;
+    cursor: pointer;
+    width: 30px;
+}
+
+.cancelimg {
+    height: 30px;
+    width: 30px;
 }
 
 
@@ -216,12 +225,6 @@ footer {
     margin-right: 10px;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-}
 
 .notifications {
     width: 70%;
@@ -234,6 +237,27 @@ body {
     padding: 20px;
     margin-right: 20%;
 }
+
+.read-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+}
+
+.readed-notification {
+
+    display: none;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-right: 20%;
+}
+
+.custom-dropdown-header {
+    margin-top: 30px;
+}
+
+
 
 .notification {
     margin-bottom: 5px;
@@ -261,14 +285,11 @@ body {
     padding-left: 5px;
 }
 
-img {
-    height: 20px;
-    width: 40px;
-    margin-left: 620px;
-}
+
 
 .close-icon {
     position: absolute;
+
     top: 50%;
     transform: translateY(-50%);
     right: 10px;

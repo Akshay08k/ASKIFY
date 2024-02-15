@@ -37,9 +37,24 @@
         <div id="sidebar">
             <div class="container">
                 <div class="avatar">
-                    <!-- <img src="" alt="Profile"></img> -->
+                    <?php foreach ($users as $user): ?>
+                        <?php
+                        $username = $user['username'];
+
+
+                        $profilePhoto = $user['profile_photo'];
+
+
+                        $profilePhotoBase64 = 'data:image/png;base64,' . base64_encode($profilePhoto);
+
+
+                        ?>
+                        <img src="<?= $profilePhotoBase64 ?>" alt="Profile Picture">
+                    <?php endforeach ?>
                 </div>
-                <h3 class="admin-name">User Name</h3>
+                <h3 class="admin-name">
+                    <?= $user['name'] ?>
+                </h3>
                 <h4 class="admin-title">Admin</h4>
             </div>
             <ul class="sidebtns">
@@ -90,6 +105,22 @@
     <!-- Include JavaScript -->
     <!-- Include JavaScript -->
     <script>
+
+        // Global variable to store user data
+        let usersData = [];
+
+        // Function to fetch users from the backend
+        async function fetchUsersFromBackend() {
+            try {
+                const response = await fetch('/messages/getUsers');
+                usersData = await response.json(); // Store user data globally
+                return usersData;
+            } catch (error) {
+                console.error('Error fetching users:', error);
+                return [];
+            }
+        }
+
         // Function to dynamically populate the user table
         function populateUserTable(filteredUsers) {
             const userTable = document.getElementById('userTable');
@@ -97,34 +128,33 @@
             // Clear existing content
             userTable.innerHTML = '';
 
-            // Use filteredUsers if available, otherwise fetch users from the backend
-            const usersToDisplay = filteredUsers || fetchUsersFromBackend();
+            // Use filteredUsers if available, otherwise use stored user data
+            const usersToDisplay = filteredUsers || usersData;
 
             // Populate the table with users
-            usersToDisplay.then(users => {
-                users.forEach(user => {
-                    const row = userTable.insertRow();
-                    const banBtn = document.createElement('button');
-                    const deleteBtn = document.createElement('button');
+            usersToDisplay.forEach(user => {
+                const row = userTable.insertRow();
+                const banBtn = document.createElement('button');
+                const deleteBtn = document.createElement('button');
 
-                    banBtn.className = 'banbtn';
-                    banBtn.textContent = 'Ban';
+                const isBanned = user.status === 'ban';
+                banBtn.className = 'banbtn';
+                banBtn.textContent = isBanned ? 'Unban' : 'Ban';
+                banBtn.style.backgroundColor = isBanned ? 'green' : 'red';
 
-                    deleteBtn.className = 'deletebtn';
-                    deleteBtn.textContent = 'Delete';
+                deleteBtn.className = 'deletebtn';
+                deleteBtn.textContent = 'Delete';
 
-                    row.innerHTML = `
-                    <td class="p-2 border">${user.id}</td>
-                    <td class="p-2 border">${user.name}</td>
-                    <td class="p-2 border">${user.username}</td>
-                    <td class="p-2 border">${user.email}</td>
-                    <td class="p-2 border">${user.gender}</td>
-                    <td class="p-2 border">
-                        ${banBtn.outerHTML}
-                        ${deleteBtn.outerHTML}
-                    </td>
-                `;
-                });
+                row.innerHTML = `
+            <td class="p-2 border">${user.id}</td>
+            <td class="p-2 border">${user.name}</td>
+            <td class="p-2 border">${user.username}</td>
+            <td class="p-2 border">${user.email}</td>
+            <td class="p-2 border">${user.gender}</td>
+            <td class="p-2 border">
+                ${banBtn.outerHTML}
+                ${deleteBtn.outerHTML}
+            `;
             });
 
             // Add event listener to the parent (userTable) for event delegation
@@ -136,6 +166,26 @@
                     handleDeleteButtonClick(target);
                 }
             });
+        }
+
+        // Function to handle 'Ban' button click
+        async function handleBanButtonClick(banBtn) {
+            const userId = banBtn.closest('tr').querySelector('td:first-child').textContent;
+
+            try {
+                const response = await fetch(`/admin/banUser/${userId}`, {
+                    method: 'POST',
+                });
+                if (response.ok) {
+                    const isBanned = banBtn.textContent === 'Ban';
+                    banBtn.textContent = isBanned ? 'Unban' : 'Ban';
+                    banBtn.style.backgroundColor = isBanned ? 'green' : 'red';
+                } else {
+                    console.error('Error updating user ban status');
+                }
+            } catch (error) {
+                console.error('Error updating user ban status:', error);
+            }
         }
 
         // Function to delete a user
@@ -155,17 +205,6 @@
             }
         }
 
-        // Function to handle 'Ban' button click
-        function handleBanButtonClick(banBtn) {
-            if (banBtn.textContent === 'Unban' || banBtn.style.backgroundColor === 'green') {
-                banBtn.textContent = 'Ban';
-                banBtn.style.backgroundColor = 'red';
-            } else {
-                banBtn.style.backgroundColor = 'green';
-                banBtn.textContent = 'Unban';
-            }
-        }
-
         // Function to handle 'Delete' button click
         function handleDeleteButtonClick(deleteBtn) {
             // Prompt for confirmation before deleting
@@ -177,29 +216,14 @@
             }
         }
 
-        // Function to fetch users from the backend
-        async function fetchUsersFromBackend() {
-            try {
-                const response = await fetch('/messages/getUsers');
-                const users = await response.json();
-                return users;
-            } catch (error) {
-                console.error('Error fetching users:', error);
-                return [];
-            }
-        }
-
         // Function to search and filter users
         function searchUsers() {
             const searchInput = document.getElementById('searchInput').value.toLowerCase();
             const searchBy = document.getElementById('searchBy').value;
 
-            const filteredUsers = users.filter(user => {
-                if (searchBy === 'username') {
-                    return user.username.toLowerCase().includes(searchInput);
-                } else if (searchBy === 'id') {
-                    return user.id.toString().includes(searchInput);
-                }
+            const filteredUsers = usersData.filter(user => {
+                return searchBy === 'username' ? user.username.toLowerCase().includes(searchInput) :
+                    searchBy === 'id' ? user.id.toString().includes(searchInput) : false;
             });
 
             // Repopulate the table with filtered users
@@ -208,14 +232,14 @@
 
         // Call the functions when the page loads
         document.addEventListener('DOMContentLoaded', () => {
-            populateUserTable();
-            document.getElementById('searchInput').addEventListener('input', searchUsers);
-            document.getElementById('searchBy').addEventListener('change', searchUsers);
+            fetchUsersFromBackend().then(() => {
+                populateUserTable();
+                document.getElementById('searchInput').addEventListener('input', searchUsers);
+                document.getElementById('searchBy').addEventListener('change', searchUsers);
+            });
         });
 
     </script>
-
-
 </body>
 
 </html>

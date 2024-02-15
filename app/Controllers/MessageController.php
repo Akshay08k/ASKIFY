@@ -29,12 +29,11 @@ class MessageController extends Controller
 
         $userList = [];
         foreach ($users as $user) {
-            $userList[] = ['id' => $user['id'], 'username' => $user['username'], 'name' => $user['name'], 'gender' => $user['gender'], 'email' => $user['email']];
+            $userList[] = ['id' => $user['id'], 'username' => $user['username'], 'name' => $user['name'], 'gender' => $user['gender'], 'email' => $user['email'], 'status' => $user['status']];
         }
 
         echo json_encode($userList);
     }
-
     public function getMessages($receiverId, $latestMessageId = 0, $lastSentMessageId = 0)
     {
         $senderId = session()->get('user_id');
@@ -49,11 +48,6 @@ class MessageController extends Controller
 
         echo json_encode($messages);
     }
-
-
-
-
-
 
     public function sendMessage()
     {

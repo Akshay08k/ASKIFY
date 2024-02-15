@@ -60,21 +60,76 @@
             </div>
         </div>
     </div>
-
     <div class="notifications">
-        <?php foreach ($notifications as $notification): ?>
-            <div class="notification">
-                <div class="title">
-                    <?= $notification['Recepient']; ?>
-                </div>
-                <div class="content"><a href="#">
+        <?php foreach ($PlatFromUpdates as $notification): ?>
+            <form action="<?= base_url('notification/markAsSeen/' . $notification['id']) ?>" method="post">
+                <div class="notification">
+                    <div class="content">
+                        <strong>Update : </strong>
                         <?= $notification['text']; ?>
-                    </a></div>
-                <img class="close-icon" src="<?= base_url('/images/notificationcancel.svg') ?>" alt="Close">
-            </div>
+                    </div>
+
+                </div>
+            </form>
+        <?php endforeach; ?>
+        <?php foreach ($allNotifications as $notification): ?>
+            <form action="<?= base_url('notification/markAsSeen/' . $notification['id']) ?>" method="post">
+                <div class="notification">
+                    <div class="content">
+                        <?= $notification['text']; ?>
+                    </div>
+                    <button type="submit" class="close-btn" name="mark_seen">
+                        <img src="<?= base_url('/images/notificationcancel.svg') ?>" alt="Close" class="cancelimg">
+                    </button>
+                </div>
+            </form>
         <?php endforeach; ?>
 
-        <!-- Add more notifications here -->
+
+
+
+        <!-- Add a dropdown section for read notifications -->
+        <!-- Add a dropdown section for read notifications -->
+        <!-- Add a dropdown section for read notifications -->
+        <!-- Add a dropdown section for read notifications -->
+        <div class="custom-read-notifications-dropdown">
+            <h3 class="custom-dropdown-header"><button class="read-btn" onclick="toggleReadNotifications()">Readed
+                    Notifications ▼</button>
+            </h3>
+            <div class="custom-read-notifications-content" id="readNotifications">
+                <?php foreach ($readNotifications as $notification): ?>
+                    <div class="readed-notification">
+                        <div class="content">
+                            <?= $notification['text']; ?>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+
+        <!-- JavaScript for toggle and animation -->
+        <script>
+            function toggleReadNotifications() {
+                let readNotifications = document.querySelectorAll('.readed-notification');
+                let btn = document.querySelector('.read-btn');
+
+                readNotifications.forEach(notification => {
+                    notification.style.display = (notification.style.display === "block" || notification.style.display === "") ? "none" : "block";
+                });
+
+                btn.textContent = `Readed Notifications ${readNotifications[0].style.display === "block" ? "▶" : "▼"}`;
+            }
+        </script>
+
+
+
+    </div>
+
+
+
+
+
+    <!-- Add more notifications here -->
     </div>
     <footer>
         <hr>
@@ -104,6 +159,7 @@
             <div class="copy">©2023, Askify, Inc. or its affiliates</div>
         </div>
     </footer>
+
 </body>
 
 </html>

@@ -5,9 +5,9 @@ use CodeIgniter\Model;
 
 class NotificationModel extends Model
 {
-    protected $table = 'notifications'; 
+    protected $table = 'notifications';
 
     protected $primaryKey = 'id';
 
-    protected $allowedFields = ['Recepient','question_id','answer_id','set_at','Seen','text'];
+    protected $allowedFields = ['recipient_id', 'question_id', 'answer_id', 'text', 'is_platform_update', 'seen'];
 }

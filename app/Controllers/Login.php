@@ -24,7 +24,16 @@ class Login extends Controller
         $user = $model->where('email', $email)->first();
 
         if ($user && password_verify($password, $user['password'])) {
+            // Check if the user is banned
+            if ($user['status'] === 'ban') {
+                session()->setFlashdata('error', 'Your account has been banned. Please contact support for further assistance.');
+                return redirect()->to(base_url('/login'));
+            }
+
+            // Set the user_id in the session
             session()->set('user_id', $user['id']);
+
+            // Redirect to the homepage
             return redirect()->to(base_url('/homepage'));
         } else {
             // Set flash data for the error

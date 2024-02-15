@@ -3,11 +3,20 @@
 namespace App\Controllers;
 
 use App\Models\CategoryModel;
+use App\Models\UserModel;
 
 class AdminCategoriesController extends BaseController
 {
     public function index()
     {
+        $userId = session()->get('user_id');
+
+        if (!$userId) {
+
+            return redirect()->to('/admin');
+        }
+        $userModel = new UserModel();
+        $data['users'] = $userModel->where('id', $userId)->findAll();
         $model = new CategoryModel();
         $data['categories'] = $model->findAll();
         return view('admin/categories/index', $data);

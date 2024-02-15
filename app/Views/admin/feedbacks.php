@@ -16,13 +16,28 @@
         <div id="sidebar">
             <div class="container">
                 <div class="avatar">
-                    <img src="/sidebar/NYCTOPHILE.png" alt="Profile"></img>
+                    <?php foreach ($users as $user): ?>
+                        <?php
+                        $username = $user['username'];
+
+
+                        $profilePhoto = $user['profile_photo'];
+
+
+                        $profilePhotoBase64 = 'data:image/png;base64,' . base64_encode($profilePhoto);
+
+
+                        ?>
+                        <img src="<?= $profilePhotoBase64 ?>" alt="Profile Picture">
+                    <?php endforeach ?>
                 </div>
-                <h3 class="admin-name">User Name</h3>
+                <h3 class="admin-name">
+                    <?= $user['name'] ?>
+                </h3>
                 <h4 class="admin-title">Admin</h4>
             </div>
             <ul class="sidebtns">
-            <li><a href="/admin/dashboard">Dashboard</a></li>
+                <li><a href="/admin/dashboard">Dashboard</a></li>
                 <li><a href="/admin/manage_users">User Management</a></li>
                 <li><a href="/admin/manage_categories">Manage Categories</a></li>
                 <li><a href="/admin/moderate_content">Content Moderation</a></li>

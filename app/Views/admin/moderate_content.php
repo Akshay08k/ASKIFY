@@ -18,9 +18,24 @@
         <div id="sidebar">
             <div class="container">
                 <div class="avatar">
-                    <img src="/sidebar/NYCTOPHILE.png" alt="Profile"></img>
+                    <?php foreach ($users as $user): ?>
+                        <?php
+                        $username = $user['username'];
+
+
+                        $profilePhoto = $user['profile_photo'];
+
+
+                        $profilePhotoBase64 = 'data:image/png;base64,' . base64_encode($profilePhoto);
+
+
+                        ?>
+                        <img src="<?= $profilePhotoBase64 ?>" alt="Profile Picture">
+                    <?php endforeach ?>
                 </div>
-                <h3 class="admin-name">User Name</h3>
+                <h3 class="admin-name">
+                    <?= $user['name'] ?>
+                </h3>
                 <h4 class="admin-title">Admin</h4>
             </div>
             <ul class="sidebtns">
@@ -34,6 +49,7 @@
                 <li><a href="/admin/manage_accounts">Account</a></li>
             </ul>
         </div>
+
         <div class="flex-1 p-4">
             <h2 class="text-2xl font-bold mb-4">Moderate Content</h2>
 
