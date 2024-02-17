@@ -17,6 +17,7 @@ class QuestionModel extends Model
         'user_id',
         'likes',
         'views',
+        'Hidden',
         'category_id',
         'followers',
         'created_at',
@@ -58,6 +59,19 @@ class QuestionModel extends Model
             ->get()
             ->getRow()
             ->likes;
+    }
+    public function updateQuestionStatus($qaId)
+    {
+        return $this->set(['Hidden' => 1])->where('id', $qaId)->update();
+    }
+    public function isQuestionStatusUpdated($qaId)
+    {
+        // Check if the question status is already updated in the database
+        $result = $this->where('id', $qaId)
+            ->where('Hidden', 1)
+            ->countAllResults();
+
+        return $result > 0;
     }
 
 }

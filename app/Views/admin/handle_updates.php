@@ -57,57 +57,36 @@
             <!-- Form to input platform updates -->
             <div class="bg-white p-4 shadow-md rounded-md mb-4">
                 <h3 class="text-lg font-semibold mb-2">Add Platform Update</h3>
-                <form id="updateForm">
+                <form id="updateForm" action="/handle_updates/update" method="post">
                     <div class="mb-4">
                         <label for="updateDescription" class="block text-sm font-medium text-gray-700">Update
                             Description</label>
                         <textarea id="updateDescription" name="updateDescription" rows="3"
                             class="mt-1 p-2 w-full border rounded-md"></textarea>
                     </div>
-                    <button type="button" onclick="addUpdate()"
-                        class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600">Add Update</button>
+                    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600">Add
+                        Update</button>
                 </form>
             </div>
 
             <!-- Display platform updates dynamically -->
             <div class="bg-white p-4 shadow-md rounded-md">
-                <h3 class="text-lg font-semibold mb-2">Platform Updates</h3>
+                <h3 class="text-lg font-semibold mb-10">Recent Platform Updates :</h3>
+
                 <ul id="updateList" class="list-disc ml-4">
-                    <!-- Platform updates will be dynamically populated here -->
+                    <?php foreach ($notifications as $notification): ?>
+                        <div class="flex justify-between items-center border-b">
+                            <div class="text-gray-800">
+                                <?= $notification['text'] ?>
+                            </div>
+                            <div class="text-gray-500">
+                                <?= date('M d, Y h:i A', strtotime($notification['created_at'])) ?>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
                 </ul>
             </div>
 
-            <!-- Include JavaScript -->
-            <script>
-                // Array to store platform updates
-                const platformUpdates = [];
-
-                // Function to add a platform update
-                function addUpdate() {
-                    const updateDescription = document.getElementById('updateDescription').value;
-
-                    if (updateDescription.trim() !== '') {
-                        platformUpdates.push(updateDescription);
-                        populateUpdateList();
-                        document.getElementById('updateDescription').value = '';
-                    }
-                }
-
-                // Function to dynamically populate the platform update list
-                function populateUpdateList() {
-                    const updateList = document.getElementById('updateList');
-
-                    // Clear existing content
-                    updateList.innerHTML = '';
-
-                    // Populate the list with platform updates
-                    platformUpdates.forEach(update => {
-                        const listItem = document.createElement('div');
-                        listItem.textContent = update;
-                        updateList.appendChild(listItem);
-                    });
-                }
-            </script>
         </div>
     </div>
 

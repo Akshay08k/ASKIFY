@@ -43,19 +43,27 @@ $routes->get('/login', 'Login::index');
 $routes->post('/login/auth', 'Login::auth');
 $routes->get('/logout', 'Home::logout');
 
+//Reporting Question Routes
+$routes->post('report/question/(:num)', 'ReportController::reportQuestion/$1');
+
 // loading contentpolicy
 $routes->get('/content-policy', 'ContentController::contentpolicy');
+
 //loading privacy
 $routes->get('/privacy', 'ContentController::privacy');
+
 //profile routes
 $routes->get('/profile', 'ProfileController::index');
 $routes->get('/updatecategory', 'ProfileController::choosecategory');
 $routes->get('/updateprofile', 'ProfileController::editProfile');
 $routes->post('/updateprofile/save', 'ProfileController::updateProfile');
+
 //loading terms
 $routes->get('/terms', 'ContentController::terms');
+
 //loading homepage
 $routes->get('/homepage', 'HomepageController::index');
+
 //json page for getting question
 $routes->get('/homepage/getQuestions', 'HomepageController::getQuestions');
 $routes->post('/homepage/updateLikeCount/(:num)/(:alpha)', 'HomepageController::updateLikeCount/$1/$2');
@@ -93,9 +101,12 @@ $routes->get("/homepage/getcategories", 'AdminCategoriesController::getcategorie
 $routes->get('/admin', 'AdminController::index');
 $routes->post('/admin/login/auth', 'AdminController::auth');
 
-//feedback & report route
+//feedback Routes
 $routes->get('/admin/feedbacks', 'AdminHandleIssueController::feedbacks');
+
+//report Routes (Handle Issue Route)
 $routes->get('/admin/handle_issues', 'AdminHandleIssueController::Issues');
+$routes->post('/admin/resolve_issue/(:num)', 'AdminHandleIssueController::resolveIssue/$1');
 
 //dashboard routes
 $routes->get('/admin/dashboard', 'AdminDashboardController::index');
@@ -108,6 +119,8 @@ $routes->post('/admin/banUser/(:num)', 'AdminManageUserController::banUser/$1');
 //Admin Profile
 $routes->get('/admin/manage_accounts', 'AdminController::AdminProfile');
 
+$routes->post('admin/updateprofile/save', 'AdminController::updateProfile');
+
 //update categories for admin
 $routes->get('admin/manage_categories', 'AdminCategoriesController::index');
 $routes->get('categories/create', 'AdminCategoriesController::create');
@@ -118,9 +131,11 @@ $routes->get('categories/delete/(:num)', 'AdminCategoriesController::delete/$1')
 
 //moderate content
 $routes->get('admin/moderate_content', 'AdminContentModController::index');
+$routes->post('admin/updateQuestionStatus', 'AdminContentModController::updateQuestionStatus');
 
 //Handle Platform update
 $routes->get('admin/handle_updates', 'AdminDashboardController::platform_updates');
+$routes->post('/handle_updates/update', 'AdminDashboardController::SendFeedback');
 
 /*
  * --------------------------------------------------------------------

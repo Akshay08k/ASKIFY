@@ -99,27 +99,8 @@
                     </span>
                 </div>
 
-                <div class="bg-white p-4 shadow-md rounded-md">
-                    <p class="text-gray-800">Average User Rating:</p>
-                    <span class="text-xl font-bold text-indigo-600">
-                        <?= $averageUserRating ?>
-                    </span>
-
-                </div>
 
 
-
-
-                <div class="bg-white p-4 shadow-md rounded-md">
-                    <h3 class="text-gray-800 text-lg font-semibold mb-2">User Feedbacks</h3>
-
-                    <?php foreach ($recentFeedbacks as $feedback): ?>
-                        <p class="text-indigo-600">
-                            "
-                            <?= esc($feedback['text']); ?> "
-                        </p>
-                    <?php endforeach; ?>
-                </div>
                 <div class="bg-white p-4 shadow-md rounded-md">
                     <h3 class="text-gray-800 text-lg font-semibold mb-2">Upcoming Platform Updates</h3>
 

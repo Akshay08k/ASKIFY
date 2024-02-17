@@ -52,47 +52,20 @@
 
             <!-- Feedback List -->
             <div id="feedbackList" class="grid grid-cols-3 gap-4">
-                <!-- Existing Feedback Cards will be dynamically added here using JavaScript -->
+                <?php foreach ($feedbacks as $feedback): ?>
+                    <div class="feedbackcard bg-white p-4 rounded shadow">
+                        <h3 class="text-xl font-bold mb-2">
+                            <?= $feedback['user_name'] ?>
+                        </h3>
+                        <p class="text-gray-600 mb-2">User ID:
+                            <?= $feedback['user_id'] ?>
+                        </p>
+                        <p class="text-gray-700">
+                            <?= $feedback['text'] ?>
+                        </p>
+                    </div>
+                <?php endforeach; ?>
             </div>
 
-            <script>
-                // Sample feedback data (replace with actual data fetching logic)
-                const feedbackData = [
-                    { user: "John Doe", userId: "12345", message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-
-                    { user: "Akshay Komale", userId: "12345", message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-
-                    { user: "John Doe", userId: "12345", message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-
-                    { user: "John Doe", userId: "12345", message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-
-                    { user: "John Doe", userId: "12345", message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-                    // Add more feedback objects as needed
-                ];
-
-                // Function to add feedback cards based on the provided data
-                function loadFeedbacks() {
-                    const feedbackList = document.getElementById("feedbackList");
-
-                    // Iterate through the feedback data and create feedback cards
-                    feedbackData.forEach(feedback => {
-                        const feedbackCard = document.createElement("div");
-                        feedbackCard.className = "bg-white p-4 rounded shadow";
-
-                        feedbackCard.innerHTML = `
-                        <h3 class="text-xl font-bold mb-2">User: ${feedback.user}</h3>
-                        <p class="text-gray-600 mb-2">User ID: ${feedback.userId}</p>
-                        <p class="text-gray-700">${feedback.message}</p>
-                    `;
-
-                        // Append the feedback card to the feedbackList
-                        feedbackList.appendChild(feedbackCard);
-                    });
-                }
-
-                // Load feedbacks automatically when the page loads
-                window.onload = loadFeedbacks;
-            </script>
-</body>
 
 </html>

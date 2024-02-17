@@ -45,8 +45,6 @@
 
             <?php endif; ?>
         <?php endforeach; ?>
-
-
         <div class="dropdown">
             <div>More Categories</div>
 
@@ -84,14 +82,6 @@
                 </div>
             </form>
         <?php endforeach; ?>
-
-
-
-
-        <!-- Add a dropdown section for read notifications -->
-        <!-- Add a dropdown section for read notifications -->
-        <!-- Add a dropdown section for read notifications -->
-        <!-- Add a dropdown section for read notifications -->
         <div class="custom-read-notifications-dropdown">
             <h3 class="custom-dropdown-header"><button class="read-btn" onclick="toggleReadNotifications()">Readed
                     Notifications ▼</button>
@@ -106,7 +96,6 @@
                 <?php endforeach; ?>
             </div>
         </div>
-
         <!-- JavaScript for toggle and animation -->
         <script>
             function toggleReadNotifications() {
@@ -116,7 +105,6 @@
                 readNotifications.forEach(notification => {
                     notification.style.display = (notification.style.display === "block" || notification.style.display === "") ? "none" : "block";
                 });
-
                 btn.textContent = `Readed Notifications ${readNotifications[0].style.display === "block" ? "▶" : "▼"}`;
             }
         </script>

@@ -168,7 +168,9 @@ h2 {
 }
 
 footer {
-    margin-top: 10px;
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
 }
 
 .foot-panel1 {

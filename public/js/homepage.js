@@ -61,6 +61,9 @@ function createQuestionBox(data) {
         <div class="share-button">
           <img src="https://cdn2.iconfinder.com/data/icons/line-drawn-social-media/31/share-1024.png" height="30" width="30">
         </div>
+        <div class="report-button" onclick="openReportModal(${id})">
+          <img src="https://cdn2.iconfinder.com/data/icons/user-interface-glyph-24/32/warning_danger_report-512.png" height="30" width="30">
+        </div>
       </div>
     </div>
   `;
@@ -102,6 +105,7 @@ function createQuestionBox(data) {
       .catch((error) => console.error("Error updating like count:", error));
   });
 
+  questionBox.setAttribute("data-question-id", id);
   return questionBox;
 }
 
@@ -132,14 +136,14 @@ function logCategoryId(categoryId) {
   fetch("/homepage/getQuestions")
     .then((response) => response.json())
     .then((questions) => {
-      console.log("Fetched Questions:", questions);
+      // console.log("Fetched Questions:", questions);
 
       // Filter questions based on the desired categoryId
       const filteredQuestions = questions.filter(
         (question) => question.category_id == categoryId
       );
 
-      console.log("Filtered Questions:", filteredQuestions);
+      // console.log("Filtered Questions:", filteredQuestions);
 
       // Clear the existing questions in the container
       questionContainer.innerHTML = "";
@@ -149,18 +153,18 @@ function logCategoryId(categoryId) {
         const questionBox = createQuestionBox(questionData);
         questionContainer.appendChild(questionBox);
       });
+      console.log(filteredQuestions == [""]);
 
       // Fetch category information
       fetch("/homepage/getcategories")
         .then((response) => response.json())
         .then((categories) => {
-          console.log("Fetched Categories:", categories);
+          // console.log("Fetched Categories:", categories);
 
           // Find the category with the specified ID
           const selectedCategory = categories.find(
             (category) => category.id == categoryId
           );
-
           if (!selectedCategory) {
             console.error("Category not found");
             return;
@@ -201,4 +205,54 @@ function logCategoryId(categoryId) {
         .catch((error) => console.error("Error fetching categories:", error));
     })
     .catch((error) => console.error("Error fetching questions:", error));
+}
+
+//Report Function
+document.addEventListener("DOMContentLoaded", function () {
+  // Your existing code here
+
+  // Add event listener to a parent element that is present in the DOM
+  document
+    .querySelector(".content")
+    .addEventListener("click", function (event) {
+      const target = event.target;
+
+      // Check if the clicked element is a report button
+      if (target.classList.contains("report-button")) {
+        openReportModal();
+      }
+
+      // Add other conditions for different buttons if needed
+    });
+});
+
+function openReportModal(id) {
+  document.getElementById("reportModal").setAttribute("data-question-id", id);
+  document.getElementById("reportModal").style.display = "block";
+}
+
+function closeReportModal() {
+  document.getElementById("reportModal").style.display = "none";
+}
+
+function submitReport() {
+  const reportReason = document.getElementById("reportReason").value;
+  const questionId = document
+    .getElementById("reportModal")
+    .getAttribute("data-question-id");
+
+  fetch(`/report/question/${questionId}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ reason: reportReason }),
+  })
+    .then((response) => response.json())
+    .then((result) => {
+      // Handle the server response as needed
+      console.log("Report submitted successfully", result);
+      closeReportModal();
+    })
+    .catch((error) => console.error("Error submitting report:", error));
 }

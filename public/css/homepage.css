@@ -11,7 +11,6 @@
 
 body {
   font-family: var(--font-family);
-
   background-color: #ecf0f1;
   overflow: scroll;
 }
@@ -155,6 +154,7 @@ li a:active {
 
 .content,
 .center {
+  flex: 1;
   z-index: 1;
   background-color: #ecf0f1;
   display: flex;
@@ -362,6 +362,41 @@ li a:active {
   cursor: pointer;
 }
 
+.share-button:hover::before {
+  content: "Share";
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+  display: block;
+  white-space: nowrap;
+}
+
+.report-button {
+  position: absolute;
+  bottom: 0;
+  right: 40px;
+  cursor: pointer;
+}
+
+.report-button:hover::before {
+  content: "Report";
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+  display: block;
+  white-space: nowrap;
+}
+
 h1 {
   font-size: 14px;
   font-weight: 400;
@@ -370,9 +405,9 @@ h1 {
 }
 
 footer {
+  position: relative;
   width: 100%;
-  position: sticky;
-  bottom: -45%;
+  bottom: 0;
 }
 
 .foot-panel1 {
@@ -545,4 +580,91 @@ footer {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+}
+
+/* Modal container */
+#reportModal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* Modal content */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  position: relative;
+}
+
+/* Close button */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Heading */
+h2 {
+  text-align: center;
+}
+
+/* Textarea for reason */
+#reportReason {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  box-sizing: border-box;
+}
+
+/* Submit button */
+.submit-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Popup Styles */
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  z-index: 1;
+}
+
+.popup-content {
+  max-width: 400px;
+  margin: auto;
+}
+
+.close {
+  float: right;
+  cursor: pointer;
+}
+
+
+/* Button hover effect */
+button:hover {
+  background-color: #45a049;
 }

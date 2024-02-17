@@ -61,14 +61,26 @@
     </div>
 
 
-
-
     <div class="center">
-
-
+        <div id="reportModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeReportModal()">&times;</span>
+                <h2>Report Question</h2>
+                <textarea id="reportReason" placeholder="Enter your reason for reporting..."></textarea>
+                <button onclick="submitReport()" class="submit-btn">Submit Report</button>
+            </div>
+        </div>
+        <div id="feedbackPopup" class="popup">
+            <div class="popup-content">
+                <span class="close" onclick="closeFeedbackPopup()">&times;</span>
+                <h2>Feedback</h2>
+                <textarea id="feedbackText" placeholder="Enter your feedback..."></textarea>
+                <button onclick="submitFeedback()">Submit Feedback</button>
+            </div>
+        </div>
         <div class="askingbtnbar">
-            <button id="askQuestionBtn">Create Post</button>
-            <button id="createPostBtn">Ask Question</button>
+            <button id="askQuestionBtn">Ask Question</button>
+            <button id="createPostBtn">Create Post</button>
         </div>
     </div>
     <div class="categorybox"></div>
@@ -122,6 +134,9 @@
             </select>
         </form>
         <button id="postclsbtn">Close</button>
+        <!-- Add this modal for reporting -->
+
+
     </div>
     <footer>
         <div class="foot-panel2">
@@ -138,7 +153,7 @@
                 <a>Use Of Askify </a>
                 <a>Your Account</a>
                 <a>Help</a>
-                <a>Feedback</a>
+                <a id="feedbackBtn">Feedback</a>
             </div>
         </div>
         <div class="foot-panel4">
@@ -152,6 +167,28 @@
     </footer>
 
     <script src="<?= base_url('/js/homepage.js') ?>"></script>
+    <script>
+        // Open Feedback Popup
+        document.getElementById('feedbackBtn').addEventListener('click', openFeedbackPopup);
+
+        // Close Feedback Popup
+        function closeFeedbackPopup() {
+            document.getElementById('feedbackPopup').style.display = 'none';
+        }
+
+        // Open Feedback Popup
+        function openFeedbackPopup() {
+            document.getElementById('feedbackPopup').style.display = 'block';
+        }
+
+        // Submit Feedback (You can replace this function with your actual submission logic)
+        function submitFeedback() {
+            const feedbackText = document.getElementById('feedbackText').value;
+            alert('Feedback submitted: ' + feedbackText);
+            closeFeedbackPopup();
+        }
+
+    </script>
 
 </body>
 

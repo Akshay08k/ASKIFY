@@ -29,38 +29,29 @@ class AdminDashboardController extends BaseController
         $AnswerModel = new AnswerModel();
         $NotificationModel = new NotificationModel();
 
-        // Fetch the user data
-        $data['users'] = $userModel->where('id', $userId)->findAll();
+        // Loading All Important Variabless
 
+        $data['users'] = $userModel->where('id', $userId)->findAll();
         $data['categories'] = $CategoryModel->findAll();
-        // Fetch the total number of users
         $data['totalUsers'] = $userModel->countAll();
         $data['totalCategories'] = $CategoryModel->countAll();
         $data['totalReports'] = $ReportModel->countAll();
         $data['totalFeedbacks'] = $FeedbackModel->countAll();
         $data['totalQuestions'] = $QuestionModel->countAll();
         $data['totalAnswer'] = $AnswerModel->countAll();
+        //Finding Platform Updates From Notification
         $recentFeedbacks = $FeedbackModel->orderBy('created_at', 'DESC')->findAll(3);
-
         $platformUpdateNotifications = $NotificationModel->where('is_platform_update', 1)->findAll();
-
-        // Pass the notifications to the view
         $data['platformUpdateNotifications'] = $platformUpdateNotifications;
-        // Pass the feedbacks to the view
         $data['recentFeedbacks'] = $recentFeedbacks;
 
-        // Calculate the average UserRating
-        $averageUserRating = $FeedbackModel->selectAvg('Userrating')->get()->getRowArray();
-        $data['averageUserRating'] = round($averageUserRating['Userrating'], 1);
-
-
-
-
+        //Returning View With Data
         return view("admin/dashboard", $data);
     }
-
     public function platform_updates()
     {
+        $NotificationModel = new NotificationModel();
+        $data['notifications'] = $NotificationModel->where('is_platform_update', true)->findAll();
         $userId = session()->get('user_id');
 
         if (!$userId) {
@@ -71,5 +62,16 @@ class AdminDashboardController extends BaseController
         $data['users'] = $userModel->where('id', $userId)->findAll(); {
             return view("admin/handle_updates", $data);
         }
+    }
+    public function SendFeedback()
+    {
+        $NotificationModel = new NotificationModel();
+        $text = $this->request->getPost("updateDescription");
+        $data = [
+            'text' => $text,
+            'is_platform_update' => true,
+        ];
+        $NotificationModel->insert($data);
+        return redirect("admin/handle_updates");
     }
 }

@@ -27,7 +27,7 @@ class HomepageController extends BaseController
 
         try {
             $questions = $QuestionModel
-                ->select('users.name, question.id, question.title, question.description, question.category_id, question.user_id, question.likes, question.media')
+                ->select('users.name, question.id, question.title,question.Hidden, question.description, question.category_id, question.user_id, question.likes, question.media')
                 ->join('users', 'question.user_id = users.id')
                 ->findAll();
 
