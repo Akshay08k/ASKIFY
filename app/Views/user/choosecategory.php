@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Category Selection</title>
-    
+
     <link rel="stylesheet" href="<?= base_url('css/choosecategory.css') ?>">
 </head>
 
@@ -15,38 +15,47 @@
         <h1>Category Selection</h1>
     </header>
     <div>
-        <div id="container">
-            <?php foreach ($categories as $category): ?>
-                <div class="category-item" onclick="toggleCategory(this)">
-                    <img src="<?= base_url('uploads/' . $category['image']); ?>" alt="<?= $category['name']; ?>">
-                    <?= $category['name']; ?>
-                </div>
-            <?php endforeach; ?>
-            <button id="confirm-button" onclick="confirmSelection()">Confirm</button>   
-        </div>
+        <form method="post" action="<?= base_url('updatecategory/processCategorySelection') ?>">
+
+            <div id="container">
+                <?php foreach ($categories as $category): ?>
+                    <label for="category<?= $category['id']; ?>" id="catlabel">
+                        <div class="category-item">
+                            <input type="checkbox" id="category<?= $category['id']; ?>" name="selected_categories[]"
+                                value="<?= $category['id']; ?>">
+                            <img src="data:image/jpeg;base64,<?= $category['image']; ?>" alt="<?= $category['name']; ?>">
+                            <?= $category['name']; ?>
+                        </div>
+                    </label>
+                <?php endforeach; ?>
+                <div class="btndiv"><button type="submit" id="confirm-button">Confirm</button></div>
+            </div>
+        </form>
+
+
+
+
     </div>
     <script>
-        
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var categoryLabels = document.querySelectorAll('.category-item');
+
+            categoryLabels.forEach(function (label) {
+                label.addEventListener('click', function () {
+                    toggleCategory(this);
+                });
+            });
+        });
 
         function toggleCategory(element) {
             element.classList.toggle('selected');
         }
 
-        function confirmSelection() {
-            var selectedCategories = document.querySelectorAll('.category-item.selected');
 
-            if (selectedCategories.length > 0) {
-                var categoryNames = Array.from(selectedCategories).map(function (categoryItem) {
-                    return categoryItem.textContent.trim().replace(/\s+/g, ' ');
-                });
-
-                alert('You have confirmed the selection of: ' + categoryNames.join(', '));
-            } else {
-                alert('No categories selected.');
-            }
-        }
     </script>
-   
+
 
 </body>
 

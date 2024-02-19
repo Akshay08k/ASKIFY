@@ -15,143 +15,6 @@ body {
   overflow: scroll;
 }
 
-::-webkit-scrollbar {
-  display: none;
-}
-
-nav {
-  z-index: 1;
-  position: sticky;
-  top: 0px;
-  overflow: hidden;
-  background-color: var(--navbar-color);
-  height: 80px;
-  overflow: hidden;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-}
-
-.search__container {
-  padding-top: 5px;
-  width: 500px;
-}
-
-.search__input {
-  width: 100%;
-  padding: 12px 24px;
-  background-color: transparent;
-  transition: transform 250ms ease-in-out;
-  font-size: 18px;
-  line-height: 18px;
-  color: white;
-  border-radius: 50px;
-  border: 1px solid #bdc3c7;
-  transition: all 250ms ease-in-out;
-  letter-spacing: 1.5px;
-}
-
-.search__input::placeholder {
-  color: #95a5a6;
-  letter-spacing: 4px;
-}
-
-.search__input:hover,
-.search__input:focus {
-  padding: 12px 0;
-  outline: 0;
-  border: 1px solid transparent;
-  border-bottom: 1px solid #7f8c8d;
-  border-radius: 0;
-}
-
-li {
-  margin-right: 20px;
-}
-
-li a {
-  display: block;
-  color: #ecf0f1;
-  font-size: 20px;
-  text-align: center;
-  text-decoration: none;
-  padding: 14px 16px;
-}
-
-li a:active {
-  background-color: #2c3e50;
-  color: #ecf0f1;
-}
-
-.logo>a>img {
-  margin-left: 50px;
-  height: 60px;
-  width: 130px;
-}
-
-.categories {
-  z-index: 1;
-  position: sticky;
-  top: 80px;
-  height: 50px;
-  background-color: var(--categories-bg);
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  color: white;
-}
-
-.category-item {
-  margin-right: 10px;
-}
-
-.category-item:hover,
-.dropdown-content div:hover {
-  transition: 0.7s;
-  z-index: 1;
-  font-size: 17px;
-  background-color: #34495e;
-  color: #ecf0f1;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-  z-index: 1;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  right: 20px;
-  z-index: 2;
-  font: bolder;
-  color: black;
-  background-color: lightblue;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  column-count: 4;
-}
-
-.dropdown-content a {
-  color: #333;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
 .content,
 .center {
   flex: 1;
@@ -404,66 +267,6 @@ h1 {
   color: #888888;
 }
 
-footer {
-  position: relative;
-  width: 100%;
-  bottom: 0;
-}
-
-.foot-panel1 {
-  background-color: #374758;
-  color: white;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-}
-
-.foot-panel2 {
-  background-color: #222f3d;
-  color: white;
-  height: 210px;
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.ul {
-  margin-top: 20px;
-}
-
-.ul a {
-  display: block;
-  text-decoration: none;
-  color: #dddddd;
-  font-size: 1.1rem;
-  margin-top: 10px;
-}
-
-.foot-panel4 {
-  background-color: #0f1111;
-  color: white;
-  height: 80px;
-  font-size: 0.7rem;
-  text-align: center;
-}
-
-.pages {
-  padding-top: 25px;
-  font-size: 15px;
-}
-
-.copy {
-  margin-top: 5px;
-  font-size: 15px;
-}
-
-.pages a {
-  color: white;
-  text-decoration: none;
-  margin-right: 10px;
-}
-
 #header {
   display: flex;
   justify-content: space-between;
@@ -582,7 +385,6 @@ footer {
   align-items: center;
 }
 
-/* Modal container */
 #reportModal {
   display: none;
   position: fixed;
@@ -594,7 +396,6 @@ footer {
   z-index: 1;
 }
 
-/* Modal content */
 .modal-content {
   background-color: #fefefe;
   margin: 15% auto;
@@ -605,7 +406,6 @@ footer {
   position: relative;
 }
 
-/* Close button */
 .close {
   position: absolute;
   top: 10px;
@@ -615,12 +415,10 @@ footer {
   cursor: pointer;
 }
 
-/* Heading */
 h2 {
   text-align: center;
 }
 
-/* Textarea for reason */
 #reportReason {
   width: 100%;
   padding: 10px;
@@ -628,9 +426,8 @@ h2 {
   box-sizing: border-box;
 }
 
-/* Submit button */
 .submit-btn {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   padding: 10px 15px;
   border: none;
@@ -640,7 +437,6 @@ h2 {
   margin: 0 auto;
 }
 
-/* Popup Styles */
 .popup {
   display: none;
   position: fixed;
@@ -663,8 +459,6 @@ h2 {
   cursor: pointer;
 }
 
-
-/* Button hover effect */
 button:hover {
   background-color: #45a049;
 }

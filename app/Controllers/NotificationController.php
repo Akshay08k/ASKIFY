@@ -11,11 +11,16 @@ class NotificationController extends BaseController
 
     public function index()
     {
+        $userId = session()->get('user_id');
+
+        if (!$userId) {
+            session()->setFlashdata('error', 'Please Login To Continue');
+            return redirect()->to('login');
+
+        }
         $model = new NotificationModel();
         $categoryModel = new CategoryModel();
 
-        // Get the current logged-in user's ID (assuming you have authentication implemented)
-        $userId = session()->get("user_id"); // Replace this with your actual authentication logic
 
         // Fetch all notifications for the current user excluding those with 'seen' set to true
         $data['allNotifications'] = $model->where('recipient_id', $userId)

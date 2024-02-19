@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\CategoryModel;
+use App\Models\UserCategoriesModel;
 use App\Models\UserModel;
 use App\Models\FollowerModel;
 use App\Models\QuestionModel;
@@ -19,34 +20,41 @@ class ProfileController extends BaseController
         $userId = session()->get('user_id');
 
         if (!$userId) {
-
+            session()->setFlashdata('error', 'Please Login To Continue');
             return redirect()->to('login');
-        }
-        $categoryModel = new CategoryModel();
-        $data['categories'] = $categoryModel->findAll();
-        $QuestionModel = new QuestionModel();
-        $data['question'] = $QuestionModel->findAll();
 
+        }
+        $activityLogModel = new ActivityLogModel();
+        $categoryModel = new CategoryModel();
+        $QuestionModel = new QuestionModel();
+        $followerModel = new FollowerModel();
+        $questionModel = new QuestionModel();
+        $answerModel = new AnswerModel();
         $userModel = new UserModel();
+
+        $UserCategoriesModel = new UserCategoriesModel();
+        $UserSelectedCategories = $UserCategoriesModel->where('user_id', $userId)->findAll();
+
+        // Extracting category_id values from the result
+        $categoryIds = array_column($UserSelectedCategories, 'category_id');
+        $InterestedCategories = $categoryModel->whereIn('id', $categoryIds)->findAll();
+        $data['usercategory'] = $InterestedCategories;
+
+        $data['categories'] = $categoryModel->findAll();
+        $data['question'] = $QuestionModel->findAll();
         $data['userId'] = $userId;
         $data['users'] = $userModel->where('id', $userId)->findAll();
-
-
-        $followerModel = new FollowerModel();
         $data['followers'] = $followerModel->where('user_id', $userId)->findAll();
         $data['totalFollowers'] = $followerModel->where('user_id', $userId)->countAllResults();
         $data['followers'] = $followerModel->where('follower_id', $userId)->findAll();
         $data['totalFollowing'] = $followerModel->where('follower_id', $userId)->countAllResults();
-
-        $questionModel = new QuestionModel();
         $data['questions'] = $questionModel->where('user_id', $userId)->findAll();
         $totalLikesResult = $questionModel->selectSum('likes')->where('user_id', $userId)->get()->getRowArray();
         $data['totalLikes'] = $totalLikesResult['likes'];
-
-        $answerModel = new AnswerModel();
         $totalAnswerLikes = [];
 
         $distinctQuestionIds = $answerModel->distinct()->select('question_id')->findAll();
+
 
         foreach ($distinctQuestionIds as $row) {
             $questionId = $row['question_id'];
@@ -55,22 +63,76 @@ class ProfileController extends BaseController
         }
 
         $data['totalAnswerLikes'] = $totalAnswerLikes;
-
-
-        $activityLogModel = new ActivityLogModel();
         $data['recentActivity'] = $activityLogModel->getRecentActivityForUser($userId, 5);
 
         return view('user/selfprofile', $data);
 
     }
-
-    public function choosecategory()
+    public function VisitProfile($userId)
     {
 
-        $model = new CategoryModel();
-        $data['categories'] = $model->getCategories();
 
+        $activityLogModel = new ActivityLogModel();
+        $categoryModel = new CategoryModel();
+        $QuestionModel = new QuestionModel();
+        $followerModel = new FollowerModel();
+        $questionModel = new QuestionModel();
+        $answerModel = new AnswerModel();
+        $userModel = new UserModel();
+
+        $UserCategoriesModel = new UserCategoriesModel();
+        $UserSelectedCategories = $UserCategoriesModel->where('user_id', $userId)->findAll();
+
+        // Extracting category_id values from the result
+        $categoryIds = array_column($UserSelectedCategories, 'category_id');
+        $InterestedCategories = $categoryModel->whereIn('id', $categoryIds)->findAll();
+        $data['usercategory'] = $InterestedCategories;
+
+        $data['categories'] = $categoryModel->findAll();
+        $data['question'] = $QuestionModel->findAll();
+        $data['userId'] = $userId;
+        $data['users'] = $userModel->where('id', $userId)->findAll();
+        $data['followers'] = $followerModel->where('user_id', $userId)->findAll();
+        $data['totalFollowers'] = $followerModel->where('user_id', $userId)->countAllResults();
+        $data['followers'] = $followerModel->where('follower_id', $userId)->findAll();
+        $data['totalFollowing'] = $followerModel->where('follower_id', $userId)->countAllResults();
+        $data['questions'] = $questionModel->where('user_id', $userId)->findAll();
+        $totalLikesResult = $questionModel->selectSum('likes')->where('user_id', $userId)->get()->getRowArray();
+        $data['totalLikes'] = $totalLikesResult['likes'];
+        $totalAnswerLikes = [];
+
+        $distinctQuestionIds = $answerModel->distinct()->select('question_id')->findAll();
+
+
+        foreach ($distinctQuestionIds as $row) {
+            $questionId = $row['question_id'];
+            $likesSumResult = db_connect()->table('answer')->where('question_id', $questionId)->selectSum('likes')->get()->getRowArray();
+            $totalAnswerLikes[$questionId] = $likesSumResult['likes'];
+        }
+
+        $data['totalAnswerLikes'] = $totalAnswerLikes;
+        $data['recentActivity'] = $activityLogModel->getRecentActivityForUser($userId, 5);
+
+        return view('user/profile', $data);
+
+    }
+    public function choosecategory()
+    {
+        $CategoryModel = new CategoryModel();
+
+        $data['categories'] = $CategoryModel->getCategories();
         echo view('user/choosecategory', $data);
+    }
+
+    public function processCategorySelection()
+    {
+        $usercategoryModel = new UserCategoriesModel();
+
+        $selectedCategories = $this->request->getPost('selected_categories');
+        print_r($selectedCategories);
+        $userId = session()->get('user_id');
+        $usercategoryModel->storeUserCategories($userId, $selectedCategories);
+        return redirect()->to('/profile');
     }
 
     public function editProfile()
@@ -82,15 +144,11 @@ class ProfileController extends BaseController
         if (!$userId) {
             return redirect()->to('/login')->with('error', 'You are not logged in.');
         }
-
         $userModel = new UserModel();
         $userData = $userModel->find($userId);
-
         if (empty($userData)) {
             return redirect()->to('/user/404page')->with('error', 'User not found.');
         }
-
-
         return view('user/updateprofile', ['userData' => $userData]);
     }
 
@@ -158,6 +216,13 @@ class ProfileController extends BaseController
         }
 
         return view('user/updateprofile', ['userData' => $userData]);
+    }
+    public function liveSearch()
+    {
+        $userModel = new UserModel();
+        $searchTerm = $this->request->getPost('searchTerm');
+        $results = $userModel->searchUsers($searchTerm);
+        return json_encode($results);
     }
 
 }

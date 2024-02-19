@@ -66,7 +66,6 @@
                     <label class="block mb-2 text-sm font-bold text-gray-600" for="name">Name:</label>
                     <input type="text" name="name" value="<?= $user['name'] ?>" required class="w-full border p-2 mb-4">
 
-
                     <label class="block mb-2 text-sm font-bold text-gray-600" for="birthdate">Birthdate
                         (yyyy-mm-dd):</label>
                     <input type="text" name="birthdate" pattern="\d{4}-\d{2}-\d{2}" value="<?= $user['birthdate'] ?>"
@@ -85,7 +84,7 @@
                         <option value="other" <?= ($user['gender'] == 'other') ? 'selected' : '' ?>>Other</option>
                     </select>
 
-                    <!-- Social Media Links -->
+
                     <label class="block mb-2 text-sm font-bold text-gray-600">Social Media Links:</label>
                     <div class="flex space-x-4 mb-4">
                         <input type="text" name="instagram" placeholder="Instagram" value="<?= $user['instagram'] ?>"

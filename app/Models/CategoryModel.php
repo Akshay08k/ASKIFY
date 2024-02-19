@@ -8,9 +8,9 @@ class CategoryModel extends Model
 {
     protected $table = 'categories';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['name','image'];
+    protected $allowedFields = ['name', 'image'];
     public function getCategories()
     {
-        return $this->findAll(); 
+        return $this->findAll();
     }
 }

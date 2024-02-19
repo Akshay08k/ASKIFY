@@ -10,62 +10,6 @@
     font-family: var(--font-family);
 }
 
-nav {
-    background-color: var(--navbar-color);
-    height: 80px;
-    overflow: hidden;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0px;
-    z-index: 1;
-}
-
-::-webkit-scrollbar {
-    display: none;
-}
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-}
-
-.search__container {
-    padding-top: 5px;
-    width: 500px;
-}
-
-.search__input {
-    width: 100%;
-    padding: 12px 24px;
-    background-color: transparent;
-    transition: transform 250ms ease-in-out;
-    font-size: 18px;
-    line-height: 18px;
-    color: white;
-    border-radius: 50px;
-    border: 1px solid #bdc3c7;
-    letter-spacing: 1.5px;
-}
-
-.search__input::placeholder {
-    color: #95a5a6;
-    letter-spacing: 4px;
-}
-
-.search__input:hover,
-.search__input:focus {
-    padding: 12px 0;
-    outline: 0;
-    border: 1px solid transparent;
-    border-bottom: 1px solid #7f8c8d;
-    border-radius: 0;
-}
 
 li {
     margin-right: 20px;
@@ -102,64 +46,6 @@ li a:focus {
 }
 
 
-.categories {
-    z-index: 1;
-    position: sticky;
-    top: 80px;
-    height: 50px;
-    background-color: var(--categories-bg);
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    color: white;
-}
-
-.category-item {
-    margin-right: 10px;
-}
-
-.category-item:hover,
-.dropdown-content div:hover {
-    transition: 0.7s;
-    font-size: 17px;
-    background-color: #34495e;
-    color: #ecf0f1;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown div {
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    right: 30px;
-    z-index: 1;
-
-    font: bolder;
-    color: black;
-    background-color: lightblue;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    column-count: 4;
-}
-
-.dropdown-content a {
-    color: #333;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
 
 
 h1,

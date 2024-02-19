@@ -6,28 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Homepage</title>
     <!-- Add your stylesheet link -->
+    <link rel="stylesheet" href="<?= base_url('/css/header.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('/css/footer.css') ?>">
     <link rel="stylesheet" href="<?= base_url('/css/homepage.css') ?>">
     <link rel="shortcut icon"
         href="https://static.vecteezy.com/system/resources/previews/000/568/825/original/question-answer-icon-vector.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Work+Sans:wght@300&display=swap"
-        rel="stylesheet">
-
-
 </head>
 
 <body>
     <nav id="header">
         <div class="logo">
-            <a href="#"> <img src="<?= base_url('/images/logo.png') ?>" alt="Logo" width="100"></a>
+            <a href="/"> <img src="<?= base_url('/images/logo.png') ?>" alt="Logo" width="100"></a>
         </div>
         <div class="search-box">
             <div class="search__container">
-                <input class="search__input" type="text" placeholder="Search">
+                <input class="search__input" type="text" placeholder="Search Question">
             </div>
         </div>
-        <ul>
+        <ul class="navlink">
             <li><a href="/homepage">Home</a></li>
             <li><a href="/notification">Notification</a></li>
             <li><a href="/messages">Messages</a></li>

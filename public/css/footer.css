@@ -1,5 +1,7 @@
 footer {
-    margin-top: 10 px;
+    position: relative;
+    width: 100%;
+    bottom: 0;
 }
 
 .foot-panel1 {
@@ -18,7 +20,6 @@ footer {
     height: 210px;
     display: flex;
     justify-content: space-evenly;
-
 }
 
 .ul {

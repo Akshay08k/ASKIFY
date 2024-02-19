@@ -13,6 +13,14 @@ class HomepageController extends BaseController
 {
     public function index()
     {
+        $userId = session()->get('user_id');
+
+        if (!$userId) {
+            session()->setFlashdata('error', 'Please Login To Continue');
+            return redirect()->to('login');
+
+        }
+
         $categoryModel = new CategoryModel();
         $data['categories'] = $categoryModel->findAll();
         $QuestionModel = new QuestionModel();

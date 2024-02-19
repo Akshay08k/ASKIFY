@@ -55,8 +55,12 @@ $routes->get('/privacy', 'ContentController::privacy');
 //profile routes
 $routes->get('/profile', 'ProfileController::index');
 $routes->get('/updatecategory', 'ProfileController::choosecategory');
+$routes->post('updatecategory/processCategorySelection', 'ProfileController::processCategorySelection');
 $routes->get('/updateprofile', 'ProfileController::editProfile');
 $routes->post('/updateprofile/save', 'ProfileController::updateProfile');
+$routes->post('/search/liveSearch', 'ProfileController::liveSearch');
+$routes->get('/visitprofile/(:num)', 'ProfileController::VisitProfile/$1');
+
 
 //loading terms
 $routes->get('/terms', 'ContentController::terms');
@@ -94,8 +98,8 @@ $routes->get("/homepage/getcategories", 'AdminCategoriesController::getcategorie
 
 
 /*
-------------------------------------------
----------ADMIN ROUTES---------------------
+----------------------------------------
+-----------ADMIN ROUTES---------------------
 ------------------------------------------
 */
 $routes->get('/admin', 'AdminController::index');

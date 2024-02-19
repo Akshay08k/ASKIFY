@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="<?= base_url('css/homepage.css') ?>">
+  <link rel="stylesheet" href="<?= base_url('/css/header.css') ?>">
+  <link rel="stylesheet" href="<?= base_url('/css/footer.css') ?>">
   <link rel="stylesheet" href="<?= base_url('/css/homepage.css') ?>">
   <link rel="shortcut icon"
     href="https://static.vecteezy.com/system/resources/previews/000/568/825/original/question-answer-icon-vector.jpg">
@@ -26,18 +27,18 @@
       </div>
 
     </div>
-    <ul>
+    <ul class="navlink">
       <li><a href="/login">Login</a></li>
       <li><a href="/register">Register</a></li>
     </ul>
   </nav>
   <div class="categories">
     <?php
-    $desiredCategoryIds = [18, 19, 20, 21, 22];
+    $desiredCategoryIds = [18, 29, 20, 21, 22];
     ?>
     <?php foreach ($categories as $category): ?>
       <?php if (in_array($category['id'], $desiredCategoryIds)): ?>
-        <div class="category-item">
+        <div class="category-item" onclick="redirect()">
           <?= $category['name']; ?>
         </div>
 
@@ -51,15 +52,18 @@
 
       <div class="dropdown-content">
         <?php foreach ($categories as $category): ?>
-          <div>
+          <div onclick="redirect()">
             <?= $category['name']; ?>
           </div>
         <?php endforeach; ?>
       </div>
     </div>
   </div>
+  &nbsp;
+  <h3 align="center">Login/Register To Get Full Access Of Website</h3>
+  &nbsp;
   <section class="content"></section>
-  <script src="<?= base_url('js/homepage.js') ?>"></script>
+  <script src="<?= base_url('js/withoutlogin.js') ?>"></script>
   <footer>
     <div class="foot-panel2">
       <div class="ul">
