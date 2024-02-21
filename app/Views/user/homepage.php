@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Homepage</title>
-    <!-- Add your stylesheet link -->
     <link rel="stylesheet" href="<?= base_url('/css/header.css') ?>">
     <link rel="stylesheet" href="<?= base_url('/css/footer.css') ?>">
     <link rel="stylesheet" href="<?= base_url('/css/homepage.css') ?>">
     <link rel="shortcut icon"
         href="https://static.vecteezy.com/system/resources/previews/000/568/825/original/question-answer-icon-vector.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 
 <body>
@@ -21,7 +21,7 @@
         </div>
         <div class="search-box">
             <div class="search__container">
-                <input class="search__input" type="text" placeholder="Search Question">
+                <input class="search__input" type="text" placeholder="Search Question" id="searchInput">
             </div>
         </div>
         <ul class="navlink">
@@ -31,11 +31,11 @@
             <li><a href="/profile">Profile</a></li>
         </ul>
     </nav>
+    <div id="liveSearchResults"></div>
     <div class="categories">
         <?php
         $desiredCategoryIds = [18, 19, 20, 21, 22];
         ?>
-
         <?php foreach ($categories as $category): ?>
             <?php if (in_array($category['id'], $desiredCategoryIds)): ?>
                 <div class="category-item" onclick="logCategoryId(<?= $category['id']; ?>)">
@@ -43,10 +43,8 @@
                 </div>
             <?php endif; ?>
         <?php endforeach; ?>
-
         <div class="dropdown">
             <div>More Categories</div>
-
             <div class="dropdown-content">
                 <?php foreach ($categories as $category): ?>
                     <div onclick="logCategoryId(<?= $category['id']; ?>)">
@@ -56,8 +54,6 @@
             </div>
         </div>
     </div>
-
-
     <div class="center">
         <div id="reportModal" class="modal">
             <div class="modal-content">

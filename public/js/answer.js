@@ -77,7 +77,7 @@ function createAnswerBox(data) {
   profilePicture.appendChild(img);
 
   const profileName = document.createElement("p");
-  profileName.textContent = username;
+  profileName.textContent = data.username;
 
   profileSection.appendChild(profilePicture);
   profileSection.appendChild(profileName);
@@ -129,4 +129,51 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     console.error("Question ID not provided in the URL.");
   }
+});
+
+$(document).ready(function () {
+  $("#searchInput").on("input", function () {
+    document.getElementById("liveSearchResults").style.display = "block";
+    var searchTerm = $(this).val();
+    if (searchTerm.length >= 3) {
+      $.ajax({
+        url: "homepage/search/liveSearch",
+        type: "post",
+        data: { searchTerm: searchTerm },
+        dataType: "json",
+        success: function (data) {
+          // Clear previous results
+          $("#liveSearchResults").html("");
+
+          // Process and display the new results
+          if (data.length > 0) {
+            $.each(data, function (nothing, question) {
+              // Customize the display based on your need
+              var questionDiv = $(
+                '<div class="question-link" data-questionid="' +
+                  question.id +
+                  '">' +
+                  "<h4>" +
+                  question.title +
+                  "</h4>" +
+                  "<p>" +
+                  question.description +
+                  "</p>" +
+                  "</div>"
+              );
+              $("#liveSearchResults").append(questionDiv);
+              questionDiv.on("click", function () {
+                window.location.href = "/answers?id=" + question.id;
+              });
+            });
+          } else {
+            $("#liveSearchResults").html("<div>No Questions found</div>");
+          }
+        },
+        error: function (error) {
+          console.log(error);
+        },
+      });
+    }
+  });
 });

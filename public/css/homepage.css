@@ -4,10 +4,7 @@
   --categories-bg: #2c3e50;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-}
+
 
 body {
   font-family: var(--font-family);
@@ -461,4 +458,69 @@ h2 {
 
 button:hover {
   background-color: #45a049;
+}
+
+@media screen and (max-width: 768px) {
+
+  .categories {
+    display: none;
+  }
+
+  .post-box {
+    width: 550px;
+  }
+
+  .askingbtnbar {
+    width: 90%;
+  }
+
+  .ans-btn {
+    left: 5rem;
+  }
+
+  .profile-section,
+  .title-section,
+  .description-section {
+    padding: 10px;
+  }
+
+  .heart-like-button {
+    left: 10px;
+  }
+
+  .heart-count {
+    left: 55px;
+  }
+
+  .share-button {
+    right: 50px;
+  }
+
+  .report-button {
+    right: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+
+  .main-categorybox,
+  .post-box {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .askingbtnbar {
+    flex-direction: column;
+  }
+
+  .heart-count {
+    font-size: 12px;
+  }
+
+  .share-button,
+  .report-button {
+    position: relative;
+    right: 0;
+    margin-top: 10px;
+  }
 }

@@ -181,4 +181,20 @@ class HomepageController extends BaseController
 
         return $this->response->setJSON(['userLiked' => $userLiked]);
     }
+
+    public function liveSearch()
+    {
+        $questionModel = new QuestionModel();
+        $searchTerm = $this->request->getPost('searchTerm');
+
+        $query = $questionModel->select('id, title, description')
+            ->groupStart()
+            ->like('title', $searchTerm)
+            ->orLike('description', $searchTerm)
+            ->groupEnd()
+            ->findAll();
+
+        return json_encode($query);
+    }
+
 }

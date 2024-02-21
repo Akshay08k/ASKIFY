@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Notifications Page</title>
-    <link rel="stylesheet" href="<?= base_url('css/notification.css') ?>">
     <link rel="stylesheet" href="<?= base_url('css/header.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('css/notification.css') ?>">
+    <!-- <link rel="stylesheet" href="<?= base_url('css/footer.css') ?>"> -->
     <link rel="shortcut icon"
         href="https://static.vecteezy.com/system/resources/previews/000/568/825/original/question-answer-icon-vector.jpg">
 </head>

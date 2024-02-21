@@ -68,6 +68,8 @@ $routes->get('/terms', 'ContentController::terms');
 //loading homepage
 $routes->get('/homepage', 'HomepageController::index');
 
+$routes->post('homepage/search/liveSearch', 'HomepageController::liveSearch');
+
 //json page for getting question
 $routes->get('/homepage/getQuestions', 'HomepageController::getQuestions');
 $routes->post('/homepage/updateLikeCount/(:num)/(:alpha)', 'HomepageController::updateLikeCount/$1/$2');

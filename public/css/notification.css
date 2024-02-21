@@ -4,11 +4,7 @@
     --categories-bg: #2c3e50;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    font-family: var(--font-family);
-}
+
 
 
 li {
@@ -187,4 +183,122 @@ footer {
 a {
     text-decoration: none;
     color: black;
+}
+
+@media screen and (max-width: 768px) {
+    .foot-panel2 {
+        height: 300px;
+    }
+}
+
+.ul {
+    margin-top: 20px;
+}
+
+.ul a {
+    display: block;
+    text-decoration: none;
+    color: #dddddd;
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+
+.foot-panel4 {
+    background-color: #0f1111;
+    color: white;
+    height: 80px;
+    font-size: 0.7rem;
+    text-align: center;
+}
+
+.pages {
+    padding-top: 25px;
+    font-size: 15px;
+}
+
+.copy {
+    margin-top: 5px;
+    font-size: 15px;
+}
+
+.pages a {
+    color: white;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.notifications {
+    width: 70%;
+    margin: 20px auto;
+    margin-top: 5px;
+    margin-left: 180px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-right: 20%;
+}
+
+.read-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+}
+
+.readed-notification {
+    display: none;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-right: 20%;
+}
+
+.custom-dropdown-header {
+    margin-top: 30px;
+}
+
+.notification {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding: 15px;
+    position: relative;
+    border-left: 5px solid #34495e;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    display: flex;
+}
+
+.notification:last-child {
+    margin-bottom: 0;
+}
+
+.notification .title {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: black;
+}
+
+.notification .content {
+    color: #555;
+    padding-left: 5px;
+}
+
+.close-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/* Responsive styles for list items on smaller screens */
+@media screen and (max-width: 768px) {
+    li {
+        margin-right: 10px;
+    }
 }

@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <title>Answer Page</title>
     <link rel="stylesheet" href="<?= base_url('css/answerpage.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('css/header.css') ?>">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 </head>
 
@@ -17,11 +19,11 @@
 
         <div class="search-box">
             <div class="search__container">
-                <input class="search__input" type="text" placeholder="Search">
+                <input class="search__input" type="text" placeholder="Search" id="searchInput">
             </div>
         </div>
 
-        <ul>
+        <ul class="navlink">
             <li><a href="/home">Home</a></li>
             <li><a href="/notification">Notification</a></li>
             <li><a href="/messages">Messages</a></li>
@@ -68,6 +70,7 @@
             <button class="button">Submit Answer</button>
         </div>
 
+        <div id="liveSearchResults"></div>
     </main>
     <div class="answer-container">
 
