@@ -34,19 +34,6 @@
                 <li><a href="/profile">Profile</a></li>
             </ul>
         </nav>
-        <!-- <div class="categories">
-
-
-
-            <div class="dropdown">
-                <div>More Categories</div>
-
-
-                <div class="dropdown-content">
-
-                </div>
-            </div>
-        </div> -->
     </header>
 
     <main>
@@ -66,9 +53,6 @@
 
             <label for="name">Name:</label>
             <input type="text" name="name" value="<?= $userData['name'] ?>" required>
-
-            <label for="categories">Categories:</label>
-            <input type="text" name="categories" value="<?= $userData['categories'] ?>">
 
             <label for="birthdate">Birthdate (yyyy-mm-dd):</label>
             <input type="text" name="birthdate" pattern="\d{4}-\d{2}-\d{2}" value="<?= $userData['birthdate'] ?>"

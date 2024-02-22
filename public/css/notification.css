@@ -4,7 +4,9 @@
     --categories-bg: #2c3e50;
 }
 
-
+#main-footer.footer-opened {
+    bottom: 0;
+}
 
 
 li {
@@ -52,7 +54,7 @@ h2 {
 footer {
     position: absolute;
     width: 100%;
-    bottom: 0px;
+    z-index: 0;
 }
 
 .foot-panel1 {
@@ -129,10 +131,11 @@ footer {
 }
 
 .readed-notification {
-
     display: none;
     background-color: #fff;
     border-radius: 8px;
+    overflow: auto;
+    z-index: 1;
     padding: 20px;
     margin-right: 20%;
 }

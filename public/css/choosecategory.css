@@ -2,7 +2,6 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: rgb(144, 139, 139);
     color: black;
 }
 
@@ -17,7 +16,7 @@ header {
     height: 550px;
 }
 
-.category-item {
+.categorybox {
     display: flex;
     align-items: center;
     padding: 20px;
@@ -33,7 +32,7 @@ input[type="checkbox"] {
     opacity: 1;
 }
 
-.category-item img {
+.categorybox img {
     width: 40px;
     height: 40px;
     margin-right: 10px;

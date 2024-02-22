@@ -6,13 +6,20 @@ use App\Controllers\BaseController;
 
 class ContentController extends BaseController
 {
-    public function contentpolicy(){
+    public function contentpolicy()
+    {
         return view("user/content-policy");
     }
-    public function terms(){
+    public function terms()
+    {
         return view("user/terms");
     }
-    public function privacy(){
+    public function privacy()
+    {
         return view("user/privacy");
+    }
+    public function useofaskify()
+    {
+        return view("user/useofaskify");
     }
 }

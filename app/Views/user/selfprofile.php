@@ -7,6 +7,7 @@
     <title>User Profile</title>
     <link rel="stylesheet" href="<?= base_url('css/header.css') ?>">
     <link rel="stylesheet" href="<?= base_url('css/profile.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('css/footer.css') ?>">
 
 </head>
 
@@ -135,6 +136,27 @@
                 </div>
             </div>
         </section>
+        <footer>
+            <div class="foot-panel2">
+                <div class="ul">
+                    <p>Get to know Us</p>
+                    <a href="/useofaskify">About Askify</a>
+                </div>
+                <div class="ul">
+                    <p>Use Of Askify </p>
+                    <a href="/profile">Your Account</a>
+                    <a href="/help">Help</a>
+                    <a id="feedbackBtn">Feedback</a>
+                </div>
+            </div>
+            <div class="foot-panel4">
+                <div class="pages">
+                    <a href="/content-policy">Content Policy</a>
+                    <a href="/privacy">Privacy And Notice</a>
+                </div>
+                <div class="copy">©2023, Askify, Inc. or its affiliates</div>
+            </div>
+        </footer>
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <script>
             $(document).ready(function () {

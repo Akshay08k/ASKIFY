@@ -73,17 +73,7 @@
             </div>
         </div>
         <!-- JavaScript for toggle and animation -->
-        <script>
-            function toggleReadNotifications() {
-                let readNotifications = document.querySelectorAll('.readed-notification');
-                let btn = document.querySelector('.read-btn');
 
-                readNotifications.forEach(notification => {
-                    notification.style.display = (notification.style.display === "block" || notification.style.display === "") ? "none" : "block";
-                });
-                btn.textContent = `Readed Notifications ${readNotifications[0].style.display === "block" ? "▶" : "▼"}`;
-            }
-        </script>
 
 
 
@@ -96,34 +86,45 @@
     <!-- Add more notifications here -->
     </div>
     <footer>
-        <hr>
         <div class="foot-panel2">
             <div class="ul">
                 <p>Get to know Us</p>
-                <a href="">Blog</a>
-                <a href="">About Askify</a>
+                <a href="/useofaskify">About Askify</a>
             </div>
-
-
             <div class="ul">
-                <p>Let Us Help you</p>
-
-                <a>Use Of Askify </a>
-                <a>Your Account</a>
-                <a>Help</a>
-                <a>Feedback</a>
+                <p>Use Of Askify </p>
+                <a href="/profile">Your Account</a>
+                <a href="/help">Help</a>
+                <a id="feedbackBtn">Feedback</a>
             </div>
         </div>
         <div class="foot-panel4">
             <div class="pages">
-                <a href="#">Condition Of Use</a>
-                <a href="#">Privacy And Notice</a>
-                <a href="#">Your Ads Privacy Choice</a>
+                <a href="/content-policy">Content Policy</a>
+                <a href="/privacy">Privacy And Notice</a>
             </div>
             <div class="copy">©2023, Askify, Inc. or its affiliates</div>
         </div>
     </footer>
+    <script>
+        function toggleReadNotifications() {
+            let readNotifications = document.querySelectorAll('.readed-notification');
+            let btn = document.querySelector('.read-btn');
+            let footer = document.getElementById('main-footer');
 
+            readNotifications.forEach(notification => {
+                notification.style.display = (notification.style.display === "block" || notification.style.display === "") ? "none" : "block";
+            });
+
+            if (readNotifications[0].style.display === "block") {
+                btn.textContent = "Readed Notifications ▼";
+                footer.classList.remove('footer-opened');
+            } else {
+                btn.textContent = "Readed Notifications ▶";
+                footer.classList.add('footer-opened');
+            }
+        }
+    </script>
 </body>
 
 </html>

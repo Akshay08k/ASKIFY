@@ -140,6 +140,7 @@
                 </div>
             </div>
         </section>
+        
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <script>
             $(document).ready(function () {
@@ -186,6 +187,3 @@
 <?php endforeach; ?>
 
 </html>
-<!-- <p align="center">Visiting
-            <?= $user['username'] ?>'s profile
-        </p> -->

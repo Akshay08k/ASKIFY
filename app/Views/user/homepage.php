@@ -22,6 +22,7 @@
         <div class="search-box">
             <div class="search__container">
                 <input class="search__input" type="text" placeholder="Search Question" id="searchInput">
+                <div id="liveSearchResults"></div>
             </div>
         </div>
         <ul class="navlink">
@@ -31,7 +32,6 @@
             <li><a href="/profile">Profile</a></li>
         </ul>
     </nav>
-    <div id="liveSearchResults"></div>
     <div class="categories">
         <?php
         $desiredCategoryIds = [18, 19, 20, 21, 22];
@@ -135,25 +135,19 @@
         <div class="foot-panel2">
             <div class="ul">
                 <p>Get to know Us</p>
-                <a href="">Blog</a>
-                <a href="">About Askify</a>
+                <a href="/useofaskify">About Askify</a>
             </div>
-
-
             <div class="ul">
-                <p>Let Us Help you</p>
-
-                <a>Use Of Askify </a>
-                <a>Your Account</a>
-                <a>Help</a>
+                <p>Use Of Askify </p>
+                <a href="/profile">Your Account</a>
+                <a href="/help">Help</a>
                 <a id="feedbackBtn">Feedback</a>
             </div>
         </div>
         <div class="foot-panel4">
             <div class="pages">
-                <a href="#">Condition Of Use</a>
-                <a href="#">Privacy And Notice</a>
-                <a href="#">Your Ads Privacy Choice</a>
+                <a href="/content-policy">Content Policy</a>
+                <a href="/privacy">Privacy And Notice</a>
             </div>
             <div class="copy">©2023, Askify, Inc. or its affiliates</div>
         </div>

@@ -224,5 +224,37 @@ class ProfileController extends BaseController
         $results = $userModel->searchUsers($searchTerm);
         return json_encode($results);
     }
+    public function QueAns()
+    {
+        return view("user/QueAns");
+    }
+    public function deleteQuestion()
+    {
+        $questionId = $this->request->getPost('question_id'); // Assuming you are sending the question_id via POST
 
+        $questionModel = new QuestionModel();
+        $answerModel = new AnswerModel();// Create an instance of your QuestionModel
+        $result = $questionModel->delete($questionId); // Assuming your model has a delete method
+        $answerModel->where('question_id', $questionId)->delete();
+        if ($result) {
+            // Question deleted successfully
+            return redirect()->to('/QueAns')->with('success', 'Question deleted successfully');
+        } else {
+            // Failed to delete question
+            return redirect()->to('/homepage')->with('error', 'Failed to delete question');
+        }
+    }
+    public function deleteAnswer()
+    {
+        $AnswerId = $this->request->getPost('AnswerId');
+        $answerModel = new AnswerModel();
+        $result = $answerModel->where('id', $AnswerId)->delete();
+        if ($result) {
+            // Question deleted successfully
+            return redirect()->to('/QueAns')->with('success', 'Answer deleted successfully');
+        } else {
+            // Failed to delete question
+            return redirect()->to('/homepage')->with('error', 'Failed to Answer question');
+        }
+    }
 }

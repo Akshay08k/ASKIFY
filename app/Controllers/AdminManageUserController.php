@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\FollowerModel;
 use App\Models\UserModel;
 
 use App\Controllers\BaseController;
@@ -269,6 +270,29 @@ class AdminManageUserController extends BaseController
             // Error
             log_message('error', 'Error sending ban notification email to: ' . $userEmail . ', Error: ' . $email->printDebugger(['headers']));
         }
+    }
+    public function getUsers()
+    {
+        $userModel = new UserModel();
+
+        // Fetch all followed users' ids
+
+        // Fetch user details for the followed users    
+        $users = $userModel->findAll();
+
+        $userList = [];
+        foreach ($users as $user) {
+            $userList[] = [
+                'id' => $user['id'],
+                'username' => $user['username'],
+                'name' => $user['name'],
+                'gender' => $user['gender'],
+                'email' => $user['email'],
+                'status' => $user['status']
+            ];
+        }
+        echo json_encode($userList);
+
     }
 
 

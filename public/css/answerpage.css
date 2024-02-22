@@ -16,51 +16,50 @@ main {
     justify-self: space-between;
 }
 
-.answer-textbox {
-    position: absolute;
-    right: 20%;
-    top: 170px;
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #f8f8f8;
-    text-align: center;
-}
 
-.answer-textbox textarea {
-    resize: none;
+.answer-textbox {
+    padding: 10px;
+    border-radius: 10px;
+    margin-right: 300px;
+    display: flex;
+    margin-top: -30px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #answerInput {
-    width: 100%;
-    padding: 40px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    padding: 10px;
+    width: 90%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+    outline: none;
 }
 
-.button {
-    background-color: #4caf50;
-    color: white;
-    padding: 10px 15px;
+/* Style for the submit button */
+.ans-submitbtn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    transition: background-color 0.3s;
 }
 
-.button:hover {
+.ans-submitbtn:hover {
     background-color: #45a049;
-
 }
+
 
 /* Post box styles */
-.post-box {
+.post-box,
+.answer-box {
     border: 1px solid #ddd;
     padding: 20px;
+    height: 180px;
     margin-bottom: 20px;
 }
 
@@ -102,8 +101,7 @@ main {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 900px;
+    width: 880px;
     position: relative;
     z-index: 0;
     margin: 15px;
@@ -137,99 +135,10 @@ main {
 .description-section {
     padding-left: 20px;
     padding-right: 20px;
-
     margin-bottom: 20px;
 }
 
-.post-actions {
-    height: 40px;
-    width: 100%;
-}
 
-/* Like button */
-.heart-like-button {
-    position: absolute;
-    width: 35px;
-    height: 28px;
-    bottom: 10px;
-    left: 33px;
-}
-
-
-.heart-count {
-    position: absolute;
-    bottom: 17px;
-    left: 75px;
-    font-size: 14px;
-
-}
-
-.heart-like-button:before {
-    position: absolute;
-    top: 0;
-    left: 17.5px;
-    transform: rotate(-45deg);
-    transform-origin: 0 100%;
-    width: 17.5px;
-    height: 27.5px;
-    border-radius: 8.75px 8.75px 0 0;
-    background-color: rgb(171, 165, 165);
-    content: "";
-    cursor: pointer;
-    transition: background .4s;
-}
-
-.heart-like-button:after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: rotate(45deg);
-    transform-origin: 100% 100%;
-    width: 17.5px;
-    /* Slightly decreased width */
-    height: 27.5px;
-    /* Slightly decreased height */
-    border-radius: 8.75px 8.75px 0 0;
-    background-color: rgb(171, 165, 165);
-    content: "";
-    cursor: pointer;
-    transition: background .4s;
-}
-
-
-@media screen and (max-width: 480px) {
-    #container {
-        height: auto;
-    }
-
-    h1 {
-        font-size: 1.5rem;
-
-    }
-}
-
-.heart-like-button.liked::before,
-.heart-like-button.liked::after {
-    background-color: #B01E28;
-}
-
-.heart-like-button.liked {
-    animation: liked .4s ease;
-}
-
-@keyframes liked {
-    0% {
-        transform: scale(.8);
-    }
-
-    50% {
-        transform: scale(1.1);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
 
 
 .ans-btn {
@@ -299,4 +208,160 @@ main {
 /* Answer section styles */
 .answer-section {
     margin-top: 10px;
+}
+
+.ans-heading {
+    margin-left: 3rem;
+}
+
+
+
+/* Like button */
+.question-heart-like-button {
+    position: absolute;
+    width: 35px;
+    height: 28px;
+    bottom: 10px;
+    left: 33px;
+}
+
+
+.question-heart-count {
+    position: absolute;
+    bottom: 17px;
+    left: 75px;
+    font-size: 14px;
+
+}
+
+.question-heart-like-button:before {
+    position: absolute;
+    top: 0;
+    left: 17.5px;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+    width: 17.5px;
+    height: 27.5px;
+    border-radius: 8.75px 8.75px 0 0;
+    background-color: rgb(171, 165, 165);
+    content: "";
+    cursor: pointer;
+    transition: background .4s;
+}
+
+.question-heart-like-button:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+    width: 17.5px;
+    /* Slightly decreased width */
+    height: 27.5px;
+    /* Slightly decreased height */
+    border-radius: 8.75px 8.75px 0 0;
+    background-color: rgb(171, 165, 165);
+    content: "";
+    cursor: pointer;
+    transition: background .4s;
+}
+
+
+
+.question-heart-like-button.liked::before,
+.question-heart-like-button.liked::after {
+    background-color: #B01E28;
+}
+
+.question-heart-like-button.liked {
+    animation: liked .4s ease;
+}
+
+@keyframes liked {
+    0% {
+        transform: scale(.8);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+.answer-heart-like-button {
+    position: absolute;
+    width: 35px;
+    height: 28px;
+    bottom: 10px;
+    left: 33px;
+}
+
+
+.answer-heart-count {
+    position: absolute;
+    bottom: 17px;
+    left: 75px;
+    font-size: 14px;
+
+}
+
+.answer-heart-like-button:before {
+    position: absolute;
+    top: 0;
+    left: 17.5px;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+    width: 17.5px;
+    height: 27.5px;
+    border-radius: 8.75px 8.75px 0 0;
+    background-color: rgb(171, 165, 165);
+    content: "";
+    cursor: pointer;
+    transition: background .4s;
+}
+
+.answer-heart-like-button:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+    width: 17.5px;
+    /* Slightly decreased width */
+    height: 27.5px;
+    /* Slightly decreased height */
+    border-radius: 8.75px 8.75px 0 0;
+    background-color: rgb(171, 165, 165);
+    content: "";
+    cursor: pointer;
+    transition: background .4s;
+}
+
+
+
+.answer-heart-like-button.liked::before,
+.answer-heart-like-button.liked::after {
+    background-color: #B01E28;
+}
+
+.answer-heart-like-button.liked {
+    animation: liked .4s ease;
+}
+
+@keyframes liked {
+    0% {
+        transform: scale(.8);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }

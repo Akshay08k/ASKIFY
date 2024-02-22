@@ -48,6 +48,7 @@ $routes->post('report/question/(:num)', 'ReportController::reportQuestion/$1');
 
 // loading contentpolicy
 $routes->get('/content-policy', 'ContentController::contentpolicy');
+$routes->get('/useofaskify', 'ContentController::useofaskify');
 
 //loading privacy
 $routes->get('/privacy', 'ContentController::privacy');
@@ -55,6 +56,7 @@ $routes->get('/privacy', 'ContentController::privacy');
 //profile routes
 $routes->get('/profile', 'ProfileController::index');
 $routes->get('/updatecategory', 'ProfileController::choosecategory');
+$routes->get('/profile/Myquestions', 'ProfileController::QueAns');
 $routes->post('updatecategory/processCategorySelection', 'ProfileController::processCategorySelection');
 $routes->get('/updateprofile', 'ProfileController::editProfile');
 $routes->post('/updateprofile/save', 'ProfileController::updateProfile');
@@ -68,6 +70,9 @@ $routes->get('/terms', 'ContentController::terms');
 //loading homepage
 $routes->get('/homepage', 'HomepageController::index');
 
+$routes->post('/delete-question', 'ProfileController::deleteQuestion');
+$routes->post('/delete-answer', 'ProfileController::deleteAnswer');
+
 $routes->post('homepage/search/liveSearch', 'HomepageController::liveSearch');
 
 //json page for getting question
@@ -76,23 +81,21 @@ $routes->post('/homepage/updateLikeCount/(:num)/(:alpha)', 'HomepageController::
 $routes->post('/submit_post', 'HomepageController::SubmitPost');
 $routes->post('/submit_question', 'HomepageController::SubmitQuestion');
 $routes->get('/homepage/checkUserLikeStatus/(:num)', 'HomepageController::checkUserLikeStatus/$1');
-
 //Messages Routes
 $routes->get('/messages', 'MessageController::index');
 $routes->get('messages/getUsers', 'MessageController::getUsers');
 $routes->get('messages/getMessages/(:num)/(:num)', 'MessageController::getMessages/$1/$2');
 $routes->post('messages/sendMessage', 'MessageController::sendMessage');
-
 //notification routes
 $routes->get('/notification', 'NotificationController::index');
 $routes->post('notification/markAsSeen/(:num)', 'NotificationController::markAsSeen/$1');
-
 //answer routes
 $routes->get('/answers', 'AnswerController::index');
 $routes->get('/answers/getanswers', 'AnswerController::getAnswers');
 $routes->post('answers/store', 'AnswerController::store');
-$routes->post('answers/up   dateAnswerLikeCount/(:num)/(:alpha)', 'AnswerController::updateAnswerLikeCount/$1/$2');
+$routes->post('answers/updateAnswerLikeCount/(:num)/(:alpha)', 'AnswerController::updateAnswerLikeCount/$1/$2');
 $routes->get('/answers/checkUserLikeStatus/(:num)', 'AnswerController::checkUserLikeStatus/$1');
+$routes->post('/answers/submit', 'AnswerController::submitAnswer');
 
 
 
@@ -118,6 +121,8 @@ $routes->post('/admin/resolve_issue/(:num)', 'AdminHandleIssueController::resolv
 $routes->get('/admin/dashboard', 'AdminDashboardController::index');
 
 // manage user account 
+
+$routes->get('/admin/getUsers', 'AdminManageUserController::getUsers');
 $routes->get('/admin/manage_users', 'AdminManageUserController::index');
 $routes->post('/admin/deleteUser/(:num)', 'AdminManageUserController::deleteUser/$1');
 $routes->post('/admin/banUser/(:num)', 'AdminManageUserController::banUser/$1');

@@ -10,6 +10,7 @@
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="<?= base_url('css/header.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('css/footer.css') ?>">
     <link rel="stylesheet" href="<?= base_url('css/messages.css') ?>">
 
 
@@ -23,7 +24,8 @@
         </div>
         <div class="search-box">
             <div class="search__container">
-                <input class="search__input" type="text" placeholder="Search Any User">
+                <input class="search__input" type="text" placeholder="Search Any User" id="searchInput">
+                <div id="liveSearchResults"></div>
             </div>
         </div>
         <ul class="navlink">
@@ -55,6 +57,27 @@
 
         </div>
     </div>
+    <footer>
+        <div class="foot-panel2">
+            <div class="ul">
+                <p>Get to know Us</p>
+                <a href="/useofaskify">About Askify</a>
+            </div>
+            <div class="ul">
+                <p>Use Of Askify </p>
+                <a href="/profile">Your Account</a>
+                <a href="/help">Help</a>
+                <a id="feedbackBtn">Feedback</a>
+            </div>
+        </div>
+        <div class="foot-panel4">
+            <div class="pages">
+                <a href="/content-policy">Content Policy</a>
+                <a href="/privacy">Privacy And Notice</a>
+            </div>
+            <div class="copy">©2023, Askify, Inc. or its affiliates</div>
+        </div>
+    </footer>
     <script>
         function loadname(name) {
             let selectedUserName = document.getElementById('chatHeading');
@@ -88,6 +111,9 @@
                 method: 'GET',
                 success: function (response) {
                     var messages = JSON.parse(response);
+                    if (messages.length == 0) {
+                        document.getElementById('chat').textContent = "There Are No History To Show Please Chat With User By Sending Message"
+                    }
                     messages.forEach(function (message) {
                         // Skip the last sent message
                         if (message.id != lastSentMessageId) {
@@ -99,6 +125,7 @@
                             chat.append(messageDiv);
                             // Scroll to the bottom of the chat after appending a message
                             chat.scrollTop(chat[0].scrollHeight);
+
                         }
                     });
                 }
@@ -139,6 +166,46 @@
 
 
         loadUsers();
+
+
+        $(document).ready(function () {
+            $('#searchInput').on('input', function () {
+                document.getElementById('liveSearchResults').style.display = "block"
+                var searchTerm = $(this).val();
+
+                if (searchTerm.length >= 3) {
+                    $.ajax({
+                        url: '/search/liveSearch',
+                        type: 'post',
+                        data: { searchTerm: searchTerm },
+                        dataType: 'json',
+                        success: function (data) {
+                            // Clear previous results
+                            $('#liveSearchResults').html('');
+
+                            // Process and display the new results
+                            if (data.length > 0) {
+                                $.each(data, function (index, user) {
+                                    // Customize the display based on your need
+                                    var userDiv = $('<div class="profile-link" data-userid="' + user.id + '">' + user.name + '</div>');
+                                    $('#liveSearchResults').append(userDiv);
+
+                                    // Add click event to redirect to profile
+                                    userDiv.on('click', function () {
+                                        window.location.href = '/visitprofile/' + user.id;
+                                    });
+                                });
+                            } else {
+                                $('#liveSearchResults').html('<div>No Users found</div>');
+                            }
+                        },
+                        error: function (error) {
+                            console.log(error);
+                        }
+                    });
+                }
+            });
+        });
 
     </script>
 

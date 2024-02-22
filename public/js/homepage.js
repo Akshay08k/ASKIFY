@@ -52,11 +52,9 @@ function createQuestionBox(data) {
         <div class="heart-like-button" id="likebtn"></div>
         <span class="heart-count">${likes}</span>
       </div>
-        <button class="ans-btn" onclick="redirectToAnswers(${id})">
-          <img src="/images/answer.png" class="ans-img">
-        </button>
-      
-      
+      <button class="ans-btn" onclick="redirectToAnswers(${id})">
+        <img src="/images/answer.png" class="ans-img">
+      </button>
       <div class="post-actions">
         <div class="share-button">
           <img src="https://cdn2.iconfinder.com/data/icons/line-drawn-social-media/31/share-1024.png" height="30" width="30">
@@ -73,18 +71,40 @@ function createQuestionBox(data) {
 
   // Add event listener to the like button
   const likeButton = questionBox.querySelector(".heart-like-button");
+  const likeCount = questionBox.querySelector(".heart-count");
+
+  // Function to check user's like status for the current question
+  const checkUserLikeStatusQuestion = () => {
+    fetch(`/homepage/checkUserLikeStatus/${id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        const userLiked = data.userLiked;
+
+        if (userLiked) {
+          likeButton.classList.add("liked");
+        } else {
+          likeButton.classList.remove("liked");
+        }
+      })
+      .catch((error) =>
+        console.error("Error checking user's like status:", error)
+      );
+  };
+
+  // Call the function to check user's like status when creating the question box
+  checkUserLikeStatusQuestion();
+
   likeButton.addEventListener("click", function () {
     // Toggle the 'liked' class for styling
     likeButton.classList.toggle("liked");
 
     // Update like count within the current question box
-    const likeCount = questionBox.querySelector(".heart-count");
-    const currentLikes = parseInt(likeCount.textContent);
+    let currentLikes = parseInt(likeCount.textContent);
 
     // Determine the new like count based on the 'liked' class
     const newLikes = likeButton.classList.contains("liked")
       ? currentLikes + 1
-      : currentLikes - 1;
+      : Math.max(0, currentLikes - 1);
 
     // Update the displayed like count
     likeCount.textContent = newLikes;
@@ -99,8 +119,7 @@ function createQuestionBox(data) {
       .then((response) => response.json())
       .then((updatedLikes) => {
         // You can handle the response if needed
-        // console.log("Updated likes in the database:", updatedLikes);
-        // printing the status of like did or not in the database
+        console.log("Updated likes in the database:", updatedLikes);
       })
       .catch((error) => console.error("Error updating like count:", error));
   });

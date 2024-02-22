@@ -28,7 +28,7 @@
 
 nav {
     z-index: 0;
-    overflow: hidden;
+    overflow: visible;
     background-color: var(--navbar-color);
     height: 80px;
     display: flex;
@@ -77,14 +77,15 @@ nav {
 #liveSearchResults {
     position: absolute;
     background-color: #fff;
+    color: black;
     border-bottom-left-radius: 22px;
     border-bottom-right-radius: 22px;
     border: 1px solid #ddd;
-    z-index: 1;
-    top: 67px;
-    width: 38rem;
-    right: 58.3rem;
-    display: none
+    z-index: 10;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    display: none;
 }
 
 #liveSearchResults div {
@@ -93,13 +94,11 @@ nav {
     cursor: pointer;
 }
 
-
 #liveSearchResults div:hover {
     background-color: #f0f0f0;
 }
 
 #liveSearchResults div:last-child {
-
     border-bottom-left-radius: 22px;
     border-bottom-right-radius: 22px;
     background-color: #f0f0f0;

@@ -102,17 +102,14 @@
 
     </div>
 
-    <!-- Include JavaScript -->
-    <!-- Include JavaScript -->
     <script>
 
-        // Global variable to store user data
         let usersData = [];
 
         // Function to fetch users from the backend
         async function fetchUsersFromBackend() {
             try {
-                const response = await fetch('/messages/getUsers');
+                const response = await fetch('/admin/getUsers');
                 usersData = await response.json(); // Store user data globally
                 return usersData;
             } catch (error) {
@@ -195,7 +192,6 @@
                     method: 'POST',
                 });
                 if (response.ok) {
-                    // User deleted successfully, you may want to refresh the user table
                     populateUserTable();
                 } else {
                     console.error('Error deleting user');

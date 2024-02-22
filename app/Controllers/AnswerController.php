@@ -82,5 +82,24 @@ class AnswerController extends BaseController
 
         return $this->response->setJSON(['userLiked' => $userLiked]);
     }
+    public function submitAnswer()
+    {
+        $userId = session()->get('user_id');
+        $questionId = $this->request->getPost('question_id');
+        // Get the answer data from the form submission
+        $answerData = [
+            'answer' => $this->request->getPost('answer'),
+            'question_id' => $questionId, // Retrieve answer ID from the hidden input
+            'user_id' => $userId,
+        ];
 
+        // Validate the answer data if necessary
+
+        // Call the AnswerModel to insert the answer into the database
+        $answerModel = new AnswerModel();
+        $answerModel->insert($answerData);
+
+        // Redirect or return a response as needed
+        return redirect()->to('/answers?id=' . $questionId);
+    }
 }

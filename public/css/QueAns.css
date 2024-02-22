@@ -1,0 +1,174 @@
+:root {
+    --navbar-color: #34495e;
+    --font-family: "Poppins", sans-serif;
+    --categories-bg: #2c3e50;
+}
+
+
+
+body {
+    font-family: var(--font-family);
+    background-color: #ecf0f1;
+    overflow: scroll;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.content,
+.center {
+    flex: 1;
+    z-index: 1;
+    background-color: #ecf0f1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.post-box,
+.answer-box {
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 900px;
+    position: relative;
+    z-index: 0;
+    /* Ensure the post box is behind the category box */
+    margin: 15px;
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+.profile-picture {
+    margin-right: 20px;
+    width: 50px;
+    height: 50px;
+}
+
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    border-radius: 50%;
+}
+
+.title-section {
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.description-section {
+    padding-left: 20px;
+    padding-right: 20px;
+
+    margin-bottom: 20px;
+}
+
+.post-actions {
+    height: 40px;
+    width: 100%;
+}
+
+/* Like button */
+.heart-like-button {
+    position: absolute;
+    width: 35px;
+    height: 28px;
+    bottom: -2px;
+    left: 20px;
+}
+
+.heart-count {
+    position: absolute;
+    bottom: 10px;
+    left: 65px;
+    font-size: 14px;
+}
+
+
+
+.ans-btn {
+    height: 30px;
+    bottom: 3px;
+    left: 10%;
+    cursor: pointer;
+    position: absolute;
+    border: hidden;
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+.ans-img {
+    height: 30px;
+    width: 30px;
+}
+
+.delete-button {
+    position: absolute;
+    bottom: 0;
+    right: 5px;
+    cursor: pointer;
+}
+
+.delete-button:hover::before {
+    content: "Delete";
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+    display: block;
+    white-space: nowrap;
+}
+
+/* Style for the main answer box */
+.answer-box {
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+/* Style for the profile section */
+.profile-section {
+    display: flex;
+    align-items: center;
+}
+
+/* Style for the profile picture */
+.profile-picture {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Style for the username */
+.profile-section p {
+    font-weight: bold;
+    margin: 0;
+}
