@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Management</title>
     <!-- Include Tailwind CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="<?= base_url('css/output.min.css') ?>" rel="stylesheet">
     <link href="<?= base_url('css/sidebar.css') ?>" rel="stylesheet">
 
     <style>
@@ -71,7 +71,7 @@
     </div>
 
     <!-- Content -->
-    <div class="ml-60 p-4">
+    <div class="ml-64 p-6">
         <h2 class="text-2xl font-bold mb-4">Manage User Accounts</h2>
         <div class="bg-white p-4 shadow-md rounded-md">
             <div class="mb-4 flex items-center">
