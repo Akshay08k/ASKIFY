@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="<?= base_url('css/header.css') ?>">
     <link rel="stylesheet" href="<?= base_url('css/profile.css') ?>">
     <link rel="stylesheet" href="<?= base_url('css/footer.css') ?>">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 </head>
 
@@ -20,6 +21,8 @@
             <div class="search-box">
                 <div class="search__container">
                     <input id="searchInput" class="search__input" type="text" placeholder="Search User Profile">
+
+                    <div id="liveSearchResults"></div>
                 </div>
 
             </div>
@@ -39,7 +42,6 @@
         <button class="pfplinkbtn" onclick="window.location.href='/updatecategory'">Update categories</button>
         <button class="pfplinkbtn" onclick="window.location.href='/logout'">Logout</button>
     </div>
-    <div id="liveSearchResults"></div>
     <section class="profile">
         <div class="leftside">
             <div class="photocard">
@@ -134,72 +136,32 @@
                     <a href="<?= $user['twitter'] ?>" target="_blank">Twitter</a>
                     <a href="<?= $user['github'] ?>" target="_blank">GitHub</a>
                 </div>
+            <?php endforeach; ?>
+        </div>
+    </section>
+    <footer>
+        <div class="foot-panel2">
+            <div class="ul">
+                <p>Get to know Us</p>
+                <a href="/useofaskify">About Askify</a>
             </div>
-        </section>
-        <footer>
-            <div class="foot-panel2">
-                <div class="ul">
-                    <p>Get to know Us</p>
-                    <a href="/useofaskify">About Askify</a>
-                </div>
-                <div class="ul">
-                    <p>Use Of Askify </p>
-                    <a href="/profile">Your Account</a>
-                    <a href="/help">Help</a>
-                    <a id="feedbackBtn">Feedback</a>
-                </div>
+            <div class="ul">
+                <p>Use Of Askify </p>
+                <a href="/profile">Your Account</a>
+                <a href="/help">Help</a>
+                <a id="feedbackBtn">Feedback</a>
             </div>
-            <div class="foot-panel4">
-                <div class="pages">
-                    <a href="/content-policy">Content Policy</a>
-                    <a href="/privacy">Privacy And Notice</a>
-                </div>
-                <div class="copy">©2023, Askify, Inc. or its affiliates</div>
+        </div>
+        <div class="foot-panel4">
+            <div class="pages">
+                <a href="/content-policy">Content Policy</a>
+                <a href="/privacy">Privacy And Notice</a>
             </div>
-        </footer>
-        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('#searchInput').on('input', function () {
-                    document.getElementById('liveSearchResults').style.display = "block"
-                    var searchTerm = $(this).val();
+            <div class="copy">©2023, Askify, Inc. or its affiliates</div>
+        </div>
+    </footer>
 
-                    if (searchTerm.length >= 3) {
-                        $.ajax({
-                            url: '/search/liveSearch',
-                            type: 'post',
-                            data: { searchTerm: searchTerm },
-                            dataType: 'json',
-                            success: function (data) {
-                                // Clear previous results
-                                $('#liveSearchResults').html('');
-
-                                // Process and display the new results
-                                if (data.length > 0) {
-                                    $.each(data, function (index, user) {
-                                        // Customize the display based on your need
-                                        var userDiv = $('<div class="profile-link" data-userid="' + user.id + '">' + user.name + '</div>');
-                                        $('#liveSearchResults').append(userDiv);
-
-                                        // Add click event to redirect to profile
-                                        userDiv.on('click', function () {
-                                            window.location.href = '/visitprofile/' + user.id;
-                                        });
-                                    });
-                                } else {
-                                    $('#liveSearchResults').html('<div>No Users found</div>');
-                                }
-                            },
-                            error: function (error) {
-                                console.log(error);
-                            }
-                        });
-                    }
-                });
-            });
-
-        </script>
-    </body>
-<?php endforeach; ?>
+    <script src="<?= base_url('js/profile.js') ?>"></script>
+</body>
 
 </html>

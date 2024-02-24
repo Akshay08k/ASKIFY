@@ -12,9 +12,7 @@ img {
   padding: 0;
 }
 
-/* Apply a basic style to the body */
 body {
-  font-family: 'Arial', sans-serif;
   background-color: #f8f8f8;
 }
 
@@ -22,7 +20,7 @@ body {
 .profile {
   display: flex;
   justify-content: space-between;
-  margin: 20px;
+  margin-top: -60px;
   padding: 100px;
 }
 

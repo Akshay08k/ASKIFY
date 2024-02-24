@@ -1,11 +1,16 @@
 function openPopup(popupId) {
   var popups = document.querySelectorAll(".popup");
   popups.forEach(function (popup) {
+    popup.style.opacity = 0;
     popup.style.display = "none";
   });
 
   // Open the specified popup
-  document.getElementById(popupId).style.display = "block";
+  var popup = document.getElementById(popupId);
+  popup.style.display = "block";
+  setTimeout(function () {
+    popup.style.opacity = 1;
+  }, 5);
 }
 
 document
@@ -19,33 +24,54 @@ document.getElementById("createPostBtn").addEventListener("click", function () {
 });
 
 document.getElementById("postclsbtn").addEventListener("click", function () {
-  document.getElementById("createPostPopup").style.display = "none";
+  var createPostPopup = document.getElementById("createPostPopup");
+  createPostPopup.style.opacity = 0;
+  setTimeout(function () {
+    createPostPopup.style.display = "none";
+  }, 30); // Adjust the duration to match the transition time
 });
+
 document.getElementById("queclsbtn").addEventListener("click", function () {
-  document.getElementById("askQuestionPopup").style.display = "none";
+  var askQuestionPopup = document.getElementById("askQuestionPopup");
+  askQuestionPopup.style.opacity = 0;
+  setTimeout(function () {
+    askQuestionPopup.style.display = "none";
+  }, 300); // Adjust the duration to match the transition time
 });
+
+function shareQuestionLink(questionId) {
+  const questionLink = `/answers?id=${questionId}`;
+  const tempInput = document.createElement("input");
+  tempInput.value = questionLink;
+  document.body.appendChild(tempInput);
+  tempInput.select();
+  tempInput.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(tempInput);
+  alert("Question link copied to clipboard!");
+}
 function createQuestionBox(data) {
   const { name, title, description, profile_photo, likes, id, media } = data;
 
-  const profilePictureHTML = profile_photo
-    ? `<div class="profile-picture"><img src="data:image/png;base64,${profile_photo}" alt="Profile Pic"></div>`
+  const mediaHTML = media
+    ? `<div class="media-section"><img src="data:image/png;base64,${media}"></div>`
     : "";
 
-  const mediaHTML = media
-    ? `<div class="media-section"><img src="data:image/png;base64,${media}" style="width: 100px; height: 100px;"></div>`
-    : "";
+  const profilePictureHTML = profile_photo
+    ? `<div class="profile-picture"><img src="data:image/png;base64,${profile_photo}" alt="Profile Pic"></div>`
+    : " ";
 
   const questionBoxHTML = `
     <div class="post-box">
       <div class="profile-section">
         ${profilePictureHTML}
-        <p>${name}</p>
+        <p class="opacity-80">${name}</p>
       </div>
       <div class="title-section">
-        <h3>${title}</h3>
+        <h3 class="font-bold">${title}</h3>
       </div>
-      <div class="description-section">
-        <p>${description}</p>
+    <div class="description-section">
+      <p>${description ? description : ""}</p>
         ${mediaHTML}
       </div>
       <div class="like-section">
@@ -56,12 +82,12 @@ function createQuestionBox(data) {
         <img src="/images/answer.png" class="ans-img">
       </button>
       <div class="post-actions">
-        <div class="share-button">
-          <img src="https://cdn2.iconfinder.com/data/icons/line-drawn-social-media/31/share-1024.png" height="30" width="30">
-        </div>
-        <div class="report-button" onclick="openReportModal(${id})">
-          <img src="https://cdn2.iconfinder.com/data/icons/user-interface-glyph-24/32/warning_danger_report-512.png" height="30" width="30">
-        </div>
+      <div class="report-button" onclick="openReportModal(${id})">
+      <img src="report.png" height="30" width="30">
+      </div>
+      <div class="share-button" onclick="shareQuestionLink(${id})">
+        <img src="/share.png" height="30" width="30">
+      </div>
       </div>
     </div>
   `;

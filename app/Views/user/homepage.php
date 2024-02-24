@@ -7,6 +7,7 @@
     <title>Your Homepage</title>
     <link rel="stylesheet" href="<?= base_url('/css/header.css') ?>">
     <link rel="stylesheet" href="<?= base_url('/css/footer.css') ?>">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
     <link rel="stylesheet" href="<?= base_url('/css/homepage.css') ?>">
     <link rel="shortcut icon"
         href="https://static.vecteezy.com/system/resources/previews/000/568/825/original/question-answer-icon-vector.jpg">
@@ -79,22 +80,23 @@
     <div class="categorybox"></div>
     <div class="content"></div>
     <!-- Popup form for asking a question -->
-    <div id="askQuestionPopup" class="popup">
-        <h2>Ask a Question</h2>
-        <form action="/submit_post" method="post" enctype="multipart/form-data">
+    <div id="askQuestionPopup" class="popup p-6 bg-white shadow-md rounded-md">
+        <h2 class="text-2xl font-bold mb-4">Ask a Question</h2>
+        <form action="/submit_post" method="post" enctype="multipart/form-data" class="space-y-4">
 
             <?= csrf_field() ?>
-            <label for="posttitle">Title:</label>
-            <input type="text" id="posttitle" name="postTitle" required>
 
-            <label for="postdesc">Description:</label>
-            <textarea id="postdesc" name="postDescription" rows="4" required></textarea>
+            <label for="posttitle" class="block text-sm font-medium text-gray-700">Title:</label>
+            <input type="text" id="posttitle" name="postTitle" required
+                class="border p-2 w-full rounded-md focus:outline-none focus:ring focus:border-blue-300">
 
-            <label for="postphoto">Upload Photo:</label>
-            <input type="file" id="postphoto" name="postPhoto" accept="image/*">
+            <label for="postphoto" class="block text-sm font-medium text-gray-700">Upload Photo:</label>
+            <input type="file" id="postphoto" name="postPhoto" accept="image/*"
+                class="border p-2 w-full rounded-md focus:outline-none focus:ring focus:border-blue-300">
 
-            <label for="category">Category:</label>
-            <select id="category" name="CategoryId" required>
+            <label for="category" class="block text-sm font-medium text-gray-700">Category:</label>
+            <select id="category" name="CategoryId" required
+                class="border p-2 w-full rounded-md focus:outline-none focus:ring focus:border-blue-300">
                 <?php foreach ($categories as $category): ?>
                     <option value="<?= $category['id']; ?>">
                         <?= $category['name']; ?>
@@ -102,35 +104,48 @@
                 <?php endforeach; ?>
             </select>
 
-            <button type="submit">Submit Question</button>
+            <button type="submit"
+                class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">
+                Submit Question
+            </button>
         </form>
-        <button id="queclsbtn">Close</button>
+        <button id="queclsbtn" class="mt-4 absolute right-0 top-0 px-4 py-2 ">
+            &times;
+        </button>
     </div>
 
-    <div id="createPostPopup" class="popup">
-        <h2>Create Post</h2>
-        <form action="/submit_question" method="post">
-            <label for="title">Title:</label>
-            <input type="text" id="title" name="QuestionTitle" required>
+    <div id="createPostPopup" class="popup p-6 bg-white shadow-md rounded-md">
+        <h2 class="text-2xl font-bold mb-4">Create Post</h2>
+        <form action="/submit_question" method="post" class="space-y-4">
+            <label for="title" class="block text-sm font-medium text-gray-700">Title:</label>
+            <input type="text" id="title" name="QuestionTitle" required
+                class="border p-2 w-full rounded-md focus:outline-none focus:ring focus:border-blue-300">
 
-            <label for="desc">Content:</label>
-            <textarea id="desc" name="QuestionDescription" required></textarea>
-            <button type="submit">Create Post</button>
+            <label for="desc" class="block text-sm font-medium text-gray-700">Content:</label>
+            <textarea id="desc" name="QuestionDescription" required
+                class="border p-2 w-full rounded-md focus:outline-none focus:ring focus:border-blue-300"></textarea>
 
-            <label for="category">Category:</label>
-            <select id="category" name="CategoryId" required>
+            <label for="category" class="block text-sm font-medium text-gray-700">Category:</label>
+            <select id="category" name="CategoryId" required
+                class="border p-2 w-full rounded-md focus:outline-none focus:ring focus:border-blue-300">
                 <?php foreach ($categories as $category): ?>
                     <option value="<?= $category['id']; ?>">
                         <?= $category['name']; ?>
                     </option>
                 <?php endforeach; ?>
             </select>
+
+            <button type="submit"
+                class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">
+                Create Post
+            </button>
+
         </form>
-        <button id="postclsbtn">Close</button>
-        <!-- Add this modal for reporting -->
-
-
+        <button id="postclsbtn" class="mt-4 absolute right-0 top-0 px-4 py-2 ">
+            &times;
+        </button>
     </div>
+
     <footer>
         <div class="foot-panel2">
             <div class="ul">

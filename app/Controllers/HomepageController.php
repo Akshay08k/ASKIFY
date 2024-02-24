@@ -102,7 +102,6 @@ class HomepageController extends BaseController
         $userId = session()->get('user_id');
         $validationRules = [
             'postTitle' => 'required',
-            'postDescription' => 'required',
             'postPhoto' => 'uploaded[postPhoto]|max_size[postPhoto,10240]',
             'CategoryId' => 'required',
         ];
@@ -112,26 +111,29 @@ class HomepageController extends BaseController
         }
 
         $title = $this->request->getPost('postTitle');
-        $description = $this->request->getPost('postDescription');
         $Photo = $this->request->getFile('postPhoto');
         $categoryId = $this->request->getPost('CategoryId');
 
         $questionModel = new QuestionModel();
         $data = [
             'title' => $title,
-            'description' => $description,
             'user_id' => $userId,
             'category_id' => $categoryId,
         ];
 
         if ($Photo->isValid() && !$Photo->hasMoved()) {
-            $newName = $title . '_' . $userId . '.' . $Photo->getExtension();
-            $Photo->move(ROOTPATH . 'public/uploads/questionimages', $newName);
-            $data['media'] = file_get_contents(ROOTPATH . 'public/uploads/questionimages/' . $newName);
+            // Generate a random name for the file
+            $randomName = $Photo->getRandomName();
 
-            // Remove the image file after reading its contents
+            // Combine the random name with the user id
+            $newName = $randomName . '_' . $userId . '.' . $Photo->getExtension();
+
+            // Move the file to the destination directory
+            $Photo->move(ROOTPATH . '/public/uploads/questionimages', $newName);
+
+            // Get the contents of the moved file
+            $data['media'] = file_get_contents(ROOTPATH . '/public/uploads/questionimages/' . $newName);
         }
-
         $questionModel->insert($data);
 
         return redirect()->to('/homepage')->with('success', 'Question submitted successfully');
