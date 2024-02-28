@@ -60,22 +60,6 @@ class AdminManageUserController extends BaseController
     {
         // Load the email library
         $email = \Config\Services::email();
-
-        // Email configuration (replace with your SMTP settings)
-        $config = [
-            'protocol' => 'smtp',
-            'SMTPHost' => 'smtp.gmail.com',
-            'SMTPUser' => 'donateravengers@gmail.com',
-            'SMTPPass' => 'ozfw cluc mqqo lgsf',
-            'SMTPPort' => 587, // Adjust the port as needed
-            'SMTPCrypto' => 'tls', // 'ssl' or 'tls'
-            'mailType' => 'html', // You can change this to 'text' if needed
-            'charset' => 'utf-8',
-            'wordWrap' => true,
-        ];
-
-        // Initialize the email library with the configuration
-        $email->initialize($config);
         $email->setFrom('donateravengers@gmail.com', 'Askify Admin');
         $email->setTo($userEmail);
         $email->setSubject('Account Deletion Notification');
@@ -176,20 +160,8 @@ class AdminManageUserController extends BaseController
         $email = \Config\Services::email();
 
         // Email configuration (replace with your SMTP settings)
-        $config = [
-            'protocol' => 'smtp',
-            'SMTPHost' => 'smtp.gmail.com',
-            'SMTPUser' => 'donateravengers@gmail.com',
-            'SMTPPass' => 'ozfw cluc mqqo lgsf',
-            'SMTPPort' => 587, // Adjust the port as needed
-            'SMTPCrypto' => 'tls', // 'ssl' or 'tls'
-            'mailType' => 'html', // You can change this to 'text' if needed
-            'charset' => 'utf-8',
-            'wordWrap' => true,
-        ];
 
         // Initialize the email library with the configuration
-        $email->initialize($config);
         $email->setFrom('donateravengers@gmail.com', 'Askify Admin');
         $email->setTo($userEmail);
 

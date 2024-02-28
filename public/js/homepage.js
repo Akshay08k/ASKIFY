@@ -157,21 +157,105 @@ function createQuestionBox(data) {
 function redirectToAnswers(id) {
   window.location.href = `/answers?id=${id}`;
 }
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+const questionContainer = document.querySelector(".content");
+let currentIndex = 0;
+let likedQuestionIds = [89, 84];
+
+function loadRandomQuestions() {
+  fetch("/homepage/getInterestedQuestions")
+    .then((response) => response.json())
+    .then((interestedData) => {
+      // Extract interestedCategories and interestedQuestionIds from the response
+      const interestedCategories =
+        interestedData.interested_categories.category_id;
+      const interestedQuestionIds =
+        interestedData.interested_questions.question_ids;
+
+      // Fetch all questions
+      fetch("/homepage/getQuestions")
+        .then((response) => response.json())
+        .then((questions) => {
+          // Separate questions into liked, filtered, and rest
+          const likedQuestions = questions.filter((question) => {
+            return likedQuestionIds.includes(question.id.toString());
+          });
+
+          const filteredQuestions = questions.filter((question) => {
+            return (
+              interestedCategories.includes(question.category_id.toString()) &&
+              interestedQuestionIds.includes(question.id.toString()) &&
+              !likedQuestionIds.includes(question.id.toString())
+            );
+          });
+
+          const restQuestions = questions.filter((question) => {
+            return (
+              !likedQuestions.includes(question) &&
+              !filteredQuestions.includes(question)
+            );
+          });
+
+          // Shuffle each array
+          const shuffledLikedQuestions = shuffleArray(likedQuestions);
+          const shuffledFilteredQuestions = shuffleArray(filteredQuestions);
+          const shuffledRestQuestions = shuffleArray(restQuestions);
+
+          // Combine arrays with liked and filtered questions prioritized
+          let combinedQuestions = shuffledFilteredQuestions.concat(
+            shuffledRestQuestions
+          );
+
+          // Check if there are liked questions to avoid duplicates
+          if (shuffledLikedQuestions.length > 0) {
+            // Remove liked questions from combined array to avoid duplicates
+            combinedQuestions = combinedQuestions.filter((question) => {
+              return !likedQuestionIds.includes(question.id.toString());
+            });
+
+            // Add liked questions to the beginning of the combined array
+            combinedQuestions =
+              shuffledLikedQuestions.concat(combinedQuestions);
+          }
+
+          // Display a subset of questions (e.g., 10 questions)
+          const questionsSubset = combinedQuestions.slice(
+            currentIndex,
+            currentIndex + 40
+          );
+          currentIndex += 30;
+
+          questionsSubset.forEach((question) => {
+            const questionBox = createQuestionBox(question);
+            questionContainer.appendChild(questionBox);
+          });
+        })
+        .catch((error) => console.error("Error fetching questions:", error));
+    })
+    .catch((error) => console.error("Error fetching interested data:", error));
+}
 
 document.addEventListener("DOMContentLoaded", function () {
-  const questionContainer = document.querySelector(".content");
-
-  // Fetch questions from the server
-  fetch("/homepage/getQuestions")
-    .then((response) => response.json())
-    .then((questions) => {
-      questions.forEach((questionData) => {
-        const questionBox = createQuestionBox(questionData);
-        questionContainer.appendChild(questionBox);
-      }, console.log("Enjoy Running"));
-    })
-    .catch((error) => console.error("Error fetching questions:", error));
+  // Load the first set of random questions filtered by interested categories and question IDs
+  loadRandomQuestions();
+  setInterval(() => {
+    currentIndex = 0; // Reset index for the next set of questions
+    questionContainer.innerHTML = ""; // Clear existing content
+    // Load new set of random questions filtered by interested categories and question IDs
+    loadRandomQuestions();
+  }, 30000);
 });
+
+// Example function to simulate liking a question
+function likeQuestion(questionId) {
+  likedQuestionIds.push(questionId);
+}
 
 // Function to log categoryId and dynamically add HTML
 function logCategoryId(categoryId) {

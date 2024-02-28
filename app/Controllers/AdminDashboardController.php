@@ -10,6 +10,7 @@ use App\Models\NotificationModel;
 use App\Models\QuestionModel;
 use App\Models\UserModel;
 use App\Models\ReportModel;
+use App\Models\VisitorModel;
 
 class AdminDashboardController extends BaseController
 {
@@ -26,6 +27,7 @@ class AdminDashboardController extends BaseController
         $ReportModel = new ReportModel();
         $FeedbackModel = new FeedbackModel();
         $QuestionModel = new QuestionModel();
+        $VisitorModel = new VisitorModel();
         $AnswerModel = new AnswerModel();
         $NotificationModel = new NotificationModel();
 
@@ -34,6 +36,7 @@ class AdminDashboardController extends BaseController
         $data['users'] = $userModel->where('id', $userId)->findAll();
         $data['categories'] = $CategoryModel->findAll();
         $data['totalUsers'] = $userModel->countAll();
+        $data['totalVisitor'] = $VisitorModel->countAll();
         $data['totalCategories'] = $CategoryModel->countAll();
         $data['totalReports'] = $ReportModel->countAll();
         $data['totalFeedbacks'] = $FeedbackModel->countAll();

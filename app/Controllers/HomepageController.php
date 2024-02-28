@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\CategoryModel;
 use App\Models\QuestionModel;
+use App\Models\UserCategoriesModel;
 use App\Models\UserModel;
 use App\Models\QuestionLikeModel;
 
@@ -60,6 +61,40 @@ class HomepageController extends BaseController
             return $this->response->setStatusCode(500)->setJSON(['error' => 'Failed to fetch questions.']);
         }
     }
+    public function getInterestedQuestions()
+    {
+        $userId = session()->get('user_id');
+        $UserCategoryModel = new UserCategoriesModel();
+        $QuestionModel = new QuestionModel();
+
+        // Get user's preferred categories
+        $userCategories = $UserCategoryModel->where('user_id', $userId)->findColumn('category_id');
+
+        if (!$userCategories) {
+            return $this->response->setJSON([]);
+        }
+
+        $interestedCategories = [
+            'category_id' => $userCategories
+        ];
+
+        // Fetch all questions with max likes across all categories
+        $questionsWithMaxLikes = $QuestionModel->select('id')
+            ->orderBy('likes', 'DESC')
+            ->findAll();
+
+        $interestedQuestions = [
+            'question_ids' => array_column($questionsWithMaxLikes, 'id')
+        ];
+
+        return $this->response->setJSON([
+            'interested_categories' => $interestedCategories,
+            'interested_questions' => $interestedQuestions
+        ]);
+    }
+
+
+
 
 
 

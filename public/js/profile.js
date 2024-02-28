@@ -27,7 +27,8 @@ $(document).ready(function () {
 
               // REDIRECT LINK OF USERS PAGE
               userDiv.on("click", function () {
-                window.location.href = "/visitprofile/" + user.id;
+                window.location.href = "/visitprofile/" + user.username;
+                console.log(user.username);
               });
             });
           } else {

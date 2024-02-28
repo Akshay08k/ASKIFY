@@ -1,0 +1,12 @@
+  /* CSS styles */
+
+  body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: url('/images/back.jpg');
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+  }

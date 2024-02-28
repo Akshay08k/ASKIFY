@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="<?= base_url('css/header.css') ?>">
     <link rel="stylesheet" href="<?= base_url('css/profile.css') ?>">
     <link rel="stylesheet" href="<?= base_url('css/footer.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('css/output.min.css') ?>">
+
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 </head>
@@ -42,6 +44,11 @@
         <button class="pfplinkbtn" onclick="window.location.href='/updatecategory'">Update categories</button>
         <button class="pfplinkbtn" onclick="window.location.href='/logout'">Logout</button>
     </div>
+    <?php if (isset($error)): ?>
+        <div class="text-red-500 text-center">
+            <?= $error ?>
+        </div>
+    <?php endif; ?>
     <section class="profile">
         <div class="leftside">
             <div class="photocard">

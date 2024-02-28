@@ -56,7 +56,12 @@
         <div class="flex-1 p-4">
             <h2 class="text-2xl font-bold mb-4">Manage User Accounts</h2>
             <div class="grid grid-cols-2 gap-4">
-
+                <div class="bg-white p-4 shadow-md rounded-md">
+                    <p class="text-gray-800">Total Visitors:</p>
+                    <span class="text-xl font-bold text-indigo-600">
+                        <?= $totalVisitor ?>
+                    </span>
+                </div>
                 <div class="bg-white p-4 shadow-md rounded-md">
                     <p class="text-gray-800">Total Users:</p>
                     <span class="text-xl font-bold text-indigo-600">
@@ -70,46 +75,38 @@
                         <?= $totalCategories ?>
                     </span>
                 </div>
-
                 <div class="bg-white p-4 shadow-md rounded-md">
                     <p class="text-gray-800">Total Reports:</p>
                     <span class="text-xl font-bold text-indigo-600">
                         <?= $totalReports ?>
                     </span>
                 </div>
-
                 <div class="bg-white p-4 shadow-md rounded-md">
                     <p class="text-gray-800">Total Feedbacks:</p>
                     <span class="text-xl font-bold text-indigo-600">
                         <?= $totalFeedbacks ?>
                     </span>
                 </div>
-
                 <div class="bg-white p-4 shadow-md rounded-md">
                     <p class="text-gray-800">Total Questions:</p>
                     <span class="text-xl font-bold text-indigo-600">
                         <?= $totalQuestions ?>
                     </span>
                 </div>
-
                 <div class="bg-white p-4 shadow-md rounded-md">
                     <p class="text-gray-800">Total Answers:</p>
                     <span class="text-xl font-bold text-indigo-600">
                         <?= $totalAnswer ?>
                     </span>
                 </div>
-
-
-
                 <div class="bg-white p-4 shadow-md rounded-md">
                     <h3 class="text-gray-800 text-lg font-semibold mb-2">Upcoming Platform Updates</h3>
-
                     <?php if (!empty($platformUpdateNotifications)): ?>
                         <ul class="list-disc list-inside">
                             <?php foreach ($platformUpdateNotifications as $notification): ?>
-                                <h3 class="text-xl text-green-700">
+                                <li class="text-xl text-green-700">
                                     <?= esc($notification['text']); ?>
-                                </h3>
+                                </li>
                             <?php endforeach; ?>
                         </ul>
                     <?php else: ?>

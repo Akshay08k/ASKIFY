@@ -61,7 +61,7 @@ $routes->post('updatecategory/processCategorySelection', 'ProfileController::pro
 $routes->get('/updateprofile', 'ProfileController::editProfile');
 $routes->post('/updateprofile/save', 'ProfileController::updateProfile');
 $routes->post('/search/liveSearch', 'ProfileController::liveSearch');
-$routes->get('/visitprofile/(:num)', 'ProfileController::VisitProfile/$1');
+$routes->get('/visitprofile/(:any)', 'ProfileController::VisitProfile/$1');
 
 
 //loading terms
@@ -77,6 +77,7 @@ $routes->post('homepage/search/liveSearch', 'HomepageController::liveSearch');
 
 //json page for getting question
 $routes->get('/homepage/getQuestions', 'HomepageController::getQuestions');
+$routes->get('/homepage/getInterestedQuestions', 'HomepageController::getInterestedQuestions');
 $routes->post('/homepage/updateLikeCount/(:num)/(:alpha)', 'HomepageController::updateLikeCount/$1/$2');
 $routes->post('/submit_post', 'HomepageController::SubmitPost');
 $routes->post('/submit_question', 'HomepageController::SubmitQuestion');
@@ -96,10 +97,11 @@ $routes->post('answers/store', 'AnswerController::store');
 $routes->post('answers/updateAnswerLikeCount/(:num)/(:alpha)', 'AnswerController::updateAnswerLikeCount/$1/$2');
 $routes->get('/answers/checkUserLikeStatus/(:num)', 'AnswerController::checkUserLikeStatus/$1');
 $routes->post('/answers/submit', 'AnswerController::submitAnswer');
-
-
-
 $routes->get("/homepage/getcategories", 'AdminCategoriesController::getcategories');
+
+//
+$routes->get('/forgotpassword', 'ForgotPasswordController::index');
+$routes->post('/forgot-password', 'ForgotPasswordController::ResetPass');
 
 
 /*

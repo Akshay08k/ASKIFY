@@ -64,14 +64,13 @@ class ProfileController extends BaseController
 
         $data['totalAnswerLikes'] = $totalAnswerLikes;
         $data['recentActivity'] = $activityLogModel->getRecentActivityForUser($userId, 5);
-
+        $data['error'] = session()->getFlashdata('error');
         return view('user/selfprofile', $data);
 
     }
-    public function VisitProfile($userId)
+
+    public function VisitProfile($username)
     {
-
-
         $activityLogModel = new ActivityLogModel();
         $categoryModel = new CategoryModel();
         $QuestionModel = new QuestionModel();
@@ -79,8 +78,18 @@ class ProfileController extends BaseController
         $questionModel = new QuestionModel();
         $answerModel = new AnswerModel();
         $userModel = new UserModel();
-
         $UserCategoriesModel = new UserCategoriesModel();
+
+        // Get the user by username
+        $user = $userModel->where('username', $username)->first();
+
+        if (!$user) {
+            session()->setFlashdata('error', 'The User Not Found');
+            return redirect()->to('/profile');
+        }
+
+        $userId = $user['id'];
+
         $UserSelectedCategories = $UserCategoriesModel->where('user_id', $userId)->findAll();
 
         // Extracting category_id values from the result
@@ -103,7 +112,6 @@ class ProfileController extends BaseController
 
         $distinctQuestionIds = $answerModel->distinct()->select('question_id')->findAll();
 
-
         foreach ($distinctQuestionIds as $row) {
             $questionId = $row['question_id'];
             $likesSumResult = db_connect()->table('answer')->where('question_id', $questionId)->selectSum('likes')->get()->getRowArray();
@@ -114,7 +122,6 @@ class ProfileController extends BaseController
         $data['recentActivity'] = $activityLogModel->getRecentActivityForUser($userId, 5);
 
         return view('user/profile', $data);
-
     }
     public function choosecategory()
     {

@@ -11,7 +11,7 @@ class UserModel extends Model
 
     public function searchUsers($searchTerm)
     {
-        $query = $this->select('id, name')->like('name', $searchTerm)->findAll();
+        $query = $this->select('id, name,username')->like('name', $searchTerm)->findAll();
         return $query;
 
     }
