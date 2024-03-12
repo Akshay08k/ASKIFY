@@ -55,11 +55,8 @@
             <img src="<?= base_url('uploads/askifyCover.png') ?>" class="cover-img" alt="Cover Image">
             <button id="followBtn" class="follow-btn  border px-8 py-2 text-white hover:bg-white hover:text-black"
                 data-followed-user-id="<?= $hiddenUserid ?>" data-follow-action="follow">
-                <?php if ($isFollowing): ?>
-                    Following
-                <?php else: ?>
-                    Follow
-                <?php endif; ?>
+           <?php echo $isFollowing ? "Following" : "Follow"; ?>
+
             </button>
 
             <button class="msg-btn border px-8 py-2 text-white hover:bg-white hover:text-black">Message</button>

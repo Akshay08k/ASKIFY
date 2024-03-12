@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\CategoryModel;
+use App\Models\NotificationModel;
 use App\Models\UserCategoriesModel;
 use App\Models\UserModel;
 use App\Models\FollowerModel;
@@ -137,9 +138,22 @@ class ProfileController extends BaseController
 
         // Check if the logged-in user is following the visited user
         $loggedInUserId = session()->get('user_id');
+        $loggedInUserId = session()->get('user_id');
+
+        // Check if the logged-in user is following the specified user
         $isFollowing = $followerModel->where('user_id', $loggedInUserId)
             ->where('follower_id', $userId)
             ->countAllResults() > 0;
+
+        // Check if the specified user is following the logged-in user
+        $isFollowedByUser = $followerModel->where('user_id', $userId)
+            ->where('follower_id', $loggedInUserId)
+            ->countAllResults() > 0;
+
+        // Check if there is a mutual follow relationship
+        $isMutualFollowing = $isFollowing || $isFollowedByUser;
+
+
 
         $UserSelectedCategories = $UserCategoriesModel->where('user_id', $userId)->findAll();
 
@@ -149,7 +163,7 @@ class ProfileController extends BaseController
         $data['usercategory'] = $InterestedCategories;
 
         // Pass the follow status and other data to the view
-        $data['isFollowing'] = $isFollowing;
+        $data['isFollowing'] = $isMutualFollowing;
         $data['categories'] = $categoryModel->findAll();
         $data['question'] = $QuestionModel->findAll();
         $data['userId'] = $userId;
@@ -326,6 +340,11 @@ class ProfileController extends BaseController
         $userId = session()->get('user_id');
         $followerId = $this->request->getPost('followerId');
 
+        // Fetch username of the user being followed
+        $userModel = new UserModel();
+        $followedUser = $userModel->find($userId);
+        $followedUsername = $followedUser['username'];
+
         // Check if the record exists
         $followerModel = new FollowerModel();
         $existingRecord = $followerModel->where('follower_id', $userId)
@@ -345,6 +364,15 @@ class ProfileController extends BaseController
             ];
             $followerModel->insert($data);
             $status = 'followed';
+
+            // Insert notification data
+            $notificationModel = new NotificationModel();
+            $notificationData = [
+                'recipient_id' => $followerId,
+                'text' => $followedUsername . ' followed you.',
+                // Add other relevant data fields here
+            ];
+            $notificationModel->insert($notificationData);
         }
 
         // Return response

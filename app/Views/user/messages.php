@@ -35,26 +35,29 @@
             <li><a href="/profile">Profile</a></li>
         </ul>
     </nav>
-    <div class="main ">
-        <div class=" p-6">
-            <h1 class="text-2xl font-bold mb-4">Users</h1>
-            <ul id="userList" class="overflow-y-auto">
-            </ul>
+    <!-- Chatting -->
+    <div class="flex flex-row justify-between bg-white">
+        <!-- chat list -->
+        <h1 class="text-3xl absolute text-center">Users</h1>
+        <div class="flex flex-col w-2/5 border-r-2 overflow-y-auto mt-10" id="userList">
+
+
+
+            <!-- end user list -->
         </div>
-
-        <div class="flex-1 p-6 overflow-y-auto">
-            <h1 class="text-2xl font-bold mb-4" id="chatHeading">Chat</h1>
-            <div id="chat" class="flex flex-col space-y-4">
-
-            </div>
-            <div class="interect">
-                <input type="text" id="messageInput" placeholder="Type your message..."
-                    class="w-full p-2 border rounded" required>
-                <button onclick="sendMessage()" id="sendButton"
-                    class="mt-2 bg-blue-500 text-white p-2 rounded">Send</button>
-            </div>
+        <!-- end chat list -->
+        <!-- message -->
+        <div class="w-full  flex flex-col justify-between " id="chat">
 
         </div>
+        <div class="py-5 absolute bottom-10 right-0 w-full">
+            <input class="w-full bg-gray-300 py-5 px-3 rounded-xl" type="text" id="messageInput"
+                placeholder="type your message here..." />
+            <button onclick="sendMessage()" id="sendButton"
+                class="  bg-blue-500 hover:bg-blue-700 text-white  font-bold py-2 px-4 rounded">Send</button>
+        </div>
+        <!-- end message -->
+
     </div>
     <footer>
         <div class="foot-panel2">
@@ -96,7 +99,10 @@
                     var users = JSON.parse(response);
 
                     users.forEach(function (user) {
-                        userList.append('<li onclick="loadname(\'' + user.name + '\')" class="mb-3" data-userid="' + user.id + '">' + user.name + '</li>');
+                        var listItem = $('<li class="flex items-center mb-3" data-userid="' + user.id + '"></li>'); // Create a list item element
+                        listItem.append("<img height='40' width='40' class='mr-2' src='data:image/jpeg;base64," + user.profile_photo + "'>"); // Append profile photo
+                        listItem.append('<span onclick="loadname(\'' + user.name + '\')" class="cursor-pointer">' + user.name + '</span>'); // Append user name
+                        userList.append(listItem); // Append list item to the user list
                     });
                 }
             });

@@ -1526,3 +1526,21 @@ in SYSTEMPATH\BaseModel.php on line 601.
  4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
  6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 23:08:03 --> Undefined variable $isFollowing
+in APPPATH\Controllers\ProfileController.php on line 155.
+ 1 APPPATH\Controllers\ProfileController.php(155): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $isFollowing', 'APPPATH\\Controllers\\ProfileController.php', 155)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->VisitProfile('sarah_clark')
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 23:11:42 --> syntax error, unexpected token "?", expecting variable or "{" or "$"
+in APPPATH\Views\user\profile.php on line 58.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/profile', [], true)
+ 3 APPPATH\Controllers\ProfileController.php(193): view('user/profile', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->VisitProfile('sarah_clark')
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')

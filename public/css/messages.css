@@ -44,15 +44,20 @@ body {
 }
 
 #chat {
-    height: 40rem;
-    width: 80rem;
-    overflow-y: auto;
+    display: flex;
+    justify-content: center;
     border-radius: 8px;
-    padding: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.224);
-
-
+    padding: 40px;
+    background-color: #f0f4f8;
+    /* Light background color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Add a subtle shadow */
+    border: 1px solid #d2d6dc;
+    /* Add a border for contrast */
 }
+
+
+
 
 
 .bubble {
@@ -81,11 +86,13 @@ body {
 
 
 #messageInput {
-    width: 40rem;
     padding: 8px;
+    width: 70%;
     border: 1px solid #a0aec0;
     border-radius: 4px;
-    margin-right: 8px;
+    right: 13em;
+    position: absolute;
+    bottom: 50px;
 }
 
 #sendButton {
@@ -94,6 +101,9 @@ body {
     padding: 8px;
     border: none;
     border-radius: 4px;
+    position: absolute;
+    bottom: 50px;
+    right: 9em;
     cursor: pointer;
 }
 

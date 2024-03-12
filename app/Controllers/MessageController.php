@@ -57,7 +57,8 @@ class MessageController extends Controller
                 'name' => $user['name'],
                 'gender' => $user['gender'],
                 'email' => $user['email'],
-                'status' => $user['status']
+                'status' => $user['status'],
+                'profile_photo' => base64_encode($user['profile_photo'])
             ];
         }
 
