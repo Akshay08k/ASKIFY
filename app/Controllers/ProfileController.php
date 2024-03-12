@@ -52,6 +52,48 @@ class ProfileController extends BaseController
         $totalLikesResult = $questionModel->selectSum('likes')->where('user_id', $userId)->get()->getRowArray();
         $data['totalLikes'] = $totalLikesResult['likes'];
         $totalAnswerLikes = [];
+        // Load follower IDs
+        $followers = $followerModel->where('follower_id', $userId)->findAll();
+
+        // Initialize an array to store follower names
+        $followerNames = [];
+
+        // Iterate through each follower ID and fetch their corresponding names
+        foreach ($followers as $follower) {
+            $followerId = $follower['user_id'];
+            // Query the user model to retrieve the name based on the follower ID
+            $followerData = $userModel->find($followerId);
+            // Check if the follower data exists
+            if ($followerData) {
+                // Add the follower name to the array
+                $followerNames[] = $followerData['name'];
+            }
+        }
+
+        // Now $followerNames array contains the names of all followers
+        $data['followerNames'] = $followerNames;
+        // Load following IDs
+        $following = $followerModel->where('user_id', $userId)->findAll();
+
+        // Initialize an array to store following names
+        $followingNames = [];
+
+        // Iterate through each following ID and fetch their corresponding names
+        foreach ($following as $follow) {
+            $followingId = $follow['follower_id'];
+            // Query the user model to retrieve the name based on the following ID
+            $followingData = $userModel->find($followingId);
+            // Check if the following data exists
+            if ($followingData) {
+                // Add the following name to the array
+                $followingNames[] = $followingData['name'];
+            }
+        }
+
+        // Now $followingNames array contains the names of all following
+        $data['followingNames'] = $followingNames;
+
+
 
         $distinctQuestionIds = $answerModel->distinct()->select('question_id')->findAll();
 
@@ -61,8 +103,11 @@ class ProfileController extends BaseController
             $likesSumResult = db_connect()->table('answer')->where('question_id', $questionId)->selectSum('likes')->get()->getRowArray();
             $totalAnswerLikes[$questionId] = $likesSumResult['likes'];
         }
-
+        $data['totalQuestionCount'] = $QuestionModel->where('user_id', $userId)->countAllResults();
         $data['totalAnswerLikes'] = $totalAnswerLikes;
+
+        $data['Question'] = $QuestionModel->where('user_id', $userId)->findAll();
+        $data['Answer'] = $answerModel->where('user_id', $userId)->findAll();
         $data['recentActivity'] = $activityLogModel->getRecentActivityForUser($userId, 5);
         $data['error'] = session()->getFlashdata('error');
         return view('user/selfprofile', $data);
@@ -90,6 +135,12 @@ class ProfileController extends BaseController
 
         $userId = $user['id'];
 
+        // Check if the logged-in user is following the visited user
+        $loggedInUserId = session()->get('user_id');
+        $isFollowing = $followerModel->where('user_id', $loggedInUserId)
+            ->where('follower_id', $userId)
+            ->countAllResults() > 0;
+
         $UserSelectedCategories = $UserCategoriesModel->where('user_id', $userId)->findAll();
 
         // Extracting category_id values from the result
@@ -97,6 +148,8 @@ class ProfileController extends BaseController
         $InterestedCategories = $categoryModel->whereIn('id', $categoryIds)->findAll();
         $data['usercategory'] = $InterestedCategories;
 
+        // Pass the follow status and other data to the view
+        $data['isFollowing'] = $isFollowing;
         $data['categories'] = $categoryModel->findAll();
         $data['question'] = $QuestionModel->findAll();
         $data['userId'] = $userId;
@@ -109,9 +162,10 @@ class ProfileController extends BaseController
         $totalLikesResult = $questionModel->selectSum('likes')->where('user_id', $userId)->get()->getRowArray();
         $data['totalLikes'] = $totalLikesResult['likes'];
         $totalAnswerLikes = [];
-
+        $data['totalQuestionCount'] = $QuestionModel->where('user_id', $userId)->countAllResults();
         $distinctQuestionIds = $answerModel->distinct()->select('question_id')->findAll();
-
+        $data['Question'] = $QuestionModel->where('user_id', $userId)->findAll();
+        $data['Answer'] = $answerModel->where('user_id', $userId)->findAll();
         foreach ($distinctQuestionIds as $row) {
             $questionId = $row['question_id'];
             $likesSumResult = db_connect()->table('answer')->where('question_id', $questionId)->selectSum('likes')->get()->getRowArray();
@@ -120,9 +174,11 @@ class ProfileController extends BaseController
 
         $data['totalAnswerLikes'] = $totalAnswerLikes;
         $data['recentActivity'] = $activityLogModel->getRecentActivityForUser($userId, 5);
+        $data['hiddenUserid'] = $userId;
 
         return view('user/profile', $data);
     }
+
     public function choosecategory()
     {
         $CategoryModel = new CategoryModel();
@@ -264,4 +320,37 @@ class ProfileController extends BaseController
             return redirect()->to('/homepage')->with('error', 'Failed to Answer question');
         }
     }
+    public function followAction()
+    {
+        // Retrieve data from AJAX request
+        $userId = session()->get('user_id');
+        $followerId = $this->request->getPost('followerId');
+
+        // Check if the record exists
+        $followerModel = new FollowerModel();
+        $existingRecord = $followerModel->where('follower_id', $userId)
+            ->where('user_id', $followerId)
+            ->first();
+
+        if ($existingRecord) {
+            // If record exists, delete it (unfollow)
+            $followerModel->delete($existingRecord['id']);
+            $status = 'unfollowed';
+        } else {
+            // If record does not exist, insert it (follow)
+            $data = [
+                'follower_id' => $userId,
+                'user_id' => $followerId,
+                // Add other relevant data fields here
+            ];
+            $followerModel->insert($data);
+            $status = 'followed';
+        }
+
+        // Return response
+        return $this->response->setJSON(['status' => $status]);
+    }
+
+
+
 }

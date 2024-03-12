@@ -42,3 +42,58 @@ $(document).ready(function () {
     }
   });
 });
+
+document.getElementById("showQuestions").addEventListener("click", function () {
+  document.getElementById("questionsContainer").style.display = "grid";
+  document.getElementById("answersContainer").style.display = "none";
+
+  this.classList.add("border-blue-500");
+  this.nextElementSibling.classList.remove("border-green-500");
+});
+
+document.getElementById("showAnswers").addEventListener("click", function () {
+  document.getElementById("questionsContainer").style.display = "none";
+  document.getElementById("answersContainer").style.display = "grid";
+
+  this.classList.add("border-green-500");
+  this.previousElementSibling.classList.remove("border-blue-500");
+});
+$(document).ready(function () {
+  $("#followBtn").on("click", function () {
+    var userId = $(this).data("user-id");
+    var followerId = $(this).data("followed-user-id");
+
+    $.ajax({
+      url: "/follower/followAction",
+      method: "POST",
+      data: { userId: userId, followerId: followerId },
+      success: function (response) {
+        // Toggle button text based on response
+        if (response.status === "followed") {
+          $("#followBtn").text("Following");
+        } else if (response.status === "unfollowed") {
+          $("#followBtn").text("Follow");
+        }
+      },
+      error: function (xhr, status, error) {
+        console.error(xhr.responseText);
+      },
+    });
+  });
+});
+
+document.getElementById("showQuestions").addEventListener("click", function () {
+  document.getElementById("questionsContainer").style.display = "grid";
+  document.getElementById("answersContainer").style.display = "none";
+
+  this.classList.add("border-blue-500");
+  this.nextElementSibling.classList.remove("border-green-500");
+});
+
+document.getElementById("showAnswers").addEventListener("click", function () {
+  document.getElementById("questionsContainer").style.display = "none";
+  document.getElementById("answersContainer").style.display = "grid";
+
+  this.classList.add("border-green-500");
+  this.previousElementSibling.classList.remove("border-blue-500");
+});

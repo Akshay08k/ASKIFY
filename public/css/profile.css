@@ -1,49 +1,6 @@
-::-webkit-scrollbar {
-  display: none;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-body,
-h1,
-h2,
-h3,
-p,
-img {
-  margin: 0;
-  padding: 0;
-}
 
-body {
-  background-color: #f8f8f8;
-}
-
-/* Style the profile section */
-.profile {
-  display: flex;
-  justify-content: space-between;
-  margin-top: -60px;
-  padding: 100px;
-}
-
-/* Style the left side of the profile */
-.leftside {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.photo {
-  display: flex;
-  justify-content: center;
-}
-
-.photocard {
-  background-color: #fff;
-  border-radius: 8px;
-  width: 300px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin-bottom: 20px;
-}
 
 .profilelinks {
   display: flex;
@@ -68,169 +25,162 @@ body {
   background-color: #2980b9;
 }
 
-.photo img {
-  width: 150px;
-  height: 150px;
+
+
+* {
+
+  /* background-color: black;
+    color: white; */
+}
+
+body {
+  font-family: "poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.cover {
+  height: 50vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cover-img,
+.coverpage-img {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  margin-top: -40px;
+  border-radius: 30px;
+  align-items: center;
+  height: 80%;
+  overflow: hidden;
+}
+
+.cover-img img {
+  width: 90%;
+  object-fit: contain;
+}
+
+.profile-img {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  z-index: 1;
+  bottom: 10%;
+}
+
+.profile-img:hover {
+  transition: 1s;
+  scale: 1.1;
+}
+
+.image {
+  height: 220px;
+  width: 220px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 10px;
 }
 
-.username {
-  opacity: .4;
+.follow-btn,
+.msg-btn {
+  position: absolute;
+  font-size: 16px;
+  border: 3px solid white;
+  top: 17%;
 }
 
-.username,
-.name,
-.bio {
+.follow-btn {
+  margin-right: 70px;
+  right: 16%;
+}
+
+.msg-btn {
+  right: 11%;
+}
+
+.main {
   text-align: center;
-  margin-bottom: 10px;
-}
-
-.buttons {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 10px;
-}
-
-.updatebtn {
-  text-align: center;
-}
-
-.bio {
-  padding: 10px;
-  border-radius: 10px;
-}
-
-.btns {
-  background-color: #3498db;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.detailscard {
-  margin-top: 20px;
-}
-
-.gender,
-.location,
-.contact {
-  margin-bottom: 10px;
-}
-
-/* Style the right side of the profile */
-.rightside {
-  flex-grow: 1;
-  margin-left: 20px;
 }
 
 .counts {
   display: flex;
-  justify-content: space-around;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin-bottom: 20px;
+  justify-content: center;
+  gap: 100px;
 }
 
-.recent-categories {
+.circle {
+  width: 40px;
+  height: 40px;
+  width: 60px;
+  border-radius: 14px;
+  background-color: #3498db;
   display: flex;
-  justify-content: space-around;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.activity-box {
-  margin-top: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-}
-
-.activity-item {
-  border-bottom: 1px solid #ddd;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.activity-type {
+  align-items: center;
+  justify-content: center;
+  color: #fff;
   font-weight: bold;
 }
 
-.activity-timestamp {
-  color: #777;
+.follower .title,
+.following .title,
+.likes .title {
+  margin-top: 8px;
 }
 
+@media (max-width: 768px) {
+  .cover {
+    height: 60vh;
+  }
 
-.recent-categories,
-.recent-activity {
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 20px;
+  .cover-img {
+    display: none;
+  }
+
+  .profile-img {
+    bottom: 60%;
+  }
+
+  .image {
+    height: 160px;
+    width: 160px;
+  }
+
+  .follow-btn,
+  .msg-btn {
+    background: black;
+    position: absolute;
+    top: 45%;
+    font-size: 10px;
+    width: 100px;
+
+  }
+
+  .follow-btn {
+    left: 60px;
+  }
 }
 
-.recent-categories {
+.username {
+  margin-top: -20px;
+}
+
+.about {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.categoriescard {
-  display: flex;
-  padding: 70px;
-  max-width: 500px;
-  max-height: 300px;
   justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  overflow: scroll;
-  gap: 10px;
+  gap: 300px;
+  margin-top: 40px;
 }
 
-.category-box {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  border: 1px solid rgba(101, 98, 98, 0.556);
-  border-radius: 10px;
-  padding: 10px;
-  text-align: center;
+::-webkit-scrollbar {
+  display: none;
 }
 
-.category-box img {
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-}
-
-.cat-name {
-  margin-top: 10px;
-}
-
-.activity-box {
-  margin-top: 10px;
-}
-
-.links {
-  display: flex;
-  justify-content: space-around;
-}
-
-.links a {
-  color: black;
-  text-decoration: none;
-  padding: 8px;
-  border-radius: 4px;
-}
-
-.links a:hover {
-  color: #3498db;
+.container-bio,
+.container-about {
+  width: 50em;
 }

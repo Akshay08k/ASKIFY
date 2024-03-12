@@ -45,7 +45,6 @@
         <div class="flex-1 p-6 overflow-y-auto">
             <h1 class="text-2xl font-bold mb-4" id="chatHeading">Chat</h1>
             <div id="chat" class="flex flex-col space-y-4">
-                Click TO Any User To Chat / Follow User That User Will Appear Here
 
             </div>
             <div class="interect">
@@ -111,9 +110,7 @@
                 method: 'GET',
                 success: function (response) {
                     var messages = JSON.parse(response);
-                    if (messages.length == 0) {
-                        document.getElementById('chat').textContent = "There Are No History To Show Please Chat With User By Sending Message"
-                    }
+
                     messages.forEach(function (message) {
                         // Skip the last sent message
                         if (message.id != lastSentMessageId) {

@@ -1,0 +1,1528 @@
+ERROR - 2024-03-12 08:57:02 --> mysqli_sql_exception: MySQL server has gone away in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(656): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\ASKIFY\app\Models\VisitorModel.php(16): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\ASKIFY\app\Controllers\Home.php(12): App\Models\VisitorModel->trackVisitor('::1')
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\Home->index()
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+CRITICAL - 2024-03-12 08:57:02 --> MySQL server has gone away
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `visitors`
+WHERE `ip_address` = :ip_address:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(656): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Models\VisitorModel.php(16): CodeIgniter\BaseModel->first()
+ 5 APPPATH\Controllers\Home.php(12): App\Models\VisitorModel->trackVisitor('::1')
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 12:45:48 --> syntax error, unexpected end of file
+in APPPATH\Views\user\selfprofile.php on line 377.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/selfprofile', [], true)
+ 3 APPPATH\Controllers\ProfileController.php(68): view('user/selfprofile', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 12:46:02 --> syntax error, unexpected end of file
+in APPPATH\Views\user\selfprofile.php on line 378.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/selfprofile', [], true)
+ 3 APPPATH\Controllers\ProfileController.php(68): view('user/selfprofile', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 12:46:03 --> syntax error, unexpected end of file
+in APPPATH\Views\user\selfprofile.php on line 378.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/selfprofile', [], true)
+ 3 APPPATH\Controllers\ProfileController.php(68): view('user/selfprofile', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 12:46:03 --> syntax error, unexpected end of file
+in APPPATH\Views\user\selfprofile.php on line 378.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/selfprofile', [], true)
+ 3 APPPATH\Controllers\ProfileController.php(68): view('user/selfprofile', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 12:46:03 --> syntax error, unexpected end of file
+in APPPATH\Views\user\selfprofile.php on line 378.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/selfprofile', [], true)
+ 3 APPPATH\Controllers\ProfileController.php(68): view('user/selfprofile', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 12:46:03 --> syntax error, unexpected end of file
+in APPPATH\Views\user\selfprofile.php on line 378.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/selfprofile', [], true)
+ 3 APPPATH\Controllers\ProfileController.php(68): view('user/selfprofile', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 12:46:14 --> syntax error, unexpected end of file
+in APPPATH\Views\user\selfprofile.php on line 378.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/selfprofile', [], true)
+ 3 APPPATH\Controllers\ProfileController.php(68): view('user/selfprofile', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 12:46:15 --> syntax error, unexpected end of file
+in APPPATH\Views\user\selfprofile.php on line 378.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/selfprofile', [], true)
+ 3 APPPATH\Controllers\ProfileController.php(68): view('user/selfprofile', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 12:46:15 --> syntax error, unexpected end of file
+in APPPATH\Views\user\selfprofile.php on line 378.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/selfprofile', [], true)
+ 3 APPPATH\Controllers\ProfileController.php(68): view('user/selfprofile', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 12:47:15 --> syntax error, unexpected end of file
+in APPPATH\Views\user\selfprofile.php on line 378.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/selfprofile', [], true)
+ 3 APPPATH\Controllers\ProfileController.php(68): view('user/selfprofile', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-12 16:29:57 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:173
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(173): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'project', 3306, '', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(573): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(656): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\ASKIFY\app\Controllers\Login.php(24): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\Login->auth()
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:218
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(573): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\ASKIFY\system\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(656): CodeIgniter\Model->doFirst()
+#5 C:\xampp\htdocs\ASKIFY\app\Controllers\Login.php(24): CodeIgniter\BaseModel->first()
+#6 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\Login->auth()
+#7 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+CRITICAL - 2024-03-12 16:29:57 --> Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(573): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `email` = :email:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(656): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Controllers\Login.php(24): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Login->auth()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-12 16:30:18 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 3 in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(240): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(618): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\ASKIFY\app\Controllers\MessageController.php(35): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\MessageController->getUsers()
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MessageController))
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2024-03-12 16:30:18 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 3
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `id` IN :id:', [...], false)
+ 2 SYSTEMPATH\Model.php(240): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(618): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\MessageController.php(35): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\MessageController->getUsers()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MessageController))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-12 16:31:01 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 3 in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(240): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(618): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\ASKIFY\app\Controllers\MessageController.php(35): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\MessageController->getUsers()
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MessageController))
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2024-03-12 16:31:01 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 3
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `id` IN :id:', [...], false)
+ 2 SYSTEMPATH\Model.php(240): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(618): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\MessageController.php(35): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\MessageController->getUsers()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MessageController))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-12 16:31:21 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 3 in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(240): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(618): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\ASKIFY\app\Controllers\MessageController.php(35): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\MessageController->getUsers()
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MessageController))
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2024-03-12 16:31:21 --> You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')' at line 3
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `id` IN :id:', [...], false)
+ 2 SYSTEMPATH\Model.php(240): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(618): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\MessageController.php(35): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\MessageController->getUsers()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MessageController))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 16:37:35 --> array_column() expects at most 3 arguments, 4 given
+in APPPATH\Controllers\MessageController.php on line 32.
+ 1 APPPATH\Controllers\MessageController.php(32): array_column([...], 'follower_id', [...], 'follower_id')
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\MessageController->getUsers()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MessageController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 16:39:50 --> Call to undefined method CodeIgniter\HTTP\Response::json()
+in APPPATH\Controllers\MessageController.php on line 69.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\MessageController->getUsers()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MessageController))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 17:58:33 --> Undefined variable $totalQuestionCount
+in APPPATH\Views\user\profile.php on line 202.
+ 1 APPPATH\Views\user\profile.php(202): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalQuestionCount', 'APPPATH\\Views\\user\\profile.php', 202)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\user\\profile.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/profile', [], true)
+ 5 APPPATH\Controllers\ProfileController.php(124): view('user/profile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->VisitProfile('michael_green')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 17:58:34 --> Undefined variable $totalQuestionCount
+in APPPATH\Views\user\profile.php on line 202.
+ 1 APPPATH\Views\user\profile.php(202): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalQuestionCount', 'APPPATH\\Views\\user\\profile.php', 202)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\user\\profile.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/profile', [], true)
+ 5 APPPATH\Controllers\ProfileController.php(124): view('user/profile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->VisitProfile('michael_green')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-12 17:58:38 --> mysqli_sql_exception: Unknown column 'used_id' in 'where clause' in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT COUNT(*)...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(1685): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(604): CodeIgniter\Database\BaseBuilder->countAllResults(true)
+#5 C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php(64): CodeIgniter\Model->countAllResults()
+#6 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+#7 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+CRITICAL - 2024-03-12 17:58:38 --> Unknown column 'used_id' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1685): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `question`
+WHERE `used_id` = :used_id:', [...], false)
+ 2 SYSTEMPATH\Model.php(604): CodeIgniter\Database\BaseBuilder->countAllResults(true)
+ 3 APPPATH\Controllers\ProfileController.php(64): CodeIgniter\Model->countAllResults()
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-12 17:58:39 --> mysqli_sql_exception: Unknown column 'used_id' in 'where clause' in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT COUNT(*)...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(1685): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(604): CodeIgniter\Database\BaseBuilder->countAllResults(true)
+#5 C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php(64): CodeIgniter\Model->countAllResults()
+#6 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+#7 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#11 {main}
+CRITICAL - 2024-03-12 17:58:39 --> Unknown column 'used_id' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1685): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `question`
+WHERE `used_id` = :used_id:', [...], false)
+ 2 SYSTEMPATH\Model.php(604): CodeIgniter\Database\BaseBuilder->countAllResults(true)
+ 3 APPPATH\Controllers\ProfileController.php(64): CodeIgniter\Model->countAllResults()
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 17:59:16 --> Undefined variable $totalQuestionCount
+in APPPATH\Views\user\profile.php on line 202.
+ 1 APPPATH\Views\user\profile.php(202): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalQuestionCount', 'APPPATH\\Views\\user\\profile.php', 202)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\user\\profile.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/profile', [], true)
+ 5 APPPATH\Controllers\ProfileController.php(124): view('user/profile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->VisitProfile('michael_green')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 17:59:43 --> Undefined variable $totalQuestionCount
+in APPPATH\Views\user\profile.php on line 202.
+ 1 APPPATH\Views\user\profile.php(202): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalQuestionCount', 'APPPATH\\Views\\user\\profile.php', 202)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\user\\profile.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/profile', [], true)
+ 5 APPPATH\Controllers\ProfileController.php(124): view('user/profile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->VisitProfile('michael_green')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 18:05:31 --> Undefined variable $Question
+in APPPATH\Views\user\selfprofile.php on line 265.
+ 1 APPPATH\Views\user\selfprofile.php(265): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $Question', 'APPPATH\\Views\\user\\selfprofile.php', 265)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\user\\selfprofile.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/selfprofile', [], true)
+ 5 APPPATH\Controllers\ProfileController.php(68): view('user/selfprofile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 18:05:36 --> Undefined variable $Question
+in APPPATH\Views\user\selfprofile.php on line 265.
+ 1 APPPATH\Views\user\selfprofile.php(265): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $Question', 'APPPATH\\Views\\user\\selfprofile.php', 265)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\user\\selfprofile.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/selfprofile', [], true)
+ 5 APPPATH\Controllers\ProfileController.php(68): view('user/selfprofile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 18:08:02 --> Undefined array key "description"
+in APPPATH\Views\user\selfprofile.php on line 286.
+ 1 APPPATH\Views\user\selfprofile.php(286): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "description"', 'APPPATH\\Views\\user\\selfprofile.php', 286)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\user\\selfprofile.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/selfprofile', [], true)
+ 5 APPPATH\Controllers\ProfileController.php(71): view('user/selfprofile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 18:08:09 --> Undefined variable $answer
+in APPPATH\Views\user\selfprofile.php on line 282.
+ 1 APPPATH\Views\user\selfprofile.php(282): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $answer', 'APPPATH\\Views\\user\\selfprofile.php', 282)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\user\\selfprofile.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/selfprofile', [], true)
+ 5 APPPATH\Controllers\ProfileController.php(71): view('user/selfprofile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 18:08:43 --> Undefined array key "description"
+in APPPATH\Views\user\selfprofile.php on line 286.
+ 1 APPPATH\Views\user\selfprofile.php(286): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "description"', 'APPPATH\\Views\\user\\selfprofile.php', 286)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\user\\selfprofile.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/selfprofile', [], true)
+ 5 APPPATH\Controllers\ProfileController.php(71): view('user/selfprofile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 18:09:00 --> Undefined array key "answer  "
+in APPPATH\Views\user\selfprofile.php on line 286.
+ 1 APPPATH\Views\user\selfprofile.php(286): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "answer  "', 'APPPATH\\Views\\user\\selfprofile.php', 286)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\user\\selfprofile.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/selfprofile', [], true)
+ 5 APPPATH\Controllers\ProfileController.php(71): view('user/selfprofile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 18:09:00 --> Undefined array key "answer  "
+in APPPATH\Views\user\selfprofile.php on line 286.
+ 1 APPPATH\Views\user\selfprofile.php(286): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "answer  "', 'APPPATH\\Views\\user\\selfprofile.php', 286)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\user\\selfprofile.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/selfprofile', [], true)
+ 5 APPPATH\Controllers\ProfileController.php(71): view('user/selfprofile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 18:13:10 --> Undefined variable $Answer
+in APPPATH\Views\user\profile.php on line 275.
+ 1 APPPATH\Views\user\profile.php(275): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $Answer', 'APPPATH\\Views\\user\\profile.php', 275)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\user\\profile.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/profile', [], true)
+ 5 APPPATH\Controllers\ProfileController.php(127): view('user/profile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->VisitProfile('sarah_clark')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-12 18:25:04 --> mysqli_sql_exception: Unknown column 'followed_user_id' in 'where clause' in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(656): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php(287): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2024-03-12 18:25:04 --> Unknown column 'followed_user_id' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `follower`
+WHERE `follower_id` = :follower_id:
+AND `followed_user_id` IS NULL
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(656): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\ProfileController.php(287): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-12 18:27:20 --> mysqli_sql_exception: Column 'follower_id' cannot be null in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `fo...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `fo...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `fo...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(2294): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fo...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(329): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\ASKIFY\system\Model.php(728): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php(294): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#10 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+CRITICAL - 2024-03-12 18:27:20 --> Column 'follower_id' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2294): CodeIgniter\Database\BaseConnection->query('INSERT INTO `follower` (`user_id`, `follower_id`) VALUES (:user_id:, :follower_id:)', [...], false)
+ 2 SYSTEMPATH\Model.php(329): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(728): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\ProfileController.php(294): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 18:45:54 --> Unclosed '{' on line 15
+in APPPATH\Controllers\ProfileController.php on line 315.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH\\Controllers\\ProfileController.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\ProfileController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\ProfileController')
+ 4 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\Controllers\\ProfileController', true)
+ 5 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 18:45:55 --> Unclosed '{' on line 15
+in APPPATH\Controllers\ProfileController.php on line 315.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(289): CodeIgniter\Autoloader\Autoloader->includeFile('APPPATH\\Controllers\\ProfileController.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(267): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\ProfileController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\ProfileController')
+ 4 SYSTEMPATH\CodeIgniter.php(892): class_exists('\\App\\Controllers\\ProfileController', true)
+ 5 SYSTEMPATH\CodeIgniter.php(486): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 18:47:24 --> Call to undefined method App\Controllers\ProfileController::getCurrentUserId()
+in APPPATH\Controllers\ProfileController.php on line 278.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 18:48:31 --> Call to undefined method App\Controllers\ProfileController::getCurrentUserId()
+in APPPATH\Controllers\ProfileController.php on line 278.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-12 18:57:13 --> mysqli_sql_exception: Unknown column 'followed_user_id' in 'where clause' in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(656): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php(288): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2024-03-12 18:57:13 --> Unknown column 'followed_user_id' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `follower`
+WHERE `follower_id` = :follower_id:
+AND `followed_user_id` IS NULL
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(656): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\ProfileController.php(288): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-12 18:58:21 --> mysqli_sql_exception: Unknown column 'followed_user_id' in 'where clause' in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(656): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php(288): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2024-03-12 18:58:21 --> Unknown column 'followed_user_id' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `follower`
+WHERE `follower_id` = :follower_id:
+AND `followed_user_id` IS NULL
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(656): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\ProfileController.php(288): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-12 18:59:20 --> mysqli_sql_exception: Unknown column 'followed_user_id' in 'where clause' in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(656): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php(288): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2024-03-12 18:59:20 --> Unknown column 'followed_user_id' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `follower`
+WHERE `follower_id` = :follower_id:
+AND `followed_user_id` IS NULL
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(656): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\ProfileController.php(288): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-12 18:59:25 --> mysqli_sql_exception: Unknown column 'followed_user_id' in 'where clause' in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(656): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php(288): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2024-03-12 18:59:25 --> Unknown column 'followed_user_id' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `follower`
+WHERE `follower_id` = :follower_id:
+AND `followed_user_id` IS NULL
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(656): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\ProfileController.php(288): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-12 18:59:26 --> mysqli_sql_exception: Unknown column 'followed_user_id' in 'where clause' in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(656): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php(288): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2024-03-12 18:59:26 --> Unknown column 'followed_user_id' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `follower`
+WHERE `follower_id` = :follower_id:
+AND `followed_user_id` IS NULL
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(656): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\ProfileController.php(288): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-12 18:59:26 --> mysqli_sql_exception: Unknown column 'followed_user_id' in 'where clause' in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(656): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php(288): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2024-03-12 18:59:26 --> Unknown column 'followed_user_id' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `follower`
+WHERE `follower_id` = :follower_id:
+AND `followed_user_id` IS NULL
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(656): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\ProfileController.php(288): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-12 18:59:26 --> mysqli_sql_exception: Unknown column 'followed_user_id' in 'where clause' in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(656): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php(288): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2024-03-12 18:59:26 --> Unknown column 'followed_user_id' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `follower`
+WHERE `follower_id` = :follower_id:
+AND `followed_user_id` IS NULL
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(656): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\ProfileController.php(288): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-12 18:59:26 --> mysqli_sql_exception: Unknown column 'followed_user_id' in 'where clause' in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(656): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php(288): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2024-03-12 18:59:26 --> Unknown column 'followed_user_id' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `follower`
+WHERE `follower_id` = :follower_id:
+AND `followed_user_id` IS NULL
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(656): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\ProfileController.php(288): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-12 18:59:27 --> mysqli_sql_exception: Unknown column 'followed_user_id' in 'where clause' in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(656): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php(288): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2024-03-12 18:59:27 --> Unknown column 'followed_user_id' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `follower`
+WHERE `follower_id` = :follower_id:
+AND `followed_user_id` IS NULL
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(656): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\ProfileController.php(288): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-12 18:59:28 --> mysqli_sql_exception: Unknown column 'followed_user_id' in 'where clause' in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(656): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php(288): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2024-03-12 18:59:28 --> Unknown column 'followed_user_id' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `follower`
+WHERE `follower_id` = :follower_id:
+AND `followed_user_id` IS NULL
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(656): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\ProfileController.php(288): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-12 18:59:28 --> mysqli_sql_exception: Unknown column 'followed_user_id' in 'where clause' in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(656): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php(288): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2024-03-12 18:59:28 --> Unknown column 'followed_user_id' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `follower`
+WHERE `follower_id` = :follower_id:
+AND `followed_user_id` IS NULL
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(656): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\ProfileController.php(288): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-12 18:59:29 --> mysqli_sql_exception: Unknown column 'followed_user_id' in 'where clause' in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(656): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php(288): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2024-03-12 18:59:29 --> Unknown column 'followed_user_id' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `follower`
+WHERE `follower_id` = :follower_id:
+AND `followed_user_id` IS NULL
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(656): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\ProfileController.php(288): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-12 18:59:36 --> mysqli_sql_exception: Unknown column 'followed_user_id' in 'where clause' in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(656): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php(288): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2024-03-12 18:59:36 --> Unknown column 'followed_user_id' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `follower`
+WHERE `follower_id` = :follower_id:
+AND `followed_user_id` IS NULL
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(656): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\ProfileController.php(288): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-12 18:59:50 --> mysqli_sql_exception: Unknown column 'followed_user_id' in 'where clause' in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(656): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php(288): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2024-03-12 18:59:50 --> Unknown column 'followed_user_id' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `follower`
+WHERE `follower_id` = :follower_id:
+AND `followed_user_id` IS NULL
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(656): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\ProfileController.php(288): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-12 19:00:38 --> mysqli_sql_exception: Unknown column 'follwer_id' in 'where clause' in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(656): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php(288): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2024-03-12 19:00:38 --> Unknown column 'follwer_id' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `follower`
+WHERE `user_id` = :user_id:
+AND `follwer_id` IS NULL
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(267): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(656): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\ProfileController.php(288): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-12 19:25:24 --> mysqli_sql_exception: Column 'follower_id' cannot be null in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `fo...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `fo...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `fo...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(2294): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fo...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(329): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\ASKIFY\system\Model.php(728): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php(292): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#10 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+CRITICAL - 2024-03-12 19:25:24 --> Column 'follower_id' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2294): CodeIgniter\Database\BaseConnection->query('INSERT INTO `follower` (`user_id`, `follower_id`, `followed_at`) VALUES (:user_id:, :follower_id:, :followed_at:)', [...], false)
+ 2 SYSTEMPATH\Model.php(329): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(728): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\ProfileController.php(292): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-12 19:26:19 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`project`.`follower`, CONSTRAINT `fk_follower_2` FOREIGN KEY (`follower_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE) in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `fo...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `fo...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `fo...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(2294): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fo...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(329): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\ASKIFY\system\Model.php(728): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php(292): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#10 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+CRITICAL - 2024-03-12 19:26:19 --> Cannot add or update a child row: a foreign key constraint fails (`project`.`follower`, CONSTRAINT `fk_follower_2` FOREIGN KEY (`follower_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2294): CodeIgniter\Database\BaseConnection->query('INSERT INTO `follower` (`user_id`, `follower_id`, `followed_at`) VALUES (:user_id:, :follower_id:, :followed_at:)', [...], false)
+ 2 SYSTEMPATH\Model.php(329): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(728): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\ProfileController.php(292): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-12 19:32:06 --> mysqli_sql_exception: Column 'follower_id' cannot be null in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `fo...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `fo...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `fo...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(2294): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fo...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(329): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\ASKIFY\system\Model.php(728): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php(292): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#10 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+CRITICAL - 2024-03-12 19:32:06 --> Column 'follower_id' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2294): CodeIgniter\Database\BaseConnection->query('INSERT INTO `follower` (`user_id`, `follower_id`, `followed_at`) VALUES (:user_id:, :follower_id:, :followed_at:)', [...], false)
+ 2 SYSTEMPATH\Model.php(329): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(728): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\ProfileController.php(292): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-12 19:55:10 --> mysqli_sql_exception: Column 'user_id' cannot be null in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `fo...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `fo...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `fo...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(2294): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fo...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(329): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\ASKIFY\system\Model.php(728): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php(284): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#10 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+CRITICAL - 2024-03-12 19:55:10 --> Column 'user_id' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2294): CodeIgniter\Database\BaseConnection->query('INSERT INTO `follower` (`user_id`, `follower_id`) VALUES (:user_id:, :follower_id:)', [...], false)
+ 2 SYSTEMPATH\Model.php(329): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(728): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\ProfileController.php(284): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-12 19:59:15 --> mysqli_sql_exception: Column 'follower_id' cannot be null in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `fo...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `fo...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `fo...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(2294): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fo...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(329): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\ASKIFY\system\Model.php(728): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php(294): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#10 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+CRITICAL - 2024-03-12 19:59:15 --> Column 'follower_id' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2294): CodeIgniter\Database\BaseConnection->query('INSERT INTO `follower` (`user_id`, `follower_id`) VALUES (:user_id:, :follower_id:)', [...], false)
+ 2 SYSTEMPATH\Model.php(329): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(728): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\ProfileController.php(294): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-12 19:59:20 --> mysqli_sql_exception: Column 'follower_id' cannot be null in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `fo...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `fo...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `fo...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(2294): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fo...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(329): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\ASKIFY\system\Model.php(728): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php(294): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#10 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+CRITICAL - 2024-03-12 19:59:20 --> Column 'follower_id' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2294): CodeIgniter\Database\BaseConnection->query('INSERT INTO `follower` (`user_id`, `follower_id`) VALUES (:user_id:, :follower_id:)', [...], false)
+ 2 SYSTEMPATH\Model.php(329): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(728): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\ProfileController.php(294): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-12 19:59:21 --> mysqli_sql_exception: Column 'follower_id' cannot be null in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `fo...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `fo...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `fo...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(2294): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fo...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(329): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\ASKIFY\system\Model.php(728): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php(294): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#10 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+CRITICAL - 2024-03-12 19:59:21 --> Column 'follower_id' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2294): CodeIgniter\Database\BaseConnection->query('INSERT INTO `follower` (`user_id`, `follower_id`) VALUES (:user_id:, :follower_id:)', [...], false)
+ 2 SYSTEMPATH\Model.php(329): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(728): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\ProfileController.php(294): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-12 20:00:36 --> mysqli_sql_exception: Column 'follower_id' cannot be null in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `fo...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `fo...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `fo...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(2294): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fo...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(329): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\ASKIFY\system\Model.php(728): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php(294): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#10 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+CRITICAL - 2024-03-12 20:00:36 --> Column 'follower_id' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2294): CodeIgniter\Database\BaseConnection->query('INSERT INTO `follower` (`user_id`, `follower_id`) VALUES (:user_id:, :follower_id:)', [...], false)
+ 2 SYSTEMPATH\Model.php(329): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(728): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\ProfileController.php(294): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-12 20:07:45 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`project`.`follower`, CONSTRAINT `fk_follower_2` FOREIGN KEY (`follower_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE) in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `fo...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `fo...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `fo...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(2294): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fo...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(329): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\ASKIFY\system\Model.php(728): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php(304): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#10 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+CRITICAL - 2024-03-12 20:07:45 --> Cannot add or update a child row: a foreign key constraint fails (`project`.`follower`, CONSTRAINT `fk_follower_2` FOREIGN KEY (`follower_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2294): CodeIgniter\Database\BaseConnection->query('INSERT INTO `follower` (`user_id`) VALUES (:user_id:)', [...], false)
+ 2 SYSTEMPATH\Model.php(329): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(728): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\ProfileController.php(304): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-12 20:07:47 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`project`.`follower`, CONSTRAINT `fk_follower_2` FOREIGN KEY (`follower_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE) in C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\ASKIFY\system\Database\MySQLi\Connection.php(295): mysqli->query('INSERT INTO `fo...', 0)
+#1 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `fo...')
+#2 C:\xampp\htdocs\ASKIFY\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `fo...')
+#3 C:\xampp\htdocs\ASKIFY\system\Database\BaseBuilder.php(2294): CodeIgniter\Database\BaseConnection->query('INSERT INTO `fo...', Array, false)
+#4 C:\xampp\htdocs\ASKIFY\system\Model.php(329): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\ASKIFY\system\BaseModel.php(782): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\ASKIFY\system\Model.php(728): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php(304): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+#9 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+#10 C:\xampp\htdocs\ASKIFY\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\ASKIFY\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\ASKIFY\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+CRITICAL - 2024-03-12 20:07:47 --> Cannot add or update a child row: a foreign key constraint fails (`project`.`follower`, CONSTRAINT `fk_follower_2` FOREIGN KEY (`follower_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE)
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2294): CodeIgniter\Database\BaseConnection->query('INSERT INTO `follower` (`user_id`) VALUES (:user_id:)', [...], false)
+ 2 SYSTEMPATH\Model.php(329): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(782): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(728): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\ProfileController.php(304): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->followAction()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 21:13:13 --> foreach() argument must be of type array|object, null given
+in APPPATH\Views\user\selfprofile.php on line 134.
+ 1 APPPATH\Views\user\selfprofile.php(134): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, null given', 'APPPATH\\Views\\user\\selfprofile.php', 134)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\user\\selfprofile.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/selfprofile', [], true)
+ 5 APPPATH\Controllers\ProfileController.php(76): view('user/selfprofile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 21:13:49 --> foreach() argument must be of type array|object, null given
+in APPPATH\Views\user\selfprofile.php on line 134.
+ 1 APPPATH\Views\user\selfprofile.php(134): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, null given', 'APPPATH\\Views\\user\\selfprofile.php', 134)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\user\\selfprofile.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/selfprofile', [], true)
+ 5 APPPATH\Controllers\ProfileController.php(76): view('user/selfprofile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 21:13:50 --> foreach() argument must be of type array|object, null given
+in APPPATH\Views\user\selfprofile.php on line 134.
+ 1 APPPATH\Views\user\selfprofile.php(134): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, null given', 'APPPATH\\Views\\user\\selfprofile.php', 134)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\user\\selfprofile.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/selfprofile', [], true)
+ 5 APPPATH\Controllers\ProfileController.php(76): view('user/selfprofile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 21:13:50 --> foreach() argument must be of type array|object, null given
+in APPPATH\Views\user\selfprofile.php on line 134.
+ 1 APPPATH\Views\user\selfprofile.php(134): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, null given', 'APPPATH\\Views\\user\\selfprofile.php', 134)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\user\\selfprofile.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/selfprofile', [], true)
+ 5 APPPATH\Controllers\ProfileController.php(76): view('user/selfprofile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 21:14:38 --> foreach() argument must be of type array|object, null given
+in APPPATH\Views\user\selfprofile.php on line 134.
+ 1 APPPATH\Views\user\selfprofile.php(134): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, null given', 'APPPATH\\Views\\user\\selfprofile.php', 134)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\user\\selfprofile.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/selfprofile', [], true)
+ 5 APPPATH\Controllers\ProfileController.php(76): view('user/selfprofile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 21:14:39 --> foreach() argument must be of type array|object, null given
+in APPPATH\Views\user\selfprofile.php on line 134.
+ 1 APPPATH\Views\user\selfprofile.php(134): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, null given', 'APPPATH\\Views\\user\\selfprofile.php', 134)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\user\\selfprofile.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/selfprofile', [], true)
+ 5 APPPATH\Controllers\ProfileController.php(76): view('user/selfprofile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 21:14:39 --> foreach() argument must be of type array|object, null given
+in APPPATH\Views\user\selfprofile.php on line 134.
+ 1 APPPATH\Views\user\selfprofile.php(134): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, null given', 'APPPATH\\Views\\user\\selfprofile.php', 134)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\user\\selfprofile.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('user/selfprofile', [], true)
+ 5 APPPATH\Controllers\ProfileController.php(76): view('user/selfprofile', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 21:16:23 --> Array to string conversion
+in SYSTEMPATH\Database\Query.php on line 329.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'SYSTEMPATH\\Database\\Query.php', 329)
+ 2 SYSTEMPATH\Database\Query.php(329): implode(',', [...])
+ 3 SYSTEMPATH\Database\Query.php(310): CodeIgniter\Database\Query->matchNamedBinds('SELECT *
+FROM `users`
+WHERE `id` = :id:', [...])
+ 4 SYSTEMPATH\Database\Query.php(159): CodeIgniter\Database\Query->compileBinds()
+ 5 SYSTEMPATH\Database\BaseConnection.php(605): CodeIgniter\Database\Query->getQuery()
+ 6 SYSTEMPATH\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `id` = :id:', [...], false)
+ 7 SYSTEMPATH\Model.php(240): CodeIgniter\Database\BaseBuilder->get()
+ 8 SYSTEMPATH\BaseModel.php(618): CodeIgniter\Model->doFindAll(0, 0)
+ 9 APPPATH\Controllers\ProfileController.php(59): CodeIgniter\BaseModel->findAll()
+10 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+11 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+12 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 21:16:24 --> Array to string conversion
+in SYSTEMPATH\Database\Query.php on line 329.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'SYSTEMPATH\\Database\\Query.php', 329)
+ 2 SYSTEMPATH\Database\Query.php(329): implode(',', [...])
+ 3 SYSTEMPATH\Database\Query.php(310): CodeIgniter\Database\Query->matchNamedBinds('SELECT *
+FROM `users`
+WHERE `id` = :id:', [...])
+ 4 SYSTEMPATH\Database\Query.php(159): CodeIgniter\Database\Query->compileBinds()
+ 5 SYSTEMPATH\Database\BaseConnection.php(605): CodeIgniter\Database\Query->getQuery()
+ 6 SYSTEMPATH\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `id` = :id:', [...], false)
+ 7 SYSTEMPATH\Model.php(240): CodeIgniter\Database\BaseBuilder->get()
+ 8 SYSTEMPATH\BaseModel.php(618): CodeIgniter\Model->doFindAll(0, 0)
+ 9 APPPATH\Controllers\ProfileController.php(59): CodeIgniter\BaseModel->findAll()
+10 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+11 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+12 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 21:16:24 --> Array to string conversion
+in SYSTEMPATH\Database\Query.php on line 329.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'SYSTEMPATH\\Database\\Query.php', 329)
+ 2 SYSTEMPATH\Database\Query.php(329): implode(',', [...])
+ 3 SYSTEMPATH\Database\Query.php(310): CodeIgniter\Database\Query->matchNamedBinds('SELECT *
+FROM `users`
+WHERE `id` = :id:', [...])
+ 4 SYSTEMPATH\Database\Query.php(159): CodeIgniter\Database\Query->compileBinds()
+ 5 SYSTEMPATH\Database\BaseConnection.php(605): CodeIgniter\Database\Query->getQuery()
+ 6 SYSTEMPATH\Database\BaseBuilder.php(1601): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `id` = :id:', [...], false)
+ 7 SYSTEMPATH\Model.php(240): CodeIgniter\Database\BaseBuilder->get()
+ 8 SYSTEMPATH\BaseModel.php(618): CodeIgniter\Model->doFindAll(0, 0)
+ 9 APPPATH\Controllers\ProfileController.php(59): CodeIgniter\BaseModel->findAll()
+10 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+11 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+12 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 21:20:12 --> CodeIgniter\BaseModel::findAll(): Argument #1 ($limit) must be of type int, string given, called in C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php on line 55
+in SYSTEMPATH\BaseModel.php on line 601.
+ 1 APPPATH\Controllers\ProfileController.php(55): CodeIgniter\BaseModel->findAll('follower_id')
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 21:21:08 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 926.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(813): CodeIgniter\Database\BaseBuilder->_whereIn('id', null, false, 'AND ', null)
+ 2 SYSTEMPATH\Model.php(838): CodeIgniter\Database\BaseBuilder->whereIn('id', null)
+ 3 APPPATH\Controllers\ProfileController.php(56): CodeIgniter\Model->__call('whereIn', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 21:21:08 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 926.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(813): CodeIgniter\Database\BaseBuilder->_whereIn('id', null, false, 'AND ', null)
+ 2 SYSTEMPATH\Model.php(838): CodeIgniter\Database\BaseBuilder->whereIn('id', null)
+ 3 APPPATH\Controllers\ProfileController.php(56): CodeIgniter\Model->__call('whereIn', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 21:21:09 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 926.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(813): CodeIgniter\Database\BaseBuilder->_whereIn('id', null, false, 'AND ', null)
+ 2 SYSTEMPATH\Model.php(838): CodeIgniter\Database\BaseBuilder->whereIn('id', null)
+ 3 APPPATH\Controllers\ProfileController.php(56): CodeIgniter\Model->__call('whereIn', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 21:21:09 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 926.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(813): CodeIgniter\Database\BaseBuilder->_whereIn('id', null, false, 'AND ', null)
+ 2 SYSTEMPATH\Model.php(838): CodeIgniter\Database\BaseBuilder->whereIn('id', null)
+ 3 APPPATH\Controllers\ProfileController.php(56): CodeIgniter\Model->__call('whereIn', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 21:21:09 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 926.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(813): CodeIgniter\Database\BaseBuilder->_whereIn('id', null, false, 'AND ', null)
+ 2 SYSTEMPATH\Model.php(838): CodeIgniter\Database\BaseBuilder->whereIn('id', null)
+ 3 APPPATH\Controllers\ProfileController.php(56): CodeIgniter\Model->__call('whereIn', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 21:23:15 --> CodeIgniter\BaseModel::findAll(): Argument #1 ($limit) must be of type int, string given, called in C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php on line 56
+in SYSTEMPATH\BaseModel.php on line 601.
+ 1 APPPATH\Controllers\ProfileController.php(56): CodeIgniter\BaseModel->findAll('user_id')
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 21:23:16 --> CodeIgniter\BaseModel::findAll(): Argument #1 ($limit) must be of type int, string given, called in C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php on line 56
+in SYSTEMPATH\BaseModel.php on line 601.
+ 1 APPPATH\Controllers\ProfileController.php(56): CodeIgniter\BaseModel->findAll('user_id')
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 21:23:16 --> CodeIgniter\BaseModel::findAll(): Argument #1 ($limit) must be of type int, string given, called in C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php on line 56
+in SYSTEMPATH\BaseModel.php on line 601.
+ 1 APPPATH\Controllers\ProfileController.php(56): CodeIgniter\BaseModel->findAll('user_id')
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-12 21:23:16 --> CodeIgniter\BaseModel::findAll(): Argument #1 ($limit) must be of type int, string given, called in C:\xampp\htdocs\ASKIFY\app\Controllers\ProfileController.php on line 56
+in SYSTEMPATH\BaseModel.php on line 601.
+ 1 APPPATH\Controllers\ProfileController.php(56): CodeIgniter\BaseModel->findAll('user_id')
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\ProfileController->index()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ProfileController))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')

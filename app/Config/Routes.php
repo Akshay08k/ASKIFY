@@ -61,6 +61,7 @@ $routes->post('updatecategory/processCategorySelection', 'ProfileController::pro
 $routes->get('/updateprofile', 'ProfileController::editProfile');
 $routes->post('/updateprofile/save', 'ProfileController::updateProfile');
 $routes->post('/search/liveSearch', 'ProfileController::liveSearch');
+$routes->post('/follower/followAction', 'ProfileController::followAction');
 $routes->get('/visitprofile/(:any)', 'ProfileController::VisitProfile/$1');
 
 

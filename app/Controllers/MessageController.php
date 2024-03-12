@@ -23,17 +23,32 @@ class MessageController extends Controller
 
     public function getUsers()
     {
+        // 1. Ensure session user ID is valid
         $userId = session()->get('user_id');
+        if (!$userId) {
+            // Handle error, maybe return an error response or redirect
+            return response()->json(['error' => 'User session not found'], 400);
+        }
+
         $FollowerModel = new FollowerModel();
         $userModel = new UserModel();
 
-        // Fetch all followed users' ids
-        $followedUsers = $FollowerModel->where('user_id', $userId)->findAll();
-        $followedUserIds = array_column($followedUsers, 'follower_id');
+        // 2. Retrieve followed user IDs and follower user IDs with one query
+        $followingUsers = $FollowerModel->where('user_id', $userId)->findAll();
+        $followerUsers = $FollowerModel->where('follower_id', $userId)->findAll();
 
-        // Fetch user details for the followed users    
-        $users = $userModel->whereIn('id', $followedUserIds)->findAll();
+        $followedUserIds = array_column($followingUsers, 'follower_id');
+        $followerUserIds = array_column($followerUsers, 'user_id');
 
+        // Combine both arrays and remove duplicates
+        $allUserIds = array_unique(array_merge($followedUserIds, $followerUserIds));
+
+
+
+        // 4. Fetch user details for the combined users
+        $users = $userModel->whereIn('id', $allUserIds)->findAll();
+
+        // 5. Build the user list
         $userList = [];
         foreach ($users as $user) {
             $userList[] = [
@@ -45,9 +60,11 @@ class MessageController extends Controller
                 'status' => $user['status']
             ];
         }
-        echo json_encode($userList);
 
+        // Return JSON response
+        echo json_encode($userList);
     }
+
     public function getMessages($receiverId, $latestMessageId = 0, $lastSentMessageId = 0)
     {
         $chatModel = new MessageModel();

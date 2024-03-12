@@ -7,6 +7,10 @@
     <title>User Profile</title>
     <link rel="stylesheet" href="<?= base_url('css/header.css') ?>">
     <link rel="stylesheet" href="<?= base_url('css/profile.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('css/footer.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('css/output.min.css') ?>">
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 </head>
 
@@ -19,6 +23,8 @@
             <div class="search-box">
                 <div class="search__container">
                     <input id="searchInput" class="search__input" type="text" placeholder="Search User Profile">
+
+                    <div id="liveSearchResults"></div>
                 </div>
 
             </div>
@@ -38,152 +44,193 @@
         <button class="pfplinkbtn" onclick="window.location.href='/updatecategory'">Update categories</button>
         <button class="pfplinkbtn" onclick="window.location.href='/logout'">Logout</button>
     </div>
-    <div id="liveSearchResults"></div>
-    <section class="profile">
-        <div class="leftside">
-            <div class="photocard">
-                <div class="photo">
-                    <?php foreach ($users as $user): ?>
-                        <?php
-                        $username = $user['username'];
+    <?php if (isset($error)): ?>
+        <div class="text-red-500 text-center">
+            <?= $error ?>
+        </div>
+    <?php endif; ?>
+
+    <div class="cover">
+        <div class="coverpage-img">
+            <img src="<?= base_url('uploads/askifyCover.png') ?>" class="cover-img" alt="Cover Image">
+            <button id="followBtn" class="follow-btn  border px-8 py-2 text-white hover:bg-white hover:text-black"
+                data-followed-user-id="<?= $hiddenUserid ?>" data-follow-action="follow">
+                <?php if ($isFollowing): ?>
+                    Following
+                <?php else: ?>
+                    Follow
+                <?php endif; ?>
+            </button>
+
+            <button class="msg-btn border px-8 py-2 text-white hover:bg-white hover:text-black">Message</button>
+            </img>
+        </div>
+        <?php foreach ($users as $user): ?>
+            <?php
+            $username = $user['username'];
 
 
-                        $profilePhoto = $user['profile_photo'];
+            $profilePhoto = $user['profile_photo'];
 
 
-                        $profilePhotoBase64 = 'data:image/png;base64,' . base64_encode($profilePhoto);
+            $profilePhotoBase64 = 'data:image/png;base64,' . base64_encode($profilePhoto);
 
 
-                        ?>
-                        <img src="<?= $profilePhotoBase64 ?>" alt="Profile Picture">
+            ?>
+            <div class="profile-img ">
+                <img class="image border border-blue-500 " src="
+            <?= $profilePhotoBase64 ?>" alt="Profile Image">
+            </div>
+        </div>
+        <p class="text-center  username mb-10">
+            <?= $user['name'] ?>
+            <?php
+            $gender = $user['gender'];
+
+            if ($gender == 'Male') {
+                echo '♂️';
+            } elseif ($gender == 'Female') {
+                echo '♀️';
+            } else {
+                echo '⚧';
+            }
+            ?>
+        </p>
+        <div class="main">
+            <div class="counts">
+                <div class="follower">
+                    <div class="circle" style="background: #ea4335;">
+                        <?= $totalFollowers ?>
                     </div>
-                    <div class="username">
-                        <?= $user['username'] ?>
+                    <div class="title">Follower</div>
+                </div>
+                <div class="following">
+
+                    <div class="circle" style="background: #3d993d;">
+                        <?= $totalFollowing ?>
                     </div>
-                    <div class="name">
-                        <?= $user['name'] ?>
+                    <div class="title">Following</div>
+                </div>
+                <div class="likes">
+                    <div class="circle" style="background: #1b72e7;">
+                        <?= $totalLikes ?>
                     </div>
-                    <div class="bio">
+                    <div class="title">Likes </div>
+                </div>
+                <div class="likes">
+                    <div class="circle" style="background: #ffb900;">
+                        <?= $totalQuestionCount ?>
+                    </div>
+                    <div class="title">Questions </div>
+                </div>
+            </div>
+            <section class="flex justify-center items-center flex-col mt-8">
+                <div class="container-bio border rounded-lg ">
+                    <h3 class="text-xl font-bold mb-4  text-gray-800">Bio</h3>
+                    <p class="text-lg text-gray-700">
                         <?= $user['about'] ?>
-                    </div>
-                    <div class="buttons">
-                        <button class="btns">Follow</button>
-                        <button class="btns">Message</button>
+                    </p>
+                </div>
+                <div class="container-about  rounded-lg  mt-10">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4">
+                        <p class="text-lg text-left text-gray-700"><strong>Email:</strong>
+                            <?= $user['email'] ?>
+                        </p>
+                        <p class="text-lg text-left text-gray-700"><strong>Location:</strong>
+                            <?= $user['location'] ?>
+                        </p>
                     </div>
                 </div>
-                <div class="detailscard">
-                    <div class="gender">Gender:
-                        <?= $user['gender'] ?>
-                    </div>
-                    <div class="location">Location:
-                        <?= $user['location'] ?>
-                    </div>
-                    <div class="contact">Contact:
-                        <?= $user['email'] ?>
-                    </div>
+            </section>
 
-                </div>
-            </div>
-            <div class="rightside">
-                <div class="counts">
-                    <div class="follower">
-                        <h3>Follower</h3>
-                        <p>
-                            <?= $totalFollowers ?>
-                        </p>
-                    </div>
-                    <div class="following">
-                        <h3>Following</h3>
-                        <p>
-                            <?= $totalFollowing ?>
-                        </p>
-                    </div>
-                    <div class="likes">
-                        <h3>Likes</h3>
-                        <p>
-                            <?= $totalLikes ?>
-                        </p>
-                    </div>
-                </div>
-                <div class="recent-categories">
-                    <div class="categoriescard">
-                        <?php foreach ($usercategory as $category): ?>
-                            <div class="category-box">
-                                <img src="data:image/jpeg;base64,<?= ($category['image']) ?>" alt="Category Image">
-                                <div class="cat-name">
-                                    <?= $category['name'] ?>
-                                </div>
-                            </div>
-                        <?php endforeach ?>
-                    </div>
-                    <div class="recent-activity">
-                        <div class="activity-box">
-                            <h3 align="center">Recent Activity</h3>
-                            <?php foreach ($recentActivity as $activity): ?>
-                                <div class="activity-item">
-                                    <div class="activity-type">
-                                        <?= $activity['activity_type']; ?>
-                                    </div>
-                                    <div class="activity-timestamp">&nbsp;&nbsp;on
-                                        <?= date('M d, Y h:i A', strtotime($activity['timestamp'])) ?>
-                                    </div>
-                                </div>
-                            <?php endforeach; ?>
+
+            <hr class="mt-10">
+            <section class="interested-cat flex flex-col items-center mt-8">
+                <h2 class="text-2xl font-bold mb-4  text-blue-500 text-left">Interested Categories</h2>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <?php foreach ($usercategory as $category): ?>
+                        <div class="category-item flex items-center border rounded-lg p-4">
+                            <img src="data:image/jpeg;base64,<?= ($category['image']) ?>"
+                                class="category-circle bg-green-500 h-12 w-12 rounded-full flex items-center justify-center text-white font-bold">
+
+                            </img>
+                            <p class="text-lg ml-2">
+                                <?= $category['name'] ?>
+                            </p>
                         </div>
-                    </div>
+                    <?php endforeach ?>
                 </div>
-                <div class="links">
-                    <a href="<?= $user['discordlink'] ?>" target="_blank">Discord</a>
-                    <a href="<?= $user['instagram'] ?>" target=" _blank">Instagram</a>
-                    <a href="<?= $user['twitter'] ?>" target="_blank">Twitter</a>
-                    <a href="<?= $user['github'] ?>" target="_blank">GitHub</a>
+            </section>
+            <hr class="mt-10">
+
+
+            <section class="recent-activity flex flex-col items-center mt-8 mb-10">
+                <h2 class="text-2xl font-bold mb-4 text-blue-500 text-left">Recent Activity</h2>
+
+                <div class="flex mb-4">
+                    <button id="showQuestions"
+                        class="recent-activity-btn mr-4 border-b-2 border-transparent text-lg focus:outline-none">Questions</button>
+                    <button id="showAnswers"
+                        class="recent-activity-btn border-b-2 border-transparent text-lg focus:outline-none">Answers</button>
+                </div>
+
+                <div id="questionsContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 p-20">
+                    <?php foreach ($Question as $question): ?>
+                        <div class="recent-activity-item flex flex-col items-center justify-center border rounded-lg p-2">
+                            <p class="text-gray-700 font-bold text-xl">
+                                <?php echo $question['title']; ?>
+                            </p>
+                            <p class="text-gray-700 text-xl mt-1">
+                                <?php echo $question['description']; ?>
+                            </p>
+                        </div>
+                    <?php endforeach; ?>
+
+
+
+                </div>
+
+                <div id="answersContainer" class=" grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 hidden">
+                    <?php foreach ($Answer as $answer): ?>
+                        <div class="recent-activity-item flex flex-col items-center justify-center border rounded-lg p-2">
+                            <h3 class="text-xl font-bold mb-1">Provided an Answer</h3>
+                            <p class="text-gray-700 text-xl">Description:
+                                <?php echo $answer['answer']; ?>
+                            </p>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </section>
+
+
+
+        </div>
+        <footer>
+            <div class="foot-panel2">
+                <div class="ul">
+                    <p>Get to know Us</p>
+                    <a href="/useofaskify">About Askify</a>
+                </div>
+                <div class="ul">
+                    <p>Use Of Askify </p>
+                    <a href="/profile">Your Account</a>
+                    <a href="/help">Help</a>
+                    <a id="feedbackBtn">Feedback</a>
                 </div>
             </div>
-        </section>
-        
-        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('#searchInput').on('input', function () {
-                    document.getElementById('liveSearchResults').style.display = "block"
-                    var searchTerm = $(this).val();
+            <div class="foot-panel4">
+                <div class="pages">
+                    <a href="/content-policy">Content Policy</a>
+                    <a href="/privacy">Privacy And Notice</a>
+                </div>
+                <div class="copy">©2023, Askify, Inc. or its affiliates</div>
+            </div>
+        </footer>
 
-                    if (searchTerm.length >= 3) {
-                        $.ajax({
-                            url: '/search/liveSearch',
-                            type: 'post',
-                            data: { searchTerm: searchTerm },
-                            dataType: 'json',
-                            success: function (data) {
-                                // Clear previous results
-                                $('#liveSearchResults').html('');
+    <?php endforeach; ?>
 
-                                // Process and display the new results
-                                if (data.length > 0) {
-                                    $.each(data, function (index, user) {
-                                        // Customize the display based on your need
-                                        var userDiv = $('<div class="profile-link" data-userid="' + user.id + '">' + user.name + '</div>');
-                                        $('#liveSearchResults').append(userDiv);
-
-                                        // Add click event to redirect to profile
-                                        userDiv.on('click', function () {
-                                            window.location.href = '/visitprofile/' + user.id;
-                                        });
-                                    });
-                                } else {
-                                    $('#liveSearchResults').html('<div>No Users found</div>');
-                                }
-                            },
-                            error: function (error) {
-                                console.log(error);
-                            }
-                        });
-                    }
-                });
-            });
-
-        </script>
-    </body>
-<?php endforeach; ?>
+    <script src="<?= base_url('js/profile.js') ?>"></script>
+</body>
 
 </html>

@@ -36,11 +36,11 @@ document.getElementById("queclsbtn").addEventListener("click", function () {
   askQuestionPopup.style.opacity = 0;
   setTimeout(function () {
     askQuestionPopup.style.display = "none";
-  }, 300); // Adjust the duration to match the transition time
+  }, 300);
 });
 
 function shareQuestionLink(questionId) {
-  const questionLink = `/answers?id=${questionId}`;
+  const questionLink = window.location.origin + `/answers?id=${questionId}`;
   const tempInput = document.createElement("input");
   tempInput.value = questionLink;
   document.body.appendChild(tempInput);
