@@ -30,10 +30,10 @@
 # DATABASE
 #--------------------------------------------------------------------
 
- database.default.hostname = localhost
- database.default.database = smtp_db
+ database.default.hostname = 51.20.71.103
+ database.default.database = project
  database.default.username = root
- database.default.password = 
+ database.default.password = akshay@123
  database.default.DBDriver = MySQLi
 # database.default.DBPrefix =
 # database.default.port = 3306

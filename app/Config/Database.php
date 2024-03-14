@@ -26,9 +26,9 @@ class Database extends Config
      */
     public array $default = [
         'DSN' => '',
-        'hostname' => 'localhost',
+        'hostname' => '51.20.71.103',
         'username' => 'root',
-        'password' => '',
+        'password' => 'akshay@123',
         'database' => 'project',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
@@ -50,9 +50,9 @@ class Database extends Config
      */
     public array $tests = [
         'DSN' => '',
-        'hostname' => '127.0.0.1',
+        'hostname' => '51.20.71.103',
         'username' => 'root',
-        'password' => '',
+        'password' => 'akshay@123',
         'database' => 'project',
         'DBDriver' => 'SQLite3',
         'DBPrefix' => 'db_',  // Needed to ensure we're working correctly with prefixes live. DO NOT REMOVE FOR CI DEVS
