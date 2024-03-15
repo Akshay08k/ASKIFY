@@ -2,22 +2,7 @@
 
 namespace Config;
 
-// File: app/Config/Filters.php
-
-$aliases = [
-    'ipWhitelist' => \App\Filters\IPWhitelist::class,
-];
-
-$globals = [
-    'before' => [
-        'ipWhitelist' => ['except' => ['public/*']], // Adjust as needed
-    ],
-    'after' => [],
-    'cli' => [],
-];
-
-$filters = [];
-
+use App\Filters\ipWhitelist;
 
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
@@ -95,26 +80,50 @@ $routes->post('homepage/search/liveSearch', 'HomepageController::liveSearch');
 
 //json page for getting question
 $routes->get('/homepage/getQuestions', 'HomepageController::getQuestions');  //json
-$routes->post('/homepage/updateLikeCount/(:num)/(:alpha)', 'HomepageController::updateLikeCount/$1/$2'); //json
+// $routes->post('/homepage/updateLikeCount/(:num)/(:alpha)', 'HomepageController::updateLikeCount/$1/$2'); //json
+// $routes->get('/homepage/checkUserLikeStatus/(:num)', 'HomepageController::checkUserLikeStatus/$1'); //json
+$routes->group('homepage', ['filter' => 'ipWhitelist'], function ($routes) {
+    $routes->post('/updateLikeCount/(:num)/(:alpha)', 'HomepageController::updateLikeCount/$1/$2'); //json
+    $routes->get('/checkUserLikeStatus/(:num)', 'HomepageController::checkUserLikeStatus/$1'); //json
+});
 $routes->post('/submit_post', 'HomepageController::SubmitPost');
 $routes->post('/submit_question', 'HomepageController::SubmitQuestion');
-$routes->get('/homepage/checkUserLikeStatus/(:num)', 'HomepageController::checkUserLikeStatus/$1'); //json
 //Messages Routes
 $routes->get('/messages', 'MessageController::index');
 // $routes->get('messages/getUsers', 'MessageController::getUsers'); //json
-$routes->get('messages/getMessages/(:num)/(:num)', 'MessageController::getMessages/$1/$2'); //json
+// $routes->get('messages/getMessages/(:num)/(:num)', 'MessageController::getMessages/$1/$2'); //json
+$routes->group('messages', ['filter' => 'ipWhitelist'], function ($routes) {
+    $routes->get('getUsers', 'MessageController::getUsers');
+    $routes->get('getMessages/(:num)/(:num)', 'MessageController::getMessages/$1/$2'); //json
+});
+
 $routes->post('messages/sendMessage', 'MessageController::sendMessage');
 //notification routes
 $routes->get('/notification', 'NotificationController::index');
 $routes->post('notification/markAsSeen/(:num)', 'NotificationController::markAsSeen/$1');
 //answer routes
 $routes->get('/answers', 'AnswerController::index');
-$routes->get('/answers/getanswers', 'AnswerController::getAnswers'); //json
+// $routes->get('/answers/getanswers', 'AnswerController::getAnswers'); //json
+$routes->group('answers', ['filter' => 'ipWhitelist'], function ($routes) {
+    $routes->get('getanswers', 'AnswerController::getAnswers');
+});
 $routes->post('answers/store', 'AnswerController::store');
-$routes->post('answers/updateAnswerLikeCount/(:num)/(:alpha)', 'AnswerController::updateAnswerLikeCount/$1/$2'); //json
-$routes->get('/answers/checkUserLikeStatus/(:num)', 'AnswerController::checkUserLikeStatus/$1'); //json
+// $routes->post('answers/updateAnswerLikeCount/(:num)/(:alpha)', 'AnswerController::updateAnswerLikeCount/$1/$2'); //json
+// $routes->get('/answers/checkUserLikeStatus/(:num)', 'AnswerController::checkUserLikeStatus/$1'); //json
+$routes->group('answers', ['filter' => 'ipWhitelist'], function ($routes) {
+
+    $routes->post('/updateAnswerLikeCount/(:num)/(:alpha)', 'AnswerController::updateAnswerLikeCount/$1/$2'); //json
+    $routes->get('/checkUserLikeStatus/(:num)', 'AnswerController::checkUserLikeStatus/$1'); //json
+
+    $routes->get('/getanswers', 'AnswerController::getAnswers'); //json
+});
+
 $routes->post('/answers/submit', 'AnswerController::submitAnswer');
-$routes->get("/homepage/getcategories", 'AdminCategoriesController::getcategories'); //json
+
+// $routes->get("/homepage/getcategories", 'AdminCategoriesController::getcategories'); //json
+$routes->group('homepage', ['filter' => 'ipWhitelist'], function ($routes) {
+    $routes->get('getcategories', 'AdminCategoriesController::getUsers');
+});
 
 //
 $routes->get('/forgotpassword', 'ForgotPasswordController::index');
@@ -141,7 +150,10 @@ $routes->get('/admin/dashboard', 'AdminDashboardController::index');
 
 // manage user account 
 
-$routes->get('/admin/getUsers', 'AdminManageUserController::getUsers'); //json
+// $routes->get('/admin/getUsers', 'AdminManageUserController::getUsers'); //json
+$routes->group('admin', ['filter' => 'ipWhitelist'], function ($routes) {
+    $routes->get('getUsers', 'AdminManageUserController::getUsers');
+});
 $routes->get('/admin/manage_users', 'AdminManageUserController::index');
 $routes->post('/admin/deleteUser/(:num)', 'AdminManageUserController::deleteUser/$1');
 $routes->post('/admin/banUser/(:num)', 'AdminManageUserController::banUser/$1');
@@ -170,11 +182,10 @@ $routes->post('/handle_updates/update', 'AdminDashboardController::SendFeedback'
 
 
 // File: app/Config/Routes.php
-$routes->get('messages/getUsers', 'MessageController::getUsers');
 
-// Apply the 'ipWhitelist' filter to the routes serving JSON data
-$routes->group('api', ['filter' => 'ipWhitelist'], function ($routes) {
 
+$routes->group('messages', ['filter' => 'ipWhitelist'], function ($routes) {
+    $routes->get('getUsers', 'MessageController::getUsers');
 });
 /*
  * --------------------------------------------------------------------

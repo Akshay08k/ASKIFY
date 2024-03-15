@@ -2,6 +2,7 @@
 
 namespace Config;
 
+use App\Filters\IPWhitelistFilter;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
@@ -11,17 +12,18 @@ use CodeIgniter\Filters\SecureHeaders;
 
 class Filters extends BaseConfig
 {
-    
+
     public array $aliases = [
-        'csrf'          => CSRF::class,
-        'toolbar'       => DebugToolbar::class,
-        'honeypot'      => Honeypot::class,
-        'invalidchars'  => InvalidChars::class,
+        'csrf' => CSRF::class,
+        'toolbar' => DebugToolbar::class,
+        'honeypot' => Honeypot::class,
+        'invalidchars' => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
-        'auth'          => Auth::class,
+        'auth' => Auth::class,
+        'ipWhitelist' => IPWhitelistFilter::class,
     ];
 
-    
+
     public array $globals = [
         'before' => [
             // 'honeypot',

@@ -7,7 +7,7 @@ class UserModel extends Model
 {
     protected $table = 'users';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['username', 'password', 'email', 'name', 'is_admin', 'signup_ip', 'password_reset_hash', 'status', 'birthdate', 'location', 'about', 'profile_photo', 'gender', 'created_at', 'updated_at', 'first_login'];
+    protected $allowedFields = ['username', 'password', 'email', 'name', 'is_admin', 'signup_ip', 'password_reset_hash', 'status', 'birthdate', 'location', ' about', 'profile_photo', 'gender', 'created_at', 'updated_at', 'first_login'];
 
     public function searchUsers($searchTerm)
     {

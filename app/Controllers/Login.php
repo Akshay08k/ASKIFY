@@ -36,6 +36,7 @@ class Login extends Controller
             return redirect()->to(base_url('/login'));
         }
 
+        session()->set('user_id', $user['id']);
         // Check if the user is banned
         if ($user['first_login'] == true) {
             // Set the data to update
@@ -68,7 +69,7 @@ class Login extends Controller
             // Redirect to a different location for first-time login
             return redirect()->to(base_url('/updatecategory'));
         }
-
+        return redirect()->to('/homepage');
     }
 
 
