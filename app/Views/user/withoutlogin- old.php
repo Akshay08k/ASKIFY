@@ -6,19 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="<?= base_url('/css/header.css') ?>">
   <link rel="stylesheet" href="<?= base_url('/css/footer.css') ?>">
-  <link rel="stylesheet" href="<?= base_url('/css/withoutlogin.css') ?>">
+  <link rel="stylesheet" href="<?= base_url('/css/homepage.css') ?>">
   <link rel="shortcut icon"
     href="https://static.vecteezy.com/system/resources/previews/000/568/825/original/question-answer-icon-vector.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Work+Sans:wght@300&display=swap" rel="stylesheet">
-  <style>
-    .main {
-      background: url('<?= base_url(' /background.png') ?>') center/cover;
-    }
-  </style>
 </head>
 
 <body>
@@ -29,46 +22,47 @@
 
     </div>
     <div class="search-box">
+      <div class="search__container">
+        <input class="search__input" type="text" placeholder="Search">
+      </div>
+
     </div>
     <ul class="navlink">
       <li><a href="/login">Login</a></li>
       <li><a href="/register">Register</a></li>
     </ul>
   </nav>
+  <div class="categories">
+    <?php
+    $desiredCategoryIds = [18, 29, 20, 21, 22];
+    ?>
+    <?php foreach ($categories as $category): ?>
+      <?php if (in_array($category['id'], $desiredCategoryIds)): ?>
+        <div class="category-item" onclick="redirect()">
+          <?= $category['name']; ?>
+        </div>
 
-  <div class="main">
-    <div class="searcharea">
-      <h1 align="center" class="heading">Welcome to Askify</h1>
-      <input type="search" name="" id="searchInput" placeholder="end your curiosity">
-      <div id="liveSearchResult"></div>
-      <h2 class="cat-head">Popular Categories</h2>
-      <div class="categories-boxes">
+      <?php endif; ?>
+    <?php endforeach; ?>
 
-        <?php
-        $desiredCategoryIds = [18, 29, 20, 21, 22, 23, 24, 25];
-        ?>
+
+    <div class="dropdown">
+      <div>More Categories</div>
+
+
+      <div class="dropdown-content">
         <?php foreach ($categories as $category): ?>
-          <?php if (in_array($category['id'], $desiredCategoryIds)): ?>
-
-            <div class="category-item2" onclick="redirect()">
-              <div class="category-box">
-                <img src="<?= base_url('uploads/categoryimages/' . $category['image']) ?>" class="cat-img"
-                  alt="Category Image">
-                <p class="category-name">
-                  <?= $category['name']; ?>
-                </p>
-              </div>
-            </div>
-
-
-          <?php endif; ?>
+          <div onclick="redirect()">
+            <?= $category['name']; ?>
+          </div>
         <?php endforeach; ?>
       </div>
     </div>
-
   </div>
-
-
+  &nbsp;
+  <h3 align="center">Login/Register To Get Full Access Of Website</h3>
+  &nbsp;
+  <section class="content"></section>
   <script src="<?= base_url('js/withoutlogin.js') ?>"></script>
   <footer>
     <div class="foot-panel2">

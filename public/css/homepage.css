@@ -8,15 +8,16 @@
 
 body {
   font-family: var(--font-family);
-  background-color: #ecf0f1;
   overflow: scroll;
 }
+
+
 
 .content,
 .center {
   flex: 1;
   z-index: 1;
-  background-color: #ecf0f1;
+  background-color: #d1d3d481;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,6 +28,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #d1d3d481;
+
 }
 
 .main-categorybox {

@@ -54,11 +54,11 @@ function createQuestionBox(data) {
   const { name, title, description, profile_photo, likes, id, media } = data;
 
   const mediaHTML = media
-    ? `<div class="media-section"><img src="data:image/png;base64,${media}"></div>`
+    ? `<div class="media-section"><img src="/uploads/questionimages/${media}"></div>`
     : "";
 
   const profilePictureHTML = profile_photo
-    ? `<div class="profile-picture"><img src="data:image/png;base64,${profile_photo}" alt="Profile Pic"></div>`
+    ? `<div class="profile-picture"><img src="/uploads/userprofilephotos/${profile_photo}" alt="Profile Pic"></div>`
     : " ";
 
   const questionBoxHTML = `
@@ -153,6 +153,7 @@ function createQuestionBox(data) {
   questionBox.setAttribute("data-question-id", id);
   return questionBox;
 }
+let questionContainer = document.querySelector(".content");
 
 function redirectToAnswers(id) {
   window.location.href = `/answers?id=${id}`;
@@ -164,92 +165,28 @@ function shuffleArray(array) {
   }
   return array;
 }
-const questionContainer = document.querySelector(".content");
-let currentIndex = 0;
-let likedQuestionIds = [89, 84];
-
-function loadRandomQuestions() {
-  fetch("/homepage/getInterestedQuestions")
+function loadAllQuestions() {
+  fetch("/homepage/getQuestions")
     .then((response) => response.json())
-    .then((interestedData) => {
-      // Extract interestedCategories and interestedQuestionIds from the response
-      const interestedCategories =
-        interestedData.interested_categories.category_id;
-      const interestedQuestionIds =
-        interestedData.interested_questions.question_ids;
+    .then((questions) => {
+      // Shuffle the array of questions
+      const shuffledQuestions = shuffleArray(questions);
 
-      // Fetch all questions
-      fetch("/homepage/getQuestions")
-        .then((response) => response.json())
-        .then((questions) => {
-          // Separate questions into liked, filtered, and rest
-          const likedQuestions = questions.filter((question) => {
-            return likedQuestionIds.includes(question.id.toString());
-          });
+      // Clear existing content
+      questionContainer.innerHTML = "";
 
-          const filteredQuestions = questions.filter((question) => {
-            return (
-              interestedCategories.includes(question.category_id.toString()) &&
-              interestedQuestionIds.includes(question.id.toString()) &&
-              !likedQuestionIds.includes(question.id.toString())
-            );
-          });
-
-          const restQuestions = questions.filter((question) => {
-            return (
-              !likedQuestions.includes(question) &&
-              !filteredQuestions.includes(question)
-            );
-          });
-
-          // Shuffle each array
-          const shuffledLikedQuestions = shuffleArray(likedQuestions);
-          const shuffledFilteredQuestions = shuffleArray(filteredQuestions);
-          const shuffledRestQuestions = shuffleArray(restQuestions);
-
-          // Combine arrays with liked and filtered questions prioritized
-          let combinedQuestions = shuffledFilteredQuestions.concat(
-            shuffledRestQuestions
-          );
-
-          // Check if there are liked questions to avoid duplicates
-          if (shuffledLikedQuestions.length > 0) {
-            // Remove liked questions from combined array to avoid duplicates
-            combinedQuestions = combinedQuestions.filter((question) => {
-              return !likedQuestionIds.includes(question.id.toString());
-            });
-
-            // Add liked questions to the beginning of the combined array
-            combinedQuestions =
-              shuffledLikedQuestions.concat(combinedQuestions);
-          }
-
-          // Display a subset of questions (e.g., 10 questions)
-          const questionsSubset = combinedQuestions.slice(
-            currentIndex,
-            currentIndex + 40
-          );
-          currentIndex += 30;
-
-          questionsSubset.forEach((question) => {
-            const questionBox = createQuestionBox(question);
-            questionContainer.appendChild(questionBox);
-          });
-        })
-        .catch((error) => console.error("Error fetching questions:", error));
+      // Display questions
+      shuffledQuestions.forEach((question) => {
+        const questionBox = createQuestionBox(question);
+        questionContainer.appendChild(questionBox);
+      });
     })
-    .catch((error) => console.error("Error fetching interested data:", error));
+    .catch((error) => console.error("Error fetching questions:", error));
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Load the first set of random questions filtered by interested categories and question IDs
-  loadRandomQuestions();
-  setInterval(() => {
-    currentIndex = 0; // Reset index for the next set of questions
-    questionContainer.innerHTML = ""; // Clear existing content
-    // Load new set of random questions filtered by interested categories and question IDs
-    loadRandomQuestions();
-  }, 30000);
+  // Load all questions
+  loadAllQuestions();
 });
 
 // Example function to simulate liking a question
@@ -313,7 +250,7 @@ function logCategoryId(categoryId) {
 
           const categoryImg = document.createElement("img");
           const base64ImageData = selectedCategory.image; // Replace with your actual base64-encoded image data
-          categoryImg.src = "data:image/jpeg;base64," + base64ImageData;
+          categoryImg.src = "/uploads/categoryimages/" + base64ImageData;
           categoryImg.alt = "Cat Image";
           categoryImg.width = 100;
 

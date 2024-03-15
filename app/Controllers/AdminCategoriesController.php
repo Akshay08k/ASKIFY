@@ -37,11 +37,14 @@ class AdminCategoriesController extends BaseController
 
         $image = $this->request->getFile('image');
         if ($image->isValid() && !$image->hasMoved()) {
-            // Get the contents of the image file
-            $imageData = file_get_contents($image->getPathname());
+            // Generate a random name for the file
+            $newName = $data['name'] . '.' . $image->getExtension();
 
+            // Move the file to the destination directory
+            $image->move(ROOTPATH . '/public/uploads/categoryimages', $newName);
 
-            $data['image'] = base64_encode($imageData);
+            // Add image path to the data array
+            $data['image'] = $newName;
         }
 
         $model->insert($data);
@@ -58,16 +61,27 @@ class AdminCategoriesController extends BaseController
 
         $image = $this->request->getFile('image');
         if ($image->isValid() && !$image->hasMoved()) {
-            // Get the contents of the image file
-            $imageData = file_get_contents($image->getPathname());
+            // Generate a random name for the file
+            $newName = $data['name'] . '.' . $image->getExtension();
 
-            // Add image data to the data array
-            $data['image'] = base64_encode($imageData);
+            // Check if an image with the same name exists
+            $existingImagePath = ROOTPATH . '/public/upload/categoryimages/' . $newName;
+            if (file_exists($existingImagePath)) {
+                // If the image already exists, update with existing image path
+                $data['image'] = '/upload/categoryimages/' . $newName;
+            } else {
+                // If the image doesn't exist, move the new image to the directory
+                $image->move(ROOTPATH . '/public/upload/categoryimages', $newName);
+                // Update the data array with the new image path
+                $data['image'] = '/upload/categoryimages/' . $newName;
+            }
         }
 
         $model->update($id, $data);
         return redirect()->to('/admin/manage_categories');
     }
+
+
 
 
     public function edit($id)

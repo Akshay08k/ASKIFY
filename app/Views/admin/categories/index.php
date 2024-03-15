@@ -76,8 +76,8 @@
                                 <?= $category['name']; ?>
                             </td>
                             <td class="py-2 px-4 border-b text-center">
-                                <img src="data:image/jpeg;base64,<?= $category['image']; ?>" alt="Category Image"
-                                    class="w-16 h-16 object-cover mx-auto">
+                                <img src="<?= base_url('uploads/categoryimages/' . $category['image']) ?>"
+                                    alt="Category Image" class="w-16 h-16 object-cover mx-auto">
                             </td>
                             <td class="py-2 px-4 border-b text-center">
                                 <a href="/categories/edit/<?= $category['id']; ?>"

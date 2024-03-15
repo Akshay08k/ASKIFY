@@ -33,12 +33,22 @@ class Login extends Controller
             // Set the user_id in the session
             session()->set('user_id', $user['id']);
 
-            // Redirect to the homepage
-            return redirect()->to(base_url('/homepage'));
+            // Check if it's the user's first login
+            if ($user['first_login']) {
+                // Update the first_login flag in the database
+                $model->update($user['id'], ['first_login' => false]);
+
+                // Redirect to a different location for first-time login
+                return redirect()->to(base_url('/updatecategory'));
+            } else {
+                // Redirect to the homepage
+                return redirect()->to(base_url('/homepage'));
+            }
         } else {
             // Set flash data for the error
             session()->setFlashdata('error', 'Invalid email or password');
             return redirect()->to(base_url('/login'));
         }
     }
+
 }

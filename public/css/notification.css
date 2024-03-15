@@ -1,59 +1,67 @@
-:root {
-    --navbar-color: #34495e;
-    --font-family: 'Poppins', sans-serif;
-    --categories-bg: #2c3e50;
+.notifications {
+    margin: 20px;
 }
 
-#main-footer.footer-opened {
-    bottom: 0;
-}
-
-
-li {
-    margin-right: 20px;
-}
-
-li a {
-    display: block;
-    color: #ecf0f1;
-    font-size: 20px;
-    text-align: center;
-    text-decoration: none;
-    padding: 14px 16px;
-}
-
-li a:focus {
-    background-color: #0b1014;
-    color: #ecf0f1;
-    border-radius: 20px;
-}
-
-.close-btn {
-    border: hidden;
-    background-color: transparent;
-    position: absolute;
-    right: 10px;
-    height: 30px;
-    cursor: pointer;
-    width: 30px;
-}
-
-.cancelimg {
-    height: 30px;
-    width: 30px;
-}
-
-
-
-
-h1,
-h2 {
+.notification {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 10px;
     margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
+.notification .content {
+    flex-grow: 1;
+}
+
+.notification .close-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.notification .close-btn img {
+    width: 20px;
+    height: 20px;
+}
+
+.no-notification {
+    margin-top: 20px;
+}
+
+.custom-read-notifications-dropdown {
+    margin-top: 20px;
+}
+
+.custom-dropdown-header button {
+    background-color: #f9f9f9;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.custom-read-notifications-content {
+    display: none;
+    margin-top: 10px;
+}
+
+.readed-notification {
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    padding: 8px;
+    margin-bottom: 5px;
+}
+
 
 footer {
     position: absolute;
     width: 100%;
+    bottom: 0;
     z-index: 0;
 }
 

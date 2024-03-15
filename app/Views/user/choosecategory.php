@@ -20,7 +20,8 @@
                         <div class="categorybox">
                             <input type="checkbox" id="category<?= $category['id']; ?>" name="selected_categories[]"
                                 value="<?= $category['id']; ?>" class="checkbox" style="opacity:0;">
-                            <img src="data:image/jpeg;base64,<?= $category['image']; ?>" alt="<?= $category['name']; ?>">
+                            <img src="<?= base_url('uploads/categoryimages/' . $category['image']) ?>"
+                                alt="<?= $category['name']; ?>">
                             <?= $category['name']; ?>
                         </div>
                     </label>

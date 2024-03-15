@@ -46,33 +46,37 @@
                 </div>
             </form>
         <?php endforeach; ?>
-        <?php foreach ($allNotifications as $notification): ?>
-            <form action="<?= base_url('notification/markAsSeen/' . $notification['id']) ?>" method="post">
-                <div class="notification">
-                    <div class="content">
-                        <?= $notification['text']; ?>
-                    </div>
-                    <button type="submit" class="close-btn" name="mark_seen">
-                        <img src="<?= base_url('/images/notificationcancel.svg') ?>" alt="Close" class="cancelimg">
-                    </button>
-                </div>
-            </form>
-        <?php endforeach; ?>
-        <div class="custom-read-notifications-dropdown">
-            <h3 class="custom-dropdown-header"><button class="read-btn" onclick="toggleReadNotifications()">Readed
-                    Notifications ▼</button>
-            </h3>
-            <div class="custom-read-notifications-content" id="readNotifications">
-                <?php foreach ($readNotifications as $notification): ?>
-                    <div class="readed-notification">
+        <?php if (!empty($allNotifications)): ?>
+            <?php foreach ($allNotifications as $notification): ?>
+                <form action="<?= base_url('notification/markAsSeen/' . $notification['id']) ?>" method="post">
+                    <div class="notification">
                         <div class="content">
                             <?= $notification['text']; ?>
                         </div>
+                        <button type="submit" class="close-btn" name="mark_seen">
+                            <img src="<?= base_url('/images/notificationcancel.svg') ?>" alt="Close" class="cancelimg">
+                        </button>
                     </div>
-                <?php endforeach; ?>
+                </form>
+            <?php endforeach; ?>
+            <div class="custom-read-notifications-dropdown">
+                <h3 class="custom-dropdown-header"><button class="read-btn" onclick="toggleReadNotifications()">Readed
+                        Notifications ▼</button>
+                </h3>
+                <div class="custom-read-notifications-content" id="readNotifications">
+                    <?php foreach ($readNotifications as $notification): ?>
+                        <div class="readed-notification">
+                            <div class="content">
+                                <?= $notification['text']; ?>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
             </div>
-        </div>
-        <!-- JavaScript for toggle and animation -->
+        <?php else: ?>
+            <h2 align="center" class="no-notification">No notifications at this time Explore The Website..</h2>
+        <?php endif; ?>
+
 
 
 
@@ -82,8 +86,6 @@
 
 
 
-
-    <!-- Add more notifications here -->
     </div>
     <footer>
         <div class="foot-panel2">

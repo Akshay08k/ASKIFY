@@ -45,8 +45,8 @@ class HomepageController extends BaseController
                 // Retrieve the user's profile photo based on user_id
                 $userProfile = $UserModel->find($question['user_id']);
                 if ($userProfile) {
-                    $question['profile_photo'] = base64_encode($userProfile['profile_photo']);
-                    $question['media'] = base64_encode($question['media']);
+                    $question['profile_photo'] = $userProfile['profile_photo'];
+                    $question['media'];
                 }
 
                 // Convert media BLOB data to base64 encoding
@@ -146,7 +146,7 @@ class HomepageController extends BaseController
         }
 
         $title = $this->request->getPost('postTitle');
-        $Photo = $this->request->getFile('postPhoto');
+        $photo = $this->request->getFile('postPhoto');
         $categoryId = $this->request->getPost('CategoryId');
 
         $questionModel = new QuestionModel();
@@ -156,23 +156,30 @@ class HomepageController extends BaseController
             'category_id' => $categoryId,
         ];
 
-        if ($Photo->isValid() && !$Photo->hasMoved()) {
-            // Generate a random name for the file
-            $randomName = $Photo->getRandomName();
+        if ($photo->isValid() && !$photo->hasMoved()) {
+            // Generate a random name for the file (5 characters)
+            $randomString = bin2hex(random_bytes(3));
 
-            // Combine the random name with the user id
-            $newName = $randomName . '_' . $userId . '.' . $Photo->getExtension();
+            // Get the ID of the last inserted record
+            $lastInsertId = $questionModel->insert($data);
+
+            // Combine the random string with the user id and question id
+            $newName = $lastInsertId . '_' . $userId . '_' . $randomString . '.' . $photo->getExtension();
 
             // Move the file to the destination directory
-            $Photo->move(ROOTPATH . '/public/uploads/questionimages', $newName);
+            $photo->move(ROOTPATH . '/public/uploads/questionimages', $newName);
 
-            // Get the contents of the moved file
-            $data['media'] = file_get_contents(ROOTPATH . '/public/uploads/questionimages/' . $newName);
+            // Store the path in the database
+            $data['media'] = $newName;
+
+            // Update the record with the file path
+            $questionModel->update($lastInsertId, $data);
         }
-        $questionModel->insert($data);
 
         return redirect()->to('/homepage')->with('success', 'Question submitted successfully');
     }
+
+
 
 
     public function SubmitQuestion()

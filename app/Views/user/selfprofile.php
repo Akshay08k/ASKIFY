@@ -84,24 +84,15 @@
             </img>
         </div>
         <?php foreach ($users as $user): ?>
-            <?php
-            $username = $user['username'];
 
-
-            $profilePhoto = $user['profile_photo'];
-
-
-            $profilePhotoBase64 = 'data:image/png;base64,' . base64_encode($profilePhoto);
-
-
-            ?>
             <div class="profile-img ">
                 <img class="image border border-blue-500 " src="
-            <?= $profilePhotoBase64 ?>" alt="Profile Image">
+            <?= base_url('/uploads/userprofilephotos/' . $user['profile_photo']) ?>" alt="Profile Image">
             </div>
         </div>
         <p class="text-center  username mb-10">
             <?= $user['name'] ?>
+
             <?php
             $gender = $user['gender'];
 
@@ -152,8 +143,6 @@
                         echo "<h3 class='text-lg font-semibold mt-2 mb-2'>" . $name . "</h3>";
                     } ?>
                 </div>
-
-
 
                 <script>
                     function closePopup(id) {
@@ -206,7 +195,9 @@
             <section class="flex justify-center items-center flex-col mt-8">
                 <div class="container-bio border rounded-lg ">
                     <h3 class="text-xl font-bold mb-4  text-gray-800">Bio</h3>
-                    <p class="text-lg text-gray-700">Love is the greatest thing in the world</p>
+                    <p class="text-lg text-gray-700">
+                        <?= $user['about'] ?>
+                    </p>
                 </div>
                 <div class="container-about  rounded-lg  mt-10">
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4">
@@ -224,7 +215,7 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     <?php foreach ($usercategory as $category): ?>
                         <div class="category-item flex items-center border rounded-lg p-4">
-                            <img src="data:image/jpeg;base64,<?= ($category['image']) ?>"
+                            <img src="<?= base_url('uploads/categoryimages/' . $category['image']) ?>"
                                 class="category-circle bg-green-500 h-12 w-12 rounded-full flex items-center justify-center text-white font-bold">
 
                             </img>
@@ -272,7 +263,7 @@
                                 <?php echo $answer['answer']; ?>
                             </p>
                         </div>
-                    <?php endforeach; ?>s
+                    <?php endforeach; ?>
 
                 </div>
             </section>

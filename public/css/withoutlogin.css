@@ -1,0 +1,106 @@
+#liveSearchResult {
+    display: none;
+    position: absolute;
+    width: 28%;
+    background: white;
+    top: 333px;
+    z-index: 100;
+    padding: 20px;
+    gap: 10px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.question-link {
+    margin-bottom: 10px;
+}
+
+.question-link:hover {
+    background-color: rgb(144, 142, 142);
+}
+
+.main {
+    /* Center and cover the background image */
+    display: flex;
+    height: 80vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.heading {
+    /* Adjusted margin for better positioning */
+    font-size: 2.5rem;
+    margin-top: -200px;
+    margin-bottom: 30px;
+    color: black;
+    /* Increased font size for emphasis */
+
+}
+
+input[type="search"] {
+    width: 38%;
+    /* Increased input width for better usability */
+    padding: 10px;
+    /* Added padding for better appearance */
+    border: none;
+    /* Removed border for a cleaner look */
+
+    /* Added border-radius for rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Added box-shadow for depth */
+}
+
+.searcharea {
+    height: auto;
+    /* Changed height to auto for dynamic content */
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+    /* Adjusted margin-top for better alignment */
+    flex-direction: column;
+    width: 80%;
+    /* Increased width for better spacing */
+}
+
+.category-box {
+    width: 100px;
+    /* Adjust the width as needed */
+    height: 140px;
+    /* Ensure it's a square box */
+    /* Add a border for style */
+    border-radius: 10px;
+    /* Add some border-radius for rounded corners */
+    overflow: hidden;
+    /* Hide any overflowing content */
+    text-align: center;
+    /* Center-align the contents */
+}
+
+
+.cat-head {
+    position: absolute;
+    top: 38%;
+}
+
+.category-name {
+    font-size: 14px;
+    color: white;
+}
+
+.categories-boxes {
+    display: flex;
+    gap: 30px;
+    margin-top: 100px;
+}
+
+.cat-img {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    margin-top: 10px;
+}
+
+.category-item2 {
+    background-color: rgba(22, 32, 35, .3);
+    border-radius: 10px;
+}

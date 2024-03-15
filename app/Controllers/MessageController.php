@@ -27,7 +27,7 @@ class MessageController extends Controller
         $userId = session()->get('user_id');
         if (!$userId) {
             // Handle error, maybe return an error response or redirect
-            return response()->json(['error' => 'User session not found'], 400);
+            echo json_encode(['error' => 'User session not found'], 400);
         }
 
         $FollowerModel = new FollowerModel();
@@ -58,7 +58,7 @@ class MessageController extends Controller
                 'gender' => $user['gender'],
                 'email' => $user['email'],
                 'status' => $user['status'],
-                'profile_photo' => base64_encode($user['profile_photo'])
+                'profile_photo' => $user['profile_photo']
             ];
         }
 

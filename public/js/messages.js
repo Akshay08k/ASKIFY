@@ -1,84 +1,128 @@
-document.addEventListener("DOMContentLoaded", () => {
-  fetchUsers();
-});
-
-function fetchUsers() {
-  fetch("/messages/users")
-    .then((response) => response.json())
-    .then((users) => {
-      const userList = document.getElementById("userList");
-      userList.innerHTML = "";
-      users.forEach((user) => {
-        const li = document.createElement("li");
-        li.textContent = user.username;
-        li.dataset.userId = user.id;
-        li.classList.add("mb-2", "cursor-pointer", "hover:text-blue-500");
-        li.addEventListener("click", () => openChat(user.id));
-        userList.appendChild(li);
-      });
-    });
-}
-
-function openChat(receiverId) {
-  fetch(`/messages/history/${receiverId}`)
-    .then((response) => response.json())
-    .then((messages) => {
-      const chat = document.getElementById("chat");
-      chat.innerHTML = ""; // Clear previous chat
-
-      messages.forEach((msg) => {
-        const messageDiv = document.createElement("div");
-        messageDiv.textContent = msg.message;
-        messageDiv.classList.add("p-2", "rounded", "max-w-xs");
-
-        // Check if the message sender is the current user
-        if (msg.sender === 63) {
-          messageDiv.classList.add("bg-blue-500", "text-white", "ml-auto"); // Align right for the current user
-        } else {
-          messageDiv.classList.add("bg-gray-300", "text-black"); // Align left for other users
+  function loadname(name) {
+            let selectedUserName = document.getElementById('chatHeading');
+            selectedUserName.textContent = name;
         }
 
-        chat.appendChild(messageDiv);
-      });
-    });
-}
-function sendMessage() {
-  const messageInput = document.getElementById("messageInput");
-  const message = messageInput.value.trim();
+        var selectedUserId = null;
+        var lastSentMessageId = null;
 
-  // Dynamically determine the receiver's ID from the selected user
-  const selectedUser = document.querySelector(".selectedUser");
-  const receiverId = selectedUser ? selectedUser.dataset.userId : null;
+        function loadUsers() {
+            $.ajax({
+                url: '<?= base_url('messages/getUsers') ?>',
+                method: 'GET',
+                success: function (response) {
+                    var userList = $('#userList');
+                    userList.empty();
+                    var users = JSON.parse(response);
 
-  if (message !== "" && receiverId) {
-    fetch("/message/send", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ receiverId, message }),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
+                    users.forEach(function (user) {
+                        var listItem = $('<li class="flex items-center mb-3" data-userid="' + user.id + '"></li>'); // Create a list item element
+                        listItem.append("<img height='40' width='40' class='mr-2' src='data:image/jpeg;base64," + user.profile_photo + "'>"); // Append profile photo
+                        listItem.append('<span onclick="loadname(\'' + user.name + '\')" class="cursor-pointer">' + user.name + '</span>'); // Append user name
+                        userList.append(listItem); // Append list item to the user list
+                    });
+                }
+            });
         }
-        return response.json();
-      })
-      .then(() => {
-        // Refresh the chat messages after sending the message
-        openChat(receiverId);
-        // Clear the message input field
-        messageInput.value = "";
-      })
-      .catch((error) => {
-        console.error("Error sending message:", error);
-      });
-  }
-}
+        function loadMessages(userId) {
+            var chat = $('#chat');
+            var latestMessageId = chat.children('.message:last').data('messageid') || 0;
+            var url = '<?= base_url('messages/getMessages/') ?>' + '/' + userId + '/' + latestMessageId;
+            $.ajax({
+                url: url,
+                method: 'GET',
+                success: function (response) {
+                    var messages = JSON.parse(response);
 
-// Add a class to the selected user for styling
-document.getElementById("userList").addEventListener("click", (event) => {
-  const userList = document.querySelectorAll("#userList li");
-  userList.forEach((user) => user.classList.remove("selectedUser"));
-  event.target.classList.add("selectedUser");
-});
+                    messages.forEach(function (message) {
+                        // Skip the last sent message
+                        if (message.id != lastSentMessageId) {
+                            var bubbleClass = message.sender_id == '<?= session()->get('user_id') ?>' ? 'self-bubble' : 'other-bubble';
+                            var alignmentClass = message.sender_id == '<?= session()->get('user_id') ?>' ? 'text-right' : 'text-left';
+                            var messageDiv = $('<div>').addClass('message bubble p-2 rounded ' + bubbleClass + ' ' + alignmentClass).text(message.message);
+                            // Set a data attribute to store the message ID
+                            messageDiv.attr('data-messageid', message.id);
+                            chat.append(messageDiv);
+                            // Scroll to the bottom of the chat after appending a message
+                            chat.scrollTop(chat[0].scrollHeight);
+
+                        }
+                    });
+                }
+            });
+        }
+        function sendMessage() {
+            var receiverId = selectedUserId;
+            var message = $('#messageInput').val();
+            $.ajax({
+                url: '<?= base_url('messages/sendMessage') ?>',
+                method: 'POST',
+                data: { receiver_id: receiverId, message: message },
+                success: function (response) {
+                    $('#messageInput').val('');
+
+                    // Update the last sent message ID
+                    lastSentMessageId = response.message_id;
+
+                    loadMessages(receiverId);
+                }
+            });
+        }
+
+        // Periodically load messages
+        setInterval(function () {
+            if (selectedUserId !== null) {
+                loadMessages(selectedUserId);
+            }
+        }, 5000); // Adjust the interval (in milliseconds) as needed
+
+        $('#userList').on('click', 'li', function () {
+            $('#chat').empty();
+            selectedUserId = $(this).data('userid');
+            $('#userList li').removeClass('selected');
+            $(this).addClass('selected');
+            loadMessages(selectedUserId);
+        });
+
+
+        loadUsers();
+
+
+        $(document).ready(function () {
+            $('#searchInput').on('input', function () {
+                document.getElementById('liveSearchResults').style.display = "block"
+                var searchTerm = $(this).val();
+
+                if (searchTerm.length >= 3) {
+                    $.ajax({
+                        url: '/search/liveSearch',
+                        type: 'post',
+                        data: { searchTerm: searchTerm },
+                        dataType: 'json',
+                        success: function (data) {
+                            // Clear previous results
+                            $('#liveSearchResults').html('');
+
+                            // Process and display the new results
+                            if (data.length > 0) {
+                                $.each(data, function (index, user) {
+                                    // Customize the display based on your need
+                                    var userDiv = $('<div class="profile-link" data-userid="' + user.id + '">' + user.name + '</div>');
+                                    $('#liveSearchResults').append(userDiv);
+
+                                    // Add click event to redirect to profile
+                                    userDiv.on('click', function () {
+                                        window.location.href = '/visitprofile/' + user.id;
+                                    });
+                                });
+                            } else {
+                                $('#liveSearchResults').html('<div>No Users found</div>');
+                            }
+                        },
+                        error: function (error) {
+                            console.log(error);
+                        }
+                    });
+                }
+            });
+        });

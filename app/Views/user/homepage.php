@@ -73,15 +73,15 @@
             </div>
         </div>
         <div class="askingbtnbar">
-            <button id="askQuestionBtn">Ask Question</button>
-            <button id="createPostBtn">Create Post</button>
+            <button id="askQuestionBtn">Create Post</button>
+            <button id="createPostBtn">Ask Question</button>
         </div>
     </div>
     <div class="categorybox"></div>
     <div class="content"></div>
     <!-- Popup form for asking a question -->
     <div id="askQuestionPopup" class="popup p-6 bg-white shadow-md rounded-md">
-        <h2 class="text-2xl font-bold mb-4">Ask a Question</h2>
+        <h2 class="text-2xl font-bold mb-4">Create Post</h2>
         <form action="/submit_post" method="post" enctype="multipart/form-data" class="space-y-4">
 
             <?= csrf_field() ?>
@@ -115,7 +115,7 @@
     </div>
 
     <div id="createPostPopup" class="popup p-6 bg-white shadow-md rounded-md">
-        <h2 class="text-2xl font-bold mb-4">Create Post</h2>
+        <h2 class="text-2xl font-bold mb-4">Ask Question</h2>
         <form action="/submit_question" method="post" class="space-y-4">
             <label for="title" class="block text-sm font-medium text-gray-700">Title:</label>
             <input type="text" id="title" name="QuestionTitle" required

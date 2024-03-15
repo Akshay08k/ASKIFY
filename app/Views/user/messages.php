@@ -4,27 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-    <title>Messages</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>Responsive Chat Interface</title>
+    <link rel="stylesheet" href="<?= base_url('css/messages.css') ?>">
     <link rel="stylesheet" href="<?= base_url('css/header.css') ?>">
     <link rel="stylesheet" href="<?= base_url('css/footer.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('css/messages.css') ?>">
-
-
+    <style>
+        .UsersHead {
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+    </style>
 
 </head>
 
-<body class=" h-screen bg-gray-100">
+<body>
     <nav id="header">
         <div class="logo">
-            <a href="#"> <img src="<?= base_url('/images/logo.png') ?>" alt="Logo" width="100"></a>
+            <a href="/"> <img src="<?= base_url('/images/logo.png') ?>" alt="Logo" width="100"></a>
         </div>
         <div class="search-box">
             <div class="search__container">
-                <input class="search__input" type="text" placeholder="Search Any User" id="searchInput">
+                <input class="search__input" type="search" placeholder="Search Question" id="searchInput">
                 <div id="liveSearchResults"></div>
             </div>
         </div>
@@ -35,29 +37,26 @@
             <li><a href="/profile">Profile</a></li>
         </ul>
     </nav>
-    <!-- Chatting -->
-    <div class="flex flex-row justify-between bg-white">
-        <!-- chat list -->
-        <h1 class="text-3xl absolute text-center">Users</h1>
-        <div class="flex flex-col w-2/5 border-r-2 overflow-y-auto mt-10" id="userList">
+    <div class="container">
 
 
-
-            <!-- end user list -->
+        <div class="user-list" id="userList">
+            <div class="UsersHead">
+                Users
+            </div>
         </div>
-        <!-- end chat list -->
-        <!-- message -->
-        <div class="w-full  flex flex-col justify-between " id="chat">
+        <div class="chat-area">
+            <div class="active-user">
 
+            </div>
+            <div class="chat-messages" id="chat">
+                <!-- Chat messages will be populated dynamically -->
+            </div>
+            <div class="message-input">
+                <input type="text" id="messageInput" placeholder="Type your message...">
+                <button onclick="sendMessage()">Send</button>
+            </div>
         </div>
-        <div class="py-5 absolute bottom-10 right-0 w-full">
-            <input class="w-full bg-gray-300 py-5 px-3 rounded-xl" type="text" id="messageInput"
-                placeholder="type your message here..." />
-            <button onclick="sendMessage()" id="sendButton"
-                class="  bg-blue-500 hover:bg-blue-700 text-white  font-bold py-2 px-4 rounded">Send</button>
-        </div>
-        <!-- end message -->
-
     </div>
     <footer>
         <div class="foot-panel2">
@@ -80,14 +79,27 @@
             <div class="copy">©2023, Askify, Inc. or its affiliates</div>
         </div>
     </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
     <script>
-        function loadname(name) {
-            let selectedUserName = document.getElementById('chatHeading');
-            selectedUserName.textContent = name;
-        }
+
 
         var selectedUserId = null;
         var lastSentMessageId = null;
+        function loadProfile(userName, url) {
+            // Log the URL to ensure it contains the correct value
+            console.log("Profile Photo URL:", url);
+
+            // Assuming "active-user" is a class for displaying the active user's profile photo and name
+            var img = $('<img>').attr('src', url).addClass('active-user-img');
+
+            // Create the user name element
+            var userNameElement = $('<p>').addClass('active-user-name').text(userName);
+
+            // Find the element with class "active-user" and append the profile photo and user name elements to it
+            $('.active-user').empty().append(img).append(userNameElement);
+        }
 
         function loadUsers() {
             $.ajax({
@@ -95,18 +107,30 @@
                 method: 'GET',
                 success: function (response) {
                     var userList = $('#userList');
-                    userList.empty();
                     var users = JSON.parse(response);
 
                     users.forEach(function (user) {
-                        var listItem = $('<li class="flex items-center mb-3" data-userid="' + user.id + '"></li>'); // Create a list item element
-                        listItem.append("<img height='40' width='40' class='mr-2' src='data:image/jpeg;base64," + user.profile_photo + "'>"); // Append profile photo
-                        listItem.append('<span onclick="loadname(\'' + user.name + '\')" class="cursor-pointer">' + user.name + '</span>'); // Append user name
-                        userList.append(listItem); // Append list item to the user list
+                        var photoUrl = window.location.origin + '/uploads/UserProfilePhotos/' + user.profile_photo;
+                        console.log(photoUrl);
+
+                        // Construct the HTML for the list item
+                        var listItemHtml = '<li onclick="loadProfile(\'' + user.name + '\', \'' + photoUrl + '\')" class="flex listitem" data-userid="' + user.id + '">' +
+                            '<img src="' + photoUrl + '" height="50" width="50" class="mr-2 rounded-full">' +
+                            '<p  class="cursor-pointer">' + user.name + '</p>' +
+                            '</li>';
+
+                        // Append the HTML to the user list
+                        userList.append(listItemHtml);
                     });
                 }
             });
+
         }
+        function toggleSidebar() {
+            var sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('open');
+        }
+
         function loadMessages(userId) {
             var chat = $('#chat');
             var latestMessageId = chat.children('.message:last').data('messageid') || 0;
@@ -210,9 +234,8 @@
             });
         });
 
+
     </script>
-
-
 </body>
 
 </html>

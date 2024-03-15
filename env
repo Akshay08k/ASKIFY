@@ -15,7 +15,8 @@
 #--------------------------------------------------------------------
 
  CI_ENVIRONMENT = development
-
+Whoops!
+We seem to have hit a snag. Please try again l  
 #--------------------------------------------------------------------
 # APP
 #--------------------------------------------------------------------
@@ -30,11 +31,11 @@
 # DATABASE
 #--------------------------------------------------------------------
 
- database.default.hostname = 51.20.71.103
- database.default.database = project
- database.default.username = root
- database.default.password = akshay@123
- database.default.DBDriver = MySQLi
+#  database.default.hostname = localhost
+#  database.default.database = project
+#  database.default.username = root
+#  database.default.password = akshay@123
+#  database.default.DBDriver = MySQLi
 # database.default.DBPrefix =
 # database.default.port = 3306
 

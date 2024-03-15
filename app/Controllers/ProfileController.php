@@ -162,7 +162,6 @@ class ProfileController extends BaseController
         $InterestedCategories = $categoryModel->whereIn('id', $categoryIds)->findAll();
         $data['usercategory'] = $InterestedCategories;
 
-        // Pass the follow status and other data to the view
         $data['isFollowing'] = $isMutualFollowing;
         $data['categories'] = $categoryModel->findAll();
         $data['question'] = $QuestionModel->findAll();
@@ -231,7 +230,6 @@ class ProfileController extends BaseController
 
     public function updateProfile()
     {
-
         $userId = session()->get('user_id');
 
         if (!$userId) {
@@ -250,20 +248,18 @@ class ProfileController extends BaseController
                 'username' => 'required|min_length[3]|max_length[50]',
                 'email' => 'required|valid_email',
                 'name' => 'required|min_length[3]|max_length[50]',
-                'categories' => 'permit_empty|max_length[255]',
                 'birthdate' => 'required|valid_date[Y-m-d]',
                 'location' => 'permit_empty|max_length[255]',
                 'about' => 'permit_empty',
                 'gender' => 'required|in_list[male,female,other]',
-                'profile_photo' => 'max_size[profile_photo,10240]',
+                'profile_photo' => 'uploaded[profile_photo]|max_size[profile_photo,10240]',
             ];
-            //$this->request->do_upload()  is method to upload the file
+
             if ($this->validate($validationRules)) {
                 $data = [
                     'username' => $this->request->getPost('username'),
                     'email' => $this->request->getPost('email'),
                     'name' => $this->request->getPost('name'),
-                    'categories' => $this->request->getPost('categories'),
                     'birthdate' => $this->request->getPost('birthdate'),
                     'location' => $this->request->getPost('location'),
                     'about' => $this->request->getPost('about'),
@@ -273,18 +269,20 @@ class ProfileController extends BaseController
                 $profilePhoto = $this->request->getFile('profile_photo');
 
                 if ($profilePhoto->isValid() && !$profilePhoto->hasMoved()) {
-                    $newName = $userData['username'] . '.' . $profilePhoto->getExtension();
-                    $profilePhoto->move(ROOTPATH . 'public/images/userprofilephoto', $newName);
+                    // Check if the username image exists in the upload folder
+                    $imagePath = ROOTPATH . 'public/uploads/UserProfilePhotos/';
+                    $newName = $data['username'] . '.' . $profilePhoto->getExtension();
+                    if (file_exists($imagePath . $newName)) {
+                        unlink($imagePath . $newName); // Remove existing image
+                    }
 
-                    // Update the 'profile_photo' column to store the image content as blob
-                    $data['profile_photo'] = file_get_contents(ROOTPATH . 'public/images/userprofilephoto/' . $newName);
+                    // Move the new image to the upload folder
+                    $profilePhoto->move($imagePath, $newName);
+
+                    $data['profile_photo'] = $newName; // Store image name in database
                 }
 
                 $userModel->update($userId, $data);
-
-                // Remove the uploaded image file after updating the database
-                // this is used to remove file from userprofilephoto 
-                // unlink(ROOTPATH . 'public/images/userprofilephoto/' . $newName);
 
                 return redirect()->to("/profile")->with('success', 'Profile updated successfully.');
             } else {
@@ -294,6 +292,7 @@ class ProfileController extends BaseController
 
         return view('user/updateprofile', ['userData' => $userData]);
     }
+
     public function liveSearch()
     {
         $userModel = new UserModel();
