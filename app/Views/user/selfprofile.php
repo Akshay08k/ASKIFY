@@ -201,8 +201,12 @@
                 </div>
                 <div class="container-about  rounded-lg  mt-10">
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4">
-                        <p class="text-lg text-left text-gray-700"><strong>Email:</strong> akshay@gmail.com</p>
-                        <p class="text-lg text-left text-gray-700"><strong>Location:</strong> Ahmedabad</p>
+                        <p class="text-lg text-left text-gray-700"><strong>Email:</strong>
+                            <?= $user['email'] ?>
+                        </p>
+                        <p class="text-lg text-left text-gray-700"><strong>Location:</strong>
+                            <?= $user['location'] ?>
+                        </p>
                     </div>
                 </div>
             </section>

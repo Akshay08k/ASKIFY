@@ -1674,3 +1674,65 @@ in APPPATH\Config\Routes.php on line 4.
  3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
  5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-15 12:54:13 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 924.
+ 1 SYSTEMPATH\BaseModel.php(924): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(754): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\Login.php(39): CodeIgniter\Model->update('63', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Login->auth()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-15 12:54:20 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 924.
+ 1 SYSTEMPATH\BaseModel.php(924): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(754): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\Login.php(39): CodeIgniter\Model->update('63', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Login->auth()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-15 13:15:24 --> Error updating first_login flag: There is no data to update.
+ERROR - 2024-03-15 13:15:43 --> Error updating first_login flag: There is no data to update.
+ERROR - 2024-03-15 13:16:18 --> Error updating first_login flag: There is no data to update.
+ERROR - 2024-03-15 13:17:54 --> Error updating first_login flag: There is no data to update.
+ERROR - 2024-03-15 13:19:44 --> Error updating first_login flag: There is no data to update.
+ERROR - 2024-03-15 13:20:09 --> Error updating first_login flag: There is no data to update.
+CRITICAL - 2024-03-15 13:26:29 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 924.
+ 1 SYSTEMPATH\BaseModel.php(924): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(754): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\Login.php(51): CodeIgniter\Model->update('86', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Login->auth()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+CRITICAL - 2024-03-15 13:27:21 --> CodeIgniter\Model::insert(): Argument #2 ($returnID) must be of type bool, array given, called in C:\xampp\htdocs\ASKIFY\app\Controllers\Login.php on line 51
+in SYSTEMPATH\Model.php on line 706.
+ 1 APPPATH\Controllers\Login.php(51): CodeIgniter\Model->insert('86', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Login->auth()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+ERROR - 2024-03-15 13:31:06 --> Error updating first_login flag: There is no data to update.
+ERROR - 2024-03-15 13:31:41 --> Error updating first_login flag: There is no data to update.
+ERROR - 2024-03-15 13:33:15 --> Error updating first_login flag: There is no data to update.86
+ERROR - 2024-03-15 13:33:39 --> Error updating first_login flag: There is no data to update.User id =86
+ERROR - 2024-03-15 13:34:06 --> Error updating first_login flag: There is no data to update.User id =86
+ERROR - 2024-03-15 13:37:06 --> Error updating user: There is no data to update.
+ERROR - 2024-03-15 13:37:06 --> Error updating first_login flag: Failed to update first_login flag.User id =86
+ERROR - 2024-03-15 13:38:35 --> Error updating user: There is no data to update.
+ERROR - 2024-03-15 13:38:35 --> Error updating first_login flag: Failed to update first_login flag.User id =86
+ERROR - 2024-03-15 13:39:27 --> Error updating first_login flag: There is no data to update.
+ERROR - 2024-03-15 13:40:17 --> Error updating first_login flag: There is no data to update.
+ERROR - 2024-03-15 13:40:43 --> Error updating first_login flag: There is no data to update.
+ERROR - 2024-03-15 13:41:50 --> Error updating user: There is no data to update.
+ERROR - 2024-03-15 13:41:50 --> Error updating first_login flag: Failed to update first_login flag.
+ERROR - 2024-03-15 14:16:50 --> Error updating user: There is no data to update.
+ERROR - 2024-03-15 14:16:50 --> Error updating first_login flag: Failed to update first_login flag.
+ERROR - 2024-03-15 14:17:30 --> Error updating user: There is no data to update.
+ERROR - 2024-03-15 14:17:30 --> Error updating first_login flag: Failed to update first_login flag.
