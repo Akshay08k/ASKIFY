@@ -12,7 +12,7 @@
   z-index: 0;
   font-size: 1.1rem;
   padding: 20px;
-  background-color: #34495e;
+  background-color: #3c5670;
   position: static;
   color: #fff;
   border: none;
@@ -20,24 +20,13 @@
   cursor: pointer;
 }
 
-/* Style for active button (optional) */
 .pfplinkbtn:hover {
-  background-color: #2980b9;
+  background-color: #3f85b4;
 }
 
 
 
-* {
 
-  /* background-color: black;
-    color: white; */
-}
-
-body {
-  font-family: "poppins", sans-serif;
-  margin: 0;
-  padding: 0;
-}
 
 .cover {
   height: 50vh;

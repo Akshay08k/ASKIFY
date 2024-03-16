@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Homepage</title>
+    <link rel="shortcut icon" href="<?= base_url('/favicon.ico') ?>">
+    <title>Homepage - Askify</title>
     <link rel="stylesheet" href="<?= base_url('/css/header.css') ?>">
     <link rel="stylesheet" href="<?= base_url('/css/footer.css') ?>">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
@@ -156,7 +157,7 @@
                 <p>Use Of Askify </p>
                 <a href="/profile">Your Account</a>
                 <a href="/help">Help</a>
-                <a id="feedbackBtn">Feedback</a>
+                <a href="/feedback">Feedback</a>
             </div>
         </div>
         <div class="foot-panel4">
@@ -169,28 +170,6 @@
     </footer>
 
     <script src="<?= base_url('/js/homepage.js') ?>"></script>
-    <script>
-        // Open Feedback Popup
-        document.getElementById('feedbackBtn').addEventListener('click', openFeedbackPopup);
-
-        // Close Feedback Popup
-        function closeFeedbackPopup() {
-            document.getElementById('feedbackPopup').style.display = 'none';
-        }
-
-        // Open Feedback Popup
-        function openFeedbackPopup() {
-            document.getElementById('feedbackPopup').style.display = 'block';
-        }
-
-        // Submit Feedback (You can replace this function with your actual submission logic)
-        function submitFeedback() {
-            const feedbackText = document.getElementById('feedbackText').value;
-            alert('Feedback submitted: ' + feedbackText);
-            closeFeedbackPopup();
-        }
-
-    </script>
 
 </body>
 

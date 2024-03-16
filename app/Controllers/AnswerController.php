@@ -35,7 +35,7 @@ class AnswerController extends BaseController
             // Retrieve the user's profile photo based on user_id
             $userProfile = $UserModel->find($answer['user_id']);
             if ($userProfile && $userProfile['profile_photo']) {
-                $answer['profile_photo'] = base64_encode($userProfile['profile_photo']);
+                $answer['profile_photo'] = $userProfile['profile_photo'];
             } else {
                 // Provide a default profile photo or handle the case where there is no photo
                 $answer['profile_photo'] = ''; // Set a default value or handle as needed

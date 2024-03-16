@@ -29,11 +29,7 @@ function createAnswerBox(data) {
   const answerBoxHTML = `
     <div class="profile-section">
       <div class="profile-picture">
-        <img src="${
-          profile_photo
-            ? `data:image/png;base64,${profile_photo}`
-            : "path/to/default/profile/photo.jpg"
-        }" alt="User">
+        <img src="uploads/UserProfilePhotos/${profile_photo}" ></img>
       </div>
       <p>${username}</p>
     </div>
@@ -201,35 +197,39 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 function createQuestionBox(data) {
-  const { name, title, description, profile_photo, likes, id } = data;
+  const { name, title, description, profile_photo, likes, id, media } = data;
+
+  const mediaHTML = media
+    ? `<div class="media-section"><img src="/uploads/questionimages/${media}"></div>`
+    : "";
+
+  const profilePictureHTML = profile_photo
+    ? `<div class="profile-picture"><img src="/uploads/UserProfilePhotos/${profile_photo}" alt="Profile Pic"></div>`
+    : " ";
   // console.log(data);
   const questionBoxHTML = `
-    <div class="post-box">
-      <div class="profile-section">
-        <div class="profile-picture">
-          <img src="${
-            profile_photo
-              ? `data:image/png;base64,${profile_photo}`
-              : "path/to/default/profile/photo.jpg"
-          }" alt="User">
-        </div>
-        <p>${name}</p>
-      </div>
-      <div class="title-section">
-        <h3>${title}</h3>
-      </div>
-      <div class="description-section">
-        <p>${description}</p>
-      </div>
-      <div class="like-section">
-        <div class="question-heart-like-button"></div>
-        <span class="question-heart-count">${likes}</span>
-      </div>
-      <div class="share-button">
-        <img src="https://cdn2.iconfinder.com/data/icons/line-drawn-social-media/31/share-1024.png" height="30" width="30">
-      </div>
+  <div class="post-box">
+    <div class="profile-section">
+      ${profilePictureHTML}
+      <p class="opacity-80">${name}</p>
     </div>
-  `;
+    <div class="title-section">
+      <h3 class="font-bold">${title}</h3>
+    </div>
+  <div class="description-section">
+    <p>${description ? description : ""}</p>
+      ${mediaHTML}
+    </div>
+    <div class="like-section">
+      <div class="question-heart-like-button" id="likebtn"></div>
+      <span class="question-heart-count">${likes}</span>
+    </div>
+    <button class="ans-btn" onclick="redirectToAnswers(${id})">
+      <img src="/images/answer.png" class="ans-img">
+    </button>
+   
+  </div>
+`;
 
   const questionBox = document.createElement("div");
   questionBox.insertAdjacentHTML("beforeend", questionBoxHTML);

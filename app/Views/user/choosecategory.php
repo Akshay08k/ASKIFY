@@ -4,13 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Category Selection</title>
+
+    <link rel="shortcut icon" href="<?= base_url('/favicon.ico') ?>">
+    <title>CategorySelection - Askify</title>
     <link rel="stylesheet" href="<?= base_url('css/choosecategory.css') ?>">
 </head>
 
 <body>
     <header>
-        <h1>Category Selection</h1>
+        <h1>Choose Categories As Per Your Interest</h1>
     </header>
     <div>
         <form method="post" action="<?= base_url('updatecategory/processCategorySelection') ?>">
@@ -26,8 +28,8 @@
                         </div>
                     </label>
                 <?php endforeach; ?>
-                <div class="btndiv"><button type="submit" id="confirm-button">Confirm</button></div>
             </div>
+            <div class="btndiv"><button type="submit" id="confirm-button">Confirm</button></div>
         </form>
     </div>
 
@@ -41,7 +43,7 @@
 
                 if (checkbox.checked) {
                     categorybox.style.backgroundColor = "#34495e";
-                    label.style.color = "white"; //
+                    label.style.color = "white";
                 } else {
                     categorybox.style.backgroundColor = "";
                     label.style.color = "";

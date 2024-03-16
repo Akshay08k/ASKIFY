@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="<?= base_url('/css/header.css') ?>">
   <link rel="stylesheet" href="<?= base_url('/css/footer.css') ?>">
+  <title>Askify</title>
   <link rel="stylesheet" href="<?= base_url('/css/withoutlogin.css') ?>">
-  <link rel="shortcut icon"
-    href="https://static.vecteezy.com/system/resources/previews/000/568/825/original/question-answer-icon-vector.jpg">
+  <link rel="shortcut icon" href="<?= base_url('/favicon.ico') ?>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 

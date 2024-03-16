@@ -2,44 +2,17 @@
 <html lang="en">
 
 <head>
+    <link rel="shortcut icon" href="<?= base_url('/favicon.ico') ?>">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile</title>
+    <title>Profile</title>
     <link rel="stylesheet" href="<?= base_url('css/header.css') ?>">
     <link rel="stylesheet" href="<?= base_url('css/profile.css') ?>">
     <link rel="stylesheet" href="<?= base_url('css/footer.css') ?>">
     <link rel="stylesheet" href="<?= base_url('css/output.min.css') ?>">
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <style>
-        .popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            height: 500px;
-            width: 500px;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            padding: 20px;
-            border: 1px solid #ccc;
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
 
-        .popup.show {
-            display: block;
-            opacity: 1;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
-        }
-    </style>
 </head>
 
 <body>
@@ -70,9 +43,10 @@
         <button class="pfplinkbtn" onclick="window.location.href='/profile/Myquestions'">My Questions & Answer</button>
         <button class="pfplinkbtn" onclick="window.location.href='/updateprofile'">Update Profile</button>
         <button class="pfplinkbtn" onclick="window.location.href='/updatecategory'">Update categories</button>
+        <button class="pfplinkbtn" onclick="window.location.href='/updatepassword'">Update Password</button>
         <button class="pfplinkbtn" onclick="window.location.href='/logout'">Logout</button>
     </div>
-    <?php if (isset($error)): ?>
+    <?php if (isset ($error)): ?>
         <div class="text-red-500 text-center">
             <?= $error ?>
         </div>

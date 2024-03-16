@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="<?= base_url('css/answerpage.css') ?>">
     <link rel="stylesheet" href="<?= base_url('css/header.css') ?>">
     <link rel="stylesheet" href="<?= base_url('css/footer.css') ?>">
+    
+  <link rel="shortcut icon" href="<?= base_url('/favicon.ico') ?>">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 </head>
@@ -41,6 +43,7 @@
 
 
         <div class="answer-textbox">
+            <h3>Submit Your Answer</h3>
             <form action="answers/submit" method="post">
                 <textarea name="answer" id="answerInput" cols="50" rows="3"></textarea>
                 <input type="submit" value="Submit" class="ans-submitbtn">

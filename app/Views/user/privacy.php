@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Privacy Policy</title> 
+  <title>PrivacyPolicy - Askify</title> 
+  <link rel="shortcut icon" href="<?= base_url('/favicon.ico') ?>">
   <link rel="stylesheet" href="<?= base_url('css/privacy.css')?>">
 </head>
 <body>

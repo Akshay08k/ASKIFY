@@ -11,7 +11,7 @@ class IPWhitelistFilter implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         //ALLLOWED IPS
-        $allowedIPs = ['localhost', '::1', '51.20.71.103'];
+        $allowedIPs = ['::1', 'localhost'];
 
         //REQUESTED IP
         $clientIP = $request->getIPAddress();

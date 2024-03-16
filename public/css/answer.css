@@ -13,6 +13,12 @@ body {
     background-color: #ecf0f1;
 }
 
+.media-section img {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
 nav {
     background-color: var(--navbar-color);
     height: 80px;

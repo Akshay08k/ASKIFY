@@ -4,8 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile</title>
+    <title>Profile |
+        <?= $user['name'] ?>
+    </title>
     <link rel="stylesheet" href="<?= base_url('css/header.css') ?>">
+    <link rel="shortcut icon" href="<?= base_url('/favicon.ico') ?>">
     <link rel="stylesheet" href="<?= base_url('css/profile.css') ?>">
     <link rel="stylesheet" href="<?= base_url('css/footer.css') ?>">
     <link rel="stylesheet" href="<?= base_url('css/output.min.css') ?>">
@@ -42,9 +45,10 @@
         <button class="pfplinkbtn" onclick="window.location.href='/profile/Myquestions'">My Questions & Answer</button>
         <button class="pfplinkbtn" onclick="window.location.href='/updateprofile'">Update Profile</button>
         <button class="pfplinkbtn" onclick="window.location.href='/updatecategory'">Update categories</button>
+        <button class="pfplinkbtn" onclick="window.location.href='/updatecategory'">Update Password</button>
         <button class="pfplinkbtn" onclick="window.location.href='/logout'">Logout</button>
     </div>
-    <?php if (isset($error)): ?>
+    <?php if (isset ($error)): ?>
         <div class="text-red-500 text-center">
             <?= $error ?>
         </div>

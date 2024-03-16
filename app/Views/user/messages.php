@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Chat Interface</title>
+    <title>Messages - Askify</title>
+    <link rel="shortcut icon" href="<?= base_url('/favicon.ico') ?>">
     <link rel="stylesheet" href="<?= base_url('css/messages.css') ?>">
     <link rel="stylesheet" href="<?= base_url('css/header.css') ?>">
     <link rel="stylesheet" href="<?= base_url('css/footer.css') ?>">
@@ -88,16 +89,12 @@
         var selectedUserId = null;
         var lastSentMessageId = null;
         function loadProfile(userName, url) {
-            // Log the URL to ensure it contains the correct value
             console.log("Profile Photo URL:", url);
 
-            // Assuming "active-user" is a class for displaying the active user's profile photo and name
             var img = $('<img>').attr('src', url).addClass('active-user-img');
 
-            // Create the user name element
             var userNameElement = $('<p>').addClass('active-user-name').text(userName);
 
-            // Find the element with class "active-user" and append the profile photo and user name elements to it
             $('.active-user').empty().append(img).append(userNameElement);
         }
 
@@ -113,13 +110,11 @@
                         var photoUrl = window.location.origin + '/uploads/UserProfilePhotos/' + user.profile_photo;
                         console.log(photoUrl);
 
-                        // Construct the HTML for the list item
                         var listItemHtml = '<li onclick="loadProfile(\'' + user.name + '\', \'' + photoUrl + '\')" class="flex listitem" data-userid="' + user.id + '">' +
                             '<img src="' + photoUrl + '" height="50" width="50" class="mr-2 rounded-full">' +
                             '<p  class="cursor-pointer">' + user.name + '</p>' +
                             '</li>';
 
-                        // Append the HTML to the user list
                         userList.append(listItemHtml);
                     });
                 }
@@ -142,15 +137,14 @@
                     var messages = JSON.parse(response);
 
                     messages.forEach(function (message) {
-                        // Skip the last sent message
+                        // SKIPPING LAST MESSAGE
                         if (message.id != lastSentMessageId) {
                             var bubbleClass = message.sender_id == '<?= session()->get('user_id') ?>' ? 'self-bubble' : 'other-bubble';
                             var alignmentClass = message.sender_id == '<?= session()->get('user_id') ?>' ? 'text-right' : 'text-left';
                             var messageDiv = $('<div>').addClass('message bubble p-2 rounded ' + bubbleClass + ' ' + alignmentClass).text(message.message);
-                            // Set a data attribute to store the message ID
+
                             messageDiv.attr('data-messageid', message.id);
                             chat.append(messageDiv);
-                            // Scroll to the bottom of the chat after appending a message
                             chat.scrollTop(chat[0].scrollHeight);
 
                         }
@@ -167,8 +161,7 @@
                 data: { receiver_id: receiverId, message: message },
                 success: function (response) {
                     $('#messageInput').val('');
-
-                    // Update the last sent message ID
+//UPDATE LAST MESSAGE ID
                     lastSentMessageId = response.message_id;
 
                     loadMessages(receiverId);
@@ -176,12 +169,11 @@
             });
         }
 
-        // Periodically load messages
         setInterval(function () {
             if (selectedUserId !== null) {
                 loadMessages(selectedUserId);
             }
-        }, 5000); // Adjust the interval (in milliseconds) as needed
+        }, 5000);
 
         $('#userList').on('click', 'li', function () {
             $('#chat').empty();
@@ -210,14 +202,13 @@
                             // Clear previous results
                             $('#liveSearchResults').html('');
 
-                            // Process and display the new results
                             if (data.length > 0) {
                                 $.each(data, function (index, user) {
-                                    // Customize the display based on your need
+                                  
                                     var userDiv = $('<div class="profile-link" data-userid="' + user.id + '">' + user.name + '</div>');
                                     $('#liveSearchResults').append(userDiv);
 
-                                    // Add click event to redirect to profile
+                                    
                                     userDiv.on('click', function () {
                                         window.location.href = '/visitprofile/' + user.id;
                                     });

@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    font-family: "Poppins", sans-serif;
+}
+
+.popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+
+}
+
+/* Style for the popup content */
+.popup-content {
+    background-color: white;
+    width: 500px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* Add a subtle shadow */
+
+}
+
+#feedbackText {
+    resize: none;
+    /* Prevent resizing of the textarea */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 100px;
+}
+
+/* Style for the submit button */
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    text-align: center;
+    width: 50%;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Hover effect for the submit button */
+button:hover {
+    background-color: #0056b3;
+}

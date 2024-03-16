@@ -58,7 +58,7 @@ function createQuestionBox(data) {
     : "";
 
   const profilePictureHTML = profile_photo
-    ? `<div class="profile-picture"><img src="/uploads/userprofilephotos/${profile_photo}" alt="Profile Pic"></div>`
+    ? `<div class="profile-picture"><img src="/uploads/UserProfilePhotos/${profile_photo}" alt="Profile Pic"></div>`
     : " ";
 
   const questionBoxHTML = `

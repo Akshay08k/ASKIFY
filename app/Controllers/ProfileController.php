@@ -222,7 +222,7 @@ class ProfileController extends BaseController
         }
         $userModel = new UserModel();
         $userData = $userModel->find($userId);
-        if (empty($userData)) {
+        if (empty ($userData)) {
             return redirect()->to('/user/404page')->with('error', 'User not found.');
         }
         return view('user/updateprofile', ['userData' => $userData]);
@@ -239,7 +239,7 @@ class ProfileController extends BaseController
         $userModel = new UserModel();
         $userData = $userModel->find($userId);
 
-        if (empty($userData)) {
+        if (empty ($userData)) {
             return redirect()->to('/user/404page')->with('error', 'User not found.');
         }
 
@@ -377,7 +377,44 @@ class ProfileController extends BaseController
         // Return response
         return $this->response->setJSON(['status' => $status]);
     }
+    public function updatepassword()
+    {
+        return view('user/UpdatePassword');
+    }
+    public function updatepasswordSave()
+    {
 
 
+        // Validate form inputs
+        $rules = [
+            'oldpassword' => 'required',
+            'newpassword' => 'required|min_length[6]',
+            'confpassword' => 'required|matches[newpassword]'
+        ];
 
+        if (!$this->validate($rules)) {
+            // If validation fails, return to the form with validation errors
+            return redirect()->back()->withInput()->with('error', $this->validator->getErrors());
+        }
+
+        $userID = session()->get('user_id');
+
+        $oldPassword = $this->request->getPost('oldpassword');
+
+        $newPassword = $this->request->getPost('newpassword');
+
+        $userModel = new UserModel();
+
+        $user = $userModel->find($userID);
+
+        if (!password_verify($oldPassword, $user['password'])) {
+            return redirect()->back()->withInput()->with('error', 'Incorrect old password.');
+        }
+
+        $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+
+        $userModel->update($userID, ['password' => $hashedPassword]);
+
+        return redirect()->to(base_url('profile'))->with('successMessage', 'Password updated successfully.');
+    }
 }

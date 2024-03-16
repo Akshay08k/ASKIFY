@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Notifications Page</title>
+    <title>Notifications - Askify</title>
+    <link rel="shortcut icon" href="<?= base_url('/favicon.ico') ?>">
     <link rel="stylesheet" href="<?= base_url('css/header.css') ?>">
     <link rel="stylesheet" href="<?= base_url('css/notification.css') ?>">
-    <!-- <link rel="stylesheet" href="<?= base_url('css/footer.css') ?>"> -->
     <link rel="shortcut icon"
         href="https://static.vecteezy.com/system/resources/previews/000/568/825/original/question-answer-icon-vector.jpg">
 </head>
@@ -46,7 +46,7 @@
                 </div>
             </form>
         <?php endforeach; ?>
-        <?php if (!empty($allNotifications)): ?>
+        <?php if (!empty ($allNotifications)): ?>
             <?php foreach ($allNotifications as $notification): ?>
                 <form action="<?= base_url('notification/markAsSeen/' . $notification['id']) ?>" method="post">
                     <div class="notification">
@@ -77,14 +77,7 @@
             <h2 align="center" class="no-notification">No notifications at this time Explore The Website..</h2>
         <?php endif; ?>
 
-
-
-
-
     </div>
-
-
-
 
     </div>
     <footer>
